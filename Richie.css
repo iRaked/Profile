@@ -1,0 +1,83 @@
+/*-------MUSIC PLAYER BY GLENTHEMES-------*/
+#glenplayer04 {
+   position:fixed;
+  bottom:0;margin-bottom:130px;
+   left:0;margin-left:500px;
+   z-index:99;
+}
+
+#gt-player {
+   display:flex;
+   padding:15px;
+   background:#31302E; /* main music player background color */
+   border-radius:3px 3px 0 0;
+}
+
+#gt-player > div {
+  align-self:center;
+  -webkit-align-self:center;
+}
+
+#music-controls {
+   user-select:none;
+   -webkit-user-select:none;
+   width:12px;
+   font-size:12px;
+   cursor:pointer;
+   color:#ceccdb; /* play & pause button color */
+}
+
+.pausee {display:none;}
+
+#gt-barwrap {
+   margin-left:15px;
+   padding:5px 0;
+   cursor:pointer;
+}
+
+#gt-musicbar {
+   min-width:100px;
+   height:2px;
+   background:#222; /* music bar color (not played) */
+   border-radius:4px;
+   display:flex;
+}
+
+#gt-musictrack {
+   height:inherit;
+   background:#ceccdb; /* music track color (played) */
+   border-radius:4px;
+   width:0;
+}
+
+#gt-blob {
+   align-self:center;
+   -webkit-align-self:center;
+   margin-left:-4px;
+   width:8px;
+   height:8px;
+   border-radius:100%;
+   background:#ceccdb; /* music slider blob color */
+}
+
+#music-duration {
+   margin-left:15px;
+   font-family:consolas-alt;
+   font-size:10px;
+   letter-spacing:0.5px;
+   color:#b5b5b5; /* music time text color */
+}
+
+#gt-songtext {
+   margin-top:0px;
+   padding:10px 15px;
+   background:#3d3c3b; /* song title background color */
+   border-radius:0 0 3px 3px;
+   font-family:consolas-alt;
+   font-size:10px;
+   line-height:1em;
+   color:#c5c5c5; /* song title color */
+   overflow:hidden;
+}
+
+@font-face { font-family: "consolas-alt"; src: url('//glen-assets.github.io/fonts/consolas.TTF'); }
