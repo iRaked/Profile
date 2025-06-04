@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dragón</title>
+  <link rel="stylesheet" href="./Dragon.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html><head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Cute+Font&family=Inter:wght@200;300;400;700;900&display=swap" rel="stylesheet"><script src="https://static.tumblr.com/iuw14ew/VSQma1786/jquery.style-my-tooltips.js"></script> 
+
+  <script>
+(function($){
+$(document).ready(function() {
+$("a[title]").style_my_tooltips({
+tip_follows_cursor:false,
+tip_delay_time:90,
+tip_fade_speed:600,
+attribute:"title"
+});
+});
+})(jQuery);
+</script><script>
+(function($){
+$(document).ready(function() {
+$("img[title]").style_my_tooltips({
+tip_follows_cursor:false,
+tip_delay_time:90,
+tip_fade_speed:600,
+attribute:"title"
+});
+});
+})(jQuery);
+</script>
+  <script type="text/javascript">
+      document.onkeydown = function(){return false};
+        document.oncontextmenu = function(){return false}
+    </script>
+</head>
+  
+<body><div id="container"><div id="containerblob"></div><div id="containerbg"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0  600 400" width="600" height="400" ><defs><linearGradient gradientTransform="rotate(205, 0.5, 0.5)" x1="50%" y1="0%" x2="50%" y2="100%" id="ffflux-gradient"><stop stop-color="#444444" stop-opacity="1" offset="0%"></stop><stop stop-color="#d5d9c5" stop-opacity="1" offset="100%"></stop></linearGradient><filter id="ffflux-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.005 0.003" numOctaves="2" seed="142" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence><feGaussianBlur stdDeviation="20 0" x="0%" y="0%" width="100%" height="100%" in="turbulence" edgeMode="duplicate" result="blur"></feGaussianBlur><feBlend mode="multiply" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" in2="blur" result="blend"></feBlend></filter></defs></svg></div>
+  
+<div class="sb2"><img src="https://i.ibb.co/qYJkW786/Drako3.gif" draggable="false"></div><div class="sbbg"> 
+
+<div class="mtitle"> <b> </b> <i>Dragon</i><br> (738987602) </div>
+  
+  
+<div class="tab"><a target="_blank" href="https://xat.me/LuzDeErendil" class="tablink" title="Friend">★</a><a target="_blank" href="https://xat.me/LuzDeErendil" class="tablink" title="Friend">★</a><br><a target="_blank" href="https://xat.me/LuzDeErendil" title="Friend">★</a><a target="_blank" href="https://xat.me/LuzDeErendil" title="Friend">★</a></div></div>
+  
+  <div class="descbg"></div><div class="desc">
+  <b>País: </b><i>México</i><br><br>
+  <b>Cumpleaños:</b> <i>4 de Abril</i><br><br> 
+<b>Signo: </b><i>Aries</i><br><br><br>
+<b>Equipo de Fútbol: </b><i>América</i><br><br>
+<b>Música Favorita: </b><i>Banda</i><br><br>
+<b>Experto en:</b><i>Dormir</i><br><br>
+<b>Hobbies:</b><i>Dormir y comer</i><br><br>
+<b>Dolor especial: </b><i>En la pata</i><br><br>
+  <b>Ser fiel a uno mismo, tolerante con aquellos que son diferentes y aceptar los dones y talentos especiales de cada</b><i> individuo.</i> <b></b>
+</div><div class="sb"> 
+    <img src="https://i.ibb.co/mCrPYzkq/Picture.png" draggable="false"></div><div id="window"><!-- Include a header DIV with the same name as the draggable DIV, followed by "header" --><div id="windowheader">Si lo deseas,<big></big></div><p>mentaliza, si se <i>materializa </i>te <b>pertenecerá.</b>
+</div> 
+</div><body>
+  
+
+  <div id="credit" data="credit"><a href="https://xat.me/LuzDeErendil" title="RA"><span class="fa fa-eyedropper"></span></a></div>
+  
+  
+  <script>
+$(document).ready(function(){
+  $(".tablink").click(function(){
+    $("#postwrap").hide();
+        $(".notes").hide();
+        $(".mtitle").hide();
+  });
+  $(".tabsclose").click(function(){
+    $("#postwrap").show();
+        $(".notes").show();
+        $(".mtitle").show();
+  });
+});
+</script>
+  <script>
+dragElement(document.getElementById("window"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "windowheader")) {
+    document.getElementById(elmnt.id + "windowheader").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+  
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+ 
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+ <script src="//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+<script src="//glenthemes.github.io/-music-/glenplayer01.js"></script>
+<link href="//glenthemes.github.io/-music-/glenplayer01.css" rel="stylesheet">
+
+<style element="glenplayer01">
+:root {
+    --MusicPlayer-Distance-From-Bottom:30px;
+    --MusicPlayer-Frame-Thickness:12px;
+    --MusicPlayer-Frame-Color:#transparent;
+    --MusicPlayer-Frame-Transparency:40%;
+    --MusicPlayer-Text-Background:#transparent;
+    --MusicPlayer-Text-Padding:12px;
+    --MusicPlayer-Text-Align:right;
+    --MusicPlayer-Text-TOP-Size:0px;
+    --MusicPlayer-Text-TOP-Color:#c8cdb3;
+    --MusicPlayer-Text-BOTTOM-Size:0px;
+    --MusicPlayer-Text-BOTTOM-Color:#c8cdb3;
+    --MusicPlayer-Circle-Size:50px;
+    --MusicPlayer-Circle-Background:#transparent;
+    --MusicPlayer-PlayButton-Size:12px;
+    --MusicPlayer-PlayButton-Color:#000080;
+    --MusicPlayer-Bar-Thickness:2px;
+    --MusicPlayer-Bar-Spacing:2px;
+    --MusicPlayer-Bar-Color:#c8cdb3;
+    --MusicPlayer-SlideIn-Speed:0.69s;
+    --MusicPlayer-SlideOut-Speed:1s;
+}
+</style>
+
+<div glenplayer01>
+    <div top-text>Me duele la pata</div>
+    <div bottom-text>Banda La Ruidoza</div>
+    <audio id="music-id" src="https://youtu.be/DDCnpC46eBQ?si=O50vskSmbI1vKuGR"></audio>
+</div> 
+</body></html>
+<!-- partial -->
+  
+</body>
+</html>
