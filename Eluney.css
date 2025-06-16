@@ -1,0 +1,316 @@
+﻿{background:repeating-linear-gradient(0deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 6px),          repeating-linear-gradient(90deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 1px),         radial-gradient(#000000, #222); }*{cursor:url(https://i.ibb.co/R9vTkyB/Cursor-Gold1-FX.png),auto}/*-*/
+{
+	background:#efdd8e
+}
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box
+}
+:before,:after{
+	content:'';
+	position:absolute
+}
+:root{
+	--font-1:Roboto,sans-serif;
+	--font-2:Satisfy,cursive;
+	--font-3:Cookie,cursive
+}
+a{
+	display:inline-block;
+	text-decoration:none;
+	text-transform:uppercase;
+	text-align:center;
+	color:#e7e7e7
+}
+span{
+	display:inline-block
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight:lighter
+}
+#jd-main{
+	width:100%;
+	height:100vh;
+	position:relative;
+	font-size:1em;
+	font-cursiva:var(--font-1);
+	color:#fff;
+	overflow:hidden
+}
+.jd-app{
+	width:945px;
+	height:650px;
+	position:relative;
+	margin:0 auto
+}
+.jd-section-home,.jd-modal{
+	width:100%;
+	height:525px
+}
+.jd-section-home{
+	text-align:center;
+	margin-bottom:40px
+}
+.jd-title{
+	line-height:125px;
+	font-kerning:var(--font-3);
+	font-weight:lighter;
+	font-size:5em;
+	color:#fff;
+	margin-bottom:20px
+}
+.jd-block-g{
+	width:100%;
+	height:380px;
+	display:flex;
+	justify-content:center;
+	align-items:center
+}
+.jd-box-g{
+	background:#efdd8e;
+	border:solid 10px #fff;
+	box-shadow:0 0 20px 4px rgba(0,0,0,.4);
+	position:relative;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	overflow:hidden
+}
+.jd-box-g:nth-child(1),.jd-box-g:nth-child(5){
+	width:170px;
+	height:300px;
+	border:solid 10px #fff
+}
+.jd-box-g:nth-child(3){
+	width:280px;
+	height:380px;
+	border:solid 10px #fff
+}
+.jd-box-g:nth-child(2),.jd-box-g:nth-child(4){
+	width:185px;
+	height:340px;
+	border:solid 10px #fff
+}
+.jd-box-g:after{
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background:#a38838;
+	opacity:0
+}
+.jd-box-g:hover:after{
+	animation:pulse .2s ease-out forwards
+}
+@keyframes pulse{
+	0%{
+		opacity:.8
+}
+	100%{
+		opacity:0
+}
+}
+.jd-box-g img{
+	width:auto;
+	height:100%;
+	filter:grayscale(1);
+	transition:all .3s ease-out
+}
+.jd-box-g:hover img{
+	filter:grayscale(0)
+}
+.jd-box-g:nth-child(3) img{
+	width:100%
+}
+.jd-nav{
+	width:945px;
+	height:80px;
+	display:flex;
+	align-items:center;
+	justify-content:center
+}
+.jd-btn-nav{
+	background-image: url(https://i.ibb.co/prGZ9VCX/BG-Gold.png);
+	box-shadow:0 -1px #fff inset;
+	transition:all .3s ease-out
+}
+.jd-btn-nav:nth-child(1),.jd-btn-nav:nth-child(5){
+	width:169px;
+	height:50px;
+	line-height:50px
+}
+.jd-btn-nav:nth-child(2),.jd-btn-nav:nth-child(4){
+	width:185px;
+	height:70px;
+	line-height:70px
+}
+.jd-btn-nav:nth-child(3){
+	width:240px;
+	height:80px;
+	line-height:80px
+}
+.jd-btn-nav:hover{
+	color:#fff;
+	box-shadow:0 -8px #fff inset
+}
+.jd-modal{
+	background-image: url(https://i.ibb.co/prGZ9VCX/BG-Gold.png);
+	position:absolute;
+	top:0;
+	left:0;
+	height:540px;
+	overflow:hidden;
+	transform:translate(0,-100%);
+	transition:all .5s ease-out
+}
+[class*='page-modal']{
+	width:100%;
+	height:540px;
+	background-image: url(https://i.ibb.co/prGZ9VCX/BG-Gold.png);
+	position:absolute;
+	top:0;
+	left:0;
+	visibility:hidden;
+	opacity:0;
+	padding:15px
+}
+#jd-content-1:target .jd-modal{
+	transform:translate(0,0)
+}
+#jd-content-1:target .page-modal-about{
+	opacity:1;
+	visibility:visible
+}
+#jd-content-2:target .jd-modal{
+	transform:translate(0,0)
+}
+#jd-content-2:target .page-modal-video{
+	opacity:1;
+	visibility:visible
+}
+#jd-content-3:target .jd-modal{
+	transform:translate(0,0)
+}
+#jd-content-3:target .page-modal-video{
+	opacity:1;
+	visibility:visible
+}
+#jd-content-4:target .jd-modal{
+	transform:translate(0,0)
+}
+#jd-content-4:target .page-modal-love{
+	opacity:1;
+	visibility:visible
+}
+.jd-title-page{
+	width:100%;
+	height:36px;
+	border-bottom:solid 1px #efdd8e;
+	margin-bottom:35px
+}
+.jd-title-page h2{
+	font-cursiva:var(--font-3);
+	font-size:3em;
+	line-height:32px;
+	display:table;
+	border-bottom:solid 1px #a38838
+}
+.jd-block{
+	width:100%;
+	height:415px;
+	overflow-y:auto
+}
+.page-modal-about .jd-block{
+	display:flex
+}
+.jd-img-about{
+	width:320px;
+	height:415px;
+	border:solid 5px #a38838;
+	background:#aaa;
+	margin-right:10px
+}
+.jd-infor{
+	flex-grow:1
+}
+.jd-infor h3{
+	font-size:3.4em;
+	line-height:40px
+}
+.jd-infor span{
+	letter-spacing:10.1px
+}
+.jd-infor h4{
+	font-size:3em;
+	font-cursiva:var(--font-3);
+	margin-bottom:50px
+}
+.jd-col-f{
+	width:240px;
+	height:auto;
+	display:flex;
+	flex-direction:column
+}
+.jd-row{
+	width:240px;
+	height:70px;
+	margin-bottom:15px;
+	display:flex;
+	align-items:center
+}
+.jd-row img{
+	width:70px;
+	height:70px;
+	background:#dbc9a0;
+	border:solid 4px #76bad7
+}
+.jd-row span{
+	background:#a38838;
+	width:110px;
+	line-height:40px;
+	padding-left:10px;
+	color:#fff;
+	font-size:.8em
+}
+.jd-row a{
+	background:#efdd8e;
+	width:60px;
+	line-height:30px;
+	font-size:.8em;
+	transition:all .3s ease-out
+}
+.jd-row a:hover{
+	color:#ffffff;
+	background:	color:#ffffff;
+}
+.jd-video{
+	width:726px;
+	height:410px;
+	background:#222;
+	box-shadow:0 10px #efdd8e;
+	margin-left:calc(50% - 363px)
+}
+.page-modal-love .jd-block{
+	text-align:center;
+	font-cursiva:var(--font-3)
+}
+.page-modal-love h5{
+	font-size:3em
+}
+.page-modal-love h6{
+	font-cursiva:var(--font-1);
+	letter-spacing:4px;
+	line-height:32px
+}
+.page-modal-love p{
+	font-size:1.7em
+}
+.jd-footer{
+	position:absolute;
+	width:100%;
+	line-height:50px;
+	text-align:center;
+	font-size:.8em;
+	bottom:0;
+}
