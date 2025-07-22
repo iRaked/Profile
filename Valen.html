@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Valen · Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Yomogi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="Valen.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<input class="variation" id="solid" type="radio" value="1" name="border" checked="checked"/>
+<label for="solid"><span class="circle"></span><span>Welcome</span></label>
+<input class="variation" id="shadow" type="radio" value="2" name="border"/>
+<label for="shadow"> <span class="circle"></span><span>MySpace</span></label>
+<div class="folder">
+  <div class="tabs">
+    <button class="tab active" onclick="openTab(event, 'tab-1')">
+      <div><span>PERFIL</span></div>
+    </button>
+    <button class="tab" onclick="openTab(event, 'tab-2')">
+      <div><span>AMIGOS</span></div>
+    </button>
+    <button class="tab" onclick="openTab(event, 'tab-3')">
+      <div><span>MÚSICA</span></div>
+    </button>
+  </div>
+  <div class="content">
+    <div class="content__inner" id="tab-1">
+      <div class="page">
+         <img src="https://i.ibb.co/p6Wp8Tg3/Valen1.gif">
+          <img src="https://i.ibb.co/4R3cLRwN/Valen2.gif">
+            <img src="https://i.ibb.co/zTHcN1zN/Valen3.gif">
+              <img src="https://i.ibb.co/DH4G2k9H/Firma-Valen-GFX.gif">
+      </div>
+    </div>
+    <div class="content__inner" id="tab-2">
+      <div class="page">
+          <div class="row-friend">
+              <a href="https://xat.me/AntonellaGomez/"target="_blank"><img src="https://i.postimg.cc/bJD05BRr/89.gif" width="20%" height="20%"/></a>
+            <span>𝐀𝐧𝐭𝐨𝐧𝐞𝐥𝐥𝐚</span>
+              <br>
+              <a href="https://xat.me/YhoisRodriguez/"target="_blank"><img src="https://i.postimg.cc/pdPD2dYw/80.gif" width="20%" height="20%"/></a>
+            <span>𝐘𝐡𝐨𝐢𝐬</span>
+              <br>
+              <a href="https://xat.me/iiNaTTaaaii/"target="_blank"><img src="https://i.postimg.cc/8zxzHXst/115.gif" width="20%" height="20%"/></a>
+            <span>𝐕𝐚𝐧𝐞𝐬𝐚</span>
+              <br><br>
+          </div> 
+        <p>Hay lugares, personas, recuerdos y abrazos que se quedan con nosotros para siempre.</p>
+      </div>
+    </div>
+    <div class="content__inner" id="tab-3">
+      <div class="page">
+        <embed width="100%" height="100%" src="https://iraked.github.io/ExtasisRadio/Repro2.html">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script  src="Valen.js"></script>
+  <script  src="./script2.js"></script>
+</body>
+</html>
