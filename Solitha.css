@@ -1,0 +1,47 @@
+body{
+    background-image: url("https://i.ibb.co/dwHgr2kK/Background-Space-City-GFX.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.btn-1{
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: white;
+    display:inline-block;
+    background-color: violet;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-2{
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: white;
+    display:inline-block;
+    background-color: blueviolet;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-3{
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: white;
+    display:inline-block;
+    background-color: violet;
+    text-decoration: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: darkmagenta;
+    color: aqua;
+    border-color: white;
+    transform: translateY(-2px);
+}
+/* CURSOR */
+{font-size:15px}*{text-align:center}*{text-transform:lowercase}*{text-shadow: 1px 1px 5px #141414}*{font-variant:small-caps}*{color:#FFFFFF}*{-webkit-user-select:none}*{cursor: url('https://i.ibb.co/s3HGnnw/Cursor-Purple-FX.png') ,auto}span:hover{color:transparent}a:hover{background:#0}a:hover{color:#141414}embed:hover{-webkit-transform: rotate(0deg)}*{transition:all.7s ease}embed{box-shadow: 0px 0px 15px #}@keyframes pulse { 0% {transform: scale(1)} 50% {transform: scale(1.1)} 100% {transform: scale(1)} }@keyframes right{ from{right:-142px} to{right:0px}}
+/* OPACIDAD */
+img{opacity:.8}img:hover{-webkit-transform: rotate(2deg)}img{box-shadow:0px 0px 15px #}a:hover{color:#141414}embed{-webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.6) 0%, transparent 30%, transparent 100%)}[name=J‪ornMadeThis]{position: absolute} [name=J‪ornMadeThis]{left: 0px} [name=J‪ornMadeThis]{top: 0px} [name=J‪ornMadeThis]{border-radius:0px} [name=J‪ornMadeThis]{width: 150px} [name=J‪ornMadeThis]{height: 100%} [name=J‪ornMadeThis]{border-right: 1px solid #FFFFFF} [name=J‪ornMadeThis]{background-color: #141414} [name=J‪ornMadeThis]{overflow: visible} [name=Jo‪rnMadeThis]{position: absolute} [name=Jo‪rnMadeThis]{left: 15px} [name=Jo‪rnMadeThis]{top: 50px} [name=Jor‪nMadeThis]{position: absolute} [name=Jor‪nMadeThis]{top: 50%} [name=Jor‪nMadeThis]{margin-top: -82px} [name=Jorn‪MadeThis],[name=JornM‪adeThis]{text-align: center} [name=Jorn‪MadeThis],[name=JornM‪adeThis]{}
