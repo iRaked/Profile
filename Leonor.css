@@ -1,0 +1,699 @@
+body {
+    background: url(https://i.ibb.co/1YxJmwZG/Background-Space-GFX.gif);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.content {
+    overflow: visible!important
+}
+
+.world {
+    margin: 20px auto;
+    width: 650px;
+    height: 700px;
+    background: #171717;
+    border-radius: 10px;
+    color: #aaa;
+    font: 12px Hind;
+    line-height: 18px;
+    text-align: justify
+}
+
+.wd-wrap {
+    margin: 20px;
+    position: relative;
+    top: 20px
+}
+
+.wd-head {
+    width: 610px;
+    height: 200px;
+    border-radius: 10px;
+    position: absolute;
+    overflow: hidden;
+    border-top: 15px solid #131313;
+    border-bottom: 15px solid #131313;
+    z-index: 3
+}
+
+.wd-head:before {
+    content: '';
+    filter: grayscale(100%);
+    background: var(--imagen);
+    width: 610px;
+    height: 200px;
+    display: block;
+    position: absolute
+}
+
+.wd-head:after {
+    content: '';
+    width: 610px;
+    height: 200px;
+    background: var(--color);
+    position: absolute;
+    mix-blend-mode: multiply
+}
+
+.wd-imc {
+    position: absolute;
+    z-index: 5;
+    border: 10px solid #0a0a0a;
+    width: 100px;
+    height: 100px;
+    top: 85px;
+    right: 105px;
+    outline: 1px solid #0a0a0a;
+    outline-offset: 4px
+}
+
+.wd-name {
+    font: 70px 'Abril Fatface';
+    position: absolute;
+    width: 360px;
+    z-index: 10;
+    line-height: .6;
+    top: 124px;
+    letter-spacing: -1px;
+    text-align: right;
+    text-shadow: 2px 1px 0 #010101;
+    font-weight: 900;
+    text-transform: lowercase;
+    color: #f0f0f0
+}
+
+.wd-name b {
+    color: var(--color);
+    display: block
+}
+
+.wd-fr {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 10px;
+    padding: 20px;
+    position: relative;
+    z-index: 30;
+    text-align: right;
+    width: 350px;
+    text-shadow: #000 1px 1px 0;
+    color: #f0f0f0;
+    top: 80px
+}
+
+.wd-tabs {
+    position: relative;
+    height: 640px!important;
+    overflow: hidden;
+    top: -40px
+}
+
+.wd-tabs input {
+    display: none
+}
+
+.wd-tabs label {
+    font-size: 25px;
+    position: relative;
+    top: 20px;
+    left: 540px;
+    display: block;
+    margin: 0 0 15px;
+    text-shadow: 1px 1px #010101;
+    transition: .2s;
+    width: 10px;
+    z-index: 20
+}
+
+.wd-tabs input:checked+label {
+    color: var(--color)
+}
+
+.wd-tabs label:hover {
+    color: var(--color);
+    opacity: .4;
+    transition: .2s
+}
+
+.wd-body {
+    position: absolute;
+    height: 440px;
+    top: 220px;
+    transition: .5s
+}
+
+.wd-index1,
+.wd-index2,
+.wd-index3,
+.wd-index4 {
+    width: 610px;
+    height: 440px;
+    position: absolute;
+    transition: .5s;
+    margin-top: 0
+}
+
+.wd-index2 {
+    top: 440px!important
+}
+
+.wd-index3 {
+    top: 880px!important
+}
+
+.wd-index4 {
+    top: 1320px!important
+}
+
+#wd-ttab1:checked~.wd-body {
+    margin-top: 0;
+    transition: .5s
+}
+
+#wd-ttab2:checked~.wd-body {
+    margin-top: -440px;
+    transition: .5s
+}
+
+#wd-ttab3:checked~.wd-body {
+    margin-top: -880px;
+    transition: .5s
+}
+
+#wd-ttab4:checked~.wd-body {
+    margin-top: -1320px;
+    transition: .5s
+}
+
+.wd-hdd {
+    height: 100px;
+    background: #111;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center
+}
+
+.wd-hdd img {
+    width: 80px;
+    position: relative;
+    left: -20px;
+    top: 0;
+    border-radius: 100%;
+    border: var(--color) 50px solid;
+    padding: 0;
+    opacity: .5
+}
+
+.wd-quote {
+    font: bold 10px Rajdhani;
+    text-transform: uppercase;
+    border: transparent 20px solid;
+    width: 300px;
+    position: relative;
+    left: 20px
+}
+
+.wd-quote:before {
+    content: '\ec2b';
+    font-family: 'cappuccicons';
+    font-size: 40px;
+    float: left;
+    color: var(--color);
+    opacity: .2
+}
+
+.wd-imm {
+    border: 15px solid #111;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 270px;
+    background: #111;
+    overflow: hidden
+}
+
+.wd-flex {
+    display: flex;
+    align-items: flex-start
+}
+
+.wd-lastname {
+    background: #111;
+    margin: 10px 0 10px 10px;
+    width: 310px;
+    border-radius: 10px;
+    padding: 10px 30px 20px;
+    text-align: right;
+    font: 200 13px Poppins;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 0
+}
+
+.wd-lastname b {
+    color: var(--color);
+    display: block;
+    font: 900 30px Poppins;
+    letter-spacing: -1px
+}
+
+.wd-datos {
+    margin: 0 0 10px 10px;
+    width: 340px;
+    display: flex;
+    flex-wrap: wrap
+}
+
+.wd-datos span {
+    width: 160px;
+    padding: 10px 0
+}
+
+.wd-datos span b {
+    background: #111;
+    font: bold 10px Rajdhani;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 10px
+}
+
+.wd-datos span i {
+    font: 10px Hind;
+    margin-left: 10px
+}
+
+.md-links a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #aaa;
+    background: var(--color);
+    padding: 10px;
+    margin: 10px 0 0 5px;
+    position: relative;
+    top: 0;
+    left: 0;
+    font: bold 10px Rajdhani;
+    border-radius: 10px;
+    float: right;
+    transition: .2s
+}
+
+.md-links a:hover {
+    background: #111;
+    transition: .2s
+}
+
+.wd-diario {
+    width: 420px
+}
+
+.wd-ims {
+    width: 180px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px
+}
+
+.wd-dt {
+    background: #111;
+    width: 400px;
+    height: 370px;
+    border-radius: 10px;
+    float: left;
+    position: relative;
+    overflow: auto
+}
+
+.wd-nn {
+    font: bold 10px Poppins;
+    background: var(--color);
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    width: 380px;
+    border-radius: 10px;
+    text-transform: uppercase
+}
+
+.wd-active {
+    display: flex;
+    align-items: center
+}
+
+.wd-active span {
+    background: var(--color);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    position: relative;
+    top: 10px
+}
+
+.wd-active b {
+    background: #111;
+    padding: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font: bold 10px Rajdhani;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 120px;
+    position: relative;
+    top: 10px
+}
+
+.wd-dd {
+    display: grid;
+    grid-template-columns: 70px auto;
+    overflow: visible;
+    border-bottom: #171717 1px solid
+}
+
+.wd-title div {
+    transform: rotate(-90deg);
+    font: bold 35px poppins;
+    line-height: 40px;
+    color: var(--color);
+    height: 0;
+    width: 0;
+    margin-left: 10px;
+    margin-top: 145px;
+    position: sticky;
+    top: 145px;
+    text-transform: uppercase;
+    margin-bottom: 10px
+}
+
+.wd-tem {
+    background: #0f0f0f;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px
+}
+
+.wd-tem .cp {
+    color: #222;
+    font-size: 30px;
+    float: left;
+    position: relative;
+    transition: .5s
+}
+
+.wd-tem:hover .cp {
+    color: var(--color)
+}
+
+.wd-tem a {
+    color: #fafafa;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: 900 12px Poppins;
+    padding: 10px;
+    display: block;
+    position: relative;
+    left: 10px;
+    margin-top: -10px
+}
+
+.wd-tem i {
+    display: block;
+    position: relative;
+    margin-top: -17px;
+    left: 10px
+}
+
+.wd-plot-cc {
+    background: var(--color);
+    border-radius: 10px;
+    margin: 10px 33px
+}
+
+.wd-plot-cc span {
+    font-size: 20px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    transform: rotate(-15deg);
+    color: #fff;
+    position: relative;
+    left: -5px;
+    background: #171717;
+    padding: 20px
+}
+
+.wd-plot-rl {
+    font: 900 28px poppins;
+    text-transform: uppercase;
+    color: #f0f0f0;
+    position: relative;
+    opacity: 1;
+    text-align: right;
+    transition: .3s;
+    font-style: italic;
+    left: 10px;
+    top: 10px
+}
+
+.wd-plot-co {
+    text-align: justify;
+    margin: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 0
+}
+
+.wd-ptt {
+    background: #111;
+    width: 261px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 5px 10px;
+    overflow: hidden
+}
+
+.wd-plot-c {
+    overflow: auto;
+    height: 390px;
+    border-radius: 10px
+}
+
+.wd-ptt img {
+    margin: 20px;
+    border-radius: 10px
+}
+
+.wd-text {
+    border: transparent 10px solid;
+    padding: 0 15px;
+    overflow: auto;
+    height: 70px;
+    margin-top: -20px
+}
+
+.wd-nna {
+    background: #0d0d0d;
+    padding: 10px
+}
+
+.wd-nna b {
+    display: block;
+    font: 900 20px poppins;
+    text-transform: uppercase;
+    color: var(--color);
+    text-align: right;
+    font-style: italic
+}
+
+.wd-nna i {
+    text-align: right;
+    display: block;
+    margin-top: -5px;
+    text-transform: uppercase;
+    font: bold 10px Rajdhani
+}
+
+.world ::-webkit-scrollbar-thumb {
+    border: solid 1px #111;
+    background-color: #010101;
+    border-radius: 5px
+}
+
+.world ::-webkit-scrollbar {
+    border: none;
+    background: transparent;
+    width: 8px
+}
+
+.wd-ext {
+    background: #111;
+    border: 20px transparent solid;
+    padding: 0 10px;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    overflow: auto
+}
+
+.wd-extt {
+    color: var(--color);
+    text-transform: uppercase;
+    font: 900 40px Poppins;
+    width: 350px;
+    text-align: right;
+    margin-top: -30px;
+    letter-spacing: -3px;
+    font-style: italic
+}
+
+.wd-tan img {
+    border-radius: 10px
+}
+
+.wd-qq {
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between
+}
+
+.wd-qq em {
+    background: #111;
+    color: #eee;
+    padding: 7px;
+    border-radius: 5px;
+    font: 10px Rajdhani;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    flex: 1 0 auto;
+    transition: .2s
+}
+
+.wd-qq em:hover {
+    background: var(--color)
+}
+
+.wd-qt {
+    background: var(--color);
+    color: #eee;
+    padding: 20px;
+    font: bold 10px poppins;
+    text-transform: uppercase;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 90px;
+    display: table;
+    overflow: auto
+}
+
+.wd-qt p {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.wd-fv {
+    background: var(--color);
+    padding: 10px;
+    font: bold 10px poppins;
+    color: #eee;
+    border-radius: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    position: relative;
+    width: 220px
+}
+
+.wd-fvt {
+    width: 220px;
+    background: #111;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-top: -5px
+}
+
+.hrcreditos {
+    position: absolute;
+    bottom: -5px;
+    background: #111;
+    display: block;
+    left: -20px;
+    width: 630px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.hrcreditos a {
+    background: var(--color);
+    color: #fff;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.progress {
+    width: 79%;
+    height: 10px;
+    background-color: #171717;
+    text-align: center;
+    line-height: 11px;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 16px;
+}
+
+.progress .percent {
+    text-align: right;
+    padding-right: 10px;
+    background-color: var(--color);
+    color: var(--color);
+}
+
+/*----- 【 MUSIC PLAYER #08 by @glenthemes 】 -----*/
+[glenplayer08]{
+	
+	/*-- player position --*/
+	--MusicPlayer-Position: "bottom left";
+	--MusicPlayer-Corner-Offset: 20px;
+	
+	/*-- album image --*/
+	--MusicPlayer-Album-Image-Size: 54px;
+	--MusicPlayer-Album-Image-Corner-Roundness: 3px;
+	
+	/*-- player buttons (play/pause) --*/
+	--MusicPlayer-Buttons-Size: 1px;
+	--MusicPlayer-Buttons-Color: #ddd;
+	--MusicPlayer-Buttons-Padding: 8px;
+	--MusicPlayer-Buttons-Border-Size: 1px;
+	--MusicPlayer-Buttons-Border-Color: #bbb;
+	--MusicPlayer-Buttons-Background: #000000;
+	--MusicPlayer-Buttons-Background-Transparency: 45%;
+	--MusicPlayer-Buttons-Background-Blur: 3px;
+	
+	/*-- player song name --*/
+	--MusicPlayer-Song-Name-Size: 12px;
+	--MusicPlayer-Song-Name-Color: #222;
+	
+	/*-- player artist name --*/
+	--MusicPlayer-Artist-Name-Size: 12px;
+	--MusicPlayer-Artist-Name-Color: #777;
+	
+	/*-- player gap/spacing --*/
+	--MusicPlayer-Center-Gap: 14px;
+	--MusicPlayer-Text-Line-Spacing: 4px;
+	
+	/*-- playback settings --*/
+	--MusicPlayer-Autoplay: "no";
+	--MusicPlayer-Replay: "no";
+	
+}/* don't delete this line */
+/*---- END MUSIC PLAYER ----*/
