@@ -141,22 +141,6 @@ h1{
     transform: rotateY(180deg);
 }
 
-footer {
-    text-align: center;
-    padding: 50px;
-    font-size: 14px;
-    color: #55555576;
-}
-footer a {
-    color: #33333375;
-    text-decoration: none;
-    font-weight: bold;
-}
-footer a:hover {
-    text-decoration: underline;
-}
-
-
 .animate {
     justify-self: center;
     font-size: 35px;
@@ -260,5 +244,3 @@ footer a:hover {
     transform: translate(0) scale(1);
     opacity: 1;
 }
-}
-
