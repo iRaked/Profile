@@ -1,5 +1,6 @@
 body {
-    background: url(https://i.ibb.co/1YxJmwZG/Background-Space-GFX.gif);
+    background: url('https://i.ibb.co/whXMF5g6/New-York.jpg');
+    /*  https://i.ibb.co/whXMF5g6/New-York.jpg  */
     background-repeat:no-repeat;
     background-size:cover;
 }
@@ -657,43 +658,13 @@ body {
     background-color: var(--color);
     color: var(--color);
 }
+/* Footer */
 
-/*----- 【 MUSIC PLAYER #08 by @glenthemes 】 -----*/
-[glenplayer08]{
-	
-	/*-- player position --*/
-	--MusicPlayer-Position: "bottom left";
-	--MusicPlayer-Corner-Offset: 20px;
-	
-	/*-- album image --*/
-	--MusicPlayer-Album-Image-Size: 54px;
-	--MusicPlayer-Album-Image-Corner-Roundness: 3px;
-	
-	/*-- player buttons (play/pause) --*/
-	--MusicPlayer-Buttons-Size: 1px;
-	--MusicPlayer-Buttons-Color: #ddd;
-	--MusicPlayer-Buttons-Padding: 8px;
-	--MusicPlayer-Buttons-Border-Size: 1px;
-	--MusicPlayer-Buttons-Border-Color: #bbb;
-	--MusicPlayer-Buttons-Background: #000000;
-	--MusicPlayer-Buttons-Background-Transparency: 45%;
-	--MusicPlayer-Buttons-Background-Blur: 3px;
-	
-	/*-- player song name --*/
-	--MusicPlayer-Song-Name-Size: 12px;
-	--MusicPlayer-Song-Name-Color: #222;
-	
-	/*-- player artist name --*/
-	--MusicPlayer-Artist-Name-Size: 12px;
-	--MusicPlayer-Artist-Name-Color: #777;
-	
-	/*-- player gap/spacing --*/
-	--MusicPlayer-Center-Gap: 14px;
-	--MusicPlayer-Text-Line-Spacing: 4px;
-	
-	/*-- playback settings --*/
-	--MusicPlayer-Autoplay: "no";
-	--MusicPlayer-Replay: "no";
-	
-}/* don't delete this line */
-/*---- END MUSIC PLAYER ----*/
+.logo-glow {
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.logo-glow:hover {
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.7);
+  filter: brightness(1.2);
+}
