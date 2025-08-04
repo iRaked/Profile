@@ -1,4 +1,4 @@
-﻿{background:repeating-linear-gradient(0deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 6px),          repeating-linear-gradient(90deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 1px),         radial-gradient(#000000, #222); }*{cursor:url(https://i.ibb.co/R9vTkyB/Cursor-Gold1-FX.png),auto}/*-*/
+{background:repeating-linear-gradient(0deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 6px),          repeating-linear-gradient(90deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 1px),         radial-gradient(#000000, #222); }*{cursor:url(https://i.ibb.co/R9vTkyB/Cursor-Gold1-FX.png),auto}/*-*/
 {
 	background:#efdd8e
 }
@@ -306,11 +306,37 @@ h1,h2,h3,h4,h5,h6{
 .page-modal-love p{
 	font-size:1.7em
 }
-.jd-footer{
-	position:absolute;
-	width:100%;
-	line-height:50px;
-	text-align:center;
-	font-size:.8em;
-	bottom:0;
+/* FOOTER */
+.jd-footer {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95em;
+  z-index: 100;
+}
+
+.jd-credit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.jd-credit a img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.jd-credit a img:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.jd-year {
+  font-size: 0.85em;
 }
