@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html>
-<body>
- 
-<head>
-    <script src="functions.js"></script>
-    <script>
-        (function($){
-        $(document).ready(function() {
-        $("a[title]").style_my_tooltips({
-        tip_follows_cursor:false,
-        tip_delay_time:90,
-        tip_fade_speed:600,
-        attribute:"title"
-        });
-        });
-        })(jQuery);
-    </script>
-    <script>
-        (function($){
-        $(document).ready(function() {
-        $("img[title]").style_my_tooltips({
-        tip_follows_cursor:false,
-        tip_delay_time:90,
-        tip_fade_speed:600,
-        attribute:"title"
-        });
-        });
-        })(jQuery);
-    </script>
-    <script type="text/javascript">
-      document.onkeydown = function(){return false};
-        document.oncontextmenu = function(){return false}
-    </script>
-    <link rel="stylesheet" href="Peque.css">
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+        <script src="functions.js"></script>
+                <!-- BLOCK RIGHT CLICK -->
+        <script type="text/javascript">
+            document.onkeydown = function(){return false};
+            document.oncontextmenu = function(){return false}
+        </script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Peque</title>
+        <script src="functions.js"></script>
+        <script>
+            (function($){
+            $(document).ready(function() {
+            $("a[title]").style_my_tooltips({
+            tip_follows_cursor:false,
+            tip_delay_time:90,
+            tip_fade_speed:600,
+            attribute:"title"
+            });
+            });
+            })(jQuery);
+        </script>
+        <link rel="stylesheet" href="Peque.css">
  </head>
 
+<body>
 <div id="NotAllowedme">
 <div id="NotAllowedme">
  
