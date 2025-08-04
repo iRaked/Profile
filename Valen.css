@@ -148,6 +148,7 @@ p {
 }
 /* SEPARACION */
 .page {
+    position: 
   padding: 3.0rem;
   border-radius: 2px;
   min-height: 30rem;
@@ -474,3 +475,23 @@ div {
           animation: wave 2000ms -5000ms ease-in-out infinite alternate;
 }
 
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+#creditID {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #ccc;
+  text-decoration: none;
+  font-family: 'Patrick Hand', cursive;
+  filter: drop-shadow(0 0 1px #fff);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#creditID:hover {
+  transform: scale(1.2);
+  color: #ffccff;
+}
