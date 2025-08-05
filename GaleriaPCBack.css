@@ -1,4 +1,3 @@
-
 /* BACKGROUND COLOR */
 body{
   background-image: url(https://i.ibb.co/N2Pr0KZN/Background-Black-GFX.gif);
@@ -7,13 +6,7 @@ body{
   font-family: 'Ubuntu', sans-serif;
   color: #2693FF;
 }
-
-body iframe {
-    margin-top: 2rem;
-    justify-self: center;
-    display: block;
-}
-
+/* HEADER */
 header {
     margin-top: 4rem;
     width: fit-content;
@@ -55,34 +48,107 @@ header p {
     transition: all 0.3s ease;
 }
 
-
-#moreBoys {
-    background-image: linear-gradient(to right, #3688ff 0%, #743dc0  51%, #3688ff  100%);
-    margin: 10px;
-    padding: 15px 45px;
-    text-align: center;
-    justify-self: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    cursor: pointer;
+/* GALERIA */
+.galeria { padding: 2rem; text-align: center; }
+.contenedor-gifs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
-#moreBoys:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
+.gif-item img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.gif-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+/* ZOOM */
+.modal-img {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
-
-h1{
-    text-align: center;
-    padding: 20px;
+.modal-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+/* TAMAÑO */
+.modal-img-content {
+  max-width: 50vw;
+  max-height: 50vh;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
+.modal-caption {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4e8ef7;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding: 0 1rem;
+}
+/* PSTYLE */
+.gif-highlight-section {
+  margin-top: 3rem; /* Aumentamos para que iguale la separación vertical previa */
+  text-align: center;
+}
+
+.pcback-title {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffd700, #f7c362);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+/* Nuevo contenedor para imitar .contenedor-gifs */
+.gif-highlight-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1.5rem;
+}
+
+.gif-highlight-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glow blanco permanente + hover con más intensidad */
+.gif-highlight-img {
+  width: 260px;
+  height: 90px;
+  border-radius: 6px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.gif-highlight-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); /* GRAD GLOW */
+}
+
+/* MAS MODELOS */
 .gif-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -91,56 +157,29 @@ h1{
     max-width: 1200px;
     margin: 0 auto;
 }
-.gif-container-small {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+
+#moreBoys {
+  background-image: linear-gradient(to right, #3688ff 0%, #743dc0 51%, #3688ff 100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  justify-self: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
 }
-.gif-card {
-    perspective: 1000px;
-    width: 100%;
-    aspect-ratio: 1;
-    cursor: pointer;
-}
-.gif-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s, scale 0.3s;
-    transform-style: preserve-3d;
-}
-.gif-card:hover .gif-inner {
-    scale: 1.1;
-}
-.gif-card.flipped .gif-inner {
-    transform: rotateY(180deg);
-}
-.gif-front, .gif-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.gif-front img {
-    width: 100%;
-    height: 100%;
-    /* object-fit: cover; */
-}
-.gif-back {
-    background-color: #3688ff5f;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    transform: rotateY(180deg);
+#moreBoys:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
+/* ANIMATE */
 .animate {
     justify-self: center;
     font-size: 35px;
@@ -243,4 +282,32 @@ h1{
     100% {
     transform: translate(0) scale(1);
     opacity: 1;
+}
+
+/* BOTÓN MAS MODELOS */
+#mas-modelos {
+  margin-top: 2rem;
+  background-color: #ff0066;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#mas-modelos:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 102, 0.6);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 600px) {
+  .gif-item img {
+    width: 100px;
+    height: 100px;
+  }
+  .inicio-btn, #mas-modelos {
+    width: 90%;
+  }
 }
