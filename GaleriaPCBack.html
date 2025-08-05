@@ -1,68 +1,339 @@
 <!DOCTYPE html>
-    <html lang="en" >
-        <head>
-            <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <!-- BLOCK RIGHT CLICK -->
-            <script type="text/javascript">
-                document.onkeydown = function(){return false};
-                document.oncontextmenu = function(){return false}
-            </script>
-            <title>Galería PCBack</title>
-            <link rel="stylesheet" href="GaleriaPCBack.css">
-            <script src="GaleriaPCBack.js" defer></script>
-        </head>
-    <body>
+<html lang="es">
+    <head>
+        <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+                <!-- BLOCK RIGHT CLICK -->
+        <script type="text/javascript">
+            document.onkeydown = function(){return false};
+            document.oncontextmenu = function(){return false}
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Galería PCBack 2</title>
+        <link rel="stylesheet" href="PCBack2.css" />
+        <script defer src="PCBack2.js"></script>
+    </head>
 
-    <header>
+<body>
+
+  <header>
         <img src="https://i.ibb.co/dLMchN6/Santi-Avatar-Profile.gif" alt="Avatar" class="avatar">
         <p>Rick (1548724149)</p>
     </header>
-<main>
-    <!-- <h1>Pcbacks for Girls</h1> -->
+
+  <main>
+      <!-- TEXTO ANIMADO -->
     <div class="animate seven">
         <span>P</span><span>C</span><span>B</span><span>a</span><span>c</span><span>k</span><span>s</span> 
         <span>G</span><span>a</span><span>l</span><span>e</span><span>r</span><span>i</span><span>a</span>
     </div>
+    <section class="galeria">
+      <div class="contenedor-gifs">
+        <!-- PCBACK's -->
+        <div class="gif-item"><img src="https://i.postimg.cc/s2JrgTjH/Xat-Private-Rick-Ventas-GFX.gif" alt="Modelo 1" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/7YTr2HP2/Xat-Private-Rick-Flash-GFX.gif" alt="Modelo 2" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/6q7Myc8B/Xat-Private-Rick-Multi-GFX.gif" alt="Modelo 3" /></div>
+        <div class="gif-item"><img src="https://i.ibb.co/wNwn6yND/Xat-Private-Rick-Silver-GFX.gif" alt="Modelo 4" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/vHqP2Dpy/Xat-Private-Rick-Ventas-FX.gif" alt="Modelo 5" /></div>
+          
+        <div class="gif-item"><img src="https://i.postimg.cc/mg9WjrfD/Xat-Private-Sky-Unicorn-GFX.gif" alt="Modelo 6 Sky" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/MKCVN94D/Xat-Private-Annye-Flowers-GFX.gif" alt="Modelo 7 Annye" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/C5VdJ2dB/Xat-Private-Ely-Party-Golden-GFX.gif" alt="Modelo 8 Ely" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/G29hKCcm/Xat-Private-Anhelo-Aqua-Wave-GFX.gif" alt="Modelo 9 Anhelo" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/9MSXNnMt/Xat-Private-Annita-Wave-GFX.gif" alt="Modelo 10 Annita" /></div>
 
-    <div class="gif-container" id="main-gif-container"></div>
-    
-    <!-- <h1>Pcbacks for Boys</h1> -->
-    
-    <div class="gif-container-small" id="extra-gif-container"></div>
-    <button id="moreBoys" onclick="window.open('https://postimg.cc/gallery/L8dBk4J','_blank')">Mas Modelos</button>
-    
-    <!-- REPRODUCTOR -->
-<iframe
-      src="https://iraked.github.io/ExtasisRadio/Repro2.html"
-      width="270px"
-      height="300px"
-      frameborder="0"
-      allow="autoplay"
-      style="pointer-events: auto; position: relative; z-index: 10; border: none;">
-</iframe>
+        <div class="gif-item"><img src="https://i.postimg.cc/Pfp1rGmH/Xat-Private-Reyna-Golden-Wave-GFX.gif" alt="Modelo 11 Reyna" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/0r1k9K7z/Xat-Private-Sorty-Grade-Wave-GFX.gif" alt="Modelo 12 Sorty" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/FKHSbB1s/Xat-Private-Diablita-Skin-Light-GFX.gif" alt="Modelo 13 Diablita" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/2Smhy6DW/Xat-Private-Jenn-Wonderful-GFX.gif" alt="Modelo 14 Jenn" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/t45PxjqM/Xat-Private-Vakerita-Cinderella-GFX.gif" alt="Modelo 15 Vakerita" /></div>
 
-<!-- MAGICSTREAMS - END EMBEDDED IFRAME HTML5 PLAYER -->
-</main>
-    <!-- Pie de página -->
-<footer style="text-align: center; padding: 30px;">
-  <a href="https://linktr.ee/XatSpace" target="_blank" rel="noreferrer" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 6px;">
-    <img src="https://i.imgur.com/jYPjGyn.png" alt="icono" style="width: 20px; height: 20px; transition: 0.3s; filter: drop-shadow(0 0 6px #4e8ef7);">
-    <h5 style="
-      all: unset;
-      display: block;
-      font-size: 0.9rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #4e8ef7, #b36efc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px #4e8ef7, 0 0 20px #b36efc;
-      animation: glowFade 5s ease-in-out infinite alternate;
-      text-align: center;
-    ">©2023</h5>
-  </a>
-</footer>
-    </body>
+        <div class="gif-item"><img src="https://i.postimg.cc/zXTTqh95/Xat-Profile-Moon-GFX.gif" alt="Modelo 16 Moon" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/sx4fN3NF/Xat-Private-Hello-Luisa-SFX.gif" alt="Modelo 17 Luisa" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/66rQ3h5H/Xat-Private-Laura-Ambigrama-GFX.gif" alt="Modelo 18 Laura" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/ZKJ5yyWJ/Xat-Private-Patriot-Red-FX.gif" alt="Modelo 19 Patriota" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/sgQdBV4V/Xat-Private-Angy-St-Valentines-FX.gif" alt="Modelo 20 Angy" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/jdkYdWNg/Xat-Private-Autumn-Revenge-GFX.gif" alt="Modelo 21 Rebeca" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/fRG4m68Y/Xat-Private-Autumn-Revenge-SFX.gif" alt="Modelo 22 Rebeca" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/PJ39xcLp/Xat-Private-Angel-HNY-2018-FX.gif" alt="Modelo 23 Angel" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/7L8cfSLV/Xat-Box-Ayuda-Snowy-Xmas-GFX.gif" alt="Modelo 24 Ayuda Xmas" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/3xDV8t3N/Xat-Box-Ayuda-Tree-Xmas-GFX.gif" alt="Modelo 25 Ayuda Xmas" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/SsmvGqCY/Xat-Private-Atarah-Rudolph-Glow-FX.gif" alt="Modelo 26 Atarah" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/TYsBvzMB/Xat-Private-Jenn-Xmas-Snow-FX.gif" alt="Modelo 27 Jenn Snow" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/k5QH8D6d/Xat-Private-Mariposita-Xmas-Gift-GFX.gif" alt="Modelo 28 Mariposita Xmas" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/XJxDHhkH/Xat-Private-Paloma-Tree-Xmas-GFX.gif" alt="Modelo 29 Paloma Xmas" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/Gt2gZQMc/Xat-Private-Polar-Xmas-FX.gif" alt="Modelo 30 Polar Xmas" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/j2F3K79y/Xat-Private-Shaky-Xmas-Globe-FX.gif" alt="Modelo 31 Shaky Xmas" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/sgMkRgTM/Xat-Private-Sky-Xmas-FX.gif" alt="Modelo 32 Sky Xmas" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/0yzVTPsw/Xat-Private-Paola-Crema-GFX.gif" alt="Modelo 33 Paola" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/WzpnXP8t/Xat-Private-Key-GFX.gif" alt="Modelo 34 Key" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/dtFs9GK0/Xat-Private-Sky-Video-GFX.gif" alt="Modelo 35 Sky" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/VkLzx1vQ/Xat-Private-DJ-Cross-GFX.gif" alt="Modelo 36 DJ Cross" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/Gpcg1bYC/Xat-Private-Candy-Shapes-GFX.gif" alt="Modelo 37 Candy" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/prpWNs1f/Xat-Private-Karime-Sky-FX.gif" alt="Modelo 38 Karime" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/fTwmV3dr/Xat-Private-Nihan-Blue-GFX.gif" alt="Modelo 39 Nihan" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/wjjC1mnw/Xat-Private-Karime-Flowers-GFX.gif" alt="Modelo 40 Karime" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/MGcgD86R/Xat-Private-Nihan-Heart-GFX.gif" alt="Modelo 41 Nihan" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/W3Lgq5Bc/Xat-Private-Mikael-Square-GFX.gif" alt="Modelo 42 Mikael" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/pdN379cC/Xat-Private-Roger-Shield-GFX.gif" alt="Modelo 43 Roger" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/x1j81dPQ/Xat-Private-Candy-Green-GFX.gif" alt="Modelo 44 Candy" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/15ZXCSzt/Xat-Private-mor-Spring-FX.gif" alt="Modelo 45 @mor" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/1zQhbNL4/Xat-Private-Paola-Duo-GFX.gif" alt="Modelo 46 Paola" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/c4YDwP0j/Xat-Private-Africa-Red-GFX.gif" alt="Modelo 47 Africa" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/zGrxjpff/Xat-Private-Nihan-Silver-GFX.gif" alt="Modelo 48 Nihan" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/HxqwLscL/Xat-Private-Rex-Dragon-GFX.gif" alt="Modelo 49 Rex" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/43hnxvzz/Xat-Private-Ne-Ne-GFX.gif" alt="Modelo 50 Nene" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/zD2kJFt7/Xat-Private-Saints-Gear-GFX.gif" alt="Modelo 51 Saints" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/WzT8Nr9F/Xat-Private-Roger-Smoke-GFX.gif" alt="Modelo 52 Roger" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/XYqZcNHy/Xat-Private-Africa-Grey-GFX.gif" alt="Modelo 53 Africa" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/WpQRcFXn/Xat-Private-Paola-Stars-GFX.gif" alt="Modelo 54 Paola" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/jSQxGsbM/Xat-Private-BellaHanni-GFX.gif" alt="Modelo 55 Hanni" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/mrJtnQ2X/Xat-Private-Karime-H4-GFX.gif" alt="Modelo 56 Karime" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/Pr2qxTLg/Xat-Private-Mikael-Red-GFX.gif" alt="Modelo 57 Mikael" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/zfZTKTJ9/Xat-Private-Mikael-Green-GFX.gif" alt="Modelo 58 Mikael" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/1XVqn9zk/Xat-Private-Akili-GFX.gif" alt="Modelo 59 Akili" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/05httj7J/Xat-Private-Frank-GFX.gif" alt="Modelo 60 Frank" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/kMtZMMKK/Xat-Private-Eluney-GFX.gif" alt="Modelo 61 Eluney" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/Xv59WcmW/Xat-Private-Pulgosa-GFX.gif" alt="Modelo 62 Pulgosa" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/C1SkcP1L/Xat-Private-Hanni-Red-GFX.gif" alt="Modelo 63 Hanni" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/v89LGnRs/Xat-Private-Ruth-Pink-GFX.gif" alt="Modelo 64 Ruth" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/dVWjCqSS/Xat-Private-Roger-Phones-GFX.gif" alt="Modelo 65 Roger" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/W1wZ2tfz/Xat-Private-Eluney-Aqua-GFX.gif" alt="Modelo 66 Eluney" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/fTCm2nTm/Xat-Private-Lunna-Stars-GFX.gif" alt="Modelo 67 Lunna" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/rz2DjnDR/Xat-Private-Lala-Fusion-GFX.gif" alt="Modelo 68 Lala" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/xCtCvCgY/Xat-Private-B&G-2GFX.gif" alt="Modelo 69 Gus" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/zD2v3yVF/Xat-Private-Lunna-Mosaico-GFX.gif" alt="Modelo 70 Lunna" /></div>
+
+        <div class="gif-item"><img src="https://i.postimg.cc/1RWxLJym/Xat-Private-Lala-Purple-GFX.gif" alt="Modelo 71 Lala" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/j5CM7VFC/Xat-Private-Sky-Chrome-GFX.gif" alt="Modelo 72 Sky" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/sx8WNxsC/Xat-Private-Pexi-Baby-GFX.gif" alt="Modelo 73 Pexi" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/85Kghsrh/Xat-Private-Peque-Sky-GFX.gif" alt="Modelo 74 Peque" /></div>
+        <div class="gif-item"><img src="https://i.postimg.cc/BbRWVypb/Xat-Private-Dulce-GFX.gif" alt="Modelo 75 Dulce" /></div>
+        </div>
+
+        <!-- TEXTO ANIMADO -->
+        <div class="animate seven">
+            <span>P</span><span>s</span><span>t</span><span>y</span><span>l</span><span>e</span> <span> </span><span>G</span><span>a</span><span>l</span><span>e</span><span>r</span><span>i</span><span>a</span>
+        </div>
+        <!-- PSTYLE -->
+        <section class="gif-highlight-section">
+          <div class="gif-highlight-row">
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/Hk0BcVk8/Pstyle-Rick-Multi-GFX.gif" alt="Pstyle 1 Rick" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/sD047kL8/Pstyle-Rick-DJ-Neon-FX.gif" alt="Pstyle 2 Rick DJ" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/QxMqB8f1/Pstyle-Rick-Sounds-FX.gif" alt="Pstyle 3 RICK" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/YSpmt8Q8/Pstyle-Rick-Silver-Shape-FX.gif" alt="Pstyle 4 Rick" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/m2MRmZNY/Pstyle-Rick-Bisness-FX.gif" alt="Pstyle 5 Rick" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/5Njw4Ptm/Pstyle-Candy-MX-GFX.gif" alt="Pstyle 6 Candy MX" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/VsKqcyz6/Pstyle-Paola-MX-GFX.gif" alt="Pstyle 7 Paola MX" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/SNwJFTzN/Pstyle-Hanni-Red-MX-GFX.gif" alt="Pstyle 8 Hanni MX" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/HsX2wNrB/Pstyle-Yusleidis-Witch-FX.gif" alt="Pstyle 9 Yusleidis" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/dtPRV95d/Pstyle-Papitas-Horror-FX.gif" alt="Pstyle 10 Papitas" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/FsnPKCJg/Pstyle-Hanni-Nightmare-FX.gif" alt="Pstyle 11 Hanni" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/C5CvwnzB/Pstyle-Rick-Storm-Killer-FX.gif" alt="Pstyle 12 Rick" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/FsWMqLVt/Pstyle-Sky-Xmax-GFX.gif" alt="Pstyle 13 Sky Xmax" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/9fGsjWvh/Pstyle-Annye-Xmas-FX.gif" alt="Pstyle 14 Annye Xmas" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/7hxBvSBT/Pstyle-Gustavo-Shield-FX.gif" alt="Pstyle 15 Gustavo" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/2SbFwHR5/Pstyle-Hanni-Gold-GFX.gif" alt="Pstyle 16 Hanni" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/W40mRh4L/Pstyle-Annye-Double-GFX.gif" alt="Pstyle 17 Annye" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/sxg5Zm4s/Pstyle-Candy-Double-FX.gif" alt="Pstyle 18 Candy" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/ZRZ8J499/Pstyle-Cazadora-Red-GFX.gif" alt="Pstyle 19 Cazadora" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/ydPFdt9L/Pstyle-Gitana-Pink-GFX.gif" alt="Pstyle 20 Gitana" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/kGYKNST8/Pstyle-Owner-Gear-GFX.gif" alt="Pstyle 21 Owner" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/NF6Tgy6X/Pstyle-Paola-Heart-GFX.gif" alt="Pstyle 22 Paola" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/sDPVMZPP/Pstyle-Hanni-Pink-Heart-FX.gif" alt="Pstyle 23 Hanni" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/NfxcsvYp/Pstyle-Sky-Rainbow-FX.gif" alt="Pstyle 24 Sky" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/vBCBxvxJ/Pstyle-Owner-Cube-GFX.gif" alt="Pstyle 25 Owner" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/25v25G3j/Pstyle-Paola-Crema-FX.gif" alt="Pstyle 26 Paola" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/8CtKpxBr/Pstyle-Candy-Shapes-FX.gif" alt="Pstyle 27 Candy" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/KYxmcGHv/Pstyle-Karime-Sky-SFX.gif" alt="Pstyle 28 Karime" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/kXf8KnFX/Pstyle-Nihan-Orbit-Blue-GFX.gif" alt="Pstyle 29 Nihan" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/mr0Jp6kn/Pstyle-Karime-Green-GFX.gif" alt="Pstyle 30 Karime" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/MTV4Cbjp/Pstyle-Nihan-Heart-GFX.gif" alt="Pstyle 31 Nihan" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/CKzKb6t6/Pstyle-Lunita-Candy-Green-FX.gif" alt="Pstyle 32 Lunita Candy" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/JzpWnd34/Pstyle-Mikael-Square-GFX.gif" alt="Pstyle 33 Mikael" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/PJLRCtBB/Pstyle-Paola-Duo-GFX.gif" alt="Pstyle 34 Paola" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/TP8fQzDD/Pstyle-Africa-Red-GFX.gif" alt="Pstyle 35 Africa" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/k5x9HTQh/Pstyle-Candy-Hearts-GFX.gif" alt="Pstyle 36 Candy" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/CxnwGhz0/Pstyle-Nihan-Silver-GFX.gif" alt="Pstyle 37 Nihan" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/90Nj9K2z/Pstyle-Ne-Ne-GFX.gif" alt="Pstyle 38 Nene" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/3NwTd7PP/Pstyle-Rex-Dragon-GFX.gif" alt="Pstyle 39 Rex" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/D0Cv8LKp/Pstyle-Africa-Grey-GFX.gif" alt="Pstyle 40 Africa" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/4dm0rscq/Pstyle-Paola-Stars-GFX.gif" alt="Pstyle 41 Paola" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/VNffw3sm/Pstyle-Bella-Hanni-GFX.gif" alt="Pstyle 42 Hanni" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/D0KmvnG1/Pstyle-Karime-H4-GFX.gif" alt="Pstyle 43 Karime" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/9QkFdbY1/Pstyle-Mikael-Red-GFX.gif" alt="Pstyle 44 Mikael" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/pTP81x5C/Pstyle-Mikael-Green-GFX.gif" alt="Pstyle 45 Mikael" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/ZK8M3ffq/Pstyle-Eluney-GFX.gif" alt="Pstyle 46 Eluney" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/TwN79wF2/Pstyle-Hanni-Red-GFX.gif" alt="Pstyle 47 Hanni" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/CKSLnW57/Pstyle-Ruth-Pink-GFX.gif" alt="Pstyle 48 Ruth" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/4Nn7ZQH0/Pstyle-Pulgosa-GFX.gif" alt="Pstyle 49 Pulgosa" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/hGfbbHk4/Pstyle-Roger-Phones-GFX.gif" alt="Pstyle 50 Roger" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/W49JkCVP/Pstyle-Eluney-Aqua-GFX.gif" alt="Pstyle 51 Eluney" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/kMBptnWt/Pstyle-Lala-Fusion-GFX.gif" alt="Pstyle 52 Lala" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/fLFB7HGC/Pstyle-Sky-Chrome-GFX.gif" alt="Pstyle 53 Sky" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/5t5TpmPM/Pstyle-Lala-Purple-GFX.gif" alt="Pstyle 54 Lala" class="gif-highlight-img">
+            </div>
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/0jrmnDgC/Pstyle-Pexi-Baby-GFX.gif" alt="Pstyle 55 Pexi" class="gif-highlight-img">
+            </div>
+
+            <div class="gif-highlight-wrapper">
+              <img src="https://i.postimg.cc/KzFk7C27/Pstyle-Leonor-NYC-GFX.gif" alt="Pstyle 56 Leonor" class="gif-highlight-img">
+            </div>
+          </div>
+        </section>
+    <br>
+      <!-- MAS MODELOS -->
+        <div class="gif-container-small" id="extra-gif-container"></div>
+        <button id="moreBoys" onclick="window.open('https://www.flickr.com/photos/196640889@N04/page1','_blank')">Mas Modelos</button>
+    </section>
+  </main>
+
+      <!-- PIE DE PAGINA -->
+    <footer style="text-align: center; padding: 30px;">
+      <a href="https://linktr.ee/XatSpace" target="_blank" rel="noreferrer" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 6px;">
+        <img src="https://i.imgur.com/jYPjGyn.png" alt="icono" style="width: 20px; height: 20px; transition: 0.3s; filter: drop-shadow(0 0 6px #4e8ef7);">
+        <h5 style="
+          all: unset;
+          display: block;
+          font-size: 0.9rem;
+          font-weight: bold;
+          background: linear-gradient(135deg, #4e8ef7, #b36efc);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px #4e8ef7, 0 0 20px #b36efc;
+          animation: glowFade 5s ease-in-out infinite alternate;
+          text-align: center;
+        ">©2025</h5>
+      </a>
+    </footer>
+
+</body>
 </html>
