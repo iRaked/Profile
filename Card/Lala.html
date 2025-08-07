@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+                <!-- BLOCK RIGHT CLICK -->
+        <script type="text/javascript">
+            document.onkeydown = function(){return false};
+            document.oncontextmenu = function(){return false}
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="Lala.css" />
+          <!-- BLOCK RIGHT CLICK -->
+          <script type="text/javascript">
+              document.onkeydown = function(){return false};
+                document.oncontextmenu = function(){return false}
+          </script>
+          <title>Lala</title>
+    </head>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const estadoElemento = document.querySelector(".estado");
+    const statusCard = document.querySelector(".x-status-card");
+    const avatar = document.querySelector(".x-status-card .avatar");
+
+    let estadoOnline = true;
+
+    function alternarEstado() {
+      estadoOnline = !estadoOnline;
+
+      if (estadoOnline) {
+        estadoElemento.textContent = "🟢 Online";
+        statusCard.classList.add("online");
+        statusCard.classList.remove("offline");
+        avatar.style.opacity = "1";
+        avatar.style.transform = "scale(1)";
+      } else {
+        estadoElemento.textContent = "🔴 Offline";
+        statusCard.classList.add("offline");
+        statusCard.classList.remove("online");
+        avatar.style.opacity = "0";
+        avatar.style.transform = "scale(0.95)";
+      }
+    }
+
+    setInterval(alternarEstado, 20000); // cada 2 minutos para prueba
+  });
+</script>
+<body>
+<!-- 🔮 Botón de estado flotante Login -->
+<!-- 🌌 Contenedor holográfico -->
+<div class="x-status-card online">
+  <img src="https://i.ibb.co/jKQPsPM/Lala.webp" alt="Avatar" class="avatar" />
+  <div class="info">
+    <span class="estado">🟢 Online</span>
+  </div>
+</div>
+
+  <div class="main_card">
+    <!-- Navegación tipo pestaña -->
+    <nav class="navbar">
+      <a href="Lala.html">🏠 Inicio</a>
+      <a href="friends.html">👥 Amigos</a>
+      <a href="music.html">🎧 Música</a>
+      <a href="gallery.html">📸 Galería</a>
+    </nav>
+
+    <!-- Contenido modular -->
+    <section id="home" class="tab_section active">
+      <div class="module-content">
+        <div class="avatar_box">
+  <div class="orbital_container">
+    
+    <div class="orbital_arc arc2"></div>
+
+    <div class="avatar-glow">
+  <div class="avatar_border">
+    <img src="https://i.postimg.cc/kX9SjGh5/236.gif" alt="Avatar" class="avatar_img" />
+  </div>
+</div>
+  </div>
+</div>
+        <h2 class="bg_grad">ᒪᗩᒪᗩ</h2>
+          <div class="text-box">
+        <h3>ID 1528813820</h3>
+        <p style="font-size: 1rem; line-height: 1.6;">
+        𝗣𝗮𝗶𝘀: 𝘝𝘦𝘯𝘦𝘻𝘶𝘦𝘭𝘢
+      <span style="display: inline-flex; align-items: center; vertical-align: middle;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" style="height: 1em; width: auto; margin-left: 0.3em;">
+          <rect width="1200" height="266.67" fill="#FFD600"/>
+          <rect y="266.67" width="1200" height="266.67" fill="#0033A0"/>
+          <rect y="533.33" width="1200" height="266.67" fill="#EF3340"/>
+        </svg>
+      </span>
+        𝗦𝗶𝗴𝗻𝗼: 𝘌𝘴𝘤𝘰𝘳𝘱𝘪𝘰 ♏️
+</p>
+        <p>𝙼𝚊𝚜 𝚟𝚎𝚗𝚎𝚣𝚘𝚕𝚊𝚗𝚊 𝚚𝚞𝚎 𝚞𝚗𝚊 𝚊𝚛𝚎𝚙𝚊</p>
+          </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    <a href="https://xat.me/LuzDeErendil" target="_blank" rel="noreferrer">
+      <img src="https://i.imgur.com/jYPjGyn.png" width="20" height="20" alt="xat icon"/>
+    </a>
+  </footer>
+</body>
+</html>

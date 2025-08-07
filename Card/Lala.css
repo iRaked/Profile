@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --font-main: 'Inter', sans-serif;
+  --color-bg: #121212;
+  --color-text: #fff;
+  --color-accent: #7f00ff;         /* Morado principal */
+  --color-secondary: #00f0ff;      /* Aqua secundario */
+  --gradient: linear-gradient(45deg, var(--color-secondary), var(--color-accent)); /* Degradado invertido */
+}
+
+/* 🔳 Fondo solo para la sección Home activa */
+.tab_section.active {
+  background-image: url('https://i.ibb.co/N2Pr0KZN/Background-Black-GFX.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;     /* para armonía visual */
+  padding: 20px;
+}
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tarjeta principal que envuelve cada sección */
+.main_card {
+  max-width: 780px;          /* Tamaño uniforme */
+  margin: auto;              /* Centrado horizontal */
+  padding: 30px 20px;        /* Espaciado interno */
+  box-sizing: border-box;    /* Ajuste de tamaño correcto */
+  position: relative;
+}
+
+.module-content {
+  background: rgba(0, 0, 0, 0.4); /* Fondo unificado */
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(255, 0, 200, 0.2); /* Resplandor suave KYᗰᗩ */
+  padding: 20px;
+}
+
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* SECCIONES */
+
+.tab_section {
+  display: none;
+  min-height: 250px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tab_section.active {
+  display: block;
+  opacity: 1;
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.navbar {
+  background-color: #2a2a2a;  /* Gris translúcido = rgba(30, 30, 30, 0.6 */
+  backdrop-filter: blur(12px);             /* Efecto cristalino */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 0 12px var(--color-accent);
+}
+
+/* Botones de navegación con degradado invertido */
+
+.navbar a {
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: var(--gradient);
+  box-shadow: 0 0 10px var(--color-secondary);
+  transition: 0.3s ease-in-out;
+}
+.navbar a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px var(--color-accent);
+}
+
+/* TEXTOS */
+
+h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #fff;
+  position: relative;
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 4px;
+  margin: 10px auto 20px auto;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.bg_grad {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(270deg, #44207f, #ff94dd, #0ac3cb);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradShift 2s linear infinite;
+}
+
+@keyframes gradShift {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* AVATAR */
+
+.avatar {
+  position: relative;
+  width: 200px; /* ajusta según tu diseño */
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow:
+    0 0 12px rgba(160, 32, 240, 0.6),   /* glow morado */
+    0 0 18px rgba(0, 255, 255, 0.4);    /* glow aqua */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(160, 32, 240, 0.6),
+      0 0 18px rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(160, 32, 240, 0.8),
+      0 0 28px rgba(0, 255, 255, 0.6);
+  }
+}
+
+.avatar {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+.avatar_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+.avatar_img {
+  border-radius: 50%;
+  transition: 0.4s ease;
+  box-shadow: 0 0 8px rgba(127, 0, 255, 0.4);
+}
+.avatar_img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--color-secondary),
+              0 0 25px var(--color-accent);
+}
+
+.text-box {
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+SE EXPANDE LA CAJA Y SE CENTRA 
+
+/* MEDIA LUNA */
+
+.orbital_container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+/* Avatar centrado */
+.avatar_border {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.avatar_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.avatar-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(from 90deg, #a020f0, #00ffff, #a020f0);
+  filter: blur(25px);
+  opacity: 0.6;
+  z-index: 0;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* Arcos orbitando sobre la circunferencia */
+
+.orbital_arc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 255px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 50%;
+  z-index: 1;
+  background: conic-gradient(from 90deg, transparent 0deg, #a020f0 60deg, #00ffff 120deg, transparent 180deg);
+  mask: radial-gradient(circle at center, transparent 100px, black 128px);
+  animation: arcSpin 6s linear infinite;
+  opacity: 0.9;
+}
+/* ELIMINADO */
+.arc1 {
+  width: 280px;
+  height: 280px;
+  top: 21.5%;
+  left: 27.5%;
+}
+
+Segundo arco con rotación inicial para separación visual
+
+.arc2 {
+  animation-delay: -3s;
+  background: conic-gradient(from 270deg, transparent 0deg, #00ffff 60deg, #a020f0 120deg, transparent 180deg);
+}
+
+.arc2 {
+  width: 260px;
+  height: 260px;
+  top: 21.5%;
+  left: 27.5%;
+  transform: translate(-50%, -50%);
+  animation-delay: -3s;
+  background: conic-gradient(from 270deg, transparent 0deg, #00ffff 60deg, #a020f0 120deg, transparent 180deg);
+}
+
+@keyframes arcSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* MEDIA */
+
+.media-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.media-card {
+  width: 140px; /* TAMAÑO DE LA CAJA */
+  height: 290px; /* 360px */
+  text-align: center;
+  border: 2px solid var(--color-accent);
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--color-accent);
+  transition: transform 0.3s ease;
+}
+.media-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.media-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--color-secondary);
+}
+.media-btn {
+  padding: 8px 16px;
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--color-secondary);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.media-btn:hover {
+  transform: scale(1.05);
+}
+
+/* REPRODUCTOR */
+
+.player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  height: 250px; /* AJUSTAR DE ACUERDO AL NUMERO DE CANCIONES */
+  margin: 30px auto;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 12px #7f00ff90;
+  transition: all 0.3s ease;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #7f00ff;
+  }
+  50% {
+    box-shadow: 0 0 25px #7f00ff, 0 0 35px #00f0ff;
+  }
+  100% {
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #7f00ff;
+  }
+}
+
+.player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  max-width: 400px; /* ANCHO */
+  height: 280px; /* ALTO */
+  margin: 30px auto;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 2px solid #7f00ff;
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.player-wrapper embed {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+/* GALERIA */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+.gallery-item img {
+  width: 140px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+.gallery-item img:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 15px var(--color-secondary);
+}
+
+/* MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+  border: 4px solid var(--color-accent);
+  box-shadow: 0 0 25px var(--color-secondary);
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  text-shadow: 0 0 10px var(--color-secondary);
+}
+
+/* BOTÓN FLOTANTE DE ESTADO ONLINE Login */
+.x-status-card {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #00ffff60;
+  border-radius: 12px;
+  padding: 1em;
+  backdrop-filter: blur(6px);
+  animation: resplandor 3s infinite;
+}
+
+.x-status-card .avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid aqua;
+  box-shadow: 0 0 12px #00faff80;
+}
+
+.x-status-card .estado {
+  color: #0ff;
+  font-weight: bold;
+  text-shadow: 0 0 4px #00ffff;
+}
+
+@keyframes resplandor {
+  0% { border-color: #00ffff40; box-shadow: 0 0 10px #00faff40; }
+  50% { border-color: #00ffffaa; box-shadow: 0 0 18px #00faffaa; }
+ 100% { border-color: #00ffff40; box-shadow: 0 0 10px #00faff40; }
+
+/* ⛅️ Transición suave general */
+.x-status-card {
+  transition: filter 1.2s ease, opacity 1.2s ease;
+}
+
+/* 💫 Efectos para estado offline */
+.x-status-card.offline {
+  opacity: 0.4;
+  filter: brightness(0.6) blur(4px) grayscale(100%);
+}
+
+/* 🌟 Avatar con fade elegante */
+.x-status-card .avatar {
+  transition: opacity 1.2s ease, transform 1s ease;
+}
+.x-status-card.offline .avatar {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* 💚 Pulsación holográfica para online */
+.x-status-card.online::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(0,255,180,0.3), transparent 70%);
+  animation: pulseGlow 3s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+}
+
+/* 🛡️ Asegúrate que .x-status-card tenga position: relative */
+.x-status-card {
+  position: relative;
+  z-index: 1;
+}
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+}

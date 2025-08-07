@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+                <!-- BLOCK RIGHT CLICK -->
+        <script type="text/javascript">
+            document.onkeydown = function(){return false};
+            document.oncontextmenu = function(){return false}
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Música</title>
+        <link rel="stylesheet" href="Lala.css">
+    </head>
+<body>
+  <div class="main_card">
+    <!-- Navegación tipo pestaña -->
+    <nav class="navbar">
+      <a href="Lala.html">🏠 Inicio</a>
+      <a href="friends.html">👥 Amigos</a>
+      <a href="music.html">🎧 Música</a>
+      <a href="gallery.html">📸 Galería</a>
+    </nav>
+
+    <!-- Sección Música con caja modular -->
+    <section id="music" class="tab_section active">
+      <div class="module-content">
+        <h2>🎧 Mi Música</h2>
+        <br>
+        <!-- Reproductor musical embebido -->
+          <div class="player-wrapper">
+            <embed width="100%" height="100%" src="https://iraked.github.io/ExtasisRadio/Repro6.html">
+          </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
