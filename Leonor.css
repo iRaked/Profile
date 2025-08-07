@@ -660,6 +660,19 @@ body {
     background-color: var(--color);
     color: var(--color);
 }
+
+/* ICONOS */
+
+.icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ddd 100%);
+  box-shadow: 0 0 6px rgba(255,255,255,0.5);
+  padding: 2px;
+  object-fit: contain;
+}
+
 /* Footer */
 
 .logo-glow {
