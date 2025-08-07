@@ -42,7 +42,7 @@ body {
 .module-content {
   background: rgba(0, 0, 0, 0.4); /* Fondo unificado */
   border-radius: 14px;
-  box-shadow: 0 0 20px rgba(255, 0, 200, 0.2); /* Resplandor suave KYᗰᗩ */
+  box-shadow: 0 0 20px #7f00ff; /* Resplandor suave */
   padding: 20px;
 }
 
