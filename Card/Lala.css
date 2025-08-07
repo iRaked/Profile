@@ -255,7 +255,7 @@ SE EXPANDE LA CAJA Y SE CENTRA
   top: 50%;
   left: 50%;
   width: 260px;
-  height: 255px;
+  height: 260px;
   transform: translate(-50%, -50%) rotate(0deg);
   border-radius: 50%;
   z-index: 1;
@@ -282,7 +282,7 @@ Segundo arco con rotación inicial para separación visual
 .arc2 {
   width: 260px;
   height: 260px;
-  top: 21.5%;
+  top: 20.5%;
   left: 27.5%;
   transform: translate(-50%, -50%);
   animation-delay: -3s;
