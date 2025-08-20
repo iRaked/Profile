@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick 3</title>
+    <link rel="stylesheet" href="ivan-style.css">
+    <link rel="stylesheet" href="ivan-estilos.css">
+    <!-- BLOCK -->
+    <script type="text/javascript">
+    document.onkeydown = function () { return false };
+    document.oncontextmenu = function () { return false }
+    </script>
+    <!-- fontawesome css link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="assets/video/BGNebula.mp4" type="video/mp4">
+    </video>
+  </div>
+
+<!-- header section start -->
+
+    <header>
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="logoBox">
+                    <img src="https://i.ibb.co/6C7mD9p/Rick.png" alt="logo">
+                </div>
+                <div class="searchBox">
+                  <input type="search" id="searchInput" placeholder="Buscar en xat...">
+                  <button id="searchBtn">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+                <div class="iconBox1">
+                    <a href="https://xat.com" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <a href="#friends"><i class="fa-solid fa-user-group"></i></a>
+                    <a href="https://www.youtube.com/watch?v=vvFnoAd9Ays" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-video"></i>
+                    </a>
+                    <a href="https://www.twitch.tv/iraked" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </a>
+                </div>
+                <div class="iconBox2">
+                    <a href="index.html" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </a>
+
+                  <!-- BOTÓN MENSAJES -->
+                  <div id="inboxTrigger" style="position: relative; cursor: pointer;">
+                  <i class="fa-brands fa-facebook-messenger" style="font-size: 24px; color: #1877f2;"></i>
+                  <span id="notifCountMessenger" class="notif-badge">0</span>
+                </div>
+
+
+                  <!-- BOTÓN NOTIFICACIONES -->
+                  <div class="notification-wrapper" style="position: relative; cursor: pointer;">
+                  <i class="fa-solid fa-bell"></i>
+                  <span id="notifCountBell" class="notif-badge">0</span>
+                </div>
+
+
+                <label><img src="https://i.ibb.co/609HY87d/Photo.png" alt="user"></label>
+                <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- header section end -->
+<!-- home section start -->
+
+<div class="home">
+    <div class="container">
+        <div class="home-weapper">
+
+            <!-- home left start here -->
+            <div class="home-left">
+
+                <!-- Perfil del usuario -->
+                <div class="profile">
+                    <img src="https://i.ibb.co/609HY87d/Photo.png" alt="user">
+                    <h3>Rick</h3>
+                </div>
+
+                <!-- Sección de páginas -->
+                <div class="pages">
+                    <h4 class="mini-headign">Paginas</h4>
+
+                    <a href="https://retroachievements.org/user/Raked" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/v4xkZnPc/RA.png" alt="xat">
+                            <span>Achievements</span>
+                        </label>
+                    </a>
+
+                    <a href="https://www.ivoox.com/escuchar-audios-raked_al_35369593_1.html" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/2MrKpVt/Cover-Vinyl-Disc-FX1.png" alt="xat">
+                            <span>Emisiones</span>
+                        </label>
+                    </a>
+
+                    <a href="https://iraked.github.io/Project/Loterias" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/TBGqM7r3/Graphics.png" alt="xat">
+                            <span>Galería Loterías</span>
+                        </label>
+                    </a>
+
+                    <a href="https://linktr.ee/XatSpace" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/TBGqM7r3/Graphics.png" alt="xat">
+                            <span>Galería Xat Space</span>
+                        </label>
+                    </a>
+
+                    <a href="https://iraked.github.io/Profile/GaleriaGif.html" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/TBGqM7r3/Graphics.png" alt="xat">
+                            <span>Galería Gif</span>
+                        </label>
+                    </a>
+
+                    <a href="https://iraked.github.io/Profile/GaleriaPCBack.html" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/TBGqM7r3/Graphics.png" alt="xat">
+                            <span>Galería PCBack</span>
+                        </label>
+                    </a>
+
+                    <a href="https://www.flickr.com/photos/196640889@N04/page1" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/TBGqM7r3/Graphics.png" alt="xat">
+                            <span>Galería Fondos</span>
+                        </label>
+                    </a>
+
+                    <button class="see-more-btn">Ver mas <i class="fa-solid fa-angle-down"></i></button>
+                </div>
+
+                <!-- Sección de grupos -->
+                <div class="group">
+                    <h4 class="mini-headign">Grupos</h4>
+
+                    <a href="https://xat.com/Casino_Digital" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group01">
+                            <span>Casino Digital</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/LaZonaAzteca" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group02">
+                            <span>La Zona Azteca</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/Trade" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group03">
+                            <span>Trade</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/RadioFusionSalta" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group04">
+                            <span>Radio Fusión</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/El_Amor_Es_Magico" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group05">
+                            <span>El Amor Es Magico</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/El_Rincon_De_Luna" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group06">
+                            <span>El Rincón De Luna</span>
+                        </label>
+                    </a>
+
+                    <a href="https://xat.com/Cambio" target="_blank">
+                        <label>
+                            <img src="https://i.ibb.co/f8v2mRS/Xat.png" alt="group06">
+                            <span>Cambio</span>
+                        </label>
+                    </a>
+
+                    <button class="see-more-btn">Ver mas <i class="fa-solid fa-angle-down"></i></button>
+                </div>
+
+                <!-- Sección de juegos -->
+                <div class="games">
+                    <h4 class="mini-headign">Juegos</h4>
+
+                    <label>
+                        <a href="https://iraked.github.io/Tabla/Autos" target="_blank">
+                            <img src="https://i.ibb.co/95L4Bcn/game.png" alt="game01">
+                            <span>Lotería Autos</span>
+                        </a>
+                    </label>
+
+                    <label>
+                        <a href="https://iraked.github.io/Project/BubbleShooter.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game02">
+                            <span>Bubble Shooter</span>
+                        </a>
+                    </label>
+
+                    <label>
+                        <a href="https://iraked.github.io/Project/Zumba.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game02">
+                            <span>Zuma</span>
+                        </a>
+                    </label>
+
+                    <label>
+                        <a href="https://iraked.github.io/Project/Bejeweled.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game03">
+                            <span>Bejeweled</span>
+                        </a>
+                    </label>
+
+                    <button class="see-more-btn">Ver mas <i class="fa-solid fa-angle-down"></i></button>
+                </div>
+
+                <!-- Sección de exploración -->
+                <div class="explore">
+                    <h4 class="mini-headign">Explorador</h4>
+
+                    <a href="#"><i class="fa-solid fa-user-group"></i> Grupos</a>
+                    <a href="#"><i class="fa-solid fa-star"></i> Favoritos</a>
+                    <a href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+                    <a href="#"><i class="fa-solid fa-clock"></i> Eventos</a>
+                    <a href="#"><i class="fa-solid fa-flag"></i> Paginas</a>
+
+                    <div>
+                        <label class="darkTheme"><span></span></label> Modo Oscuro
+                    </div>
+                </div>
+
+            </div>
+            <!-- home left end here -->
+
+            <!-- home center start here -->
+
+            <div class="home-center">
+                <div class="home-center-wrapper">
+                    <div class="stories">
+                        <h3 class="mini-headign">Historias</h3>
+                        <div class="stories-wrapper">
+
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/609HY87d/Photo.png" alt="user"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/0pWtQQxx/Rick.gif" alt="user">
+                                    <!--
+                                    <i class="fa-solid fa-circle-plus"></i>
+                                    <b>Subir Historia</b>
+                                    -->
+                                </div>
+                            </div>
+
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/0RShCcNf/Eluney.png" alt="sp"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/5Xz5fVwQ/Eluney.gif" alt="ss">
+                                    <b></b>
+                                </div>
+                            </div>
+
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/4R2s6wqk/Sky.png" alt="sp2"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/0yXbBQbW/Sky.gif" alt="ss2">
+                                    <b></b>
+                                </div>
+                            </div>
+
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/q3fwC4xj/Gus.png" alt="sp3"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/V0bhv5Y8/Gustavo.gif" alt="ss3">
+                                    <b></b>
+                                </div>
+                            </div>
+
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/GQphVJxy/Roger.png" alt="sp4"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/LdKwwc1G/Roger.gif" alt="ss4">
+                                    <b></b>
+                                </div>
+                            </div>
+                            
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/xSyYLX7v/Peque.png" alt="sp3"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/6JvgF7qk/Baby.gif" alt="ss3">
+                                    <b></b>
+                                </div>
+                            </div>
+                            
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/1G0kx3yk/Romi2.gif" alt="sp3"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/WdyQs3w/Romi.gif" alt="ss3">
+                                    <b></b>
+                                </div>
+                            </div>
+                            
+                            <div class="single-stories">
+                                <label><img src="https://i.ibb.co/20tDswxq/Valen.png" alt="sp3"></label>
+                                <div>
+                                    <img src="https://i.ibb.co/4R3cLRwN/Valen2.gif" alt="ss3">
+                                    <b></b>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="createPost">
+
+                        <h3 class="mini-headign">Enviar SMS a Rick</h3>
+                        <div class="post-text">
+                            <img src="https://i.ibb.co/609HY87d/Photo.png" alt="user">
+                            <input id="fanMessage" placeholder="Deja un mensaje..." />
+                            <!-- Botón funcional para enviar -->
+                        <button id="sendMessage" style="margin-top: 10px;">Enviar</button>
+                        </div>
+
+                        <div class="post-icon">
+                            <a href="https://imgur.com" target="_blank" style="background: #f1f1f130;">
+                            <i style="background: #ff4154;" class="fa-solid fa-camera"></i>
+                            Foto</a>
+
+                            <a href="#" style="background: #f1f1f130;">
+                            <i style="background: #0053ff;" class="fa-solid fa-video"></i>
+                            Video</a>
+
+                            <a href="#" id="locateMe" style="background: #f1f1f130;">
+                              <i style="background: #00d181;" class="fa-solid fa-location-dot"></i>
+                              Locación
+                            </a>
+
+                            <a href="#" id="giftButton" class="gift-button">
+                              <i class="fa-solid fa-gift"></i>
+                              Gift
+                            </a>
+                            
+                            <a href="https://getemoji.com/#smileys" target="_blank" style="background: #f1f1f130;">
+                            <i style="background: #ffca28;" class="fa-solid fa-face-grin-beam"></i>
+                            Feeling</a>
+
+                        </div>
+                    </div>
+                   
+                    <!-- Sección multitab de publicaciones -->
+        <div class="fb-post1">
+            <div class="fb-post1-container">
+
+                <!-- Navegación -->
+                <div class="fb-post1-header">
+                    <ul>
+                        <li class="active" data-tab="popular">popular</li>
+                        <li data-tab="recientes">reciente</li>
+                        <li data-tab="mas antiguo">mas antiguo</li>
+                    </ul>
+                    <div class="tab-indicator"></div>
+                </div>
+
+                <!-- Contenido de pestañas -->
+                <div class="fb-post1-content">
+
+                    <!-- Sección Popular -->
+                    <div class="tab-content active" id="popular">
+                        <div class="fb-p1-main">
+
+                            <div class="post-title">
+                                <img src="https://i.ibb.co/609HY87d/Photo.png" alt="user picture">
+                                <ul>
+                                    <li><h3>Rick<span> - Active</span></h3></li>
+                                    <li><span>30 Mayo 18:34</span></li>
+                                </ul>
+                                <p>
+                                    Una estrella se a perdido
+                                    y en el cielo no aparece,
+                                    entre nubes se ha metido
+                                    y en tu cara resplandece.
+                                    Una noche te haré ver las estrellas...
+                                    <a href="#" onclick="return false;">#Cosa hermosa, preciosa que no sale de mi cabeza</a>
+                                </p>
+                            </div>
+
+                            <div class="post-images">
+                                <div class="post-images1">
+                                    <img src="https://i.postimg.cc/0NMKS7VP/Background-Space-Rick-GFX.gif" alt="post images 01">
+                                    <img src="https://i.ibb.co/rxVqMnn/Xat-Private-Rick-Multi-GFX.gif" alt="post images 02">
+                                    <img src="https://i.ibb.co/fHtTWsW/Xat-Private-Rick-Ventas-FX.gif" alt="post images 03">
+                                </div>
+                                <div class="post-images2">
+                                    <img src="https://i.ibb.co/wNTjTg19/Snake-Blue.gif" alt="post images 04">
+                                </div>
+                            </div>
+
+                            <div class="like-comment">
+                                <ul>
+                                    <li class="reaction">
+                                        <img src="https://i.ibb.co/HTjnz5Jn/love.png" alt="love">
+                                        <img src="https://i.ibb.co/ztbv0Rs/like.png" alt="like">
+                                        <span>69k like</span>
+                                    </li>
+                                    <li class="comment">
+                                        <i class="fa-regular fa-comment-dots"></i>
+                                        <span>983 comments</span>
+                                    </li>
+                                    <li class="share">
+                                        <i class="fa-solid fa-share-from-square"></i>
+                                        <span>271 share</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="box-video-lord">
+                                <embed width="100%" height="400px" src="https://iraked.github.io/ExtasisRadio/Repro2.html">
+                            </div>
+
+                            <div class="contador-wrapper">
+                                <div class="contador-panel">
+                                    <h3 class="contador-titulo">🌍 Visitas Globales</h3>
+                                    <img src="" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Sección Recientes -->
+                    <div class="tab-content" id="recientes">
+                        <div id="githubEmbedWrapper" style="width: 100%; max-width: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 0 8px #3688ff; margin-top: 20px;">
+                            <iframe 
+                                src="https://iraked.github.io/Profile/Rick.html" 
+                                width="100%" 
+                                height="600" 
+                                style="border: none; display: block;" 
+                                onerror="document.getElementById('githubEmbedWrapper').innerHTML = '<div style=\'padding: 20px; text-align: center; background: #ffe0e0; color: #900; font-weight: bold;\'>No se pudo cargar el contenido. Revisa la URL o el despliegue en GitHub Pages.</div>'">
+                            </iframe>
+                        </div>
+                    </div>
+          
+                              <!-- Sección más antiguo -->
+                    <div class="tab-content" id="mas antiguo">
+                        <div id="githubEmbedWrapper" style="width: 100%; max-width: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 0 8px #3688ff; margin-top: 20px;">
+                            <iframe 
+                                src="https://iraked.github.io/Project/Carrusel.html" 
+                                width="100%" 
+                                height="600" 
+                                style="border: none; display: block;" 
+                                onerror="document.getElementById('githubEmbedWrapper').innerHTML = '<div style=\'padding: 20px; text-align: center; background: #ffe0e0; color: #900; font-weight: bold;\'>No se pudo cargar el contenido. Revisa la URL o el despliegue en GitHub Pages.</div>'">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div> <!-- fb-post1-content end -->
+            </div> <!-- fb-post1-container end -->
+        </div> <!-- fb-post1 end -->
+
+    </div> <!-- home-center-wrapper end -->
+</div> <!-- home-center end -->
+    
+            <!-- right start -->
+
+<div class="home-right">
+    <div class="home-right-wrapper">
+
+        <!-- Sección de eventos y perfil destacado -->
+        <div class="event-friend">
+
+            <div class="event">
+                <h3 class="heading">Eventos Importantes <span>Ver todos</span></h3>
+                <video autoplay muted loop playsinline>
+                    <source src="assets/video/Cover%20Rick%20FX.mp4" type="video/mp4">
+                    Tu navegador no soporta videos HTML5.
+                </video>
+                <!-- <img src="https://i.ibb.co/XZrT0G6/Firma-santiago-Saint-Gold-FX.gif" alt="event-img"> -->
+                <div class="event-date">
+                    <h3>30 <b>Febrero</b></h3>
+                    <h4>Cumpleaños <span>Año Bisiesto</span></h4>
+                </div>
+                <button class="festive-btn"><i class="fa-regular fa-star"></i> Asistiré</button>
+            </div>
+
+            <hr>
+
+            <div class="friend">
+                <h3 class="heading">XatSpace Creator <span>Hot Sales</span></h3>
+                <ul>
+                    <li><img src="https://i.ibb.co/609HY87d/Photo.png" alt="user"></li>
+                    <li>
+                        <b>Rick - (1548724149)</b>
+                        <p>XatSpace Design</p>
+
+                        <div id="emailModal" class="modal">
+                            <div class="modal-content">
+                                <button id="copyBtn">Contact</button>
+                                <p id="copyStatus" style="color: green;"></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Sección de imagen promocional -->
+        <div class="create-page">
+            <ul>
+                <li>
+                    <img src="https://i.ibb.co/9H5hNpsQ/Xat-Private-Rick-Ventas-GFX.gif" alt="groups">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección de amigos -->
+        <div class="messenger" id="friends">
+            <div class="messenger-search">
+                <i class="fa-solid fa-user-group"></i>
+                <h4>Friends⭐️</h4>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <ul>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/0RShCcNf/Eluney.png" alt="user">
+                    <a href="https://xat.me/LaEluney32">
+                        <b>Eluney <span>Online</span></b>Married
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/4R2s6wqk/Sky.png" alt="user">
+                    <a href="https://xat.me/Skyy">
+                        <b>Sky <span>Online</span></b>Hermana
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="offline">
+                    <img src="https://i.ibb.co/q3fwC4xj/Gus.png" alt="user">
+                    <a href="https://xat.me/GusArg2415">
+                        <b>Gustavo <span>Offline</span></b>Bebote
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/Hf40JxkD/Sandi.png" alt="user">
+                    <a href="https://xat.me/Sandii">
+                        <b>Sandi <span>Online</span></b>Cloncita
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/v4Hdm4HZ/Lala.png" alt="user">
+                    <a href="https://xat.me/kasandra214">
+                        <b>Lala <span>Online</span></b>Cuñada
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/GQphVJxy/Roger.png" alt="user">
+                    <a href="https://xat.me/Rogerchucho17">
+                        <b>Roger <span>Online</span></b>Brother
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="online">
+                    <img src="https://i.ibb.co/SDwrYS5Y/Annye.png" alt="user">
+                    <a href="https://xat.me/ohanaohana2024">
+                        <b>Annye Line <span>Online</span></b>Amigocha
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+                <li class="offline">
+                    <img src="https://i.ibb.co/RkfF7ywG/Lunita.png" alt="user">
+                    <a href="https://xat.me/lunicandy">
+                        <b>Lunita Candy <span>Offline</span></b>Amix
+                    </a>
+                    <i class="fa-brands fa-facebook-messenger icon-button" title="Enviar mensaje"></i>
+                </li>
+
+            </ul>
+        </div>
+
+    </div> <!-- home right wrapper end -->
+</div> <!-- home right end -->
+
+
+        </div>
+    </div>
+</div>
+
+<!-- PIE DE PAGINA -->
+  <div id="footer-lord">
+    <footer style="text-align: center; padding: 30px;">
+      <a href="https://linktr.ee/XatSpace" target="_blank" rel="noreferrer" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 6px;">
+        <img src="https://i.imgur.com/jYPjGyn.png" alt="icono" style="width: 20px; height: 20px; ext-shadow: 0 0 10px #00FFFF; transition: 0.3s; filter: drop-shadow(4 4 8px #00FFFF);">
+        <h5 style="
+          all: unset;
+          display: block;
+          font-size: 0.9rem;
+          font-weight: bold;
+          background: linear-gradient(135deg, #3688ff, #00FFFF);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px #4e8ef7, 0 0 20px #00FFFF;
+          animation: glowFade 5s ease-in-out infinite alternate;
+          text-align: center;
+        ">©2025</h5>
+      </a>
+    </footer>
+  </div>
+
+<!-- home section end -->
+    
+    <!-- 📥 Buzón privado -->
+    <div id="privateInbox" style="
+      display: none;
+      position: absolute;
+      top: 100px; /* Ajusta según altura del header */
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      background: #fff;
+      box-shadow: 0 0 20px #3a78ff;
+      border-radius: 12px;
+      padding: 10px;
+      z-index: 9999;">
+      <div id="messageList"></div>
+    </div>
+
+<script type="module" src="ivan-msjs.js"></script>
+<script>
+    var darkButton = document.querySelector(".darkTheme");
+
+    darkButton.onclick = function(){
+        darkButton.classList.toggle("button-Active");
+        document.body.classList.toggle("dark-color")
+    }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('.stories-wrapper');
+    const stories = document.querySelector('.stories');
+
+    if (!wrapper || !stories) {
+      console.warn("❌ No se encontró el contenedor del carrusel.");
+      return;
+    }
+
+    const prevBtn = document.createElement('button');
+    const nextBtn = document.createElement('button');
+
+    prevBtn.className = 'carousel-btn prev';
+    nextBtn.className = 'carousel-btn next';
+
+    stories.appendChild(prevBtn);
+    stories.appendChild(nextBtn);
+
+    prevBtn.addEventListener('click', () => {
+      console.log("⬅️ Botón izquierdo clickeado");
+      wrapper.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      console.log("➡️ Botón derecho clickeado");
+      wrapper.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    console.log(" Carrusel inicializado correctamente");
+  });
+</script>
+<canvas id="confetti-canvas"></canvas>
+</body>
+</html>

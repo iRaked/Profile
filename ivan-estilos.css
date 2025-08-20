@@ -1,0 +1,46 @@
+.fb-post1-header ul {
+  display: flex;
+  list-style: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.fb-post1-header li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.fb-post1-header li.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #3688ff;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+.tab-content {
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+.fb-post1-header ul li.active {
+  background: none;
+  color: white;
+  border-radius: 8px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
