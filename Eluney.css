@@ -1,7 +1,8 @@
-{background:repeating-linear-gradient(0deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 6px),          repeating-linear-gradient(90deg, rgba(0,0,0,.2) 1px, transparent 2px, transparent 1px),         radial-gradient(#000000, #222); }*{cursor:url(https://i.ibb.co/R9vTkyB/Cursor-Gold1-FX.png),auto}/*-*/
-{
-	background:#efdd8e
-}
+body {
+	background-image: url(https://i.ibb.co/N2Pr0KZN/Background-Black-GFX.gif);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
 *{
 	margin:0;
 	padding:0;
@@ -280,9 +281,9 @@ h1,h2,h3,h4,h5,h6{
 	font-size:.8em;
 	transition:all .3s ease-out
 }
-.jd-row a:hover{
-	color:#ffffff;
-	background:	color:#ffffff;
+.jd-row a:hover {
+  color: #ffffff;
+  background: #ffffff;
 }
 .jd-video{
 	width:726px;
@@ -339,4 +340,50 @@ h1,h2,h3,h4,h5,h6{
 
 .jd-year {
   font-size: 0.85em;
+}
+    
+/* FAMILIA */
+.jd-familia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  justify-items: center;
+}
+
+.jd-familia-card {
+  background: rgba(239, 221, 142, 0.1);
+  border: 2px solid #a38838;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jd-familia-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #efdd8e;
+}
+
+.jd-familia-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px #a38838;
+}
+
+.jd-familia-card span {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.jd-familia-card small {
+  font-size: 0.9em;
+  color: #efdd8e;
+  font-style: italic;
 }
