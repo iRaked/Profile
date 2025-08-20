@@ -141,27 +141,31 @@ document.getElementById("copyBtn")?.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.querySelector('.stories-wrapper');
-  const scrollStep = 140;
-
   const leftBtn = document.querySelector('.nav-btn.left');
   const rightBtn = document.querySelector('.nav-btn.right');
 
-  leftBtn.addEventListener('click', () => {
-    wrapper.scrollLeft -= scrollStep;
-  });
+  if (wrapper && leftBtn && rightBtn) {
+    const scrollStep = 140;
 
-  rightBtn.addEventListener('click', () => {
-    wrapper.scrollLeft += scrollStep;
-  });
+    leftBtn.addEventListener('click', () => {
+      wrapper.scrollLeft -= scrollStep;
+    });
 
-  const updateButtons = () => {
-    leftBtn.disabled = wrapper.scrollLeft <= 0;
-    rightBtn.disabled = wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth;
-  };
+    rightBtn.addEventListener('click', () => {
+      wrapper.scrollLeft += scrollStep;
+    });
 
-  wrapper.addEventListener('scroll', updateButtons);
-  window.addEventListener('resize', updateButtons);
-  updateButtons();
+    const updateButtons = () => {
+      leftBtn.disabled = wrapper.scrollLeft <= 0;
+      rightBtn.disabled = wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth;
+    };
+
+    wrapper.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+  } else {
+    console.warn("⚠️ Stories navigation no inicializada: elementos no presentes en el DOM.");
+  }
 });
   
   // Navegacion MultiTab
