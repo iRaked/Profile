@@ -485,7 +485,7 @@ body {
 .single-stories label{
     width: 45px;
     height: 45px;
-    background: #daeaff;
+    background: #FF69B480;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
