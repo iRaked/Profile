@@ -1333,4 +1333,59 @@ body {
     cursor: pointer;
 }
 
+.messenger ul li a {
+  color: #3688ff;
+  transition: color 0.3s ease;
+}
+
+.messenger ul li a:hover {
+  color: white;
+}
+
+.mote-rojo {
+  color: red;
+  transition: color 0.3s ease;
+}
+
+.mote-rojo:hover {
+  color: white;
+}
+
+.reaction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.reaction:hover {
+  transform: scale(1.05);
+}
+
+.reaction-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.emoji {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.emoji:hover {
+  transform: scale(1.3) rotate(-10deg);
+}
+
+.reaction-count {
+  font-weight: bold;
+  color: #3688ff;
+  transition: color 0.3s ease;
+}
+
+.reaction:hover .reaction-count {
+  color: white;
+}
+
 /* home right end */
