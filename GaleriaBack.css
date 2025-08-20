@@ -1,4 +1,82 @@
 
+/* BACKGROUND COLOR */
+body{
+  background-image: url(https://i.ibb.co/N2Pr0KZN/Background-Black-GFX.gif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Ubuntu', sans-serif;
+  color: #2693FF;
+}
+
+body iframe {
+    margin-top: 2rem;
+    justify-self: center;
+    display: block;
+}
+
+header {
+    margin-top: 4rem;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    padding: 20px;
+    background: #fa75e6;
+    background: linear-gradient(318deg, rgba(117, 184, 250, 1) 0%, rgb(140, 100, 185) 34%, rgba(117, 184, 250, 1) 100%);
+    background: linear-gradient(318deg, rgba(117, 184, 250, 1) 0%, rgb(140, 100, 185) 34%, rgba(117, 184, 250, 1) 100%);
+    border-radius: 50px;
+    color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+header:hover {
+    background: #fa75e6;
+    background: linear-gradient(103deg, rgba(163, 163, 163, 1) 0%, rgba(117, 184, 250, 1) 34%, rgba(163, 163, 163, 1) 100%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: rgba(24, 24, 24, 0.679);
+}
+
+header p {
+    font-size: 30px;
+    margin: 0;
+    padding: 0 10px;
+    text-shadow: 5px 8px 7px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.avatar:hover {
+    transform: scale(1.6);
+    transition: all 0.3s ease;
+}
+
+
+#moreBoys {
+    background-image: linear-gradient(to right, #3688ff 0%, #743dc0  51%, #3688ff  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    justify-self: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+}
+#moreBoys:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
 
 h1{
     text-align: center;
@@ -63,18 +141,15 @@ h1{
     transform: rotateY(180deg);
 }
 
-
+/* ANIMATE */
 .animate {
     justify-self: center;
     font-size: 35px;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    text-shadow: -2px 7px 5px rgba(150, 225, 255, 0.477);
+    text-shadow: -2px 7px 5px rgba(50, 150, 250, 0.477);
     font-weight: bold;
 }
-
-
-
 
 .animate span {
     display: inline-block;
@@ -141,14 +216,14 @@ h1{
 /* Animation Seven */
 
 .seven span {
-    color: #3688ff;
+    color: #3688dd;
     opacity: 0;
     transform: translate(-150px, 0) scale(.3);
     animation: leftRight 1s forwards;
 }
 .seven span:hover {
-    color: #00ffd5;
-    text-shadow: -2px 7px 5px rgb(0, 255, 213);
+    color: #00e6e6;
+    text-shadow: -2px 7px 5px rgb(0, 230, 230);
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -157,10 +232,10 @@ h1{
     40% {
     transform: translate(50px, 0) scale(.7);
     opacity: 1;
-    color: #3688ff;
+    color: #743dc0;
 }
     60% {
-    color: #00ffd5;
+    color: #743dc0;
 }
     80% {
     transform: translate(0) scale(2);
@@ -170,52 +245,3 @@ h1{
     transform: translate(0) scale(1);
     opacity: 1;
 }
-
-.{
-    margin: 0;
-    padding: : 0;
-    box-sizing: border-box;
-}
-header{
-    width: 100%;
-    heigth: auto;
-    position: relative;
-}
-video{
-    width: 100%;
-    heigth: 100%;
-    overflow: hidden;
-    opacity: 0.6;
-}
-.absolute{
-    width: 100%;
-    heigth: 100%;
-    top: 0;
-    rigth: 0;
-    position: absolute;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-h1{
-    font-size: 80px;
-    font-weight: 900;
-    z-index: 100;
-    color: background: rgba(0, 0, 0, 0.575);
-    margin-bottom: 30px;
-    
-}
-h1::after{
-    display: block;
-    width: 30%;
-    heigth: 10px;
-    content: "";
-    margin: auto;
-    background: white;
-}
-body {background: url('https://i.ibb.co/C0BFQJv/BGStars.gif')}*{text-align:center}*{cursor:url('https://i.ibb.co/2YBCcwH/Cursor-Sky-FX.png') ,auto}*{text-decoration:none}*{font-size:20px}*{font-family:Century Gothic, sans-serif}*{color:#666666}*{text-shadow:0px 1px 2px #a5a5a5}*,a[href]{color:#ffffff}html{background:5157fc}html{background-size: 100%}#xatstymedia{background:none}span:hover{opacity:1}.xatstynavlink a{background-color:##a5a5a5}*{transition:all 1s ease}#xatstyheader{height:40px}#xatstyheader,td[bgcolor]{background:000000}#xatstyheader,td[bgcolor]{position:absolute}#xatstyheader{top:0}td[bgcolor]{bottom:0}td[bgcolor]{right:0}td[bgcolor]{padding-left:15px}td[bgcolor]{padding-top:15px}#xatstyheader{border-radius:0 0 15px 0}td[bgcolor]{border-radius:32px 0 0 0}#xatstyinfo,#xatstyabout0,#xatstysidead,#xatstywhatpoll,hr{display:none}*{transhition:all 0.3s ease}img{opacity:.8}img:hover{opacity:.9}img:hover{ -webkit-transform: rotate(360deg)}img:hover{-webkit-filter: blur(1px)};}
-@media screan and(max-width: 800px){
-    h1{
-        font-size: 50px;
-    }
