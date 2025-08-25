@@ -19,6 +19,14 @@
 }
 
 /*------- BODY BACKGROUND --------*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ← evita scroll global */
+    overflow-y: auto;
+}
+
 body {
   background-image: url("https://i.ibb.co/HfSzFH62/BG-Cute-FX.gif");
   background-position: center center;
@@ -50,15 +58,7 @@ h2 {
   font-size: 1em;
   font-family: var(--font-2);
   color: #ff5d75;
-  overflow: hidden;
-}
-
-/*------- VIDEO --------*/
-video {
-  width: 100%;
-  height: 460px; /* corregido para igualar al contenedor principal */
-  overflow: hidden;
-  opacity: 5.6;
+  overflow: visible;
 }
 
 /*------- OBJECT --------*/
@@ -78,6 +78,7 @@ object {
   background: #fff;
   display: flex;
   flex-wrap: wrap;
+  z-index: 10;
 }
 .app:after {
   width: 90%;
@@ -119,16 +120,14 @@ object {
   margin-top: 20px;
 }
 
-/*------- SECTION --------*/
+/*------- SECTION  SECTION  SECTION  SECTION  SECTION  SECTION --------*/
 .section {
   width: 520px;
   height: 460px;
   background: #fff;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
-
-/*-----------------------------------------------------------*/
 
 /*------- SLIDE CONTAINER --------*/
 .slyde {
@@ -146,15 +145,7 @@ object {
   width: 520px;
   height: 460px;
   position: relative;
-  overflow: hidden;
-}
-
-.banner {
-  position: absolute;
-  width: 450px;
-  height: 460px;
-  top: 0;
-  right: 0;
+  overflow: visible;
 }
 
 .box-nav {
@@ -172,7 +163,7 @@ object {
   overflow: hidden;
 }
 
-/*------- NAV LEFT --------*/
+/*------- NAV LEFT PARTE 1************************************** --------*/
 .nav-left {
   width: 70px;
   line-height: 114px;
@@ -244,24 +235,53 @@ object {
 
 /*------- PAGES SECTION --------*/
 .pages {
-  width: 520px;
-  height: 460px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px; /* igual al ancho de .section */
+  height: 460px; /* igual al alto de .section */
   background: #FFDADF;
+  display: none;
+  z-index: 5;
+  overflow: visible;
 }
 
+/* Activar contenedor cuando está en target */
+#content-1:target,
+#content-2:target,
+/* Activación por target */
+#content-3:target {
+  display: block;
+}
+#content-4:target {
+  display: block;
+}
+
+/* Ocultar contenido interno por defecto */
 .about,
 .friend,
 .music,
 .gallery {
+  visibility: hidden;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: #000000;
-  visibility: hidden;
+  background: #000;
   border-left: solid 10px #fff;
   transition: all 0.5s;
   padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Mostrar contenido interno cuando está activo */
+#content-1:target .about,
+#content-2:target .friend,
+#content-3:target .music,
+#content-4:target .gallery {
+  visibility: visible;
+  display: block;
 }
 
 /*------- TARGET STATES --------*/
@@ -290,7 +310,7 @@ object {
   visibility: visible;
 }
 
-/*------- PAGE CONTENT --------*/
+/*------- PAGE CONTENT PARTE 2*************************************** --------*/
 .title-page {
   color: #FFB6C1;
   font-size: 1.5em;
@@ -398,42 +418,58 @@ object {
   color: #FFB6C1;
 }
 
-/*------- MUSIC BLOCK --------*/
-.music .block {
-  text-align: center;
-  color: #fff;
+/*------- ********************** REPRO MUSIC SECTION ********************** --------*/
+.block {
+  width: 100%;
+  height: 410px;
+  border: solid 1px #fff;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.col-music {
+  height: 398px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-player {
+  width: 100%;
+  max-width: 520px; /* ajusta según tu diseño */
+  height: 640px;
+  transform: scale(0.7);
+  transform-origin: top center;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 1);
+  pointer-events: auto;
+  margin: 0 auto; /* centra horizontalmente */
+}
+
+.radio-scaled {
+  width: 460px;
+  height: 480px;
+  overflow: hidden;
   position: relative;
-  z-index: 50;
-}
-.artist {
-  color: #FFB6C1;
-  margin: 20px 0;
-}
-.song {
-  display: block;
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 /*------- VIDEO --------*/
 .video {
-  width: 400px;
-  height: 226px;
-  display: inline-block;
-  background: #000;
-  position: relative;
-}
-.video:before {
-  width: 90%;
-  height: 60px;
-  background: #000;
-  border-radius: 50%;
-  left: 5%;
-  bottom: -30px;
-  filter: blur(15px);
-  z-index: -1;
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 1);
+  box-sizing: border-box;
+  display: block;
 }
 
-/*------- GALLERY ROW --------*/
+/*------- GALLERY ROW PARTE 3********************************************* --------*/
 .row-gallery {
   width: 99%;
   height: auto;
@@ -467,98 +503,5 @@ object {
     font-size:.75em;
     color:#FFDADF;
     text-align:left;
-    padding-left:10px;}
-
-/*------- TABLETS --------*/
-@media screen and (max-width: 768px) {
-  .app {
-    width: 90vw;
-    height: auto;
-    flex-direction: column;
-    transform: translate(-50%, -50%);
-  }
-
-  .aside,
-  .section,
-  .nav,
-  .pages {
-    width: 100%;
-    height: auto;
-  }
-
-  .slyde {
-    width: 100%;
-    flex-direction: column;
-    height: auto;
-  }
-
-  .row-nav {
-    height: auto;
-    flex-direction: column;
-  }
-
-  .nav-left,
-  .nav-right {
-    width: 100%;
-    line-height: normal;
-    font-size: 1.2em;
-    text-align: center;
-  }
-
-  .nav-right span:nth-of-type(2) {
-    font-size: 2.5em;
-  }
-
-  .banner {
-    display: none;
-  }
-
-  .btn-prev {
-    top: 10px;
-    right: 10px;
-  }
-
-  .block {
-    height: auto;
-  }
-}
-
-/*------- MOBILE PHONES --------*/
-@media screen and (max-width: 480px) {
-  .img-user {
-    width: 120px;
-    height: 120px;
-    margin-top: 20px;
-  }
-
-  .title-user,
-  .aside p {
-    font-size: 1.2em;
-  }
-
-  .nav-left {
-    font-size: 1em;
-  }
-
-  .nav-right span:nth-of-type(1) {
-    font-size: 1em;
-    padding-left: 10px;
-  }
-
-  .nav-right span:nth-of-type(2) {
-    font-size: 2em;
-  }
-
-  .title-page {
-    font-size: 1.2em;
-  }
-
-  .btn-prev {
-    font-size: 1.2em;
-    line-height: 20px;
-  }
-
-  .block {
-    padding: 10px;
-  }
+    padding-left:10px;
 }
