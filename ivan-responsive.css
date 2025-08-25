@@ -1,0 +1,51 @@
+/* 📱 Responsive Styles for FX Friends Layout */
+/* ========================================= */
+
+/* 🔧 Responsive: Header adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .searchBox {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .iconBox1, .iconBox2 {
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+    border: none;
+  }
+}
+
+/* 🔧 Responsive: Home wrapper layout */
+@media (max-width: 1024px) {
+  .home-weapper {
+    flex-direction: column;
+  }
+  .home-left,
+  .home-center,
+  .home-right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* 🔧 Responsive: Stories layout */
+@media (max-width: 768px) {
+  .single-stories {
+    flex: 0 0 calc(100% / 2 - 16px);
+  }
+}
+@media (max-width: 480px) {
+  .single-stories {
+    flex: 0 0 100%;
+  }
+}
+
+/* 🔧 Responsive: Video embed */
+@media (max-width: 768px) {
+  .box-video-lord embed {
+    width: 90
