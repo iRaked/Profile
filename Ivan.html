@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="ivan-style.css">
     <link rel="stylesheet" href="ivan-estilos.css">
     <link rel="stylesheet" href="ivan-responsive.css">
-    <!-- BLOCK -->
+    <!--  BLOCK -->
     <script type="text/javascript">
-    document.onkeydown = function () { return false };
-    document.oncontextmenu = function () { return false }
+        document.addEventListener("contextmenu", function (e) {
+        e.preventDefault(); // Bloquea el menú contextual en todo el documento
+        });
     </script>
     <!-- fontawesome css link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -607,14 +608,6 @@
                 </li>
 
                 <li class="online">
-                    <img src="https://i.ibb.co/v4Hdm4HZ/Lala.png" alt="user">
-                    <a href="https://xat.me/kasandra214" target="_blank">
-                        <b>Lala <span>Online</span></b>Ex Cuñada
-                    </a>
-                    <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
-                </li>
-
-                <li class="online">
                     <img src="https://i.ibb.co/GQphVJxy/Roger.png" alt="user">
                     <a href="https://xat.me/Rogerchucho17" target="_blank">
                         <b>Roger <span>Online</span></b>Brother
@@ -639,8 +632,16 @@
                 </li>
                 
                 <li class="online">
+                    <img src="https://i.ibb.co/v4Hdm4HZ/Lala.png" alt="user">
+                    <a href="https://xat.me/kasandra214" target="_blank">
+                        <b>Lala <span>Online</span></b>Ex Cuñada
+                    </a>
+                    <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
+                </li>
+                
+                <li class="online">
                     <img src="https://i.ibb.co/KjfDM87H/Xat-Private-Pexi-Baby-GFX.gif" alt="user">
-                    <a href="#" target="_blank">
+                    <a href="https://xat.me/ohanaohana2024" target="_blank">
                         <b>Pexii <span>Online</span></b>Binguera
                     </a>
                     <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
@@ -648,7 +649,7 @@
                 
                 <li class="offline">
                     <img src="https://i.ibb.co/9mjGHSRF/Chiri.png" alt="user">
-                    <a href="https://xat.me/Chiri" target="_blank">
+                    <a href="https://xat.me/lunicandy" target="_blank">
                         <b>Chiri <span>Offline</span></b><span class="mote-rojo">Tío Pelonchas</span>
                     </a>
                     <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
@@ -696,7 +697,7 @@
       width: 300px;
       max-height: 400px;
       overflow-y: auto;
-      background: #fff;
+      background: #01010150;
       box-shadow: 0 0 20px #3a78ff;
       border-radius: 12px;
       padding: 10px;
