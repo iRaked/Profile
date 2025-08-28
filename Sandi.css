@@ -199,13 +199,15 @@ body {
 	border-radius:50%;
 	overflow:hidden;
 }
-#footer-lord{
-	width:100%;
-	position:absolute;
-	display:inline-block;
-	text-align:center;
-	bottom:50px;
-	font-size:.75em;
+#footer-lord {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  display: inline-block;
+  text-align: center;
+  font-size: 0.75em;
+  z-index: 10; /* Asegura que esté por encima si hay solapamientos */
 }
 .menu-page-lord{
 	position:absolute;
