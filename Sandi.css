@@ -1,4 +1,4 @@
-﻿.fondo-iframe {
+.fondo-iframe {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
@@ -288,7 +288,7 @@ body {
   opacity: 0;
 }
 .bloco-friends-lord{
-	width:350px;
+	width:650px;
 	height:570px;
 	margin-top:120px;
 	margin-left:40%;
@@ -324,6 +324,9 @@ body {
 	font-size:.6em;
 	color:#9600ff;
 	transition:all .3s;
+}
+.box-friends-lord p{
+    color: aqua;
 }
 .simbol-lord{
 	width:40px;
@@ -382,4 +385,24 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #9600ff;
   border-radius: 10px;
+}
+/* Contador */
+.contador-wrapper {
+  display: inline-block; /* Asegura que el contenedor se ajuste al contenido */
+  padding: 20px;
+  border-radius: 20px;
+  background-color: transparent; /* No interfiere con el fondo de la imagen */
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 12px #8800FF;
+  }
+  50% {
+    box-shadow: 0 0 24px #FF00FF;
+  }
+  100% {
+    box-shadow: 0 0 12px #8800FF;
+  }
 }
