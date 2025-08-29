@@ -1,7 +1,5 @@
 // firebaseConfig.js
-import { initializeApp } from "firebase/app";
-
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAYDEA7pJQOkhdqCbUyfW9EwvxfEesOweE",
   authDomain: "telegrafo-24ad3.firebaseapp.com",
   projectId: "telegrafo-24ad3",
@@ -9,5 +7,3 @@ const firebaseConfig = {
   messagingSenderId: "594000910376",
   appId: "1:594000910376:web:49790452ecfd1ed3077d1d"
 };
-
-export const app = initializeApp(firebaseConfig);
