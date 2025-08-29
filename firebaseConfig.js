@@ -2,12 +2,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AÚN_NO_DEFINIDO",
-  authDomain: "telegrafo.firebaseapp.com",
-  projectId: "telegrafo",
-  storageBucket: "telegrafo.appspot.com",
-  messagingSenderId: "PENDIENTE",
-  appId: "PENDIENTE"
+  apiKey: "AIzaSyAYDEA7pJQOkhdqCbUyfW9EwvxfEesOweE",
+  authDomain: "telegrafo-24ad3.firebaseapp.com",
+  projectId: "telegrafo-24ad3",
+  storageBucket: "telegrafo-24ad3.appspot.com",
+  messagingSenderId: "594000910376",
+  appId: "1:594000910376:web:49790452ecfd1ed3077d1d"
 };
 
 export const app = initializeApp(firebaseConfig);
