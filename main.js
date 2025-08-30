@@ -1,4 +1,3 @@
-// main.js
 import { app } from './firebaseConfig.js';
 import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 
@@ -14,7 +13,7 @@ button.addEventListener('click', async () => {
   if (texto === '') return;
 
   try {
-    await addDoc(collection(db, 'mensajes'), {
+    await addDoc(collection(db, 'messages'), {
       texto,
       timestamp: Date.now()
     });
@@ -25,3 +24,15 @@ button.addEventListener('click', async () => {
     console.error('Error al enviar mensaje:', error);
   }
 });
+
+// 🔍 Validar conexión sin escritura
+async function validarConexion() {
+  try {
+    const snapshot = await getDocs(collection(db, "messages"));
+    console.log("Colección accesible. Documentos existentes:", snapshot.size);
+  } catch (error) {
+    console.error("Error al acceder a la colección:", error);
+  }
+}
+
+validarConexion();
