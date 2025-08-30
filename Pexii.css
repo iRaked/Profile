@@ -1,0 +1,1603 @@
+.fondo-iframe {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  border: none;
+  pointer-events: none;
+}
+body {
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: #ffffff;
+  font-family: 'Mandali', sans-serif;
+  font-size: 9px;
+  text-transform: lowercase;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  line-height: 18px;
+  text-align: justify;
+  overflow: hidden;
+}
+
+/* Neutralización de eventos (Museo) */
+html, body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Contenedor principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+}
+
+/* Botones de pestañas */
+.tablink {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: #fff;
+  border: none;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.tablink:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Secciones ocultas por defecto */
+.alytut {
+  display: none;
+  padding: 20px;
+  background-color: rgba(10, 10, 10, 0.8);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Sección activa */
+.tabzact {
+  display: block;
+}
+/*---------------------------------ANIMACIONES------------------------------------*/
+.slide-out {
+  animation: slide-out-bottom 1.5s ease forwards;
+}
+
+.slide-in {
+  animation: slide-in-bottom 1.5s ease forwards;
+}
+
+@keyframes slide-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.slide-out {
+  animation: slide-out-bottom 1.5s ease forwards;
+}
+
+.slide-in {
+  animation: slide-in-bottom 1.5s ease forwards;
+}
+
+@keyframes slide-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/*---------------------------------ANIMACIONES------------------------------------*/
+#sidepicz2 { -webkit-animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; }
+
+/* 🔁 Animación: Entrada desde la derecha */
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 🔁 Animación: Salida hacia la izquierda */
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+/* 🔁 Animación: Escalado desde la esquina inferior izquierda */
+@-webkit-keyframes scale-up-bl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+}
+
+@keyframes scale-up-bl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+}
+
+/* 🎯 Aplicación de animación a #linkiez1 */
+#linkiez1 {
+  -webkit-animation: scale-up-bl 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-bl 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+/* 🌀 Hover ritual sobre #sidepicz2 */
+#sidepicz2:hover {
+  -webkit-animation: slide-out-right 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: slide-out-right 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+/* 🔁 slide-in-right: Entrada desde la derecha */
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 🔁 slide-left: Salida hacia la izquierda */
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+/* 🔁 scale-up-bl: Escalado desde la esquina inferior izquierda */
+@-webkit-keyframes scale-up-bl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+}
+
+@keyframes scale-up-bl {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+}
+
+/* 🔁 slide-out-right: Salida hacia la derecha */
+@-webkit-keyframes slide-out-right {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+
+/* 🔁 slide-out-bottom: Salida hacia abajo */
+@-webkit-keyframes slide-out-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+/* 🎯 #linkiez1: Escalado ritual */
+#linkiez1 {
+  -webkit-animation: scale-up-bl 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-bl 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+/* 🌀 #sidepicz2: Salida hacia la derecha al hacer hover */
+#sidepicz2:hover {
+  -webkit-animation: slide-out-right 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: slide-out-right 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+/* 🌀 #sidepicz: Salida hacia abajo al hacer hover */
+#sidepicz:hover {
+  -webkit-animation: slide-out-bottom 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: slide-out-bottom 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+/*------------------------------------------------------------------------------------*/
+a {
+  text-decoration: none;
+  color: #7f82b7;
+  transition: all 0.6s ease-in-out;
+}
+
+a:hover {
+  color: #ffffff;
+  transition: all 0.6s ease-in-out;
+}
+blockquote {
+  border-left: 1px solid #2a2a2a;
+  margin-left: 20px;
+  padding-left: 10px;
+  width: 87%;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+blockquote blockquote {
+  border-left: 1px solid #2a2a2a;
+  margin-left: 10px;
+}
+small, sup, sub {
+  font-size: 9px;
+}
+/* 🔤 Negritas rituales */
+b, strong {
+  background: rgba(127,130,183, 0.20);
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  padding: 2px;
+}
+
+/* 💫 Cursivas emocionales */
+i, em {
+  color: #c9e4e4;
+  font-style: italic;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 🧭 Encabezados centrales */
+h1, h2 {
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.71px;
+  text-align: center;
+  color: #c9e4e4;
+}
+/* 🪞 Contenedor decorativo con sombra ritual */
+.contdeco {
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 570px;
+  height: 550px;
+  padding: 20px;
+  background-color: rgba(42,42,42, 0.70);
+  overflow: hidden;
+  box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.03);
+}
+
+/* 🖤 Contenedor base */
+#container {
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 570px;
+  height: 550px;
+  background-color: rgba(148, 0, 211, 0.4); /* MAIN COLOR */
+  overflow: hidden;
+}
+/* 🧩 Panel lateral izquierdo */
+#sidez1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 270px;
+  height: 550px;
+  z-index: 1;
+}
+
+/* 📜 Panel de descripción */
+#descripz {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  width: 220px;
+  height: 300px;
+  padding: 10px;
+  background-color: rgba(139, 0, 139, 0.50); /* COLOR CONTENEDOR 3 */
+  border: 1px solid #9400D3;
+  transition: all 0.6s ease-in-out;
+  overflow: hidden; /* 🔥 Elimina scroll vertical y horizontal */
+}
+
+/* 🧠 Título del panel de descripción */
+.descripzt {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 225px;
+  height: 22px;
+  padding-left: 15px;
+  padding-top: 5px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 9px;
+  background-color: rgba(148, 0, 211, 0.6); /* COLOR CABECERA CONTENEDOR 3 */
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid #9400D3;
+  cursor: default;
+}
+
+/* 📖 Texto interno del panel de descripción */
+.descripztext {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  width: 200px;
+  height: 255px;
+  cursor: default;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Asegura que no haya desplazamiento interno */
+  box-sizing: border-box;
+}
+
+/* 🖼️ Imagen adaptativa dentro del panel */
+.descripztext img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto; /* 🔥 Centrado adicional si hay espacio sobrante */
+  border-radius: 12px;
+}
+
+/* 🧿 Ícono interactivo en descripción */
+.descripzt .iconify {
+  position: absolute;
+  top: 6px;
+  right: 50px;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🧊 Contenedor de imagen lateral */
+#sidepicz {
+  position: absolute;
+  bottom: 60px;
+  left: 15px;
+  width: 220px;
+  height: 365px;
+  padding: 10px;
+  background-color: rgba(0,0,0, 0.3); /* COLOR CONTENEDOR 1 */
+  border: 1px solid #9400D3;
+}
+
+/* 🧬 Título del panel visual */
+.sidepiczt {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 225px;
+  height: 22px;
+  padding-left: 15px;
+  padding-top: 5px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 9px;
+  background-color: rgba(75, 0, 130, 0.7); /* COLOR CABECERA CONTENEDOR 1 */
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid #9400D3;
+  cursor: default;
+}
+
+/* 🧿 Ícono interactivo en panel visual */
+.sidepiczt .iconify {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🖼️ Imagen ritual en panel visual */
+.sidepiczimg img {
+  position: absolute;
+  top: 35px;
+  left: 25px;
+  width: 190px;
+  height: 340px;
+  overflow: hidden;
+}
+/*------------------------------------------------------------------------------------*/
+/* 🪐 Contenedor de notificación */
+#notiz {
+  position: absolute;
+  bottom: 20px;
+  left: 62%;
+  transform: translateX(-50%);
+  width: 290px;
+  height: 100px; /* Altura */
+  background-color: rgba(30,30,30, 0.90);
+  backdrop-filter: blur(5px);
+  border: 1px solid #2a2a2a;
+  box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.03);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+/* 🖼️ Imagen circular dentro de notificación */
+#notiz img {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* 🧿 Ícono interactivo en notificación */
+#notiz .iconify {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(28,15,61, 0.40);
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.notitext {
+  /* Mantiene tu layout original */
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  width: 180px;
+  height: 75px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  text-align: center;
+  cursor: default;
+
+  /* Scroll visual sin flechas */
+  scrollbar-width: thin;
+  scrollbar-color: #9400D3 transparent;
+}
+
+/* Estilo para navegadores WebKit (Chrome, Edge, Safari) */
+.notitext::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notitext::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notitext::-webkit-scrollbar-thumb {
+  background-color: #7f82b7;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 🎶 Contenedor de música */
+#mussicz {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(30,30,30, 0.70);
+  border: 1px solid #2a2a2a;
+}
+/* 🧩 Panel derecho */
+#sidez2 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 270px;
+  height: 550px;
+  z-index: 1;
+}
+/* 📋 Contenedor de tareas */
+#todoz {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  width: 142px;
+  height: 245px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 15px;
+}
+
+/* 🧾 Estilos para cada tarea */
+.todoz1, .todoz2, .todoz3, .todoz4, .todoz5 {
+  background: white;
+  max-height: 40px;
+  width: 130px;
+  padding: 5px;
+  text-align: left;
+  font-size: 9px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  background-color: rgba(30,30,30, 0.90);
+  backdrop-filter: blur(5px);
+  border: 1px solid #2a2a2a;
+  transition: all 0.6s ease-in-out;
+  cursor: default;
+}
+
+/* 🧿 Íconos dentro de cada tarea */
+.todoz1 .iconify,
+.todoz2 .iconify,
+.todoz3 .iconify,
+.todoz4 .iconify,
+.todoz5 .iconify {
+  float: left;
+  font-size: 15px;
+  color: #7f82b7;
+  padding: 3px;
+  margin-right: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/*------------------------------------------------------------------------------------*/
+/* 🧊 Contenedor visual #sidepicz2 */
+#sidepicz2 {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  width: 150px;
+  height: 303px;
+  padding: 10px;
+  background-color: rgba(139, 0, 139, 0.50); /* COLOR CONTENEDOR 2 */
+  border: 1px solid #9400D3;
+}
+
+/* 🧬 Título del panel visual */
+.sidepiczt2 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 155px;
+  height: 22px;
+  padding-left: 15px;
+  padding-top: 5px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  text-transform: none;
+  font-size: 9px;
+  background-color: rgba(148, 0, 211, 0.6); /* COLOR CABECERA CONTENEDOR 2 */
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid #9400D3;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* 🧿 Ícono interactivo en título */
+.sidepiczt2 .iconify {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🖼️ Imagen ritual dentro del panel */
+.sidepiczimg2 img {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  width: 150px;
+  height: 277px;
+  overflow: hidden;
+}
+/*---------------------------------MUSIC-------------------------------------*/
+/* 🎶 Hover ritual sobre #mussicz */
+#mussicz:hover {
+  z-index: 9;
+  transition: all 0.6s ease-in-out;
+}
+
+/* 🖼️ Imagen musical */
+#mussicz img {
+  width: 200px;
+  height: 200px;
+}
+
+/* 🪞 Decoración inferior del reproductor */
+.mussiczdecoz {
+  position: absolute;
+  bottom: 0px;
+  width: 180px;
+  height: 60px;
+  padding: 10px;
+  background-color: rgba(42,42,42, 0.30);
+  backdrop-filter: blur(5px);
+}
+
+/* 🧠 Información musical */
+.minfo {
+  position: absolute;
+  top: 120px;
+  width: 180px;
+  height: 20px;
+  padding: 10px;
+  overflow: hidden;
+  text-align: center;
+  cursor: default;
+}
+
+/* ⭕ Botón decorativo del reproductor */
+.decoplayer {
+  position: absolute;
+  bottom: 10px;
+  left: 85px;
+  background-color: rgba(28,15,61, 0.70);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* 🎧 Ícono izquierdo del reproductor */
+.micon1 .iconify {
+  position: absolute;
+  bottom: 15px;
+  left: 40px;
+  font-size: 15px;
+  color: #7f82b7;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.70;
+}
+
+/* 🎧 Ícono derecho del reproductor */
+.micon2 .iconify {
+  position: absolute;
+  bottom: 15px;
+  right: 40px;
+  font-size: 15px;
+  color: #c9e4e4;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.70;
+}
+:root {
+  --Circle-Size: 30px;
+  --Play-Pause-Buttons-Size: 20px;
+  --Play-Pause-Buttons-Color: #ffffff;
+}
+#glenplayer07 {
+  position: absolute;
+  bottom: 10px;
+  left: 85px;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+}
+/*------------------------------------------------------------------------------------*/
+.flamingo {
+  display: flex;
+  align-items: center;
+}
+
+.circleofdeath {
+  width: var(--Circle-Size);
+  height: var(--Circle-Size);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.tinfoil {
+  width: var(--Circle-Size);
+  height: var(--Circle-Size);
+  background: var(--Progress-Empty);
+  border-radius: 100%;
+}
+
+.oven {
+  background: var(--Progress-Fill);
+}
+
+.oliveoil {
+  width: 100%;
+  height: 100%;
+}
+
+.crust {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--Circle-Size);
+  height: var(--Circle-Size);
+}
+
+.cherry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--Circle-Size) - (var(--Progress-Border-Size) * 2));
+  height: calc(var(--Circle-Size) - (var(--Progress-Border-Size) * 2));
+  background: var(--Player-Background);
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+.music-controls {
+  display: flex;
+  align-items: center;
+}
+
+.music-controls .material-icons {
+  font-size: var(--Play-Pause-Buttons-Size);
+  color: var(--Play-Pause-Buttons-Color);
+}
+
+.pausee {
+  display: none;
+}
+
+.beff {
+  display: none;
+}
+
+.aff {
+  display: block;
+}
+.linkz {
+  position: absolute;
+  bottom: 6px;
+  right: 7px;
+  width: 135px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkxz {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(28,15,61, 0.30);
+  border: 1px solid #c9e4e4;
+  margin: 7px;
+  z-index: 9 !important;
+}
+
+.linkxz:hover {
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  transition: all 0.6s ease-in-out;
+}
+#q h1 {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: right;
+  font-style: italic;
+}
+
+.source {
+  color: #ffffff;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  padding-bottom: 5px;
+}
+
+.source a:hover {
+  color: #ffffff;
+  transition: all 0.6s ease-in-out;
+}
+.playbutton {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin-top: 3px;
+  margin-left: 16px;
+  opacity: 0;
+  z-index: 9;
+}
+
+.albumart {
+  position: relative;
+  top: -33px;
+  background-color: #7f82b7;
+  width: 60px;
+  height: 60px;
+}
+
+.albumdetails {
+  margin-top: -85px;
+  text-align: left;
+  margin-left: 65px;
+  padding: 5px;
+  text-transform: lowercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.albumdetails lame {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  word-spacing: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: #7f82b7;
+  margin-right: 5px;
+  font-weight: 500;
+}
+#audiotext {
+  margin-top: 6px;
+  margin-bottom: 0px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.chat {
+  position: relative;
+  margin-top: -2px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#enlace {
+  position: relative;
+  top: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.71px;
+  text-align: center;
+  font-size: 20px;
+  color: #7f82b7;
+  transition: all 0.6s ease-in-out;
+}
+
+#enlace:hover {
+  color: #ffffff;
+  transition: all 0.6s ease-in-out;
+}
+.tabzcon {
+  position: absolute;
+  width: 500px;
+  height: 550px;
+  right: 217px;
+  top: 0px;
+  z-index: 0;
+}
+/*------------------------------------------------------------------------------------*/
+#chatz {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 320px;
+  height: 370px;
+  background-color: rgba(30,30,30, 0.90);
+  backdrop-filter: blur(5px);
+  border: 1px solid #2a2a2a;
+}
+.contacz {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 320px;
+  height: 70px;
+  background-color: rgba(28,15,61, 0.10);
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.contacz img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.contacz .iconify {
+  position: absolute;
+  top: 27px;
+  right: 30px;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(28,15,61, 0.40);
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.contactzn {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  width: 180px;
+  height: 22px;
+  padding-left: 15px;
+  padding-top: 0px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
+  overflow: hidden;
+  cursor: default;
+}
+
+.lasttimez {
+  position: absolute;
+  bottom: 20px;
+  left: 60px;
+  width: 180px;
+  height: 15px;
+  padding-left: 15px;
+  padding-top: 0px;
+  text-align: left;
+  font-family: 'Mandali', sans-serif;
+  text-transform: lowercase;
+  font-style: italic;
+  font-size: 9px;
+  cursor: default;
+}
+#chatzz {
+  position: absolute;
+  left: 20px;
+  bottom: 50px;
+  width: 270px;
+  height: 230px;
+  padding: 5px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.space {
+  float: left;
+  width: 290px;
+  height: 10px;
+}
+
+/* 🟣 Mensajes entrantes */
+.msg1, .msg2 {
+  float: left;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(28,15,61, 0.40);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: default;
+  margin-bottom: 5px;
+}
+
+/* 🔵 Mensajes salientes */
+.msg3, .msg4 {
+  float: right;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(127,130,183, 0.40);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: default;
+  margin-bottom: 5px;
+}
+#chatzz {
+  position: absolute;
+  left: 20px;
+  bottom: 50px;
+  width: 270px;
+  height: 230px;
+  padding: 5px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.space {
+  float: left;
+  width: 290px;
+  height: 10px;
+}
+
+/* 🟣 Mensajes entrantes */
+.msg1, .msg2 {
+  float: left;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(28,15,61, 0.40);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: default;
+  margin-bottom: 5px;
+}
+
+/* 🔵 Mensajes salientes */
+.msg3, .msg4 {
+  float: right;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: rgba(127,130,183, 0.40);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: default;
+  margin-bottom: 5px;
+}
+#footerz {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 278px;
+  height: 30px;
+  padding: 10px;
+  background: green; /* ← puede ser reemplazado por un valor simbólico */
+  cursor: text;
+  border-radius: 30px;
+  background-color: rgba(127,130,183, 0.70);
+  backdrop-filter: blur(5px);
+  border: 1px solid #7f82b7;
+  box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.03);
+}
+
+#footerz p {
+  position: absolute;
+  bottom: 8px;
+  padding-left: 10px;
+  text-align: left;
+  font-family: 'Mandali', sans-serif;
+  text-transform: lowercase;
+  font-style: italic;
+  font-size: 9px;
+}
+/*------------------------------------------------------------------------------------*/
+.ficon1, .ficon2 {
+  position: absolute;
+  top: 14px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: rgba(28,15,61, 0.40);
+  width: 15px;
+  height: 15px;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ficon1 { right: 10px; }
+.ficon2 { right: 44px; }
+#navlinkez {
+  position: absolute;
+  bottom: 0px;
+  left: 65px;
+  width: 185px;
+  height: 220px;
+}
+
+#linkiez1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 180px;
+  height: 155px;
+}
+
+.link1, .link2, .link3, .link4, .link5, .link6 {
+  float: left;
+  padding: 5px 15px;
+  margin-top: -1px;
+  padding-top: 5px;
+  width: 135px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 9px;
+  text-align: left;
+  background-color: rgba(127,130,183, 0.70);
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #7f82b7;
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+.link1 span, .link2 span, .link3 span, .link4 span, .link5 span, .link6 span {
+  float: right;
+  margin-top: -2px;
+  margin-right: 0px;
+  font-size: 9px;
+  color: #2a2a2a;
+  font-family: 'Mandali', sans-serif;
+  text-transform: capitalize;
+  padding: 2px;
+}
+
+.link1 .iconify, .link2 .iconify, .link3 .iconify, .link4 .iconify, .link5 .iconify, .link6 .iconify {
+  float: right;
+  margin-top: 1px;
+  margin-right: 0px;
+  font-size: 10px;
+  color: #2a2a2a;
+  text-transform: capitalize;
+  padding: 2px;
+}
+
+#linkiez1 a {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+#linkiez1 a:hover {
+  color: #000000;
+  font-weight: 500;
+}
+
+.link1:hover, .link2:hover, .link3:hover, .link4:hover, .link5:hover, .link6:hover {
+  background-color: rgba(30,30,30, 0.90);
+  backdrop-filter: blur(3px);
+  transition: all 0.6s ease-in-out;
+}
+#muzis {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  width: 400px;
+  height: 530px;
+  padding: 10px;
+  overflow: auto;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+#muzis img {
+  width: 70px;
+  height: 70px;
+  padding: 7px;
+  margin: 5px;
+  background-color: rgba(28,15,61, 0.0);
+  border: 1px solid #c9e4e4;
+  transition: all 0.6s ease-in-out;
+  border-radius: 50%;
+  cursor: default;
+}
+
+#muzis img:hover {
+  background-color: rgba(127,130,183, 0.80);
+  border: 1px solid #7f82b7;
+  transition: all 0.6s ease-in-out;
+}
+/* ----------------------------------------------------------------------------*/
+/* ━━━ Reproductor externo flotante ━━━ */
+#repro9-frame {
+  position: fixed;
+  bottom: 0;
+  left: 650px;
+  width: 100%;
+  height: 420px; /* ajusta según el contenido del iframe */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: auto;
+  overflow: visible;
+}
+
+#repro9-frame iframe {
+  width: 250px;
+  height: 400px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+/* ━━━ Botones Flotantes ━━━ */
+#floating-buttons {
+  position: absolute; /* Cambiado de relative a absolute */
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  z-index: 1000; /* Aumentado para asegurar visibilidad */
+}
+
+.circle-btn {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: #fff;
+  border: 2px solid #9400D3; /* ← Borde violeta eléctrico */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(148, 0, 211, 0.6);
+}
+
+/* Modal emergente */
+#image-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 10px;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+}
+
+.modal-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+}
+
+#close-modal {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 18px; /* ← más pequeña */
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  padding: 4px 6px; /* ← más compacto */
+  cursor: pointer;
+  z-index: 10000;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#close-modal:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#image-modal.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+#image-modal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+#close-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  transition: transform 0.2s ease;
+}
+
+#close-modal:hover {
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+.circle-btn img.flag-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 400px;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Footer */
+#footer-lord {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* ━━━ Cursor Cometa
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 24px;
+  background: radial-gradient(circle at 30% 30%, #ff2a2a, #b30000);
+  border-radius: 50% 60% 50% 60% / 60% 50% 60% 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: none;
+  will-change: transform;
+}
+#cometa-estela {
+  width: 666px;
+  height: 24px;
+  background: linear-gradient(to right, #ff2a2a, transparent);
+  opacity: 0.6;
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.05s ease-out;
+  filter: blur(1px);
+}
+@keyframes molecular-pulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(1.02) rotate(0.5deg);
+    filter: blur(0.3px);
+  }
+  50% {
+    transform: scale(0.98) rotate(-0.5deg);
+    filter: blur(0.2px);
+  }
+  75% {
+    transform: scale(1.01) rotate(0.3deg);
+    filter: blur(0.1px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+#custom-cursor.idle {
+  animation: molecular-pulse 1.2s infinite ease-in-out;
+}
+@keyframes vibracion-molecular {
+  0% { transform: scale(1) rotate(0deg); filter: blur(0px); }
+  25% { transform: scale(1.02) rotate(0.3deg); filter: blur(0.4px); }
+  50% { transform: scale(0.98) rotate(-0.3deg); filter: blur(0.2px); }
+  75% { transform: scale(1.01) rotate(0.2deg); filter: blur(0.1px); }
+  100% { transform: scale(1) rotate(0deg); filter: blur(0px); }
+}
+
+#custom-cursor.idle {
+  animation: vibracion-molecular 1.4s infinite ease-in-out;
+} ━━━ */
