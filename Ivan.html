@@ -818,6 +818,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+document.querySelector(".reaction").addEventListener("click", () => {
+  const burst = document.createElement("div");
+  burst.className = "emoji-burst";
+  burst.innerHTML = "❤️ 👍 🤣 😨 😡";
+
+  document.body.appendChild(burst);
+
+  setTimeout(() => burst.remove(), 1000);
+});
+</script>
+
 <style>
 .emoji-burst {
   position: fixed;
