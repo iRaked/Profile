@@ -777,7 +777,7 @@ body {
   top: -6px;
   right: -6px;
   background: red;
-  color: white;
+  color: #ffffff;
   font-size: 10px;
   padding: 2px 6px;
   border-radius: 50%;
@@ -1129,6 +1129,39 @@ body {
     margin-bottom: 20px;
     border: none;
     border-bottom: 2px solid var(--border);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 10px;
+  top: 480px;
+  width: 350px;
+  max-height: none;
+  border-radius: 8px;
+  background-color: rgba(0, 255, 255, 0.6);
+}
+
+.modal-content {
+  background-color: #010101;
+  margin: 5% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.modal-content p {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .friend ul{
