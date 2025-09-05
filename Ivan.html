@@ -63,7 +63,6 @@
                   <span id="notifCountMessenger" class="notif-badge">0</span>
                 </div>
 
-
                   <!-- BOTÓN NOTIFICACIONES -->
                   <div class="notification-wrapper" style="position: relative; cursor: pointer;">
                   <i class="fa-solid fa-bell"></i>
@@ -109,6 +108,13 @@
                         <label>
                             <img src="https://i.ibb.co/2MrKpVt/Cover-Vinyl-Disc-FX1.png" alt="xat">
                             <span>Emisiones</span>
+                        </label>
+                    </a>
+                    
+                    <a href="https://iraked.github.io/Project/Spotifly.html" target="_blank" rel="noopener noreferrer">
+                        <label>
+                            <img src="https://i.ibb.co/xqNnQ4Wq/Icon-Spotify.png" alt="xat">
+                            <span>Spotifly</span>
                         </label>
                     </a>
 
@@ -235,6 +241,27 @@
                         <a href="https://iraked.github.io/Games/Bejeweled.html" target="_blank">
                             <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game03">
                             <span>Bejeweled</span>
+                        </a>
+                    </label>
+                    
+                    <label>
+                        <a href="https://iraked.github.io/Games/PlantasVsZombies.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game03">
+                            <span>Plantas vs Zombies</span>
+                        </a>
+                    </label>
+                    
+                    <label>
+                        <a href="https://iraked.github.io/Games/Pokemon.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game03">
+                            <span>Pokémon</span>
+                        </a>
+                    </label>
+                    
+                    <label>
+                        <a href="https://iraked.github.io/Games/MarioRPG.html" target="_blank">
+                            <img src="https://i.ibb.co/YFj4TsY5/game2.png" alt="game03">
+                            <span>Mario RPG</span>
                         </a>
                     </label>
 
@@ -434,7 +461,7 @@
                                     <img src="https://i.ibb.co/fHtTWsW/Xat-Private-Rick-Ventas-FX.gif" alt="post images 03">
                                 </div>
                                 <div class="post-images2">
-                                    <img src="https://i.ibb.co/wNTjTg19/Snake-Blue.gif" alt="post images 04">
+                                    <img src="https://i.postimg.cc/9XvYp17z/Snake-Blue.gif" alt="post images 04">
                                 </div>
                             </div>
 
@@ -470,9 +497,8 @@
                               <div class="contador-panel">
                                 <h3 class="contador-titulo">🌍 Visitas Globales</h3>
                                 <a href="https://info.flagcounter.com/Wdhc" target="_blank" rel="noopener">
-                                  <img src="https://s01.flagcounter.com/count2/Wdhc/bg_010101/txt_3688ff/border_0096CC/columns_2/maxflags_12/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" 
-                                       alt="Flag Counter" 
-                                       style="max-width: 100%; height: auto; border: none;">
+                                  <img src="https://s01.flagcounter.com/count2/Wdhc/bg_010101/txt_3688ff/border_0096CC/columns_3/maxflags_18/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" 
+                                  alt="Flag Counter" style="max-width: 100%; height: auto; border: none;">
                                 </a>
                               </div>
                             </div>
@@ -538,19 +564,22 @@
             <hr>
 
             <div class="friend">
-                <h3 class="heading">XatSpace Creator <span>Hot Sales</span></h3>
+                <h3 class="heading">XatSpace Creator <span>Business</span></h3>
                 <ul>
                     <li><img src="https://i.ibb.co/609HY87d/Photo.png" alt="user"></li>
                     <li>
                         <b>Rick - (1548724149)</b>
-                        <p>XatSpace Design</p>
-
+                        <p>Custom Design</p>
+                        <!-- E-MAIL BOX -->
                         <div id="emailModal" class="modal">
-                            <div class="modal-content">
-                                <button id="copyBtn">Contact</button>
-                                <p id="copyStatus" style="color: green;"></p>
-                            </div>
+                          <div class="modal-content">
+                            <span id="closeModal" class="close">&times;</span>
+                            <p>📧 santigraphicsgames@gmail.com</p>
+                          </div>
                         </div>
+
+                        <!-- BOTÓN CONTACTO -->
+                        <button id="copyBtn">Contact</button>
                     </li>
                 </ul>
             </div>
@@ -577,8 +606,16 @@
 
                 <li class="offline">
                     <img src="" alt="TÚ">
+                    <a href="#" target="_blank">
+                        <b>Tóxica <span>Offline</span></b><span class="mote-rojo">Vacante</span>
+                    </a>
+                    <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
+                </li>
+                
+                <li class="online">
+                    <img src="https://i.ibb.co/0RShCcNf/Eluney.png" alt="user">
                     <a href="https://xat.me/LaEluney32" target="_blank">
-                        <b>Tóxica <span>Online</span></b><span class="mote-rojo">Vacante</span>
+                        <b>Eluney <span>Online</span></b>BFF
                     </a>
                     <i class="fa-brands fa-telegram icon-button" title="Enviar mensaje"></i>
                 </li>
@@ -747,41 +784,37 @@
     console.log(" Carrusel inicializado correctamente");
   });
 </script>
+    
+<!-- E-MAIL -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const copyBtn = document.getElementById("copyBtn");
-  const copyStatus = document.getElementById("copyStatus");
+  const emailModal = document.getElementById("emailModal");
+  const closeModal = document.getElementById("closeModal");
 
-  if (!copyBtn || !copyStatus) {
-    console.warn("❌ Elementos no encontrados para copiar.");
-    return;
-  }
-
+  // Abrir modal al hacer clic en el botón
   copyBtn.addEventListener("click", () => {
-    const email = "santigraphicsgames@gmail.com";
-
-    navigator.clipboard.writeText(email)
-      .then(() => {
-        copyStatus.textContent = "📋 ¡Correo copiado!";
-        copyStatus.style.color = "green";
-      })
-      .catch(err => {
-        console.error("⚠️ Error al copiar:", err);
-        copyStatus.textContent = "❌ No se pudo copiar";
-        copyStatus.style.color = "red";
-      });
+    emailModal.style.display = "block";
   });
-});
-</script>
-<script>
-document.querySelector(".reaction").addEventListener("click", () => {
-  const burst = document.createElement("div");
-  burst.className = "emoji-burst";
-  burst.innerHTML = "❤️ 👍 🤣 😨 😡";
 
-  document.body.appendChild(burst);
+  // Cerrar modal al hacer clic en la X
+  closeModal.addEventListener("click", () => {
+    emailModal.style.display = "none";
+  });
 
-  setTimeout(() => burst.remove(), 1000);
+  // Cerrar modal al hacer clic fuera del contenido
+  window.addEventListener("click", (event) => {
+    if (event.target === emailModal) {
+      emailModal.style.display = "none";
+    }
+  });
+
+  // Cerrar modal al presionar la tecla ESC
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && emailModal.style.display === "block") {
+      emailModal.style.display = "none";
+    }
+  });
 });
 </script>
 
