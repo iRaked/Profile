@@ -591,8 +591,8 @@ body {
 
 .box-video-lord embed {
   position: relative;
-  width: 280px;           /* Ajusta según tu diseño */
-  height: 400px;
+  width: 510px;           /* Ajusta según tu diseño */
+  height: 680px;
   left: 50%;              /* Mueve el punto de referencia al centro */
   transform: translateX(-50%); /* Lo empuja hacia la izquierda la mitad de su ancho */
   border-radius: 12px;
