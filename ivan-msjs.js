@@ -56,6 +56,89 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updateNotification();
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//MODAL AMIGOS
+
+const mensajesAmigos = {
+  Amor: "Extrañarte es la mejor manera de decir cuanto te quiero, soñarte me dice que el pensarte no es suficiente y escucharte es el cierre de este ciclo de amor.",
+  BFF: "Contar contigo me llena de paz el alma, sin tu guía me perdería y por ello no tienes idea de cuando te valoro.",
+  Sister: "Manita shula te llevo como la mejor muestra de fraternidad y complicidad con la que he podido contar desde tiempos inmemoriales, mi respeto y mi cariño hacia a ti.",
+  Bebote: "Hermano ilustre y no exagero, vos sabés lo que significa contar con tu amistad, te cuido y te admiro como debe honrarse esta fraternidad, grande y piola che, nunca cambies bro.",
+  Cloncita: "Amiga, que digo amiga, más que comadre; mi cloncita, confiable, leal, inteligente y simpática, eso es lo que he descubierto con tu amistad a la que aprecio, honro y respeto ante todo.",
+  Compa: "Brother de código y causa. Tu lealtad es un backend emocional que nunca falla en producción.",
+  Amygocha: "Amigocha de alma. Tu presencia es un commit constante de cariño, alegría y complicidad en cada render emocional.",
+  Amix: "Amix de azúcar y glitch. Aunque estés en modo offline, tu dulzura sigue cacheada en cada rincón del sistema.",
+  Cuñis: "Ex cuñada, sí. Pero nunca ex conexión. Tu presencia sigue siendo un eco cálido en la arquitectura emocional del sistema.",
+  Pexioxa: "Binguera cósmica. Tu energía es un loop animado que transforma cada render en celebración. Tu presencia es un GIF emocional que nunca se detiene.",
+  Pelonchas: "Tío Pelonchas, guardián del caos y la carcajada. Tu ausencia es solo visual, porque tu esencia sigue compilando en cada rincón del sistema."
+};
+
+const coloresTitulo = {
+  Amor: "#ff4f91",
+  BFF: "#00c2cb",
+  Sister: "#ff69b4",
+  Bebote: "#ffb347",
+  Cloncita: "#c71585",
+  Compa: "#1e90ff",
+  Amygocha: "#ff6347",
+  Amix: "#f08080",
+  Cuñis: "#9370db",
+  Pexioxa: "#00bfff",
+  Pelonchas: "#ff4500"
+};
+
+document.querySelectorAll(".icon-button").forEach(icon => {
+  icon.addEventListener("click", () => {
+    const li = icon.closest("li");
+    const id = li?.dataset.amigo;
+    const mensaje = mensajesAmigos[id];
+
+    if (mensaje) {
+      mostrarModalAmigo(id, mensaje);
+    } else {
+      console.warn("⚠️ No hay mensaje definido para:", id);
+    }
+  });
+});
+
+function mostrarModalAmigo(nombre, mensaje) {
+  const modal = document.createElement("div");
+  modal.className = "modal-amigo";
+
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 class="modal-titulo">${nombre}</h2>
+      <p class="modal-descripcion">${mensaje}</p>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // 🎨 Color dinámico del título
+  const titulo = modal.querySelector(".modal-titulo");
+  titulo.style.color = coloresTitulo[nombre] || "#ffffff";
+
+  // 🔁 Cierre por botón
+  modal.querySelector(".close-modal").addEventListener("click", closeModal);
+
+  // 🔁 Cierre por clic fuera del contenido
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // 🔁 Cierre por tecla ESC
+  const escListener = (e) => {
+    if (e.key === "Escape") closeModal();
+  };
+  document.addEventListener("keydown", escListener);
+
+  function closeModal() {
+    modal.remove();
+    document.removeEventListener("keydown", escListener);
+  }
+}
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   //  Confetti FX desde botón .festive-btn
   const canvas = document.getElementById('confetti-canvas');
