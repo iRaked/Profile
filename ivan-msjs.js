@@ -60,17 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
 //MODAL AMIGOS
 
 const mensajesAmigos = {
-  Amor: "Extrañarte es la mejor manera de decir cuanto te quiero, soñarte me dice que el pensarte no es suficiente y escucharte es el cierre de este ciclo de amor.",
-  BFF: "Contar contigo me llena de paz el alma, sin tu guía me perdería y por ello no tienes idea de cuando te valoro.",
-  Sister: "Manita shula te llevo como la mejor muestra de fraternidad y complicidad con la que he podido contar desde tiempos inmemoriales, mi respeto y mi cariño hacia a ti.",
+  Amor: "Extrañarte es la mejor manera de decir cuanto te quiero, soñarte me dice que el pensarte no es suficiente y escucharte es el cierre de este ciclo de amor. Quisiera... vaya que quisiera hacer tantas cosas en tu compañía sino no te quisiera como te quiero y tú sabes cuanto te quiero.",
+  BFF: "Contar contigo me llena de paz el alma, sin tu guía me perdería y por ello no tienes idea de cuando te valoro. A tu lado la distancia se vuelve efímera, un placer coincidir contigo en esta vida, señorita inolvidable.",
+  Sister: "Manita shula te llevo como la mejor muestra de fraternidad y complicidad con la que he podido contar desde tiempos inmemoriales, mi respeto y mi cariño siempre hacia a ti.",
   Bebote: "Hermano ilustre y no exagero, vos sabés lo que significa contar con tu amistad, te cuido y te admiro como debe honrarse esta fraternidad, grande y piola che, nunca cambies bro.",
   Cloncita: "Amiga, que digo amiga, más que comadre; mi cloncita, confiable, leal, inteligente y simpática, eso es lo que he descubierto con tu amistad a la que aprecio, honro y respeto ante todo.",
-  Compa: "Brother de código y causa. Tu lealtad es un backend emocional que nunca falla en producción.",
-  Amygocha: "Amigocha de alma. Tu presencia es un commit constante de cariño, alegría y complicidad en cada render emocional.",
-  Amix: "Amix de azúcar y glitch. Aunque estés en modo offline, tu dulzura sigue cacheada en cada rincón del sistema.",
-  Cuñis: "Ex cuñada, sí. Pero nunca ex conexión. Tu presencia sigue siendo un eco cálido en la arquitectura emocional del sistema.",
-  Pexioxa: "Binguera cósmica. Tu energía es un loop animado que transforma cada render en celebración. Tu presencia es un GIF emocional que nunca se detiene.",
-  Pelonchas: "Tío Pelonchas, guardián del caos y la carcajada. Tu ausencia es solo visual, porque tu esencia sigue compilando en cada rincón del sistema."
+  Compa: "Eres de esas amistades que no sabes qué esperar, lleno de bondad, serenidad y muchas ganas de pelear, perdón la costumbre, nunca te dejes de las personas descerebradas que para ello cuentas conmigo, fierro a la bestia mi compa.",
+  Amygocha: "Juegos, risas, consejos, experiencias compartidas y siempre mucha comunicación es lo que hoy me permite honrar tu presencia con total afecto, cariño y respeto por poder llamarte amiga, naaa amygocha sí!.",
+  Amix: "Amiga mía, perdida y despistada pero con un corazón generoso de dicha y alegría, literalmente me saque la lotería al conocerte.",
+  Cuñis: "Ex cuñada sí pero nunca en desconEXión, porque tu esencia es libre e inocente, tu alma frágil y aventurera llena de energía ante la vida y sus obstáculos.",
+  Pexioxa: "Si te leo me sorprendo al encontrar a una persona fuerte y centrada, lo que me hace especial al formar parte de tu círculo cercano, como tú del mío.",
+  Pelonchas: "El millonario* más despreciado de este mundo virtual, él cree que el poder está en lo que puede comprar engañándose que la felicidad está en oferta, haciendo de su vida una fantasía. Apareces por relleno, no por gusto ;)"
 };
 
 const coloresTitulo = {
