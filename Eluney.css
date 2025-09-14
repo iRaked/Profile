@@ -1,3 +1,8 @@
+:root {
+  --font-1: 'Quicksand', sans-serif;
+  --font-2: 'Cinzel', serif;
+  --font-3: 'Roboto', sans-serif;
+}
 /* 🔮 RESET Y VARIABLES */
 * {
   margin: 0;
@@ -9,12 +14,6 @@
 :after {
   content: '';
   position: absolute;
-}
-
-:root {
-  --font-1: 'Roboto', sans-serif;
-  --font-2: 'Satisfy', cursive;
-  --font-3: 'Cookie', cursive;
 }
 
 /* 🌌 FONDO PRINCIPAL */
@@ -227,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   visibility: visible;
 }
-/* PARTE 2 */
+/* =========================== PARTE 2 BOOK =========================== */
 #jd-content-4:target .page-modal-love{
 	opacity:1;
 	visibility:visible
@@ -238,13 +237,7 @@ h1, h2, h3, h4, h5, h6 {
 	border-bottom:solid 1px #efdd8e;
 	margin-bottom:35px
 }
-.jd-title-page h2{
-	font-cursiva:var(--font-3);
-	font-size:3em;
-	line-height:32px;
-	display:table;
-	border-bottom:solid 1px #a38838
-}
+
 .jd-block{
 	width:100%;
 	height:415px;
@@ -253,6 +246,117 @@ h1, h2, h3, h4, h5, h6 {
 .page-modal-about .jd-block{
 	display:flex
 }
+
+.jd-book {
+  position: relative;
+  height: 415px;
+  overflow: hidden;
+  perspective: 1200px;
+}
+/*   Fuente tipo libro, elegante y legible   */
+.jd-libro {
+  font-family: 'Georgia', 'Merriweather', serif;
+  font-size: 1.1em;              /* Tamaño mediano, ideal para lectura */
+  font-weight: 600;              /* Semi-bold para buena percepción visual */
+  line-height: 1.7;              /* Espaciado cómodo entre líneas */
+  text-align: left;              /* Justificación a la izquierda */
+  color: #f5f5f5;                /* Ajusta según fondo, puedes usar #efdd8e si deseas dorado */
+  margin: 10px auto;
+  max-width: 700px;              /* Controla el ancho para lectura óptima */
+}
+
+.jd-page-controls {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Integracion Page & Buttons */
+.jd-page-controls button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1rem;
+  background-color: #a38838;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.jd-page-controls button:hover {
+  background-color: #8B2323;
+}
+/* Botones RWD & FWD */
+.jd-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: rotateY(-180deg);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.jd-page.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: rotateY(0deg);
+  z-index: 1;
+}
+
+/* Contenido en Páginas */
+.hidden {
+  display: none;
+}
+
+.inactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Efecto de cambio de página tipo libro */
+.flip {
+  transform-origin: left center;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Scrolls */
+.jd-block::-webkit-scrollbar {
+  width: 8px;
+}
+
+.jd-block::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.jd-block::-webkit-scrollbar-thumb {
+  background-color: #a38838;
+  border-radius: 4px;
+  border: 2px solid #efdd8e;
+}
+
+.jd-block::-webkit-scrollbar-thumb:hover {
+  background-color: #8B2323;
+}
+
+/* Borde Dorado */
+.jd-page:not(.jd-cover) {
+  border: 4px solid #efdd8e; /* Dorado suave */
+  box-shadow: 0 0 12px #efdd8e;
+  border-radius: 12px;
+  padding: 10px;
+}
+/* ========================= FIN Integracion Page & Buttons ========================= */
 .jd-img-about{
 	width:320px;
 	height:415px;
@@ -263,18 +367,18 @@ h1, h2, h3, h4, h5, h6 {
 .jd-infor{
 	flex-grow:1
 }
-.jd-infor h3{
-	font-size:3.4em;
-	line-height:40px
-}
+/* NICK & ID */
 .jd-infor span{
 	letter-spacing:10.1px
 }
-.jd-infor h4{
-	font-size:3em;
-	font-cursiva:var(--font-3);
-	margin-bottom:50px
+/* WELCOME */
+.jd-infor h4 {
+  font-size: 2em;
+  font-family: var(--font-3); /* Corrección de propiedad */
+  text-align: center;         /* Centrado horizontal del texto */
+  margin-bottom: 50px;
 }
+
 .jd-col-f{
 	width:240px;
 	height:auto;
@@ -320,15 +424,16 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow:0 10px #efdd8e;
 	margin-left:calc(50% - 363px)
 }
+/* Textos */
 .page-modal-love .jd-block{
 	text-align:center;
-	font-cursiva:var(--font-3)
+	font-family: var(--font-3);
 }
 .page-modal-love h5{
 	font-size:3em
 }
 .page-modal-love h6{
-	font-cursiva:var(--font-1);
+	font-family: var(--font-3);
 	letter-spacing:4px;
 	line-height:32px
 }
@@ -370,7 +475,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85em;
 }
     
-/* FAMILIA */
+/*  FAMILIA ========================================= PARTE 3  */
 .jd-familia-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
