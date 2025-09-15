@@ -16,11 +16,11 @@
   <script src="Roger.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <!-- BLOCK RIGHT CLICK -->
+  <!-- BLOCK RIGHT CLICK 
   <script type="text/javascript">
   document.onkeydown = function(){return false};
   document.oncontextmenu = function(){return false}
-  </script>
+  </script>-->
 </head>
 <body>
 
@@ -83,6 +83,11 @@ Cuando se escriben expresiones sobre un libro, cada línea te transporta a un lu
     <!-- Botón 3: GIF -->
     <a href="https://postimg.cc/gallery/495VdGY" target="_blank" class="pop-tr pop-muses" title="MUSES">
       <span class="pop-label">GIF</span>
+    </a>
+      
+      <!-- Botón 4: Music (abre modal) -->
+    <a href="#" class="modal-trigger pop-tr pop-muses" data-modal="modal-music" title="MUSIC">
+      <span class="pop-label">Music</span>
     </a>
       
       <!-- Cinta decorativa -->
@@ -377,6 +382,15 @@ Esta sensación se amplifica. Vemos dos personas que, aunque distintas, parecen 
           ">©2025</h5>
         </a>
       </footer>
+    </div>
+    
+    <!-- REPRO MODAL -->
+    <div id="modal-music" class="modal">
+      <div class="modal-overlay"></div> <!-- Fondo clickeable -->
+      <div class="modal-content">
+        <span class="modal-close-x" title="Cerrar">✖</span>
+        <iframe src="https://iraked.github.io/ExtasisRadio/Repro13.html" frameborder="0"></iframe>
+      </div>
     </div>
     
 </body>
