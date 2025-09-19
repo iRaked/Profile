@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=140, height=140, initial-scale=1.0">
+  <title>iFone</title>
+  <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="iPhone.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Scripts externos -->
+  <script src="iPhone.js" defer></script>
+  <!-- BLOCK RIGHT CLICK 
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>-->
+</head>
+    <body>
+      <div id="contenedor-principal">
+          
+        <header id="barra-sistema">
+          <div id="reloj"></div>
+          <i class="fab fa-bluetooth-b" id="bluetooth-icono"></i>
+          <svg id="signal-bars" viewBox="0 0 100 100" width="60" height="40">
+          <!--  Signal -->
+          <rect x="10" y="70" width="8" height="10" class="bar bar-1" />
+          <rect x="24" y="65" width="8" height="15" class="bar bar-2" />
+          <rect x="38" y="60" width="8" height="20" class="bar bar-3" />
+          <rect x="52" y="55" width="8" height="25" class="bar bar-4" />
+        </svg>
+        <!-- Batery -->
+          <svg id="bateria-icono" viewBox="0 0 100 50" width="100" height="50">
+          <rect x="2" y="10" width="80" height="30" rx="6" ry="6" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+          <rect id="nivel-bateria" x="4" y="12" width="76" height="26" rx="4" ry="4" fill="#00ff00"/>
+          <rect x="84" y="18" width="10" height="14" rx="2" ry="2" fill="#ffffff"/>
+        </svg>
+        </header>
+<!--━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-->
+        <div id="bloques-container">
+          <!-- Botón 2 Calculadora -->
+        <!-- Contenedor exclusivo del módulo Calculadora -->
+        <div id="bloque-calculadora" class="bloque-calculadora">
+          <!-- Botón Calculadora -->
+          <button id="boton-calculadora" class="Calculator">
+            <img src="assets/img/Calculator.png" alt="Calculadora" />
+          </button>
+
+          <!-- Modal Calculadora -->
+          <div id="modal-calculadora" class="modal-calculadora oculto">
+            <div class="iframe-wrapper">
+              <div class="iframe-inner">
+                <iframe
+                  src="https://iraked.github.io/Project/Calculadora/index.html"
+                  frameborder="0"
+                  scrolling="no"
+                  allowtransparency="true"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Botón 1 Clock -->
+          <button class="Clock" id="boton-1">
+            <img src="assets/img/Clock.png" alt="Clock" />
+          </button>
+            <div id="modal-reloj" class="modal-reloj oculto">
+            <canvas id="canvas-reloj" width="120" height="120"></canvas>
+          </div>
+            
+            <!-- Botón 3 Cámara -->
+            <button id="btn-camera" class="Camera">
+              <img src="assets/img/Camera.png" alt="Camera" />
+            </button>
+            
+            <!-- Botón 4 Brújula -->
+            <button id="btn-brujula" class="Brujula">
+              <img src="assets/img/Compass.png" alt="Brújula" />
+            </button>
+
+            <!-- Modal Brújula -->
+            <div id="modal-brujula" class="modal-brujula oculto">
+              <div class="brujula-contenido">
+                <svg id="flecha-direccion" width="40" height="40" viewBox="0 0 100 100">
+                  <polygon points="50,10 60,40 50,30 40,40" fill="#FFD700" />
+                </svg>
+                <p id="direccion">Dirección: desconocida</p>
+              </div>
+            </div>
+
+          <!-- Bloque B1 -->
+            <div id="bloque-B1" class="bloque-ritual">
+              <div id="modal-reloj" class="modal-reloj oculto">
+                <canvas id="canvas-reloj" width="120" height="120"></canvas>
+              </div>
+
+              <!-- Información directa -->
+              <div id="info-tiempo" class="info-tiempo">
+              <p id="ubicacion">Ubicación: desconocida</p>
+              <p id="fecha">Fecha: --</p>
+            </div>
+            </div>
+            
+        </div><!-- Cierre bloques-container -->
+          
+          <!-- ======================= Bloque iMusic ======================= -->
+        <div id="bloque-iMusic" class="imusic">
+          <!-- Contenido futuro: reproductor, visualizador, controles -->
+        </div>
+          
+          <!-- ======================= Bloque B2 ======================= -->
+        <div id="bloque-B2" class="bloque-b2">
+
+        <!-- Botón Weather -->
+        <button class="Weather" id="btn-weather">
+          <img src="assets/img/Weather.png" alt="Clima actual" />
+        </button>
+            
+        <!-- Modal Weather -->
+        <div id="modal-weather" class="modal-weather oculto">
+          <div class="weather-contenido">
+            <h3 id="estado-clima">Clima actual: --</h3>
+            <p id="temp-clima">Temperatura: --°C</p>
+            <p id="humedad-clima">Humedad: --%</p>
+            <p id="estacion-clima">Estación: --</p>
+          </div>
+        </div>
+
+        <!-- YouTube -->
+        <button class="YouTube" id="btn-youtube">
+          <img src="assets/img/YT.png" alt="YouTube">
+        </button>
+            
+        <!-- Modal YouTube -->
+        <div id="modal-youtube" class="modal-youtube oculto">
+          <iframe id="yt-frame" width="100%" height="100%" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video -->
+
+        <!-- Safari -->
+        <!-- Contenedor exclusivo del módulo Safari Game -->
+        <div id="modulo-juego">
+          <!-- Botón Safari -->
+          <button id="btn-juego" class="btn-juego">
+            <img src="assets/img/Safari.png" alt="Jugar" />
+          </button>
+
+          <!-- Modal Safari Game -->
+          <div id="modal-juego" class="modal-juego oculto">
+            <div class="wrapper-juego">
+              <div class="inner-juego">
+                <iframe
+                  id="iframe-juego"
+                  src=""
+                  frameborder="0"
+                  allow="fullscreen; autoplay; encrypted-media; microphone; camera; clipboard-read; clipboard-write; geolocation"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+            
+        </div><!-- Cierre Bloque B2 -->
+          
+        <!-- Seccion y Bloque B3 -->
+        <div id="bloques-container-s3">
+
+          <!-- 🔘 Botón 1 – Notas -->
+          <button class="Notas" id="btn-notas">
+            <img src="assets/img/Notes.png" alt="Notas" />
+          </button>
+          <div id="modal-notas" class="modal-notas oculto">
+            <textarea id="area-notas" placeholder="Escribe tus notas aquí..."></textarea>
+            <button id="guardar-notas">Guardar</button>
+          </div>
+
+          <!-- 🖼️ Botón 2 – Fotos -->
+        <button class="Fotos" id="btn-fotos">
+          <img src="assets/img/Photos.png" alt="Fotos" />
+        </button>
+
+        <!-- 🎞️ Modal Slider de Fotos (independiente del Bloque B3) -->
+        <div id="modal-slider-fotos" class="modal-slider-fotos oculto">
+          <div class="carrusel-contenido">
+            <img src="assets/img/Picture1.jpg" alt="Fondo 1" class="foto-mini" />
+            <img src="assets/img/Picture2.jpg" alt="Fondo 2" class="foto-mini" />
+            <img src="assets/img/Picture3.jpg" alt="Fondo 3" class="foto-mini" />
+            <!-- Puedes agregar más imágenes aquí -->
+          </div>
+        </div>
+
+        <!-- 🖼️ Imagen expandida -->
+        <div id="foto-expandida" class="foto-expandida oculto">
+          <img id="imagen-grande" src="" alt="Foto seleccionada" />
+        </div>
+
+          <!-- 🔔 Botón 3 – Contenedor Notificaciones -->
+            <!-- 🔔 Contenedor vacío -->
+        <div id="notificaciones-container" class="notificaciones-container oculto"></div>
+
+        <!-- 🔔 Botón de activación -->
+        <button id="btn-notificaciones" class="btn-notificaciones">
+          <img src="assets/img/Messages.png" alt="Notificaciones" />
+        </button>
+            
+        <!-- 🛍️ Botón 4 – Store -->
+        <a href="https://play.google.com/store/apps?hl=es_MX&pli=1" class="btn-store">
+          <button class="Store">
+            <img src="assets/img/Store.png" alt="Store" />
+          </button>
+        </a>
+            
+            <!-- 🔮 Bloque B3 – Transición automática de fondos -->
+        <div id="bloque-B3" class="bloque-b3">
+          <div class="fondo-b3 fondo-1"></div>
+          <div class="fondo-b3 fondo-2"></div>
+          <div class="fondo-b3 fondo-3"></div>
+          <div class="fondo-b3 fondo-4"></div>
+        </div>
+
+        <!-- Botón Video -->
+        <button class="Video" id="btn-video">
+          <img src="assets/img/Videos.png" alt="Video" />
+        </button>
+
+        <!-- Modal Video -->
+        <div id="modal-video" class="modal-video oculto">
+          <video id="video-fondo" autoplay muted loop playsinline>
+            <source src="assets/video/BG1.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        </div> <!-- Cierre bloques-container-S3 -->
+          
+          <!-- 🎵 Sección Menú -->
+        <!-- 🎵 Cápsula decorativa del menú -->
+        <div>
+            <div id="capsula-menu"></div>
+
+        <!-- 🎶 Botón ritual iTunes -->
+            <button class="boton-itunes" id="boton-itunes">
+              <img src="assets/img/iTunes.png" alt="iTunes" />
+            </button>
+            
+            <!-- ⚡ Transición Power -->
+        <div id="power-overlay" class="power-overlay">
+          <img src="assets/bg/Apple1.jpg" alt="Transición Power" />
+        </div>
+
+        <!-- ⚡ Botón Power -->
+        <button class="boton-power" id="btn-power">
+          <img src="assets/img/Power.png" alt="Power" />
+        </button>
+
+        </div><!-- Cierre Contenedor-Menu -->
+          
+      </div><!-- Cierre contenedor-principal -->
+<!--━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━-->
+        
+        <!-- Reproductor global -->
+  <audio id="audio-player" src="ruta/del/track.mp3" preload="metadata"></audio>
+        
+        <!-- Reproductor Modal Universal -->
+  <div id="modal-player" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal">×</button>
+
+      <!-- Carátula -->
+      <div class="cover">
+        <img id="modal-cover" src="" alt="Cover" />
+      </div>
+
+      <!-- Información de pista -->
+        <div class="info">
+          <h2 id="modal-artist">Daaz</h2>
+          <p id="modal-title">I like you mucho</p>
+          <p id="track-time" class="track-time">0:00</p>
+        </div>
+
+      <!-- Cola visual -->
+      <ul id="modal-queue" class="modal-queue"></ul>
+
+      <!-- Reproductor personalizado -->
+      <div class="custom-player">
+        <button id="btn-toggle" class="play-btn">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Audio oculto -->
+      <audio id="modal-audio"></audio>
+
+      <!-- Navegación entre pistas -->
+      <div class="modal-nav">
+        <button id="btn-prev" class="nav-btn">⟵</button>
+        <button id="btn-next" class="nav-btn">⟶</button>
+      </div>
+
+      <!-- Controles extendidos -->
+      <div class="modal-controls">
+        <label>
+          Volumen:
+          <input type="range" id="volume-control" min="0" max="1" step="0.01" />
+        </label>
+        <label>
+          Velocidad:
+          <select id="speed-control">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+          </select>
+        </label>
+        <button id="loop-toggle">Loop: Off</button>
+        <button id="mute-toggle">Mute</button>
+      </div>
+    </div>
+  </div>
+        
+    </body>
+</html>

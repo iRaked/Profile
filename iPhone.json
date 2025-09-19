@@ -1,0 +1,12 @@
+[
+  { "id": "msg001", "texto": "Nueva conexión detectada", "tipo": "info" },
+  { "id": "msg002", "texto": "Error en módulo 3", "tipo": "error" },
+  { "id": "msg003", "texto": "Scroll dorado activado", "tipo": "ritual" },
+  { "id": "msg004", "texto": "Complicidad creativa detectada", "tipo": "ritual" },
+  { "id": "msg005", "texto": "Actualización disponible", "tipo": "info" },
+  { "id": "msg006", "texto": "Bitácora sincronizada", "tipo": "ritual" },
+  { "id": "msg007", "texto": "Depuración exitosa", "tipo": "info" },
+  { "id": "msg008", "texto": "Artefacto desacoplado", "tipo": "error" },
+  { "id": "msg009", "texto": "Transición completada", "tipo": "ritual" },
+  { "id": "msg010", "texto": "Audio ambiental cargado", "tipo": "info" }
+]
