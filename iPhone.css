@@ -8,7 +8,7 @@
   background-color: #0b0b0b50;
 
   /* Dos imágenes sobrepuestas */
-  background-image: url('assets/img/iPhoneX.png'), url('assets/img/Screan1.png');
+  background-image: url('https://i.ibb.co/wZthmVJz/iPhoneX.png'), url('https://i.ibb.co/yFMWsXmN/Screan1.png');
   background-position: center center;
   background-size: cover, contain;
   background-repeat: no-repeat, no-repeat;
@@ -84,7 +84,7 @@
   width: 35px;
   height: 30px;
   z-index: 10;
-}
+}https://i.ibb.co/yFMWsXmN/Screan1.png
 
 #nivel-bateria {
   transition: width 1s ease-in-out, fill 1s ease-in-out;
@@ -411,10 +411,10 @@
 /* Botón Video */
 .Video {
   position: absolute;
-  top: 62px;
-  left: 42px;
-  width: 384px;
-  height: 760px;
+  top: 410px;
+  left: 200px;
+  width: 60px;
+  height: 60px;
   background: transparent;
   border: none;
   padding: 0;
