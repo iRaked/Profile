@@ -477,16 +477,17 @@
 
 /* 🕹️ Modal Juego */
 .modal-juego {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  position: fixed; /* Cambiado a fixed para que se mantenga centrado en viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   height: 200px;
   background-color: rgba(0, 0, 0, 0.85);
   border: 2px solid #f1f1f1;
   border-radius: 12px;
   overflow: hidden;
-  z-index: 999;
+  z-index: 999999;
 }
 
 .modal-juego.oculto {
@@ -498,13 +499,15 @@
   position: relative;
   width: 100%;
   height: 100%;
+    top: -100px;
+    right: 45px
 }
 
-/* 🔍 Escala y desplazamiento ritual */
+/* 🔍 Escala y desplazamiento ritual - Escritorio */
 .inner-juego {
   position: absolute;
-  top: -100px;
-  left: -45px;
+  top: 0;
+  left: 0;
   transform: scale(0.5);
   transform-origin: top left;
   width: 800px;
@@ -512,10 +515,35 @@
   pointer-events: auto;
 }
 
+/* 🎯 Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+  .modal-juego {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    transform: none;
+    top: 0;
+    left: 0;
+  }
+
+  .inner-juego {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .inner-juego iframe {
+    border-radius: 0;
+  }
+}
+
+/* 🎮 Iframe del juego */
 .inner-juego iframe {
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  background: transparent; /* Fondo transparente para evitar conflicto visual */
 }
 
 /* ======================= Sección B3 ======================= */
