@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalPlayer = document.getElementById("modal-player");
   const cerrarModal = document.querySelector(".close-modal");
   const modalContent = document.getElementById("modal-content");
+  const closeITunes = document.getElementById("close-itunes"); // No Tocar
 
   const bloqueIMusic = document.getElementById("bloque-iMusic");
 
@@ -613,27 +614,46 @@ document.addEventListener("click", (e) => {
     }
   });
 })();
-// Boton iTunes
-    botonItunes.addEventListener("click", () => {
-  modalPlayer.classList.remove("hidden");
+    
+// 🔹 Abrir modal al hacer clic en el botón iTunes
+botonItunes.addEventListener("click", () => {
+  modalPlayer.classList.remove("hidden");                              // Quita la clase que oculta el modal
 });
 
+// 🔹 Cierre con botón X (clase .close-modal)
 cerrarModal.addEventListener("click", () => {
-  modalPlayer.classList.add("hidden");
+  modalPlayer.classList.add("hidden");                                 // Oculta el modal
 });
-    // 🔹 Cierre con tecla ESC
+
+// 🔹 Cierre con tecla ESC
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    modalPlayer.classList.add("hidden");
+    modalPlayer.classList.add("hidden");                               // Oculta el modal si se presiona Escape
   }
 });
 
 // 🔹 Cierre con clic fuera del contenido
 modalPlayer.addEventListener("click", (e) => {
   if (!modalContent.contains(e.target)) {
-    modalPlayer.classList.add("hidden");
+    modalPlayer.classList.add("hidden");                               // Oculta el modal si se hace clic fuera del contenido
   }
 });
+
+// 🔹 Cierre con botón X específico (close-itunes)
+closeITunes.addEventListener("click", () => {
+  cerrarModalITunes();                                                 // Ejecuta la función personalizada de cierre
+});
+
+// 🔹 Función de cierre personalizada
+function cerrarModalITunes() {
+  modalPlayer.classList.add("hidden");                                 // Oculta el modal
+  // Si el reproductor necesita pausa o reset, puedes agregarlo aquí:
+  // const media = modalPlayer.querySelector("audio, video");
+  // if (media && !media.paused) {
+  //   media.pause();
+  // }
+}
+
 // =================================================================================
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 🎛️ Reproductor Modal Universal con navegación, cola, controles extendidos, progreso visual interactivo y control de colisión
