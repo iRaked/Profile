@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnPower = document.getElementById("btn-power");
   const powerOverlay = document.getElementById("power-overlay");
+  const powerImg = powerOverlay.querySelector("img");
+    
+  const btnContacts = document.getElementById("btn-contacts");
+  const modalContacts = document.getElementById("modal-contacts");
+  const closeContacts = document.getElementById("close-contacts");
+  const contactsContainer = modalContacts.querySelector(".contacts-container");
 
   
 // Llamdo a JSON music
@@ -457,13 +463,18 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Boton Notas
+    // 📝 Alternar apertura/cierre con el botón
+btnNotas.addEventListener("click", () => {
+  modalNotas.classList.toggle("oculto");
+});
 
-// 💾 Guardar nota en localStorage
+// 💾 Guardar Nota en localStorage y cerrar
 guardarNotas.addEventListener("click", () => {
   const texto = areaNotas.value.trim();
   if (texto !== "") {
     localStorage.setItem("notaPersonal", texto);
-    modalNotas.classList.add("oculto"); // Cierra el modal tras guardar
+    modalNotas.classList.add("oculto");
   }
 });
 
@@ -476,6 +487,14 @@ document.addEventListener("click", (e) => {
     modalNotas.classList.add("oculto");
   }
 });
+
+// ⌨️ Cierre con tecla ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modalNotas.classList.contains("oculto")) {
+    modalNotas.classList.add("oculto");
+  }
+});
+    
 // Modal Photos Slider
 // Mostrar/ocultar slider con botón Fotos
 btnFotos.addEventListener("click", () => {
@@ -847,32 +866,58 @@ function initModalPlayer(contenedorId, playlistData) {
 }
 
 // Botón Power *********************************************************************
-if (!btnPower || !powerOverlay) {
-    console.warn("❌ Elementos no encontrados:", { btnPower, powerOverlay });
-    return;
+btnPower.addEventListener("click", () => {
+  powerOverlay.style.display = "flex";
+  powerOverlay.style.opacity = "1";
+  powerOverlay.style.visibility = "visible";
+  powerOverlay.querySelector("img").style.animation = "fadePower 6s forwards";
+});
+
+powerOverlay.querySelector("img").addEventListener("animationend", () => {
+  powerOverlay.style.display = "none";
+  powerOverlay.style.opacity = "0";
+  powerOverlay.style.visibility = "hidden";
+});
+
+// Modal Contactos
+// 🧭 Abrir modal Contactos
+  btnContacts.addEventListener("click", () => {
+    modalContacts.classList.remove("oculto");
+    modalContacts.style.display = "flex";
+    modalContacts.style.opacity = "1";
+    modalContacts.style.visibility = "visible";
+  });
+
+  // 🧭 Cierre con botón X
+  closeContacts.addEventListener("click", () => {
+    cerrarModalContacts();
+  });
+
+  // 🧭 Cierre al hacer clic fuera del contenido
+  document.addEventListener("click", (e) => {
+    const dentroDelModal = contactsContainer.contains(e.target);
+    const esBoton = btnContacts.contains(e.target);
+    const esCierre = closeContacts.contains(e.target);
+
+    if (!modalContacts.classList.contains("oculto") && !dentroDelModal && !esBoton && !esCierre) {
+      cerrarModalContacts();
+    }
+  });
+
+  // 🧭 Cierre universal con tecla ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      cerrarModalContacts();
+    }
+  });
+
+  // 🧭 Función de cierre
+  function cerrarModalContacts() {
+    modalContacts.classList.add("oculto");
+    modalContacts.style.display = "none";
+    modalContacts.style.opacity = "0";
+    modalContacts.style.visibility = "hidden";
   }
-
-  btnPower.addEventListener("click", () => {
-    console.log("⚡ Power activado");
-
-    // Mostrar el overlay y preparar animación
-    powerOverlay.style.display = "block";
-    powerOverlay.style.opacity = "1";
-    powerOverlay.style.visibility = "visible";
-    powerOverlay.style.animation = "fadePower 1.8s forwards";
-
-    // Reiniciar animación
-    void powerOverlay.offsetWidth; // ← truco para reiniciar
-    powerOverlay.style.animation = "fadePower 1.8s forwards";
-  });
-
-  // Ocultar completamente al terminar la animación
-  powerOverlay.addEventListener("animationend", () => {
-    powerOverlay.style.display = "block";
-    powerOverlay.style.opacity = "0";
-    powerOverlay.style.visibility = "hidden";
-    powerOverlay.style.animation = "none";
-  });
 
 
 }); // ← este es el verdadero cierre del DOMContentLoaded
