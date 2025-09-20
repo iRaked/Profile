@@ -449,7 +449,7 @@ document.addEventListener("keydown", (e) => {
     modalJuego.classList.add("oculto");
     iframeJuego.src = "";
   } else {
-    iframeJuego.src = "https://iraked.github.io/Games/Rider.html";
+    iframeJuego.src = "https://iraked.github.io/Games/MotoRider.html";
     modalJuego.classList.remove("oculto");
   }
 });
@@ -941,4 +941,5 @@ powerOverlay.querySelector("img").addEventListener("animationend", () => {
 
 
 }); // ← este es el verdadero cierre del DOMContentLoaded
+
 
