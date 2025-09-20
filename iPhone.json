@@ -11,5 +11,5 @@
   { "id": "msg010", "texto": "📌 Chat fijado: Amor estás libre para hablar, ya quiero escucharte", "tipo": "wsp" },
   { "id": "msg010", "texto": "💬 Signal: Jefe Mañana no trabajamos", "tipo": "info" },
   { "id": "msg007", "texto": "📸 Instagram: Roxana te mencionó en su historia", "tipo": "noti" },
-  { "id": "msg007", "texto": "🧠 Mnesaje programado enviado: Que dios te guarde y se le olvide donde", "tipo": "info" }
+  { "id": "msg007", "texto": "🧠 Mensaje programado enviado: Que dios te guarde y se le olvide donde", "tipo": "info" }
 ]
