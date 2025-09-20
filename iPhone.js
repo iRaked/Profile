@@ -463,12 +463,6 @@ document.addEventListener("click", (e) => {
     iframeJuego.src = "";
   }
 });
-    
-    modalJuego.classList.remove("oculto");
-setTimeout(() => {
-  iframeJuego.src = "https://iraked.github.io/Games/MotoRider.html";
-  iframeJuego.focus(); // 🔍 Forzar foco en el iframe
-}, 100);
 
 // Boton Notas
     // 📝 Alternar apertura/cierre con el botón
