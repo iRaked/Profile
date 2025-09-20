@@ -1,12 +1,15 @@
 [
-  { "id": "msg001", "texto": "Nueva conexión detectada", "tipo": "info" },
-  { "id": "msg002", "texto": "Error en módulo 3", "tipo": "error" },
-  { "id": "msg003", "texto": "Scroll dorado activado", "tipo": "ritual" },
-  { "id": "msg004", "texto": "Complicidad creativa detectada", "tipo": "ritual" },
-  { "id": "msg005", "texto": "Actualización disponible", "tipo": "info" },
-  { "id": "msg006", "texto": "Bitácora sincronizada", "tipo": "ritual" },
-  { "id": "msg007", "texto": "Depuración exitosa", "tipo": "info" },
-  { "id": "msg008", "texto": "Artefacto desacoplado", "tipo": "error" },
-  { "id": "msg009", "texto": "Transición completada", "tipo": "ritual" },
-  { "id": "msg010", "texto": "Audio ambiental cargado", "tipo": "info" }
+  { "id": "msg001", "texto": "🔔 Papelera llena de recuerdos basura", "tipo": "info" },
+  { "id": "msg002", "texto": "📘 Tu ex hizo un comentario en tu última publicación", "tipo": "info" },
+  { "id": "msg003", "texto": "👤 Solicitud de tu ex: Desbloquéame por favor", "tipo": "error" },
+  { "id": "msg004", "texto": "🔔 WhatsApp ¿Cuándo te veré otra vez 🔥", "tipo": "wsp" },
+  { "id": "msg005", "texto": "🔊 Mensaje de voz: Cami", "tipo": "info" },
+  { "id": "msg006", "texto": "▶️ Nuevo sencillo de José Madero", "tipo": "info" },
+  { "id": "msg007", "texto": "📸 Instagram: videollamada entrante de Karla", "tipo": "noti" },
+  { "id": "msg008", "texto": "📧 (4) Mensajes de la arrepentida", "tipo": "error" },
+  { "id": "msg009", "texto": "🔔 WhatsApp Amor Bonito compartió un estado", "tipo": "wsp" },
+  { "id": "msg010", "texto": "📌 Chat fijado: Amor estás libre para hablar, ya quiero escucharte", "tipo": "wsp" },
+  { "id": "msg010", "texto": "💬 Signal: Jefe Mañana no trabajamos", "tipo": "info" },
+  { "id": "msg007", "texto": "📸 Instagram: Roxana te mencionó en su historia", "tipo": "noti" },
+  { "id": "msg007", "texto": "🧠 Mnesaje programado enviado: Que dios te guarde y se le olvide donde", "tipo": "info" }
 ]
