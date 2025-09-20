@@ -449,7 +449,7 @@ document.addEventListener("keydown", (e) => {
     modalJuego.classList.add("oculto");
     iframeJuego.src = "";
   } else {
-    iframeJuego.src = "https://iraked.github.io/Games/MotoRider.html";
+    iframeJuego.src = "https://iraked.github.io/Games/Rider.html";
     modalJuego.classList.remove("oculto");
   }
 });
@@ -463,6 +463,12 @@ document.addEventListener("click", (e) => {
     iframeJuego.src = "";
   }
 });
+    
+    modalJuego.classList.remove("oculto");
+setTimeout(() => {
+  iframeJuego.src = "https://iraked.github.io/Games/MotoRider.html";
+  iframeJuego.focus(); // 🔍 Forzar foco en el iframe
+}, 100);
 
 // Boton Notas
     // 📝 Alternar apertura/cierre con el botón
@@ -941,5 +947,3 @@ powerOverlay.querySelector("img").addEventListener("animationend", () => {
 
 
 }); // ← este es el verdadero cierre del DOMContentLoaded
-
-
