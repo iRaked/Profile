@@ -419,7 +419,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  z-index: 20;
+  z-index: 10;
 }
 
 .Video img {
@@ -779,7 +779,8 @@
 /* Tipos de burbuja */
 .tipo-info   { background-color: rgba(0, 150, 255, 0.7); }
 .tipo-error  { background-color: rgba(255, 0, 0, 0.7); }
-.tipo-ritual { background-color: rgba(255, 215, 0, 0.7); }
+.tipo-noti { background-color: rgba(255, 215, 0, 0.7); }
+.tipo-wsp { background-color: rgba(37, 211, 102, 0.7); }
 
 /* Animación flotante */
 @keyframes flotarBurbuja {
@@ -1197,7 +1198,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  z-index: 21;
+  z-index: 1000;
 }
 
 .boton-power img {
@@ -1211,42 +1212,207 @@ powerOverlay.style.opacity = "1";
 powerOverlay.style.visibility = "visible";
 
 .power-overlay {
-  position: absolute;
-  top: 16px;
-  left: 19px;
-  width: 340px;
-  height: 606px;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 40px;
-  display: none; /* ← clave para que no aparezca al cargar */
-  opacity: 0;
-  visibility: hidden;
-  transform: scaleY(1.2);
-  transform-origin: top;
+  position: fixed; /* ← cambia de absolute a fixed */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ← centra verticalmente */
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 99999;
 }
 
 .power-overlay img {
-  width: 102%;
+  width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
   border-radius: 40px;
+    margin-top: -750px; /* mueve la imagen 50px hacia arriba */
+    animation: fadePower 6s forwards; /* ← antes 1.8s */
+    z-index: 99999;
 }
 
 @keyframes fadePower {
   0% {
-    opacity: 1;
-    visibility: visible;
-    transform: scaleY(1.2);
+    opacity: 0;
+    transform: scale(0.9);
   }
-  80% {
+  50% {
     opacity: 1;
-    transform: scaleY(1);
+    transform: scale(1.05);
   }
   100% {
     opacity: 0;
-    visibility: hidden;
-    transform: scaleY(0.8);
+    transform: scale(0.8);
   }
+}
+
+/* Botón Contactos */
+.Contactos {
+  position: absolute;
+  top: 668px;       /* misma altura que Power */
+  left: 250px;      /* desplazado a la derecha respecto a Power */
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 21;
+}
+
+.Contactos img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.oculto {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Contenedor principal dentro del modal */
+.contacts-container {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Grupo de amigos */
+.friends {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Cada contacto */
+.box-friends {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  text-decoration: none;
+  margin-bottom: 5px;
+  transition: transform 0.3s ease;
+}
+
+.box-friends:hover {
+  transform: scale(1.05);
+}
+
+/* Imagen redonda con aura */
+.img-friends {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #00f0ff;
+  padding: 5px;
+  object-fit: cover;
+  z-index: 2;
+  transition: box-shadow 0.3s ease;
+}
+
+.box-friends:hover .img-friends {
+  box-shadow: 0 0 12px #00f0ff;
+}
+
+/* Cinta blanca oculta detrás del círculo */
+.box-friends h2 {
+  position: absolute;
+  top: 30%;
+  left: 0%;
+  transform: translate(30%, -50%) scaleX(0.75); /* ← antes scaleX(0) */
+  transform-origin: left center;
+  width: 160px;
+  height: 40px;
+  background: white;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ← antes: flex-start */
+  gap: 10px; /* ← espacio entre símbolo y nombre */
+  overflow: hidden;
+  white-space: nowrap;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 1;
+  padding: 0 12px;
+  box-shadow:
+    0 0 8px rgba(0, 240, 255, 0.8),
+    0 0 16px rgba(0, 240, 255, 0.5);
+}
+
+.box-friends:hover h2 {
+  transform: translate(65%, -50%) scaleX(1);
+  opacity: 1;
+}
+
+/* Nombre y símbolo */
+.simbol {
+  font-size: 1.2em;
+  color: #00f0ff;
+  flex-shrink: 0;
+  margin-left: 40px;
+  opacity: 1;
+}
+
+.name {
+  margin-left: 8px;
+  color: #00f0ff;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.box-friends:hover .name {
+  opacity: 1;
+}
+
+.modal-universal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
 }
