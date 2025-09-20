@@ -477,16 +477,17 @@
 
 /* 🕹️ Modal Juego */
 .modal-juego {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   height: 200px;
   background-color: rgba(0, 0, 0, 0.85);
   border: 2px solid #f1f1f1;
   border-radius: 12px;
   overflow: hidden;
-  z-index: 999;
+  z-index: 9999; /* Elevado para dominar el caos móvil */
 }
 
 .modal-juego.oculto {
@@ -500,22 +501,49 @@
   height: 100%;
 }
 
-/* 🔍 Escala y desplazamiento ritual */
-.inner-juego {
-  position: absolute;
-  top: -100px;
-  left: -45px;
-  transform: scale(0.5);
-  transform-origin: top left;
-  width: 800px;
-  height: 800px;
-  pointer-events: auto;
+/* 🔍 Escala y desplazamiento ritual - Escritorio */
+@media (min-width: 601px) {
+  .inner-juego {
+    position: absolute;
+    top: -100px;
+    left: -45px;
+    transform: scale(0.5);
+    transform-origin: top left;
+    width: 800px;
+    height: 800px;
+    pointer-events: auto;
+  }
 }
 
+/* 📱 Ajuste para móvil */
+@media (max-width: 600px) {
+  .modal-juego {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .inner-juego {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .inner-juego iframe {
+    border-radius: 0;
+  }
+}
+
+/* 🎮 Iframe del juego */
 .inner-juego iframe {
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  background: transparent;
 }
 
 /* ======================= Sección B3 ======================= */
@@ -753,7 +781,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 30;
+  z-index: 10;
 }
 
 .btn-notificaciones img {
@@ -796,7 +824,7 @@
   position: absolute;
   top: 570px;       /* Ajusta según tu layout */
   left: 115px;
-  z-index: 30;
+  z-index: 10;
   text-decoration: none;
 }
 
