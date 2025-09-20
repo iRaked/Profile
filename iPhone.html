@@ -161,6 +161,7 @@
                   frameborder="0"
                   allow="fullscreen; autoplay; encrypted-media; microphone; camera; clipboard-read; clipboard-write; geolocation"
                   sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+                  style="background: transparent;"
                 ></iframe>
               </div>
             </div>
@@ -302,7 +303,8 @@
         <!-- Reproductor Modal Universal -->
   <div id="modal-player" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal">×</button>
+      <!-- 🧭 Cierre con botón X -->
+    <button id="close-itunes" class="close-modal" aria-label="Cerrar modal">×</button>
 
       <!-- Carátula -->
       <div class="cover">
@@ -361,4 +363,3 @@
         
     </body>
 </html>
-
