@@ -364,6 +364,18 @@ h1, h2, h3, h4, h5, h6 {
 	background:#aaa;
 	margin-right:10px
 }
+.img-book {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-book:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 .jd-infor{
 	flex-grow:1
 }
