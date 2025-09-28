@@ -233,14 +233,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .jd-title-page{
 	width:100%;
-	height:36px;
-	border-bottom:solid 1px #efdd8e;
+	height:20px; /* Altura ************************ */
 	margin-bottom:35px
 }
 
 .jd-block{
 	width:100%;
-	height:415px;
+	height:430px;
 	overflow-y:auto
 }
 .page-modal-about .jd-block{
@@ -249,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .jd-book {
   position: relative;
-  height: 415px;
+  height: 430px; /* Tamaño Contenedor******************* */
   overflow: hidden;
   perspective: 1200px;
 }
@@ -366,14 +365,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 .img-book {
   width: 100%;
-  height: 400px;
+  max-width: 250px;
+  height: 100%;
+  max-height: 180px; /* Corte de altura */
   object-fit: cover;
   object-position: center;
+  display: block;
+  margin: 10px auto;
+  background: #aaa;
+  border: 4px solid var(--color-dorado-oscuro);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .img-book:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
 .jd-infor{
@@ -391,6 +397,131 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 50px;
 }
 
+/* Portada */
+.jd-title-index {
+  font-size: 2.5em;
+  font-family: 'Georgia', serif;
+  color: #efdd8e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.jd-subtitle-index {
+  display: block;
+  font-size: 1.2em;
+  color: #f5f5f5;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.jd-welcome {
+  font-size: 1.6em;
+  color: #efdd8e;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.jd-img-portada {
+  width: 320px;
+  height: 415px;
+  border: solid 5px #a38838;
+  background: #aaa;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.jd-flag {
+  width: 24px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* Indice */
+.jd-title-indice {
+  font-size: 2em;
+  font-family: 'Georgia', serif;
+  color: #efdd8e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.jd-lista-indice {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+.jd-lista-indice li {
+  font-size: 1.2em;
+  color: #f5f5f5;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.jd-lista-indice li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #efdd8e;
+}
+
+/* Capitulos */
+.jd-title-chapter {
+  font-size: 4.2em;
+  font-family: 'Georgia', serif;
+  color: #efdd8e;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.jd-chapter .jd-block,
+.jd-chapter .jd-infor {
+  display: flex;
+  top:
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+/* Paginas */
+.jd-title-page {
+  font-size: 1.2em;
+  font-family: 'Georgia', serif;
+  color: #efdd8e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.jd-number {
+  font-size: 1em;
+  color: #efdd8e;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.jd-firma {
+  font-family: 'Georgia', cursive;
+  font-size: 1.4em;
+  color: #efdd8e;
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: 2px;
+}
+
+.jd-flag-inline {
+  width: 24px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* Galeria? */
 .jd-col-f{
 	width:240px;
 	height:auto;
@@ -429,13 +560,36 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   background: #ffffff;
 }
-.jd-video{
+/*.jd-video{
 	width:726px;
 	height:410px;
 	background:#222;
 	box-shadow:0 10px #efdd8e;
 	margin-left:calc(50% - 363px)
+}*/
+
+/* ================================ Repro Embebido ================================ */
+.centered-repro {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;         /* ← elimina scroll horizontal externo */
 }
+
+.centered-repro iframe {
+  width: 100%;
+  max-height: 768px;          /* ← altura máxima controlada */
+  min-height: 600px;          /* ← altura mínima para no recortar */
+  border-radius: 12px;
+  box-shadow: 0 0 30px #efdd8eec;
+  overflow: hidden;           /* ← elimina scroll interno horizontal */
+}
+
+
 /* Textos */
 .page-modal-love .jd-block{
 	text-align:center;
