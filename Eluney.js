@@ -266,6 +266,42 @@ if (pagina13) {
   }
 }
 
+// 📄 Página 14: Capítulo 4
+const capitulo4 = paginas.find(p => p.numero === 14 && p.tipo === "capitulo");
+
+if (capitulo4) {
+  const tituloCap4 = document.getElementById("titulo-capitulo-4");
+  if (tituloCap4) {
+    tituloCap4.textContent = capitulo4.titulo;
+  }
+
+  const numeroCap4 = document.getElementById("numero-14");
+  if (numeroCap4) {
+    numeroCap4.textContent = `Página ${capitulo4.numero}`;
+  }
+}
+
+// 📄 Página 15 a 19
+for (let i = 15; i <= 19; i++) {
+  const pagina = paginas.find(p => p.numero === i && p.tipo === "pagina");
+
+  if (pagina) {
+    const contenido = document.getElementById(`contenido-${i}`);
+    if (contenido) {
+      contenido.innerHTML = pagina.contenido.replace(/\n/g, "<br>");
+    }
+
+    const numero = document.getElementById(`numero-${i}`);
+    if (numero) {
+      numero.textContent = `Página ${pagina.numero}`;
+    }
+
+    const imagen = document.getElementById(`imagen-${i}`);
+    if (imagen && pagina.imagen) {
+      imagen.src = pagina.imagen;
+    }
+  }
+}
 
       // 🔄 Navegación
       const pages = Array.from(document.querySelectorAll('.jd-page'));
