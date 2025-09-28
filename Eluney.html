@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="wb:webmaster" content="edcf77ed05a8765f" />
-    <!-- BLOCK RIGHT CLICK -->
+    <!-- BLOCK RIGHT CLICK 
   <script type="text/javascript">
     document.onkeydown = function(){return false};
     document.oncontextmenu = function(){return false}
-  </script>
+  </script>-->
   <title>Eluney</title>
   <link rel="stylesheet" href="Eluney.css">
   <script src="Eluney.js" defer></script>
@@ -34,14 +34,14 @@
     <!-- NAVEGACIÓN -->
     <div class="jd-nav">
       <a class="jd-btn-nav" href="#jd-content-1">Perfil</a>
-      <a class="jd-btn-nav" href="#jd-content-2">Video</a>
+      <a class="jd-btn-nav" href="#jd-content-2">Música</a>
       <a class="jd-btn-nav" href="#jd-main">Home</a>
       <a class="jd-btn-nav" href="#jd-content-3">Familia</a>
       <a class="jd-btn-nav" href="#jd-content-4">Firma</a>
     </div>
       
-      <!-- CONTADOR -->
-      <div style="text-align:center;"><img src="https://s01.flagcounter.com/mini/wrEV/bg_000000/txt_a38838/border_a38838/flags_0/" /></div>
+      <!-- CONTADOR 
+      <div style="text-align:center;"><img src="https://s01.flagcounter.com/mini/wrEV/bg_000000/txt_a38838/border_a38838/flags_0/" /></div>-->
 
     <!-- PIE DE PÁGINA -->
     <div id="footer-lord">
@@ -72,112 +72,153 @@
     <div class="page-modal-about">
       <div class="jd-title-page"><h2>Perfil</h2></div>
 
-      <!-- 📖 CONTENEDOR DE LIBRO CON PÁGINAS -->
-<div class="jd-book">
+      <!-- 📖 CONTENEDOR PRINCIPAL DEL LIBRO -->
+<div class="jd-book" id="jd-book">
 
-  <!-- 🟦 PÁGINA 1: PORTADA ACTUAL -->
-  <div class="jd-page jd-cover flip active">
+  <!-- 🟨 PORTADA -->
+  <div class="jd-page jd-cover flip active" id="page-0">
     <div class="jd-block">
-      <img class="jd-img-about" src="https://i.ibb.co/NdPwtc5m/Eluney-13.png" />
       <div class="jd-infor">
-        <center><h2><p>✦**•̩̩͙♡𝓔𝓵𝓾𝓷𝓮𝔂ღ**✦ <img src="https://xat.com/images/smw/flag/cl.png"></p></h2></center>
-        <center><span>LaELuney32 (1554191532)</span></center><br>
-        <h4>Bienvenidos a mi xatspace</h4>
-        <strong><p class="jd-libro">
-          Tú eres la luz que ilumina mi día y la estrella que guía mis noches,
-          tú eres la música que alegra mi oído y la palabra que calma mi boca,
-          tú eres el sueño que llena mi mente y la realidad que colma mi corazón,
-          tú eres el abrazo que reconforta mi cuerpo y el beso que despierta mis mañanas,
-          tú eres el regalo que agradezco a la vida y el milagro que bendiga al cielo,
-          tú eres el amor que me hace feliz y el motivo de mi anhelo,
-          tú eres todo para mí y yo soy todo para ti, tú eres tú y yo soy yo y juntos somos nosotros.<br><br>
-          •┈••✦𝓔𝓛𝓤.❤ .𝓡𝓘𝓒𝓚✦••┈•
-        </p></strong>
+        <img class="jd-img-portada" id="portada-imagen" />
+        <h2 class="jd-title-index" id="portada-titulo"></h2>
+        <span class="jd-subtitle-index" id="portada-usuario">
+          LaELuney32 (1554191532)
+          <img class="jd-flag-inline" id="portada-flag" />
+        </span>
+        <h4 class="jd-welcome" id="portada-bienvenida"></h4>
+        <p class="jd-libro" id="portada-texto"></p>
+        <p class="jd-firma" id="portada-firma"></p>
       </div>
     </div>
   </div>
 
-  <!--  PÁGINA 2  -->
-  <div class="jd-page jd-next flip inactive" data-page="2">
+  <!-- 🟩 ÍNDICE -->
+  <div class="jd-page jd-index flip inactive" id="page-indice">
     <div class="jd-block">
       <div class="jd-infor">
-        <h3>✦ Página 2 ✦</h3>
-        <p class="jd-libro">
-          Así es Eluney...
-Una chica muy alegre, muy luchadora, que si se cae, se levanta. Con muchos sentimientos, y sentimientos profundos. Soy amable y sincera, pero solo con las personas que realmente merecen mi atención. No soy celosa ni tóxica (bueno... celosa poquito, no más, que cuando quiero algo, quiero que sea para mí solita jajajaja).
-Me gusta andar siempre sonriente, sonreírle a la vida, aunque a veces esté triste y por dentro no pueda más. Aun así, siempre le pongo una cara bonita a todo para seguir adelante.
-Soy de carácter no tan fuerte; cuando me enojo, el enojo se me va rápido: respiro y suelto todo. Soy cariñosa, mimosa... y muchas cosas más.
-Así es un poquito Eluney.
-Ah, para los que siempre me preguntan qué significa mi nombre: ELUNEY significa “Regalo del cielo” o “Regalo celestial”.
-        </p>
-        <!-- Aquí podrás insertar texto, imágenes o enlaces cuando se libere el contenido -->
+        <h2 class="jd-title-indice">Índice</h2>
+        <ul class="jd-lista-indice" id="indice-lista"></ul>
       </div>
     </div>
   </div>
-    
-    <!--  PÁGINA 3  -->
-  <div class="jd-page jd-next flip inactive" data-page="3">
+
+  <!-- 🔖 CAPÍTULO 1 -->
+  <div class="jd-page jd-chapter flip inactive" id="page-3">
     <div class="jd-block">
       <div class="jd-infor">
-        <h3>✦ Página 3 ✦</h3>
-        <p class="jd-libro">
-          Así comenzó nuestra historia...
-Con un simple “hola, ¿cómo estás?”. Ese día te pedí unas canciones y tú, con todo respeto, me dijiste que sí. Yo te respondí “voz sexy, muchas gracias”, eso me salió tan de adentro que en el momento me olvidé de todo... ya sabes a qué me refiero jajaja.
-Siempre me trataste con mucho respeto, y la verdad, eso me encantó de ti. Fuiste un caballero.
-Con el paso de los días empezamos a charlar, a reírnos un poquito, y día a día, un poco más. Todo fue mágico.
-Hasta que llegó ese día en que tuvimos que alejarnos. Ese día todo fue negro para mí. Pensé que nunca más te iba a volver a leer. En todo ese tiempo pasaron muchas cosas entre tú y yo, incluso ese malentendido que nos alejó por muchos meses...
-Creo que ya teníamos el destino marcado, porque un día entré y vi que estabas ahí. Ese día se me iluminó la cara por completo.
-        </p>
+        <h2 class="jd-title-chapter" id="titulo-capitulo-1"></h2>
       </div>
     </div>
   </div>
-    
-    <!--  PÁGINA 4  -->
-  <div class="jd-page jd-next flip inactive" data-page="4">
-    <div class="jd-block">
-      <div class="jd-infor">
-        <h3>✦ Página 4 ✦</h3>
-        <p class="jd-libro">
-          Fue hermoso volver a verte, a escucharte de nuevo, a pedirte canciones. Obvio que no fue todo rápido, porque me demoré en entrar a tu PV2 y pedirte una canción jajaja.
-Tú eres un sueño para mí. Eres muy especial.
-Mi amor, hoy quiero darte las gracias por haberte cruzado en mi camino y hacerme la persona más feliz del mundo. Quiero agradecerte por todo el amor que, en tan corto tiempo, has sabido darme, y que nadie había logrado hacerlo.
-Estoy feliz por haberte escogido, y por que tú también me hayas escogido a mí.
-Nunca me había sentido tan feliz como lo soy contigo.
-TE QUIERO MUCHO... y cada día mucho más.
-        </p>
-      </div>
+
+  <!-- 📄 PÁGINA 4 -->
+<div class="jd-page jd-content flip inactive" id="page-4">
+  <div class="jd-number-top" id="numero-4">✦Página 4✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page">✦ Regalo del cielo ✦</h3>
+      <p class="jd-libro" id="contenido-4"></p>
     </div>
   </div>
-    
-    <!--  PÁGINA 5  -->
-  <div class="jd-page jd-next flip inactive" data-page="5">
-    <div class="jd-block">
-      <div class="jd-infor">
-        <h3>✦ Página 5 ✦</h3>
-        <p class="jd-libro">
-          EL CALOR DE TUS BESOS<br>
-Dejé de sentir el frío que habitaba en mi corazón. Desapareció el velo que cubría mi alma desde que empecé a sentir el calor y la pasión de tus besos. Ese fuego que transmiten tus labios comenzó a recorrer todo mi cuerpo...
-Esos besos empezaron a alojarse en mi alma, quitando el hielo que la mantenía fría. Besos que encendieron una hoguera en mi corazón, disipando el frío que lo envolvía.
-Poco a poco, mi alma comenzó a sentir la felicidad. Los colores de tu amor empezaban a pintar mi vida con una alegría inmensa.
-Tus besos, que se metían en mi corazón, dejaban un calor profundo, encendido por la pasión que transmiten tus labios.
-Ahora, mis deseos recorren todo mi cuerpo, como tu amor circula por cada vena de mi corazón, impulsado por la pasión que habita en su interior.
-        </p>
-      </div>
+</div>
+
+<!-- 📄 PÁGINA 5 -->
+<div class="jd-page jd-content flip inactive" id="page-5">
+  <div class="jd-number-top" id="numero-5">✦Página 5✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-5"></p>
     </div>
   </div>
-    
-    <!--  PÁGINA 6  -->
-  <div class="jd-page jd-next flip inactive" data-page="6">
-    <div class="jd-block">
-      <div class="jd-infor">
-        <h3>✦ Página 6 ✦</h3>
-        <p class="jd-libro">
-Y todo eso... lo lograste con tus besos y la pasión de tu corazón.
-        </p>
-          <img class="img-book" src="https://i.ibb.co/DH6hdfb8/Lovers.png"/>
-      </div>
+</div>
+
+<!-- 📄 CAPÍTULO 2 -->
+<div class="jd-page jd-chapter flip inactive" id="page-6">
+  <div class="jd-number-top" id="numero-6">✦Página 6✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h2 class="jd-title-chapter" id="titulo-capitulo-2"></h2>
     </div>
   </div>
+</div>
+
+<!-- 📄 PÁGINA 7 -->
+<div class="jd-page jd-content flip inactive" id="page-7">
+  <div class="jd-number-top" id="numero-7">✦Página 7✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page">✦ A través de nosotros✦</h3>
+      <p class="jd-libro" id="contenido-7"></p>
+    </div>
+  </div>
+</div>
+
+<!-- 📄 PÁGINA 8 -->
+<div class="jd-page jd-content flip inactive" id="page-8">
+  <div class="jd-number-top" id="numero-8">✦Página 8✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-8"></p>
+    </div>
+  </div>
+</div>
+
+<!-- 📄 PÁGINA 9 -->
+<div class="jd-page jd-content flip inactive" id="page-9">
+  <div class="jd-number-top" id="numero-9">✦Página 9✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-9"></p>
+    </div>
+  </div>
+</div>
+
+<!-- 📄 PÁGINA 10 -->
+<div class="jd-page jd-content flip inactive" id="page-10">
+  <div class="jd-number-top" id="numero-10">✦Página 10✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-10"></p>
+    </div>
+  </div>
+</div>
+
+<!-- 📄 CAPÍTULO 3 -->
+<div class="jd-page jd-chapter flip inactive" id="page-11">
+  <div class="jd-number-top" id="numero-11">✦ Página 11 ✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h2 class="jd-title-chapter" id="titulo-capitulo-3"></h2>
+    </div>
+  </div>
+</div>
+
+<!-- 📄 PÁGINA 12 -->
+<div class="jd-page jd-content flip inactive" id="page-12">
+  <div class="jd-number-top" id="numero-12">✦Página 12✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-12"></p>
+      <img class="img-book" id="imagen-12" />
+    </div>
+  </div>
+</div>
+
+<!-- 📄 PÁGINA 13 -->
+<div class="jd-page jd-content flip inactive" id="page-13">
+  <div class="jd-number-top" id="numero-13">✦Página 13✦</div>
+  <div class="jd-block">
+    <div class="jd-infor">
+      <h3 class="jd-title-page"></h3>
+      <p class="jd-libro" id="contenido-13"></p>
+    </div>
+  </div>
+</div>
 
 </div> <!-- Fin jd-book -->
 
@@ -190,22 +231,24 @@ Y todo eso... lo lograste con tus besos y la pasión de tu corazón.
     </div>
   </div>
 </div>
-      <!-- VIDEO -->
-    <div id="jd-content-2">
-      <div class="jd-modal">
-        <div class="page-modal-video">
-          <div class="jd-title-page"><h2>Video</h2></div>
-          <div class="jd-block">
-            <div class="jd-video">
-              <iframe width="726" height="406" src="https://www.youtube.com/embed/aIrjHxr5v7Q?si=R_Cw8i6PWlcAjvVV"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <!-- MUSIC/VIDEO -->
+        <div id="jd-content-2">
+          <div class="jd-modal">
+            <div class="page-modal-video">
+              <div class="jd-title-page"><h2>Música</h2></div>
+              <div class="jd-block centered-repro">
+                <iframe
+                  src="https://iraked.github.io/ExtasisRadio/Repro15.html"
+                  title="ExtasisRadio Repro15"
+                  frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
     <!-- FAMILIA -->
     <div id="jd-content-3">
