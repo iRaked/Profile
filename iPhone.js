@@ -449,7 +449,7 @@ document.addEventListener("keydown", (e) => {
     modalJuego.classList.add("oculto");
     iframeJuego.src = "";
   } else {
-    iframeJuego.src = "https://iraked.github.io/Games/Rider.html";
+    iframeJuego.src = "https://iraked.github.io/Games/BubbleShooter.html";
     modalJuego.classList.remove("oculto");
   }
 });
