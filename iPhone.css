@@ -14,6 +14,80 @@
   background-repeat: no-repeat, no-repeat;
 }
 
+/* Clave de Acceso */
+.clave-acceso {
+  position: absolute;
+  width: 400px;
+  height: 770px;
+  background: #cccccc;
+  border-radius: 60px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes salida-clave {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animar-salida {
+  animation: salida-clave 1.6s ease-out forwards;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+
+.code-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.code-input input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 2px solid #3A3A3C;
+  border-radius: 8px;
+  background-color: #1C1C1E;
+  color: #FFFFFF;
+  box-shadow: none;
+  transition: border-color 0.3s ease;
+}
+
+.code-input input:focus {
+  border-color: #AEAEB2;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #3A3A3C;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #AEAEB2;
+  color: #000000;
+}
+
 #reloj {
   position: absolute;
   top: 28px;
@@ -314,7 +388,7 @@
 /* ======================= Bloque B2 ======================= */
 .bloque-b2 {
   position: absolute;
-  top: 330px;
+  top: 340px;
   left: 40px;
   width: 120px;
   height: 120px;
@@ -352,6 +426,10 @@
   left: 0px;
   width: 120px;
   height: 120px;
+  max-height: 200px; /* ajusta según tu diseño */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #111;
   background-color: rgba(0, 0, 0, 0.85);
   border: 2px solid #ffffff;
   border-radius: 12px;
@@ -411,7 +489,7 @@
 /* Botón Video */
 .Video {
   position: absolute;
-  top: 410px;
+  top: 420px;
   left: 200px;
   width: 60px;
   height: 60px;
@@ -429,30 +507,45 @@
   object-fit: cover;
 }
 
-.modal-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+/* 🎥 Modal envolvente refinado */
+#modal-video.modal-video {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 384px;
+  height: 760px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 70px;
+  overflow: hidden;
+  z-index: 9999;
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 999;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.modal-video.oculto {
-  display: none;
+/* 🧙 Activación ritual */
+#modal-video.modal-video:not(.oculto) {
+  opacity: 1;
+  transform: scale(1);
 }
 
+#modal-video.modal-video.oculto {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* 🎬 Video contenido */
 #video-fondo {
-  width: 80vw;
-  max-width: 800px;
+  width: 100%;
   height: auto;
-  border-radius: 20px;
-  object-fit: contain;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
 }
 
 /* 🎮 Botón Juego */
@@ -476,74 +569,76 @@
 }
 
 /* 🕹️ Modal Juego */
-.modal-juego {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+#modal-juego {
+  position: absolute;
+  top: 0;
+  left: 100%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 200px;
+  width: 384px;
+  height: 650px;
   background-color: rgba(0, 0, 0, 0.85);
-  border: 2px solid #f1f1f1;
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 9999; /* Elevado para dominar el caos móvil */
+  border-radius: 50px;
+  overflow: hidden !important;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
 }
 
+/* Estado oculto */
 .modal-juego.oculto {
   display: none;
 }
 
 /* 📦 Contenedor interno */
 .wrapper-juego {
-  position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden !important;
 }
 
-/* 🔍 Escala y desplazamiento ritual - Escritorio */
-@media (min-width: 601px) {
-  .inner-juego {
-    position: absolute;
-    top: -100px;
-    left: -45px;
-    transform: scale(0.5);
-    transform-origin: top left;
-    width: 800px;
-    height: 800px;
-    pointer-events: auto;
-  }
-}
-
-/* 📱 Ajuste para móvil */
-@media (max-width: 600px) {
-  .modal-juego {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
-
-  .inner-juego {
-    position: static;
-    transform: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  .inner-juego iframe {
-    border-radius: 0;
-  }
+/* 🔳 Juego */
+.inner-juego {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 645px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.3); /* guía visual temporal */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 🎮 Iframe del juego */
 .inner-juego iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: transparent;
+  width: 645px;
+  height: 645px;
+  transform: scale(1.10); /* reduce el ancho a ~355px */
+  transform-origin: center;
+  border: none;
+  display: block;
+  pointer-events: auto;
+}
+
+@media (max-width: 420px) {
+  .inner-juego {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .inner-juego iframe {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+  }
 }
 
 /* ======================= Sección B3 ======================= */
@@ -773,23 +868,32 @@
 .oculto {
   display: none;
 }
-/* Botón de activación */
+/* Botón Mensajes */
 .btn-notificaciones {
   position: absolute;
-  top: 570px;       /* Ajusta según tu layout */
-  left: 32px;      /* Ajusta según tu layout */
-  width: 76px;
-  height: 76px;
-  background: none;
+  top: 568px;
+  left: 40px;
+  width: 65px;
+  height: 65px;
+  background: transparent;
   border: none;
+  padding: 0;
   cursor: pointer;
   z-index: 10;
+  display: inline-block;
 }
 
 .btn-notificaciones img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: background-color 0.3s ease;
+}
+
+/* 🩶 Hover visual */
+.btn-notificaciones:hover img {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
 }
 
 /* Burbujas flotantes */
@@ -822,20 +926,18 @@
 }
 
 /* Botón Play Store */
-.btn-store {
-  position: absolute;
-  top: 570px;       /* Ajusta según tu layout */
-  left: 115px;
-  z-index: 10;
-  text-decoration: none;
-}
-
 .Store {
-  width: 72px;
-  height: 72px;
-  background: none;
+  position: absolute;
+  top: 570px;
+  left: 120px;
+  width: 60px;
+  height: 60px;
+  background: transparent;
   border: none;
+  padding: 0;
   cursor: pointer;
+  z-index: 10;
+  display: inline-block;
 }
 
 .Store img {
@@ -848,7 +950,7 @@
 /* ======================= Bloque iMusic ======================= */
 .imusic {
   position: absolute;
-  top: 230px; /* Ubicación más baja que B1 */
+  top: 225px; /* Ubicación más baja que B1 */
   left: 38px;
   width: 280px; /* Más largo que B1 */
   min-height: 50px;         /* Mantiene altura mínima */
@@ -915,50 +1017,103 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* 🪟 Modal envolvente */
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
+#modal-player.modal {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 384px;
+  height: 760px;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 70px;
+  overflow: hidden;
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
   opacity: 0;
   transform: scale(0.95);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* 🧙 Activación ritual */
-.modal:not(.hidden) {
+#modal-player.modal:not(.hidden) {
   opacity: 1;
   transform: scale(1);
 }
 
-.modal.hidden {
+#modal-player.modal.hidden {
   display: none;
 }
 
 /* 📦 Contenido del modal */
 .modal-content {
-  background: #111;
-  padding: 2rem;
-  border-radius: 1rem;
-  text-align: center;
-  color: white;
-  max-width: 400px;
   width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.3); /* guía visual temporal */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  color: white;
+  text-align: center;
 }
 
 /* ❌ Botón de cierre */
 .close-modal {
   position: absolute;
-  top: 1rem; right: 1rem;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: white;
   cursor: pointer;
+  z-index: 10000;
+}
+
+/* 🎧 Botón de ocultamiento */
+.hide-modal {
+  position: absolute;
+  top: 1.2rem;
+  left: 0.8rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* 🖼️ Carátula */
+.cover {
+  width: 240px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+}
+
+.cover img.animate {
+  transform: scale(1.05);
+}
+
+/* ℹ️ Información de pista */
+.info {
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 /* ▶️ Reproductor personalizado */
@@ -967,6 +1122,7 @@
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .play-btn {
@@ -1019,12 +1175,9 @@
   width: 100%;
   padding: 1rem 0;
   gap: 1rem;
-  min-width: 300px;
 }
 
 .nav-btn {
-  visibility: visible !important;
-  opacity: 1;
   background: #222;
   color: white;
   border: none;
@@ -1039,7 +1192,6 @@
   cursor: not-allowed;
   background: #333;
   color: #aaa;
-  visibility: visible;
 }
 
 /* 📜 Cola visual de pistas */
@@ -1047,48 +1199,12 @@
   list-style: none;
   padding: 0;
   margin-top: 1rem;
-  max-height: 200px;
+  max-height: 220px;
   overflow-y: auto;
   border-top: 1px solid #333;
   scrollbar-width: thin;
   scrollbar-color: #1db954 #111;
-}
-
-/* 🎚️ Scroll personalizado para WebKit */
-.modal-queue::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-queue::-webkit-scrollbar-track {
-  background: #111;
-}
-
-.modal-queue::-webkit-scrollbar-thumb {
-  background-color: #1db954;
-  border-radius: 3px;
-  transition: background 0.3s ease;
-}
-
-.modal-queue::-webkit-scrollbar-thumb:hover {
-  background-color: #1ed760;
-}
-
-/* 🎵 Ítems de la cola */
-.modal-queue li {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  color: #ccc;
-  transition: background 0.2s;
-}
-
-.modal-queue li:hover {
-  background: #222;
-}
-
-.modal-queue li.active {
-  background: #444;
-  color: #fff;
-  font-weight: bold;
+  width: 100%;
 }
 
 /* 🎛️ Controles extendidos */
@@ -1102,29 +1218,30 @@
   color: white;
 }
 
-.modal-controls label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.modal-controls button {
-  background: #222;
-  color: white;
-  border: none;
+/* 🎶 Ítems individuales de la cola */
+.modal-queue-item {
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
   cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: #ccc;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #222;
 }
 
-/* 🖼️ Rebote sutil de la carátula */
-.cover img {
-  transition: transform 0.4s ease;
+/* 🌟 Hover ceremonial */
+.modal-queue-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
 }
 
-.cover img.animate {
-  transform: scale(1.05);
+/* 🔊 Track activo */
+.modal-queue-item.active {
+  background: linear-gradient(90deg, #1db954 0%, #111 100%);
+  color: white;
+  font-weight: bold;
+  border-left: 4px solid #1db954;
 }
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* 📱 Final — Responsividad móvil para el reproductor modal        */
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -1197,24 +1314,31 @@
   }
 }
 
-/* Estilos para Metadatos en Bloque Music */
+/* 🎶 Metadatos en Bloque Music */
 #bloque-iMusic .track-info {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 8px;
+  height: 60px;
+  overflow: hidden;
 }
 
+/* 🎧 Carátula restaurada */
 #bloque-iMusic .caratula-mini {
-  width: 48px;
-  height: 48px;
+  width: 80px !important;
+  height: 80px !important;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: block;
 }
 
+/* 🧾 Metadatos */
 #bloque-iMusic .meta {
   font-family: 'Helvetica Neue', sans-serif;
   color: #fff;
+  line-height: 1.2;
 }
 
 /* Botón Power */
@@ -1319,7 +1443,8 @@ powerOverlay.style.visibility = "visible";
 
 /* Contenedor principal dentro del modal */
 .contacts-container {
-  margin-top: 70px;
+  margin-bottom: 20px;
+    margin-right: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1420,19 +1545,27 @@ powerOverlay.style.visibility = "visible";
   opacity: 1;
 }
 
-.modal-universal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9998;
-  display: none;
+#modal-contacts.modal-universal {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 384px;
+  height: 760px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 70px;
+  overflow: hidden;
+  z-index: 9999;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.85);
-  overflow-y: auto;
-  pointer-events: auto;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#modal-contacts.modal-universal:not(.oculto) {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .close-modal {
