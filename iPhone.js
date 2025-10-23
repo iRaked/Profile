@@ -71,14 +71,73 @@ fetch("iTunes.json")
     }
 
     // Activar el reproductor desde el botón iTunes
-    botonItunes.addEventListener("click", () => {
-      initModalPlayer("bloque-iMusic", playlistHits);
-    });
-  })
+    let reproductorInicializado = false;
+
+botonItunes.addEventListener("click", () => {
+  if (!reproductorInicializado) {
+    initModalPlayer("bloque-iMusic", playlistHits);
+    reproductorInicializado = true;
+  }
+});
+})
   .catch(err => {
     console.error("⚠️ Error al cargar el JSON:", err);
   });
 
+  // Pantalla de Bloqueo
+const PIN_CORRECTO = "1234";
+let intentosFallidos = 0;
+let bloqueoActivo = false;
+
+function obtenerPIN() {
+  const inputs = document.querySelectorAll('.code-input input');
+  return Array.from(inputs).map(input => input.value).join('');
+}
+
+function mostrarAlerta(mensaje) {
+  alert(mensaje); // Puedes reemplazar con un modal ceremonial
+}
+
+function bloquearAcceso() {
+  bloqueoActivo = true;
+  mostrarAlerta("Demasiados intentos fallidos. Intenta de nuevo en 5 minutos.");
+  setTimeout(() => {
+    intentosFallidos = 0;
+    bloqueoActivo = false;
+  }, 5 * 60 * 1000); // 5 minutos
+}
+
+function validarPIN() {
+  if (bloqueoActivo) {
+    mostrarAlerta("Acceso temporalmente bloqueado. Espera 5 minutos.");
+    return;
+  }
+
+  const pinIngresado = obtenerPIN();
+  const pantalla = document.querySelector('.clave-acceso');
+
+  if (pinIngresado === PIN_CORRECTO) {
+    if (!pantalla.classList.contains('animar-salida')) {
+      pantalla.classList.add('animar-salida');
+
+      setTimeout(() => {
+        pantalla.style.display = 'none';
+        pantalla.classList.remove('animar-salida'); // limpieza ritual
+      }, 400); // duración de la disolución
+    }
+  } else {
+    intentosFallidos++;
+    if (intentosFallidos >= 3) {
+      bloquearAcceso();
+    } else {
+      mostrarAlerta(`PIN incorrecto. Intento ${intentosFallidos} de 3.`);
+    }
+  }
+}
+
+// Activación ritual del botón
+document.querySelector('.clave-acceso button').addEventListener('click', validarPIN);
+    
   // 🕒 Reloj digital ritualizado
   function actualizarReloj() {
     const ahora = new Date();
@@ -439,7 +498,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-    
 // Modal Safari Game
     btnJuego.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -449,7 +507,7 @@ document.addEventListener("keydown", (e) => {
     modalJuego.classList.add("oculto");
     iframeJuego.src = "";
   } else {
-    iframeJuego.src = "https://iraked.github.io/Games/BubbleShooter.html";
+    iframeJuego.src = "https://iraked.github.io/Games/Zumba.html";
     modalJuego.classList.remove("oculto");
   }
 });
@@ -657,7 +715,6 @@ function cerrarModalITunes() {
 // =================================================================================
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 🎛️ Reproductor Modal Universal con navegación, cola, controles extendidos, progreso visual interactivo y control de colisión
-
 let isModalActive = false;
 
 function initModalPlayer(contenedorId, playlistData) {
@@ -665,11 +722,12 @@ function initModalPlayer(contenedorId, playlistData) {
   if (!container || !Array.isArray(playlistData)) return;
 
   const modal = document.getElementById("modal-player");
-  const modalAudio = document.getElementById("modal-audio"); // No Tocar
+  const modalAudio = document.getElementById("modal-audio");
   const modalCover = document.getElementById("modal-cover");
   const modalArtist = document.getElementById("modal-artist");
   const modalTitle = document.getElementById("modal-title");
-  const closeBtn = document.querySelector(".close-modal");
+  const closeBtn = document.getElementById("close-itunes");
+  const hideBtn = document.getElementById("hide-itunes");
   const btnPrev = document.getElementById("btn-prev");
   const btnNext = document.getElementById("btn-next");
   const modalQueue = document.getElementById("modal-queue");
@@ -685,56 +743,138 @@ function initModalPlayer(contenedorId, playlistData) {
 
   let currentIndex = -1;
   const localPlaylist = [...playlistData];
+  let modalWasClosedManually = false;
 
-  function showModal(track) {
-    isModalActive = true;
-
-    modalCover.src = track.caratula;
-    modalArtist.textContent = track.artista;
-    modalTitle.textContent = track.nombre;
-
-    const bloqueIMusic = document.getElementById("bloque-iMusic");
-    if (bloqueIMusic) {
-      bloqueIMusic.innerHTML = `
-        <div class="track-info" style="display: flex; align-items: center;">
-          <img src="${track.caratula}" alt="Carátula" class="caratula-mini" style="width: 32px; height: 32px; border-radius: 6px; margin-right: 8px;" />
-          <div class="meta">
-            <strong>${track.artista}</strong><br>
-            <span>${track.nombre}</span><br>
-            <span id="track-time" class="track-time">0:00</span>
-          </div>
-        </div>
-      `;
-    }
-
-    modalAudio.pause();
-    modalAudio.removeAttribute("src");
-    modalAudio.src = track.enlace;
-    modalAudio.load();
-
-    modal.classList.remove("hidden");
-
-    modalCover.classList.add("animate");
-    setTimeout(() => modalCover.classList.remove("animate"), 400);
-
-    modalAudio.oncanplay = () => {
-      modalAudio.play().catch(err => {
-        console.warn("⚠️ Error al reproducir:", err.name);
-      });
-
-      const icon = toggleBtn?.querySelector("i");
-      if (icon) {
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-      }
-    };
+  function actualizarTiempoVisual() {
+  const trackTimeDisplay = document.querySelector("#bloque-iMusic #track-time");
+  if (!trackTimeDisplay) {
+    console.warn("⚠️ Nodo #track-time no encontrado");
+    return;
   }
+
+  const currentTime = Math.floor(modalAudio.currentTime);
+  const minutes = Math.floor(currentTime / 60);
+  const seconds = currentTime % 60;
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+  trackTimeDisplay.textContent = formattedTime;
+  console.log("⏱️ Tiempo visual actualizado:", formattedTime);
+}
+    
+  function showModal(track) {
+  isModalActive = true;
+  modalWasClosedManually = false;
+
+  // 🎨 Fondo dinámico según género
+  if (track.genero && typeof track.genero === "string") {
+    const fondo = obtenerFondoPorGenero(track.genero.trim().toLowerCase());
+    modal.style.background = fondo;
+  }
+
+  setTimeout(() => {
+    modalAudio.dispatchEvent(new Event("timeupdate"));
+  }, 500);
+
+  modalCover.src = track.caratula;
+  modalArtist.textContent = track.artista;
+  modalTitle.textContent = track.nombre;
+
+  const bloqueIMusic = document.getElementById("bloque-iMusic");
+  if (bloqueIMusic) {
+    bloqueIMusic.innerHTML = `
+      <div class="track-info" style="display: flex; align-items: center;">
+        <img src="${track.caratula}" alt="Carátula" class="caratula-mini" />
+        <div class="meta">
+          <strong>${track.artista}</strong><br>
+          <span>${track.nombre}</span><br>
+          <span id="track-time" class="track-time">0:00</span>
+        </div>
+      </div>
+    `;
+  }
+
+  modalAudio.pause();
+  modalAudio.removeAttribute("src");
+  modalAudio.src = track.enlace;
+  modalAudio.load();
+
+  modal.classList.remove("hidden");
+
+  modalCover.classList.add("animate");
+  setTimeout(() => modalCover.classList.remove("animate"), 400);
+
+  modalAudio.onloadedmetadata = () => {
+    const trackTimeDisplay = document.querySelector("#bloque-iMusic #track-time");
+    if (trackTimeDisplay && !isNaN(modalAudio.currentTime)) {
+      const currentTime = Math.floor(modalAudio.currentTime);
+      const minutes = Math.floor(currentTime / 60);
+      const seconds = currentTime % 60;
+      const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+      trackTimeDisplay.textContent = formattedTime;
+    }
+  };
+
+  modalAudio.oncanplay = () => {
+    modalAudio.play().catch(err => {
+      console.warn("⚠️ Error al reproducir:", err.name);
+    });
+
+    const icon = toggleBtn?.querySelector("i");
+    if (icon) {
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+    }
+  };
+}
+
+    function obtenerFondoPorGenero(genero) {
+  const fondos = {
+    "pop latino": "linear-gradient(135deg, #ff6b6b, #ffe66d)",
+    "pop rock": "linear-gradient(135deg, #4e54c8, #8f94fb)",
+    "reggae": "linear-gradient(135deg, #f7b733, #fc4a1a)",
+    "regional mexicano": "linear-gradient(135deg, #8e44ad, #c0392b)",
+    "corrido tumbado": "linear-gradient(135deg, #2c3e50, #bdc3c7)",
+    "corrido belico": "linear-gradient(135deg, #1e1e1e, #ff0000)",
+    "norteño": "linear-gradient(135deg, #34495e, #2ecc71)",
+    "tropi pop": "linear-gradient(135deg, #f39c12, #d35400)",
+    "salsa": "linear-gradient(135deg, #e74c3c, #f1c40f)",
+    "rumba": "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+    "rock en español": "linear-gradient(135deg, #2c3e50, #3498db)",
+    "ska": "linear-gradient(135deg, #000000, #ffffff)",
+    "rock urbano": "linear-gradient(135deg, #7f8c8d, #95a5a6)",
+    "pop electronico": "linear-gradient(135deg, #00c6ff, #0072ff)",
+    "cumbia": "linear-gradient(135deg, #ff7e5f, #feb47b)",
+    "cumbia norteña": "linear-gradient(135deg, #6a3093, #a044ff)",
+    "cheta": "linear-gradient(135deg, #ff6a00, #ee0979)",
+    "cuarteto": "linear-gradient(135deg, #f7971e, #ffd200)",
+    "rap": "linear-gradient(135deg, #232526, #414345)",
+    "balada pop": "linear-gradient(135deg, #ffafbd, #ffc3a0)"
+  };
+
+  return fondos[genero] || "linear-gradient(135deg, #111, #222)";
+}
+
 
   function playTrack(index) {
     if (index < 0 || index >= localPlaylist.length) return;
 
     currentIndex = index;
     showModal(localPlaylist[index]);
+    
+    if (modalQueue) {
+  modalQueue.innerHTML = ""; // Limpiar antes de regenerar
+
+  localPlaylist.forEach((item, i) => {
+    const li = document.createElement("li");
+    li.className = "modal-queue-item";
+    li.textContent = `${item.artista} — ${item.nombre}`;
+    if (i === currentIndex) {
+      li.classList.add("active"); // Marca el track actual
+    }
+    li.onclick = () => playTrack(i); // Permite saltar a ese track
+    modalQueue.appendChild(li);
+  });
+}
 
     if (btnNext) {
       btnNext.onclick = () => {
@@ -755,7 +895,38 @@ function initModalPlayer(contenedorId, playlistData) {
     modalAudio.onended = () => {
       const nextIndex = currentIndex + 1;
       if (nextIndex < localPlaylist.length) {
-        playTrack(nextIndex);
+        currentIndex = nextIndex;
+
+        if (!modalWasClosedManually) {
+          playTrack(nextIndex);
+        } else {
+          const track = localPlaylist[nextIndex];
+          modalAudio.src = track.enlace;
+          modalAudio.load();
+          modalAudio.play().catch(err => {
+            console.warn("⚠️ Error al reproducir:", err.name);
+          });
+
+          const bloqueIMusic = document.getElementById("bloque-iMusic");
+          if (bloqueIMusic) {
+            bloqueIMusic.innerHTML = `
+              <div class="track-info" style="display: flex; align-items: center;">
+                <img src="${track.caratula}" alt="Carátula" class="caratula-mini" />
+                <div class="meta">
+                  <strong>${track.artista}</strong><br>
+                  <span>${track.nombre}</span><br>
+                  
+                </div>
+              </div>
+            `;
+          }
+
+          const icon = toggleBtn?.querySelector("i");
+          if (icon) {
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
+          }
+        }
       } else {
         currentIndex = -1;
         const icon = toggleBtn?.querySelector("i");
@@ -768,26 +939,26 @@ function initModalPlayer(contenedorId, playlistData) {
     };
   }
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      isModalActive = false;
-      closeBtn.click();
-    }
-  });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-      isModalActive = false;
-      closeBtn.click();
-    }
+  // 🎧 Ocultamiento sin detener reproducción
+  if (hideBtn) {
+  hideBtn.addEventListener("click", () => {
+    modalWasClosedManually = true;
+    modal.classList.add("hidden");
+    // No tocamos isModalActive
   });
+}
 
+  // ❌ Cierre total del modal
+if (closeBtn) {
   closeBtn.addEventListener("click", () => {
     isModalActive = false;
+    modalWasClosedManually = false; // ← restauramos la intención de cierre completo
     modal.classList.add("hidden");
     modalAudio.pause();
     modalAudio.removeAttribute("src");
     currentIndex = -1;
+
     const icon = toggleBtn?.querySelector("i");
     if (icon) {
       icon.classList.remove("fa-pause");
@@ -796,20 +967,11 @@ function initModalPlayer(contenedorId, playlistData) {
     if (progressBar) progressBar.style.width = "0%";
 
     const bloqueIMusic = document.getElementById("bloque-iMusic");
-    if (bloqueIMusic && currentIndex >= 0) {
-      const track = localPlaylist[currentIndex];
-      bloqueIMusic.innerHTML = `
-        <div class="track-info" style="display: flex; align-items: center;">
-          <img src="${track.caratula}" alt="Carátula" class="caratula-mini" style="width: 32px; height: 32px; border-radius: 6px; margin-right: 8px;" />
-          <div class="meta">
-            <strong>${track.artista}</strong><br>
-            <span>${track.nombre}</span><br>
-            <span id="track-time" class="track-time">0:00</span>
-          </div>
-        </div>
-      `;
+    if (bloqueIMusic) {
+      bloqueIMusic.innerHTML = "";
     }
   });
+}
 
   if (volumeControl) {
     volumeControl.addEventListener("input", () => {
@@ -857,20 +1019,18 @@ function initModalPlayer(contenedorId, playlistData) {
   }
 
   modalAudio.addEventListener("timeupdate", () => {
-    if (modalAudio.duration && progressBar) {
-      const percent = (modalAudio.currentTime / modalAudio.duration) * 100;
-      progressBar.style.width = `${percent}%`;
-    }
-
-    const trackTimeDisplay = document.getElementById("track-time");
-    if (trackTimeDisplay) {
-      const currentTime = Math.floor(modalAudio.currentTime);
-      const minutes = Math.floor(currentTime / 60);
-      const seconds = currentTime % 60;
-      const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-      trackTimeDisplay.textContent = formattedTime;
-    }
-  });
+  const trackTimeDisplay = document.querySelector("#track-time");
+  if (trackTimeDisplay && !isNaN(modalAudio.currentTime)) {
+    const currentTime = Math.floor(modalAudio.currentTime);
+    const minutes = Math.floor(currentTime / 60);
+    const seconds = currentTime % 60;
+    const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    trackTimeDisplay.textContent = formattedTime;
+    console.log("⏱️ Tiempo visual actualizado:", formattedTime);
+  } else {
+    console.warn("⚠️ Nodo #track-time no encontrado en tick");
+  }
+});
 
   if (progressContainer && progressBar) {
     progressContainer.addEventListener("click", (e) => {
@@ -883,7 +1043,7 @@ function initModalPlayer(contenedorId, playlistData) {
   }
 
   playTrack(0);
-}
+} // ← cierre correcto de initModalPlayer
 
 // Botón Power *********************************************************************
 btnPower.addEventListener("click", () => {
@@ -919,9 +1079,12 @@ powerOverlay.querySelector("img").addEventListener("animationend", () => {
     const esBoton = btnContacts.contains(e.target);
     const esCierre = closeContacts.contains(e.target);
 
-    if (!modalContacts.classList.contains("oculto") && !dentroDelModal && !esBoton && !esCierre) {
-      cerrarModalContacts();
-    }
+    const modalX = document.getElementById("modal-X");
+const botonX = document.getElementById("btn-X");
+
+if (modalX && botonX && !modalX.contains(e.target) && !botonX.contains(e.target)) {
+  cerrarModalX();
+}
   });
 
   // 🧭 Cierre universal con tecla ESC
