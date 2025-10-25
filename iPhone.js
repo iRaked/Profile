@@ -507,7 +507,7 @@ document.addEventListener("keydown", (e) => {
     modalJuego.classList.add("oculto");
     iframeJuego.src = "";
   } else {
-    iframeJuego.src = "https://iraked.github.io/Games/Zumba.html";
+    iframeJuego.src = "https://iraked.github.io/Games/Tower.html";
     modalJuego.classList.remove("oculto");
   }
 });
