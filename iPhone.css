@@ -618,6 +618,7 @@ button:hover {
 
 /* 🎮 Iframe del juego */
 .inner-juego iframe {
+  position: absolute;
   width: 645px;
   height: 645px;
   transform: scale(1.10); /* reduce el ancho a ~355px */
