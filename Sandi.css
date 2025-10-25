@@ -408,3 +408,12 @@ body {
     box-shadow: 0 0 12px #8800FF;
   }
 }
+
+@media (max-width: 768px) {
+  .contador-wrapper {
+    position: absolute;
+    top: 300px;
+    right: 10px;
+    z-index: 999;
+  }
+}
