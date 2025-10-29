@@ -337,22 +337,33 @@ Segundo arco con rotación inicial para separación visual
 }
 
 /* REPRODUCTOR */
-
 .player-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   max-width: 400px;
-  height: 250px; /* AJUSTAR DE ACUERDO AL NUMERO DE CANCIONES */
-  margin: 30px auto;
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 12px #7f00ff90;
-  transition: all 0.3s ease;
+  height: 100%; /* ← Se adapta al contenedor padre */
+  max-height: 400px; /* ← Limita la altura visible */
+  margin: 0 auto 30px auto; /* ← Elimina espacio superior */
+  padding: 0;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 2px solid #7f00ff;
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+  overflow-y: auto; /* ← Scroll vertical activo */
+  overflow-x: hidden;
 }
 
+.player-wrapper embed {
+  width: 100%;
+  min-height: 600px; /* ← Altura interna que activa scroll */
+  border-radius: 12px;
+}
+
+/* AURA ANIMADA */
 @keyframes pulseGlow {
   0% {
     box-shadow: 0 0 10px #00f0ff, 0 0 20px #7f00ff;
@@ -363,29 +374,6 @@ Segundo arco con rotación inicial para separación visual
   100% {
     box-shadow: 0 0 10px #00f0ff, 0 0 20px #7f00ff;
   }
-}
-
-.player-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  max-width: 400px; /* ANCHO */
-  height: 280px; /* ALTO */
-  margin: 30px auto;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  border: 2px solid #7f00ff;
-  animation: pulseGlow 2.5s infinite ease-in-out;
-  transition: transform 0.3s ease;
-}
-
-.player-wrapper embed {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
 }
 
 /* GALERIA */
