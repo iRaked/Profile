@@ -245,12 +245,17 @@ body {
 }
 
 .box-video-lord {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  max-width: 600px; /* ← Más ancho si lo deseas */
+  height: 600px;     /* ← Altura aumentada para el nuevo tamaño */
+  margin: 0 auto;
   box-shadow: 0 0 20px #9600ff;
   border-radius: 12px;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
 }
+
 #content-lord-1:target #video-lord {
   visibility: hidden;
   opacity: 0;
