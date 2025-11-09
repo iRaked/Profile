@@ -1,0 +1,218 @@
+:root {
+  --color-accent: #888;
+  --color-secondary: #fff;
+  --color-glow: #666;
+}
+
+body {
+  margin: 0;
+  padding: 40px;
+  background-image: url('https://i.postimg.cc/G2ppMgGC/Background-Dark-Stars-GFX.gif');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* --- CARD MAIN --- */
+.card {
+  width: 255px;
+  height: 615px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3); /* sombra base suave */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02); /* se eleva y crece un poco */
+  box-shadow: 0 0 25px var(--color-secondary); /* glow solo en hover */
+}
+
+/* --- HEADER --- */
+.card-header {
+  width: 100%;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px 16px 0 0;
+  z-index: 99;
+  cursor: pointer;
+}
+
+/* --- WRAPPER DE LA IMAGEN --- */
+.card-story-image-wrapper {
+  width: 50%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 10; /* asegura que reciba hover */
+}
+
+.story-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.card-story-image-wrapper:hover .story-image {
+  transform: scale(1.25) !important;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+    position: absolute;
+    top: 100px;
+    left: 10px;
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 100%;
+  border: 4px solid var(--color-accent);
+  box-shadow: 0 0 25px var(--color-secondary);
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 110px;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  text-shadow: 0 0 10px var(--color-secondary);
+}
+
+/* --- BODY --- */
+.card-body {
+  padding: 20px 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-nick {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    #000,
+    #f2f2f2,   /* casi blanco */
+    #000,
+    #e6e6e6,   /* gris suave */
+    #000
+  );
+  background-size: 200% 200%;
+  animation: gradientFlow 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card-role, .card-id, .card-emoji, .card-zodiac {
+  margin-bottom: 8px;
+}
+
+.card-role {
+  font-size: 1.8em;
+  font-style: italic;
+  margin-bottom: 6px;
+  color: #b266ff;
+  text-shadow: 0 0 6px currentColor;
+}
+
+.card-id {
+  font-size: 1.6em;
+  margin-bottom: 8px;
+  font-family: monospace;
+  color: #888;
+}
+
+.card-emoji {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.card-zodiac {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+/* --- FOOTER --- */
+.card-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-video {
+  width: 230px;
+  height: 130px;
+}
+
+.card-video iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.flag-counter {
+  width: 100%;              /* ocupa todo el ancho */
+  text-align: center;       /* centra el contenido inline como <a><img> */
+  margin-top: 20px;         /* separación respecto al main */
+}
+
+.flag-counter img {
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0 0 20px var(--color-secondary);
+  transition: box-shadow 0.3s ease;
+}
