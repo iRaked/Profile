@@ -11,11 +11,11 @@ body {
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;   /* columna para que footer quede debajo */
+  align-items: center;
   gap: 30px;
   font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
 }
 
 /* --- CARD MAIN --- */
@@ -204,15 +204,28 @@ body {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;   /* espacio entre card y contador */
+  width: 100%;
+}
+
 .flag-counter {
-  width: 100%;              /* ocupa todo el ancho */
-  text-align: center;       /* centra el contenido inline como <a><img> */
-  margin-top: 20px;         /* separación respecto al main */
+  width: auto;              /* solo lo que ocupe la imagen */
+  text-align: center;
 }
 
 .flag-counter img {
-  display: inline-block;
+  display: block;
   border-radius: 8px;
   box-shadow: 0 0 20px var(--color-secondary);
   transition: box-shadow 0.3s ease;
+}
+
+#footer-lord {
+  margin-top: auto;         /* footer al fondo */
+  width: 100%;
+  text-align: center;
 }
