@@ -1,0 +1,230 @@
+/* ===== Fuente personalizada ===== */
+@font-face {
+  font-family: 'AdineKirnberg-Alternate';
+  src: url('assets/fonts/AdineKirnberg-Alternate.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== BASE ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background-image: url("assets/bg/Background-Golden-GFX.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;       /* 🔧 hace que la imagen cubra todo el área */
+}
+
+/* ===== MAIN CONTAINER ===== */
+.main-container {
+  position: relative;
+  width: 880px;   /* medidas fijas */
+  height: 560px;  /* medidas fijas */
+  margin: 20px auto;
+  background-image: url("assets/bg/Book.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ===== PANELES ===== */
+.panel {
+  position: absolute;
+  top: 25px;
+  width: 400px;
+  height: 560px;
+  background: transparent;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.left-panel  { left: 40px; }
+.right-panel { right: 40px; }
+
+/* ===== ZONAS DE CONTENIDO ===== */
+.content-zone {
+  position: absolute;
+  top: 0;
+  width: 300px;
+  height: 470px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  z-index: 4;
+  overflow: hidden;
+    /*outline:5px solid cyan;*/
+}
+
+/* Anclaje hacia el pliegue central */
+.zone-left  { right: 0px; }
+.zone-right { left: 10px; }
+
+/* Contenedor real donde se inyecta contenido */
+.zone-ctn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+/* ===== LISTA DE ÍNDICE ===== */
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  text-align: left;             /* 🔧 mejor alineación para aprovechar ancho */
+  word-break: break-word;       /* 🔧 fuerza ajuste de palabras largas */
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.2;             /* 🔧 más compacto */
+}
+
+.index-list li {
+  margin-bottom: 2px;           /* 🔧 menos espacio entre ítems */
+}
+
+/* ===== TEXTO ===== */
+.page-title,
+.author,
+.author-id,
+.index-list,
+.index-list li,
+.lyric-line {
+  text-align: left;
+  margin-left: 0;
+  text-indent: 0;
+  width: 100%;
+}
+
+/* ===== Estilo del nombre de la autora ===== */
+.author {
+  font-family: 'AdineKirnberg-Alternate', cursive;
+  font-size: 150px;
+  color: #000;
+  text-align: left;
+  margin: 10px 0;
+}
+
+/* ===== TÍTULO DEL LIBRO ===== */
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* ===== ID DE LA AUTORA ===== */
+.author-id {
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* ===== NUMERACIÓN DE PÁGINAS ===== */
+.page-number {
+  position: absolute;
+  font-size: 14px;
+  font-family: "Georgia", serif;
+  color: #000;
+  opacity: 0.8;
+  z-index: 20; /* 🔧 más alto que partículas */
+}
+
+/* Esquina superior izquierda */
+.page-number.left-num {
+  top: -15px;
+  left: 20px;
+}
+
+/* Esquina superior derecha */
+.page-number.right-num {
+  top: -15px;
+  right: 20px;
+}
+
+.nav-button-left,
+.nav-button-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;              /* 🔧 más grande para que el glow no se corte */
+  height: 60px;
+  border-radius: 50%;
+  border-color: transparent;
+  background: transparent;
+  cursor: pointer;
+  z-index: 50;              /* 🔧 más alto que el contenido */
+  opacity: 0;               /* invisible por defecto */
+  overflow: visible;        /* 🔧 permite que el glow se expanda */
+}
+
+/* Posiciones */
+.nav-button-left { left: 12px; }
+.nav-button-right { right: 12px; }
+
+/* Activo: glow personalizado con #ae5123 */
+.nav-button-left.active,
+.nav-button-right.active {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(174, 81, 35, 0.6),
+              0 0 40px rgba(174, 81, 35, 0.8); /* 🔧 glow más amplio en #ae5123 */
+  animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+
+@keyframes buttonPulse {
+  0%, 100% { transform: translateY(-50%) scale(0.85); opacity: 0.6; }
+  50%      { transform: translateY(-50%) scale(1.1); opacity: 1; }
+}
+
+/* 🔧 Asegúrate de que los paneles no recorten el glow */
+.panel {
+  overflow: visible;
+}
+
+/* ===== Karaoke ===== */
+.karaoke-line {
+  display: block;
+  margin: 4px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Georgia", serif;
+}
+
+.karaoke-line span {
+  display: inline-block;        /* 🔧 evita reflujo de texto */
+  margin-right: 0.25em;         /* espacio fijo entre palabras */
+  vertical-align: baseline;
+  white-space: nowrap;
+
+  opacity: 0.2;                 /* inicio tenue */
+  color: goldenrod;             /* dorado antes de renderizar */
+  animation: karaokeInvert 0.4s forwards;
+  will-change: opacity, color;  /* 🔧 optimiza animación */
+}
+
+/* Animación: cada palabra se oscurece */
+@keyframes karaokeInvert {
+  from {
+    opacity: 0.1;
+    color: goldenrod;           /* inicio dorado tenue */
+  }
+  to {
+    opacity: 1;
+    color: black;               /* final negro sólido */
+  }
+}

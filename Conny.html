@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Conny</title>
+  <link rel="stylesheet" href="Conny.css" />
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="Conny.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- BLOCK 
+  <script type="text/javascript">
+    document.onkeydown = function(){return false};
+    document.oncontextmenu = function(){return false}
+  </script>-->
+
+</head>
+<body>
+  <!-- CONTENEDOR PRINCIPAL (fijo con fondo) -->
+  <div id="main-container" class="main-container">
+
+    <!-- Capa de fondo opcional -->
+    <div id="background-layer" class="background-layer"></div>
+
+    <!-- ◀️ PANEL IZQUIERDO -->
+    <section id="left-panel" class="panel left-panel">
+      <div class="content-zone zone-left">
+        <div class="zone-ctn zone-ctn-left"><!-- render left here --></div>
+      </div>
+      <!-- Botón con glow dorado -->
+      <button id="nav-left" class="nav-button nav-button-left" aria-label="Página anterior"></button>
+    </section>
+
+    <!-- PANEL DERECHO ▶️ -->
+    <section id="right-panel" class="panel right-panel">
+      <div class="content-zone zone-right">
+        <div class="zone-ctn zone-ctn-right"><!-- render right here --></div>
+      </div>
+      <!-- Botón con glow dorado -->
+      <button id="nav-right" class="nav-button nav-button-right" aria-label="Página siguiente"></button>
+    </section>
+
+  </div>
+
+    <div class="Player">
+      <!-- Reproductor integrado -->
+      <iframe 
+        src="https://iraked.github.io/ExtasisRadio/Repro35.html" 
+        allow="autoplay"
+        loading="lazy"
+        style="border:none; outline:none;">
+      </iframe>
+    </div>
+
+</body>
+
+</html>

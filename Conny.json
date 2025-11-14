@@ -1,0 +1,469 @@
+{
+  "book": {
+    "pages": [
+      {
+        "left": { "image": "assets/img/Pelusos-5.png" },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": { "image": "assets/img/Conny.webp" }
+      },
+      {
+        "left": {
+          "title": "Un amor que no se copia",
+          "author": "Conny",
+          "authorFont": "AdineKirnberg-Alternate",
+          "authorId": "1196761886"
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Índice",
+          "entries": [
+            { "chapter": "• Declaración inicial de amor", "page": 2 },
+            { "chapter": "• Lo que para mí significas", "page": 3 },
+            { "chapter": "• Comparaciones poéticas", "page": 4 },
+            { "chapter": "• La historia única e irrepetible", "page": 5 },
+            { "chapter": "• Encuentro y destino", "page": 7 },
+            { "chapter": "• El hombre esperado", "page": 8 },
+            { "chapter": "• La llegada divina", "page": 9 },
+            { "chapter": "• La esperanza compartida", "page": 10 },
+            { "chapter": "• La voz de la poetisa", "page": 11 },
+            { "chapter": "• Capítulo 2: Amor en la distancia", "page": 13 },
+            { "chapter": "• Capítulo 3: Amor eterno", "page": 17 },
+            { "chapter": "• Capítulo 4: Frases de amor", "page": 21 },
+            { "chapter": "• Capítulo 5: Mejor decir adiós", "page": 30 }
+          ],
+          "pageNumberRight": 1
+        }
+      },
+      {
+        "left": {
+          "title": "Capítulo 1: Lo que para mí significas",
+          "photo": "assets/img/Conny.webp",
+          "pageNumberLeft": 2
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Lo que para mí significas",
+          "text": [
+            "Tú y yo sabemos que hay algo especial que nos cuida y conduce desde arriba.",
+            "Nuestra historia es única y bonita, no se repite dos veces, no se puede copiar, ni utilizando la misma tinta.",
+            "Y es que personas como tú se conocen solo una vez en la vida.",
+            "Solo tú sabes lo mucho que te quiero y lo importante que eres… Solo tú sabes lo que para mí significas."
+          ],
+          "pageNumberRight": 3
+        }
+      },
+      {
+        "left": {
+          "title": "Comparaciones poéticas",
+          "text": [
+            "Porque siempre serás mi gran amor, el hombre que vale oro, el hombre perfecto.",
+            "Eres único y nunca habrá otro hombre como tú en el mundo. 🖋🥀💔"
+          ],
+          "pageNumberLeft": 4
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "La voz de la poetisa",
+          "text": [
+            "Quisiera escribir como una poetisa, llena de poesía que inunda de sentimientos al lector que lee con emoción.",
+            "De esas que sacan suspiros al terminar un verso y dicen: “Me leíste el pensamiento, es lo que siento yo.”"
+          ],
+          "pageNumberRight": 5
+        }
+      },
+      {
+        "right": null,
+        "left": {
+          "text": [
+            "Quisiera ser esa poetisa que envuelve tus suspiros, sucumbiendo tus anhelos, sacudiendo tus instintos, penetrándome en tu pecho, dejándote sin aliento."
+          ],
+          "pageNumberLeft": 6
+        }
+      },
+      {
+        "right": {
+          "title": "Reflexiones sobre el tiempo",
+          "text": [
+            "Sentada en una escalera, como si cada peldaño fueran los años.",
+            "Para arriba, un futuro incierto.",
+            "Donde estoy sentada, mi presente, del que disfruto todo lo que me da.",
+            "Para abajo… sí, para abajo, solo recuerdos: algunos muy felices, otros dejaron mal sabor de boca, pero de todos aprendí y me llevaron al escalón de mi presente.",
+            "Y si aprendí, me valió la pena."
+          ],
+          "pageNumberRight": 7
+        },
+        "left": null
+      },
+      {
+        "left": {
+          "text": [
+            "Quisiera ser sencilla, fresca, clara, vistiéndote de gala, siendo la única ladrona de tu corazón, para que me des en versos todo tu amor. 🖋🥀"
+          ],
+          "pageNumberLeft": 8
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Mensaje que nunca llega",
+          "text": [
+            "No duermo, me siento como una estúpida e ignorante al esperarte, sí, al esperar ese mensaje que sé que no va a llegar.",
+            "Qué iluso es mi corazón, abrigando la esperanza del amor.",
+            "Qué difícil es no gritar, dejar el orgullo y hablar."
+          ],
+          "pageNumberRight": 9
+        }
+      },
+      {
+        "left": {
+          "title": "Metáforas intensas",
+          "text": [
+            "Pero… ¿para qué hablar? ¿Cómo le escribes al ciego?",
+            "¿Cómo le gritas al sordo?",
+            "¿Cómo amas sin amor?",
+            "¿Cómo acaricias un témpano de hielo sin quemarte las manos, sin derretir ni la primera capa en su exterior?",
+            "¿Cómo le enseñas el sol si solo ve en la oscuridad?",
+            "¿Cómo le enseñas la luna y su brillo si solo ve el piso y su carboncillo?",
+            "¿Cómo pintas colores si te los hace todos mil horrores?"
+          ],
+          "pageNumberLeft": 10
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "El corazón que late",
+          "text": [
+            "Cómo cerrar mis ojos si te veo ahí, despierto, navegando sin sentido y yo tan perdida por no tener tu cariño.",
+            "Cómo le digo al corazón que deje de latir por ese amor que tengo clavado entre el pecho y la espalda y que duele en el alma.",
+            "Cómo hago para cerrar los ojos y tener un espejismo de un mensaje de amor.",
+            "Cómo amordazo a la razón, cómo castigo al corazón, cómo quemo mi alma de esto que siento yo. 🖋🥀"
+          ],
+          "pageNumberRight": 11
+        }
+      },
+
+
+{
+        "left": {
+          "title": "Capítulo 2: Amor en la distancia",
+          "photo": "assets/img/Pelusos-5.png",
+          "pageNumberLeft": 12
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Amor en la distancia",
+          "text": [
+            "Tu habitas en mi mente a toda hora del día, y me muerdes los labios sin mirar el reloj.",
+            "Yo te siento muy cerca cuando estás muy distante, porque encuentro tu huella junto a cada rincón.",
+            "¡Ámame sin miedos! ¡Ámame sin condiciones! ¡Ámame sin egoísmos!"
+          ],
+          "pageNumberRight": 13
+        }
+      },
+      {
+        "left": {
+          "text": [
+            "¡Ámame sin absorberme! ¡Ámame libremente!",
+            "Yo puedo hacer que tu camino sea igualito al mío, que tus tristezas sean mis tristezas.",
+            "Amor que padece por esa distancia, de dulce fragancia que incita a lo lejos."
+          ],
+          "pageNumberLeft": 14
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "text": [
+            "Quisiera de besos y caricias colmarte, pero estás ausente… y solo recordarte pueden mis adentros.",
+            "Pero si piensas volver algún día, será mejor que venda la tristeza y deje paso a la alegría.",
+            "Claro está, la soledad es tan amiga mía, que no sé si cuando vengas serás mejor compañía.",
+            "Ya que el corazón se lo han comido los gusanos, se mueren las mariposas que había en mi estómago."
+          ],
+          "pageNumberRight": 15
+        }
+      },
+      {
+        "left": {
+          "text": [
+            "Juego a imaginarme lo que nunca me ha pasado, este sábado que el corazón me dio entera la vuelta.",
+            "Tan lejos o tan cerca… yo te amo. Yo te amo sin importar la distancia.",
+            "Puedes pensar que la distancia puede separar nuestro abrazo, que el tiempo hará más lejano nuestro encuentro… pero pensar que te he olvidado… nunca. ♞💘🌹"
+          ],
+          "pageNumberLeft": 16
+        },
+        "right": null
+      },
+      {
+        "right": {
+          "title": "Capítulo 3: Amor eterno",
+          "photo": "assets/img/Conny.webp",
+          "pageNumberRight": 17
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "title": "Amor eterno",
+          "text": [
+            "No hay palabras más claras para expresar lo que siento por ti.",
+            "Solo quiero que pasen los años y estar todavía a tu lado.",
+            "Solo quiero que te quedes conmigo para siempre y vivamos nuestra vida dándonos mucho amor.",
+            "Quiero quererte y sé que te voy a querer todos los días de mi vida.",
+            "Acordarme de ti, amore, no es llamarte ni escribirte, ni verte o estar pendiente de ti.",
+            "Es mirar al cielo y pedirle a Dios que te cuide, que te proteja donde quiera que estés"
+          ],
+          "pageNumberLeft": 18
+        }
+      },
+      {
+        "right": {
+          "text": [
+            "que te mande su bendición. ♞💘🌹",
+            "Un amor verdadero espera lo imposible, sueña lo inalcanzable y se conforma con solo saber que la persona amada esté bien y sea feliz, aunque no esté con ella.",
+            "¡Ti amo, mi bello ángel! ஜ ᶫᵒᵛᵉ ᵧₒᵤ ♞",
+            "Amor mío, esta noche déjame estar en tus sueños.",
+            "Esta noche quiero abrazar tu corazón, acariciar tu alma, abrazarte fuerte y no dejarte escapar.",
+            "Amor, esta noche olvidemos todo. Esta noche solo existimos tú y yo."
+          ],
+          "pageNumberRight": 19
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "text": [
+            "♞ Vuelvo a verte otra vez, vuelvo a respirar profundo,",
+            "y que se entere el mundo que de amor también se puede vivir.",
+            "Gracias a ti, mi bello ángel, aprendí de nuevo a creer en el amor.",
+            "Hiciste que este corazón muerto en vida volviera a dar sus latidos.",
+            "Tan solo basta estar cerca de ti: late a mil por hora.",
+            "¡Arreeee! Ti amo, mi bello ángel. ஜ"
+          ],
+          "pageNumberLeft": 20
+        }
+      },
+
+
+      {
+        "right": {
+          "title": "Capítulo 4: Frases de amor",
+          "photo": "assets/img/Pelusos-5.png",
+          "pageNumberRight": 21
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "title": "Frases de amor",
+          "text": [
+            "♡ La frase más bonita, del poema más sincero que encontré, solo tiene tres palabras: Yo te quiero.",
+            "♡ Cuando andes en el campo y sientas un aire frío, no le eches la culpa al viento, porque es un suspiro mío.",
+            "♡ Desde marzo te amo, llegará diciembre y aún te sigo amando. Es curioso cómo pasan los meses y sigo de ti enamorada.",
+            "♡ Eres la luz de mi vida, eres el dueño de mi amor, eres el único en mi mente y el primero en mi corazón."
+          ],
+          "pageNumberLeft": 22
+        }
+      },
+      {
+        "right": {
+          "text": [
+            "♡ Te amo más que a mi vida porque te llevo en mi mente, y si de algo estoy segura es que te amaré hasta la muerte.",
+            "♡ Quiero ser el pensamiento de todos tus instantes, saborearte cada momento, viviéndote cada instante. Eso quiero.",
+            "♡ Si juntáramos tus sueños con los míos, no querríamos volvernos a dormir.",
+            "♡ Me estoy ahogando con las palabras que no te he dicho y los besos que no te he dado."
+          ],
+          "pageNumberRight": 23
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "text": [
+            "♡ No me digas “mi vida”, dime “mi cielo”, porque la vida se acaba y el cielo es eterno.",
+            "♡ Si no fui la bandida que asaltó tu mansión, déjame ser la ladrona que robe tu corazón.",
+            "♡ Si mi alma fuera pluma y mi corazón tintero, con sangre de mis venas escribiría: Te quiero.",
+            "♡ Si tu cuerpo fuera cárcel y tu corazón cadena, orgullosa estaría de cumplir con mi condena."
+          ],
+          "pageNumberLeft": 24
+        }
+      },
+      {
+        "right": {
+          "text": [
+            "♡ Si tú fueras el sol, yo quisiera ser la luna, para formar un eclipse y estar juntos los dos.",
+            "♡ Quisiera ser el lucero que guía la senda que caminas, la rosa encendida que miras, la suave brisa que aspiras… en definitiva: Quisiera que fueras mío.",
+            "♡ Tú eres esa cara que nunca dejaré de buscar entre la multitud, dondequiera que vaya.",
+            "♡ Penetras en mi torrente sanguíneo, circulando directo al corazón."
+          ],
+          "pageNumberRight": 25
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "text": [
+            "♡ Cuando me vaya de aquí estarás en mis recuerdos, e incluso cuando yo muera serás eterno en mis sueños.",
+            "♡ Un beso dice más que cien versos, una mirada más que mil palabras, y cada latido mío expresa que mi corazón con locuras te ama.",
+            "♡ Te amo, no sé cuánto. Yo misma me asombro del impacto que has causado en mi corazón solitario.",
+            "♡ Ni aunque el cielo fuera hecho de papel y los océanos fueran de tinta, habría lugar para escribir todo lo que me haces sentir."
+          ],
+          "pageNumberLeft": 26
+        }
+      },
+      {
+        "right": {
+          "text": [
+            "♡ Ser esclava de tu amor sería como tener el paraíso de prisión.",
+            "♡ Quisiera ser el viento para acariciar tu rostro, rozar tu piel y tus labios, para soplarte al oído lo mucho que te quiero.",
+            "♡ Te pienso más de lo que respiro. Perdóname, pero este es mi mejor argumento para demostrarte mi amor.",
+            "♡ Si algún día despiertas en un cuarto rojo con puertas y ventanas cerradas, no te asustes: estás en mi corazón encerrado."
+          ],
+          "pageNumberRight": 27
+        },
+        "left": null
+      },
+      {
+        "left": {
+          "text": [
+            "♡ Aún sin sentido, sin razón ni pensamiento, aún sin saber por qué te amo o por qué te pienso, sé que existes y que eres mi sueño.",
+            "♡ Si la vida me diera un deseo, sería volverte a conocer, para volverte a amar y besarte otra vez, porque tú eres lo mejor que me puede suceder.",
+            "♡ Tres cosas a ti te entrego, sin condiciones y sin pedir nada: quererte como te quiero, amarte de verdad, serte fiel hasta la muerte.",
+            "♡ Querer sin esperanza es el más bello querer. Yo te quiero y nada espero, fíjate si te querré."
+          ],
+          "pageNumberLeft": 28
+        },
+        "right": null
+      },
+      {
+        "right": {
+          "text": [
+            "♡ Quién fuera agua para evaporarse, convertirse en nube y caer desde el cielo sobre tu cuerpo, recorriéndolo por completo.",
+            "♡ Dicen que soy una niña, será por mi forma de ser, pero aun siendo niña, te quiero como una mujer.",
+            "♡ Quisiera ser pensamiento y estar dentro de ti, y así saber el momento en que te acuerdas de mí.",
+            "♡ Ayer te soñé, hoy te conocí, mañana te querré y ya nunca te olvidaré."
+          ],
+          "pageNumberRight": 29
+        },
+        "left": null
+      },
+      {
+        "left": {
+          "title": "Capítulo 5: Mejor decir adiós",
+          "photo": "assets/img/Conny.webp",
+          "pageNumberLeft": 30
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Mejor decir adiós 🐎💋",
+          "text": [
+            "Se te murió el amor hacia mí, se fue alejando un hielo entre los dos.",
+            "Nos hace daño el fuego y la pasión de ayer, de golpe se nos fue de frente.",
+            "Mírame, un beso y márchate, aunque yo no siento igual que tú.",
+            "Frío en el aire, el corazón puede cambiar.",
+            "No somos culpables, lo siento.",
+            "Es que el calor de ayer hoy ya no puede ser, y tengo que aceptar que tu amor se fue."
+          ],
+          "pageNumberRight": 31
+        }
+      },
+      {
+        "left": {
+          "text": [
+            "Yo no podría hacerte mal, ni herir a alguien como tú.",
+            "Siempre en mí estarás, y yo estaré ahí para ti cuando quieras y me necesites.",
+            "Jamás te olvidaré.",
+            "No queda más de aquel amor, otro camino hay que intentar.",
+            "Me tienes que creer: mejor decir adiós."
+          ],
+          "pageNumberLeft": 32
+        },
+        "right": null
+      },
+      {
+        "left": null,
+        "right": {
+          "title": "Oración nocturna",
+          "text": [
+            "Señor, te doy las buenas noches y las gracias por darme la oportunidad de terminar un día más de vida.",
+            "Gracias por todas las bendiciones que derramaste sobre mí hoy.",
+            "Señor, bajo tu gracia divina y de manera perfecta, en el poderoso nombre de nuestro Señor Jesucristo y por obra y gracia de tu Santo Espíritu, te pido que envíes al Arcángel Miguel con sus legiones de ángeles."
+          ],
+          "pageNumberRight": 33
+        }
+      },
+      {
+        "left": {
+          "text": [
+            "Señor, envía cuatro ángeles, que cada uno se quede en cada lado de mi cama y me ayuden a descansar entre tus brazos.",
+            "Yo te entrego mis preocupaciones, enfermedades, angustias, cansancio y tristezas.",
+            "Lléname con tu esencia divina, tu luz infinita, tu amor incondicional, tu sabiduría, tu paz y tu misericordia.",
+            "Bendice mi sueño, bendice mi descanso, bendice mi cama.",
+            "Envía a los ángeles del amor divino, de la paz, la tranquilidad y la armonía, para que me acompañen y me den un despertar hermoso.",
+            "Señor, en tus manos pongo mi vida, mi familia, mi hogar, mi trabajo y mi salud."
+          ],
+          "pageNumberLeft": 34
+        },
+        "right": null
+      },
+
+
+{
+        "right": {
+          "text": [
+            "Que permanezca siempre en la puerta de mi hogar y me rodee con su luz infinita y su amor incondicional.",
+            "Protégeme de todo mal y peligro, a mí y a mis seres queridos.",
+            "Si alguien me hace daño, perdónales, porque no saben lo que hacen.",
+            "Que en mí se cumpla tu perfecta voluntad y no la mía.",
+            "Que la presencia y la bendición de Dios Padre, Dios Hijo y Dios Espíritu Santo nos acompañe siempre."
+          ],
+          "pageNumberRight": 35
+        },
+        "left": null
+      },
+      {
+        "right": null,
+        "left": {
+          "title": "Plegaria a la Virgen",
+          "text": [
+            "Madre, tú que eres la Reina del Cielo, que estás ante Dios Padre Todopoderoso y tu amado Hijo Jesús.",
+            "Te pido que intercedas por todas mis necesidades, que escuches mis plegarias.",
+            "Que el Espíritu Santo ilumine mis pensamientos para tomar decisiones adecuadas en mi vida.",
+            "Morenita, te necesito, ayúdame.",
+            "Te amo.",
+            "Amén. 🙏"
+          ],
+          "pageNumberLeft": 36
+        }
+      }
+
+
+    ]
+  }
+}
