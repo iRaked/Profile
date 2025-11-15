@@ -2,12 +2,12 @@
   "book": {
     "pages": [
       {
-        "left": { "image": "assets/img/Pelusos-5.png" },
+        "left": { "image": "https://i.postimg.cc/J0K4gbD6/Conny1.png" },
         "right": null
       },
       {
         "left": null,
-        "right": { "image": "assets/img/Conny.webp" }
+        "right": { "image": "https://i.postimg.cc/MHtK4yM3/Conny2.png" }
       },
       {
         "left": {
@@ -43,7 +43,7 @@
       {
         "left": {
           "title": "Capítulo 1: Lo que para mí significas",
-          "photo": "assets/img/Conny.webp",
+          "photo": "https://i.postimg.cc/x891tsC7/Conny3.png",
           "pageNumberLeft": 2
         },
         "right": null
@@ -161,7 +161,7 @@
 {
         "left": {
           "title": "Capítulo 2: Amor en la distancia",
-          "photo": "assets/img/Pelusos-5.png",
+          "photo": "https://i.postimg.cc/cCdLXDHp/Conny4.png",
           "pageNumberLeft": 12
         },
         "right": null
@@ -215,7 +215,7 @@
       {
         "right": {
           "title": "Capítulo 3: Amor eterno",
-          "photo": "assets/img/Conny.webp",
+          "photo": "https://i.ibb.co/ccw73LH/Pcconngrs.png",
           "pageNumberRight": 17
         },
         "left": null
@@ -268,7 +268,7 @@
       {
         "right": {
           "title": "Capítulo 4: Frases de amor",
-          "photo": "assets/img/Pelusos-5.png",
+          "photo": "https://i.ibb.co/P9jC1q2/Pcconnazl.png",
           "pageNumberRight": 21
         },
         "left": null
@@ -373,7 +373,7 @@
       {
         "left": {
           "title": "Capítulo 5: Mejor decir adiós",
-          "photo": "assets/img/Conny.webp",
+          "photo": "https://xatimg.com/image/WDuBYqv8FfuU.jpg",
           "pageNumberLeft": 30
         },
         "right": null
