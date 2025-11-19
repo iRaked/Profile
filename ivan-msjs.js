@@ -63,7 +63,7 @@ const mensajesAmigos = {
   Amor: "Extrañarte es la mejor manera de decir cuanto te quiero, soñarte me dice que el pensarte no es suficiente y escucharte es el cierre de este ciclo de amor. Quisiera... vaya que quisiera hacer tantas cosas en tu compañía sino no te quisiera como te quiero y tú sabes cuanto te quiero.",
   BFF: "Contar contigo me llena de paz el alma, sin tu guía me perdería y por ello no tienes idea de cuando te valoro. A tu lado la distancia se vuelve efímera, un placer coincidir contigo en esta vida, señorita inolvidable.",
   Sister: "Manita shula te llevo como la mejor muestra de fraternidad y complicidad con la que he podido contar desde tiempos inmemoriales, mi respeto y mi cariño siempre hacia a ti.",
-  Freysita: "Sos mi alma gemela, la niña fresa más rebelde con quien he podido llevarme también quien me acompaña en mis boludeces y quien me orienta siempre con el corazón y con las ideas tan claras como tu aura, TQM Freysita, nunca cambies, vales mil",
+  Bebota: "Sos mi alma gemela, la niña fresa más rebelde con quien he podido llevarme también quien me acompaña en mis boludeces y quien me orienta siempre con el corazón y con las ideas tan claras como tu aura, TQM Freysita, nunca cambies, vales mil",
   Bebote: "Hermano ilustre y no exagero, vos sabés lo que significa contar con tu amistad, te cuido y te admiro como debe honrarse esta fraternidad, grande y piola che, nunca cambies bro.",
   Cloncita: "Amiga, que digo amiga, más que comadre; mi cloncita, confiable, leal, inteligente y simpática, eso es lo que he descubierto con tu amistad a la que aprecio, honro y respeto ante todo.",
   Compa: "Eres de esas amistades que no sabes qué esperar, lleno de bondad, serenidad y muchas ganas de pelear, perdón la costumbre, nunca te dejes de las personas descerebradas que para ello cuentas conmigo, fierro a la bestia mi compa.",
@@ -77,7 +77,7 @@ const mensajesAmigos = {
 const coloresTitulo = {
   Amor: "#ff4f91",
   BFF: "#00c2cb",
-  Freysita: "#6900a7",
+  Bebota: "#A020F0",
   Sister: "#ff69b4",
   Bebote: "#ffb347",
   Cloncita: "#c71585",
