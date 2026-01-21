@@ -70,7 +70,7 @@ const mensajesAmigos = {
   Amygocha: "Juegos, risas, consejos, experiencias compartidas y siempre mucha comunicación es lo que hoy me permite honrar tu presencia con total afecto, cariño y respeto por poder llamarte amiga, naaa amygocha sí!.",
   Amix: "Amiga mía, perdida y despistada pero con un corazón generoso de dicha y alegría, literalmente me saque la lotería al conocerte.",
   Cuñis: "Ex cuñada sí pero nunca en desconEXión, porque tu esencia es libre e inocente, tu alma frágil y aventurera llena de energía ante la vida y sus obstáculos.",
-  Pexioxa: "Si te leo me sorprendo al encontrar a una persona fuerte y centrada, lo que me hace especial al formar parte de tu círculo cercano, como tú del mío.",
+  Vida: "Sos la locura que complementa mi vida, una persona re grosa y cariñosa, cada experiencia con vos es algo fuera de lo común, sos la dosis correcta de irreverencia y comprensión; sos una capa che!.",
   Pelonchas: "El binguero millonario* más despreciado y detestado de este mundo virtual, él cree que el poder está en lo que puede comprar engañándose que la felicidad está en oferta, haciendo de su vida una fantasía. Apareces por relleno, no por gusto ;)"
 };
 
@@ -85,7 +85,7 @@ const coloresTitulo = {
   Amygocha: "#ff6347",
   Amix: "#f08080",
   Cuñis: "#9370db",
-  Pexioxa: "#00bfff",
+  Vida: "#00bfff",
   Pelonchas: "#ff4500"
 };
 
