@@ -1,0 +1,1335 @@
+/* --- VARIABLES DE COLORES (Cyber-Pop Palette) --- */
+:root {
+  --neon-rosa: #ff007f;
+  --neon-lila: #bc13fe;
+  --neon-aqua: #00f3ff;
+  --crema: #f5f5dc;
+  --bg-dark: #050505;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark); 
+  /* Eliminamos el gradiente y dejamos solo los ladrillos */
+  background-image: url('assets/bg/Bricks.png');
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover; /* Añade esto para que los ladrillos cubran toda la pantalla */
+  
+  color: var(--crema);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- 1. CONTENEDOR PRINCIPAL (Marco Neon Lila) --- */
+.main-glass-container {
+  min-height: 100vh;
+  margin: 20px;
+  padding-bottom: 0;
+  border-radius: 30px;
+  border: 2px solid var(--neon-lila);
+  box-shadow: 0 0 25px rgba(188, 19, 254, 0.4),
+              inset 0 0 15px rgba(188, 19, 254, 0.2);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 02 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 2. HEADER / PORTADA (Corregido el Efecto de Brillo) --- */
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  padding: 40px 20px 0; 
+}
+
+.cover-wrapper {
+  width: 92%; 
+  max-width: 1200px;
+  height: 400px; 
+  border-radius: 40px; 
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--neon-rosa);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4),
+              inset 0 0 10px rgba(255, 0, 127, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: skinPulsate 5s infinite ease-in-out;
+}
+
+/* EL BRILLO (Capa superior) */
+.cover-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%; /* Empezamos bien afuera a la izquierda */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%, /* Un poco más de opacidad para que se note */
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  /* ESTO ES LO QUE FALTABA: */
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1); 
+  pointer-events: none; /* Para que no interfiera con el mouse */
+}
+
+/* Al hacer hover, el brillo cruza hasta el otro lado */
+.cover-wrapper:hover::after {
+  left: 150%; 
+}
+
+/* Mantenemos la pulsación de la imagen */
+@keyframes skinPulsate {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 2px var(--neon-rosa));
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.1) drop-shadow(0 0 8px var(--neon-rosa));
+    transform: scale(1.01);
+  }
+}
+
+/* --- 2.1 FIRMA SKY DESIGN (Borde inferior derecho) --- */
+.brand-signature {
+  position: absolute;
+  bottom: 25px;
+  right: 35px;
+  text-align: right;
+  pointer-events: none; /* Para que no estorbe al click */
+  z-index: 10;
+  
+  /* Un ligero fondo difuminado para que el texto siempre sea legible */
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border-right: 3px solid var(--neon-aqua);
+}
+
+.main-title {
+  font-family: 'Orbitron', sans-serif; /* Si no tienes Orbitron, usa Segoe UI Black */
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 0.8;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 4px;
+  
+  /* Efecto Neón Dual */
+  text-shadow: 
+    0 0 10px var(--neon-aqua),
+    0 0 20px var(--neon-aqua),
+    2px 2px 0px var(--neon-rosa); /* Sombra rosa para el toque Cyber-Pop */
+  
+  animation: titleGlow 4s infinite alternate;
+}
+
+.sub-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 8px; /* Espaciado solemne */
+  color: var(--crema);
+  margin-top: 5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Animación sutil de "aliento" para el neón */
+@keyframes titleGlow {
+  from {
+    filter: brightness(1) drop-shadow(0 0 5px var(--neon-aqua));
+  }
+  to {
+    filter: brightness(1.3) drop-shadow(0 0 15px var(--neon-aqua));
+  }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━ 03 ━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 3. SECCIÓN DE GALERÍA (Base Común) --- */
+.gallery-section {
+    margin: 80px auto;
+    width: 92%;
+    max-width: 1200px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 45px;
+    padding: 0;
+    position: relative;
+    overflow: visible;
+    transition: all 0.5s ease;
+}
+
+/* --- SECUENCIA DE COLORES POR SECCIÓN --- */
+
+/* --- SECUENCIA CÍCLICA DE COLORES (Se repite cada 4) --- */
+
+/* 1, 5, 9, 13... -> CREMA */
+.gallery-section:nth-of-type(4n+1) {
+    background: rgba(245, 245, 220, 0.06);
+    border: 1.5px solid var(--crema);
+    box-shadow: 0 0 20px rgba(245, 245, 220, 0.15);
+}
+
+/* 2, 6, 10, 14... -> LILA */
+.gallery-section:nth-of-type(4n+2) {
+    background: rgba(188, 19, 254, 0.04);
+    border: 1.5px solid var(--neon-lila);
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+}
+
+/* 3, 7, 11, 15... -> AQUA */
+.gallery-section:nth-of-type(4n+3) {
+    background: rgba(0, 243, 255, 0.04);
+    border: 1.5px solid var(--neon-aqua);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+/* 4, 8, 12, 16... -> ROSA */
+.gallery-section:nth-of-type(4n+4) {
+    background: rgba(255, 0, 127, 0.04);
+    border: 1.5px solid var(--neon-rosa);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
+}
+
+/* El carrusel se mantiene centrado para todas */
+.gallery-carousel {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    justify-content: center;
+    padding: 100px 60px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    clip-path: inset(-100px -100px -100px -100px);
+}
+
+/* Ocultar barra de scroll */
+.gallery-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 04 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 4. CARDS DE CATÁLOGO (Refinado) --- */
+.catalog-card {
+  flex: 0 0 250px; /* Tamaño estable */
+  background: #080808;
+  border-radius: 22px;
+  border: 2px solid var(--neon-lila);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  
+  /* Evita que la card se achique si hay pocas */
+  min-width: 250px; 
+}
+
+/* Hover suave para no "chocar" con los bordes del cristal */
+.catalog-card:hover {
+  transform: scale(1.1) translateY(0);
+  z-index: 100;
+  border-color: var(--neon-aqua);
+  box-shadow: 0 0 30px var(--neon-aqua);
+}
+
+/* Posiciones Asimétricas (Zigzag) */
+.pos-up { transform: translateY(-45px); }
+.pos-down { transform: translateY(45px); }
+
+
+/* Contenedor de Imagen de Card */
+.card-image-wrapper {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.catalog-card:hover .card-image {
+  transform: scale(1.15);
+}
+
+/* Footer de la Card (Estilo Jazeli - Blanco) */
+.card-footer {
+  padding: 15px;
+  background: #00000080;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.card-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 05 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 5. MENÚ LATERAL (Side Menu) --- */
+.side-menu {
+  position: fixed;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px 15px;
+  z-index: 1000;
+  
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  /* Estética del contenedor */
+  border-radius: 50px;
+  border-right: 2px solid #00ffff;
+    box-shadow: 5px 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.menu-item {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--crema);
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+/* --- EFECTOS NEÓN INDIVIDUALES POR ICONO --- */
+
+/* Home -> Aqua */
+.menu-item:nth-child(1):hover {
+  color: var(--neon-aqua);
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 15px var(--neon-aqua);
+  transform: scale(1.2);
+}
+
+/* Favoritos -> Rosa */
+.menu-item:nth-child(2):hover {
+  color: var(--neon-rosa);
+  background: rgba(255, 0, 127, 0.1);
+  box-shadow: 0 0 15px var(--neon-rosa);
+  transform: scale(1.2);
+}
+
+/* Usuario -> Lila */
+.menu-item:nth-child(3):hover {
+  color: var(--neon-lila);
+  background: rgba(188, 19, 254, 0.1);
+  box-shadow: 0 0 15px var(--neon-lila);
+  transform: scale(1.2);
+}
+
+/* Music -> Aqua (o podrías usar un Amarillo Neón si quieres variar) */
+.menu-item:nth-child(4):hover {
+  color: var(--neon-aqua);
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 15px var(--neon-aqua);
+  transform: scale(1.2);
+}
+
+/* Tooltip sutil (opcional) */
+.menu-item::after {
+  content: attr(title);
+  position: absolute;
+  left: 70px;
+  background: var(--bg-dark);
+  color: var(--crema);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  border: 1px solid var(--neon-lila);
+  white-space: nowrap;
+}
+
+.menu-item:hover::after {
+  opacity: 1;
+  left: 65px;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 06 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 6. FOOTER (Fusionado y Pegado) --- */
+.main-footer {
+  text-align: center;
+  margin-top: auto; /* Empuja el footer siempre al fondo del contenedor */
+  padding: 2px 0;
+  width: 100%;
+  
+  /* EFECTO BARRA DE CRISTAL */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Borde superior sutil */
+  border-top: 1px solid rgba(0, 243, 255, 0.2);
+  
+  /* BORDES COINCIDENTES: 0 arriba, redondeado abajo para encajar con el Main */
+  border-radius: 0 0 28px 28px; 
+  
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste del link */
+.footer-link {
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  padding: 5px 20px;
+}
+
+/* Efecto al pasar el mouse sobre la barra */
+.footer-link:hover {
+  background: rgba(0, 243, 255, 0.05);
+  transform: translateY(-3px);
+}
+
+.footer-icon {
+  width: 25px; /* Un pelín más grande para que luzca */
+  height: 25px;
+  filter: drop-shadow(0 0 8px #00FFFF);
+  transition: all 0.4s ease;
+}
+
+.footer-link:hover .footer-icon {
+  filter: drop-shadow(0 0 15px #00FFFF) brightness(1.2);
+  transform: rotate(10deg); /* Un toque de personalidad */
+}
+
+.footer-copy {
+  all: unset;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  
+  /* Gradiente de texto */
+  background: linear-gradient(135deg, #3688ff, #00FFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Efecto Neón */
+  text-shadow: 0 0 10px rgba(78, 142, 247, 0.5), 
+               0 0 20px rgba(0, 255, 255, 0.3);
+  
+  /* Animación de brillo suave */
+  animation: glowFade 3s ease-in-out infinite alternate;
+  text-align: center;
+}
+
+/* ANIMACIÓN DE BRILLO PARA EL TEXTO */
+@keyframes glowFade {
+  from {
+    filter: brightness(1) drop-shadow(0 0 2px #00FFFF);
+    opacity: 0.8;
+  }
+  to {
+    filter: brightness(1.3) drop-shadow(0 0 10px #00FFFF);
+    opacity: 1;
+  }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 07 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- REGIONES DEL MODAL 'ATMOSPHERIC PEEK' --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: none; /* Se activa con flex mediante JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1600px;
+    gap: 30px;
+    position: relative;
+}
+
+/* --- COLUMNAS DE FANTASMA (PEEK) --- */
+.modal-peek-column {
+    position: relative;
+    flex: 0 0 200px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    opacity: 0.15;
+    filter: blur(4px) grayscale(80%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-peek-column:hover {
+    opacity: 0.5;
+    filter: blur(1px) grayscale(0%);
+    border-color: var(--neon-aqua);
+    transform: scale(1.03);
+}
+
+.peek-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- COLUMNA CENTRAL --- */
+.modal-main-column {
+    flex: 0 0 748px;
+    z-index: 10;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.15);
+}
+
+.modal-img {
+    width: 728px;
+    height: 486px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.modal-caption {
+    margin-top: 15px;
+    color: var(--crema);
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* --- BOTONES DE NAVEGACIÓN REDUCIDOS --- */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+    z-index: 20;
+}
+
+.modal-nav:hover {
+    background: var(--neon-aqua);
+    color: var(--bg-dark);
+    border-color: var(--neon-aqua);
+    box-shadow: 0 0 15px var(--neon-aqua);
+}
+
+.modal-peek-column.prev .modal-nav { left: 15px; }
+.modal-peek-column.next .modal-nav { right: 15px; }
+
+/* --- CIERRE DEL MODAL CENTRADO --- */
+.close-modal-container {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000; /* Un paso por encima del overlay */
+}
+
+.close-modal {
+    color: var(--neon-rosa);
+    font-size: 2.8rem;
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px var(--neon-rosa));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block;
+}
+
+.close-modal:hover {
+    transform: scale(1.2) rotate(180deg);
+    filter: drop-shadow(0 0 20px var(--neon-rosa));
+    color: #fff;
+}
+
+/* --- RESPONSIVE / MÓVIL --- */
+@media (max-width: 1200px) {
+    .modal-peek-column {
+        display: none;
+    }
+    .modal-main-column {
+        flex: 0 0 90%;
+    }
+    .modal-img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin-top: 60px;
+    }
+    .close-modal {
+        font-size: 2.2rem;
+    }
+    .modal-nav {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+}
+
+/* Ocultos en Desktop por defecto */
+.modal-nav-mobile {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--neon-aqua);
+    color: var(--neon-aqua);
+    padding: 15px;
+    border-radius: 50%;
+    z-index: 10001; /* Por encima de todo */
+    box-shadow: 0 0 15px var(--neon-aqua);
+    cursor: pointer;
+}
+
+.modal-nav-mobile.prev { left: 10px; }
+.modal-nav-mobile.next { right: 10px; }
+
+/* Tu bloque responsive actualizado */
+@media (max-width: 1200px) {
+    .modal-peek-column {
+        display: none !important; /* Aquí es donde morían los botones antes */
+    }
+    
+    /* Activamos los botones flotantes cuando las columnas mueren */
+    .modal-nav-mobile {
+        display: block;
+    }
+
+    .modal-main-column {
+        flex: 0 0 95%;
+    }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 08 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- LLUVIA NEÓN ATMOSFÉRICA --- */
+.neon-rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Para que no interfiera con los clicks */
+  z-index: -1; /* Va detrás de todo, justo sobre los ladrillos */
+  overflow: hidden;
+}
+
+/* --- Ajuste en Sky.css --- */
+.drop {
+  position: absolute;
+  width: 2px; /* Más visible */
+  height: 100px; /* Más larga */
+  background: linear-gradient(to bottom, transparent, var(--neon-aqua));
+  opacity: 0.4; /* Brillo más sólido */
+  animation: fall linear infinite;
+  filter: drop-shadow(0 0 5px inherit); /* Brillo propio */
+}
+
+/* Variamos los colores de las gotas para que hagan juego con tu paleta */
+.drop:nth-child(3n) { background: linear-gradient(to bottom, transparent, var(--neon-rosa)); }
+.drop:nth-child(3n+1) { background: linear-gradient(to bottom, transparent, var(--neon-lila)); }
+
+@keyframes fall {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(110vh); }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 09 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- CUSTOM CYBER-SCROLLBAR --- */
+
+/* 1. Tamaño del carril del scroll */
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--bg-dark); /* Fondo oscuro para que resalte el neón */
+}
+
+/* 2. El carril (track) - fondo del scroll */
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. La barra que se mueve (thumb) con DEGRADADO */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        var(--neon-aqua),
+        var(--neon-lila),
+        var(--neon-rosa)
+    );
+    border-radius: 20px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. Efecto Glow al hacer Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        to bottom,
+        #00ffff, /* Un aqua más brillante */
+        #bc13fe, 
+        #ff007f
+    );
+    box-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* Firefox (Soporte limitado para degradados, pero lo intentamos) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-lila) var(--bg-dark);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- PERFIL DE USUARIO CSS (HOME MODAL) --- */
+
+/* 1. OVERLAY ESPECÍFICO (Más desenfoque para solemnidad) */
+.profile-modal-overlay {
+    z-index: 10000; /* Por encima de todo */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* 2. TARJETA DE CRISTAL (Glassmorphism) */
+.profile-card-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(188, 19, 254, 0.1); /* Brillo Lila tenue de fondo */
+    animation: profileCardEntry 0.5s ease-out;
+}
+
+@keyframes profileCardEntry {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 3. AVATAR CON BORDE ANIMADO (EL TRUCO MAESTRO) */
+.avatar-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* Importante para que el brillo respire */
+}
+
+.profile-avatar {
+    width: 120px; /* Un poco más pequeña que el wrapper */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 5;
+    border: 3px solid var(--bg-dark); /* Espacio negro entre imagen y borde neón */
+}
+
+/* El Anillo de Luz Giratorio */
+.avatar-border-anim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--neon-aqua),
+        var(--neon-lila),
+        var(--neon-rosa),
+        var(--neon-aqua)
+    );
+    animation: rotateProfileBorder 3s linear infinite;
+    filter: blur(3px); /* Difumina un poco para efecto neón */
+    z-index: 1;
+}
+
+/* glow extra */
+.avatar-border-anim::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+@keyframes rotateProfileBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 4. HEADER INFO (Nombre, ID, Estado) */
+.user-info-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+}
+
+.profile-id {
+    display: block;
+    color: var(--crema);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-family: 'Courier New', monospace; /* Toque técnico */
+    margin-top: 5px;
+}
+
+/* Icono Estado Activo (Verde Neón) */
+.status-indicator {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-indicator.active {
+    background-color: #39ff14; /* Verde Alien */
+    box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* 5. DETALLES (Lista) */
+.profile-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--neon-lila), transparent);
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+.profile-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.01);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detail-label {
+    color: var(--neon-aqua);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* País con bandera */
+.country-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.country-flag {
+    width: 25px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Signo */
+.zodiac-value {
+    color: var(--neon-rosa);
+}
+
+/* Frase Solemnne */
+.quote-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(188, 19, 254, 0.03); /* Fondo lila muy tenue */
+    border-color: rgba(188, 19, 254, 0.1);
+    margin-top: 10px;
+}
+
+.profile-quote {
+    color: var(--crema);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 10px 0 0;
+    position: relative;
+    padding: 0 10px;
+}
+
+/* Comillas Neón */
+.profile-quote::before, .profile-quote::after {
+    color: var(--neon-lila);
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+}
+.profile-quote::before { content: '“'; left: -5px; top: -5px; }
+.profile-quote::after { content: '”'; right: -5px; bottom: -5px; }
+
+/* 6. CIERRE (X Rosa Neón Centrada) */
+.close-profile-container {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.close-profile {
+    color: var(--neon-rosa);
+    font-size: 2rem;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px var(--neon-rosa));
+    transition: 0.3s;
+}
+
+.close-profile:hover {
+    transform: rotate(180deg) scale(1.1);
+    filter: drop-shadow(0 0 10px var(--neon-rosa));
+    color: #fff;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- FRIENDS 'LORD-SKY' STYLE --- */
+
+.friends-list-lord {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrado vertical */
+    gap: 20px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.box-friends-lord-sky {
+    width: 320px; /* Ancho base */
+    height: 100px;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.img-friends-lord-sky {
+    width: 100px;
+    height: 100px;
+    padding: 4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--neon-aqua), var(--neon-rosa));
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    position: relative;
+    z-index: 10;
+    transition: 0.5s ease;
+    object-fit: cover;
+}
+
+/* --- AJUSTE CINTA NEGRO CRISTAL --- */
+.h2-lord {
+    position: absolute;
+    width: 90px;
+    height: 45px;
+    top: 27px;
+    left: 50px;
+    
+    /* Negro semitransparente con Blur */
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para definir el cristal */
+    border-radius: 0 50px 50px 0;
+    line-height: 45px;
+    padding-left: 0;
+    font-size: .65em;
+    
+    /* El texto ahora debe ser claro */
+    color: var(--crema); 
+    
+    transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* EFECTO DE EXPANSIÓN (Update) */
+.box-friends-lord-sky:hover .h2-lord {
+    width: 240px;
+    padding-left: 60px;
+    font-size: 1em;
+    background: rgba(0, 0, 0, 0.8); /* Se oscurece un poco más al activar */
+    color: var(--neon-aqua); /* El nombre brilla en Aqua al pasar el mouse */
+    border-color: var(--neon-aqua);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.simbol-lord {
+    display: inline-block;
+    position: relative;
+    right: -10px;
+    font-size: 1.5em;
+    color: var(--neon-lila);
+    vertical-align: middle;
+}
+
+.box-friends-lord-sky:hover .img-friends-lord-sky {
+    transform: rotate(360deg);
+    box-shadow: 0 0 25px var(--neon-aqua);
+}
+
+/* Scroll interno para el modal si la lista es muy larga */
+.profile-card-container {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* --- MUSIC PLAYER STYLES --- */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.music-player-card {
+    max-width: 400px;
+    text-align: center;
+}
+
+.player-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.track-info h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    text-shadow: 0 0 10px var(--neon-aqua);
+}
+
+.track-info p {
+    color: var(--neon-lila);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Visualizador de barras animado */
+.visualizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 30px;
+}
+
+.visualizer span {
+    width: 4px;
+    background: var(--neon-aqua);
+    box-shadow: 0 0 10px var(--neon-aqua);
+    border-radius: 2px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.visualizer span:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+.visualizer span:nth-child(3) { animation-delay: 0.4s; height: 100%; }
+.visualizer span:nth-child(4) { animation-delay: 0.6s; height: 40%; }
+.visualizer span:nth-child(5) { animation-delay: 0.8s; height: 80%; }
+
+@keyframes bounce {
+    0%, 100% { height: 10px; }
+    50% { height: 30px; }
+}
+
+/* Botones de Control */
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+
+.ctrl-btn:hover {
+    color: var(--neon-aqua);
+    transform: scale(1.2);
+}
+
+.play-pause {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--neon-rosa);
+    color: var(--neon-rosa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.play-pause:hover {
+    background: var(--neon-rosa);
+    color: #fff;
+    box-shadow: 0 0 20px var(--neon-rosa);
+}
+
+/* Barra de progreso */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 45%; /* Simulación de progreso */
+    height: 100%;
+    background: linear-gradient(to right, var(--neon-aqua), var(--neon-lila));
+    box-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* --- BOTONES NAVEGACIÓN INTERNA --- */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.friends-nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.btn-sky-mini {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    color: var(--crema);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sky-mini:hover {
+    border-color: var(--neon-aqua);
+    box-shadow: 0 0 10px var(--neon-aqua);
+    transform: translateY(-2px);
+}
+
+.btn-sky-mini.active {
+    background: var(--neon-aqua);
+    color: var(--bg-dark);
+    border-color: var(--neon-aqua);
+    box-shadow: 0 0 15px var(--neon-aqua);
+    font-weight: bold;
+}
+
+/* Sincronización de la barra de progreso en el reproductor */
+#progress {
+    width: 0%; /* Inicia en 0 */
+    transition: width 0.1s linear;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* --- EFECTO EXPLOSIÓN DE CORAZONES (FAVORITOS) --- */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.heart-particle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 20000; /* Por encima de todo */
+    animation: heartFly 1.5s ease-out forwards;
+}
+
+@keyframes heartFly {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Se dispersan en direcciones aleatorias mediante JS */
+        transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--tr));
+        opacity: 0;
+    }
+}
+
+/* Colores Neón para los corazones */
+.heart-aqua { color: var(--neon-aqua); filter: drop-shadow(0 0 5px var(--neon-aqua)); }
+.heart-lila { color: var(--neon-lila); filter: drop-shadow(0 0 5px var(--neon-lila)); }
+.heart-rosa { color: var(--neon-rosa); filter: drop-shadow(0 0 5px var(--neon-rosa)); }
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- RESPONSIVE (Ajustes para móvil) --- */
+@media (max-width: 768px) {
+  .gallery-section {
+    width: 98%;
+    padding: 40px 10px;
+  }
+  .catalog-card {
+    flex: 0 0 220px;
+  }
+  .pos-up, .pos-down {
+    transform: translateY(0); /* Quitamos zigzag en móvil para legibilidad */
+  }
+}
+
+/* 2. LOGICA RESPONSIVE PARA GALERÍA (CORREGIDA) */
+@media (max-width: 768px) {
+    .gallery-carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; 
+        -webkit-overflow-scrolling: touch;
+        padding: 60px 20px;
+        gap: 20px;
+        justify-content: flex-start;
+        /* IMPORTANTE: Permitir que los pseudo-elementos se posicionen respecto a la sección */
+    }
+
+    /* --- LAS FLECHAS AHORA SON BOTONES REALES --- */
+    .gallery-section::before,
+    .gallery-section::after {
+        content: '〉';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        color: var(--neon-aqua);
+        text-shadow: 0 0 15px var(--neon-aqua);
+        opacity: 0.8;
+        z-index: 999; /* POR ENCIMA DE TODO */
+        pointer-events: auto; /* ¡AHORA SÍ RECIBEN CLICS! */
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3); /* Un fondo sutil para dar feedback */
+        width: 50px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    .gallery-section::before {
+        content: '〈';
+        left: 5px;
+    }
+
+    .gallery-section::after {
+        right: 5px;
+    }
+
+    /* Evitar que el hover de la card bloquee el clic de las flechas */
+    .catalog-card {
+        scroll-snap-align: center;
+        position: relative;
+        z-index: 1; /* Bajo respecto a las flechas */
+    }
+}
