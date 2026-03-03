@@ -17,7 +17,7 @@
 body {
   background-color: var(--bg-dark); 
   /* Eliminamos el gradiente y dejamos solo los ladrillos */
-  background-image: url('assets/bg/Bricks.png');
+  background-image: url('https://santi-graphics.vercel.app/assets/bg/Bricks.png');
   background-repeat: repeat;
   background-position: center;
   background-attachment: fixed;
