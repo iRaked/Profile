@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://santi-graphics.vercel.app/assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Sandi 2</title>
+  <!-- Estilos externos -->
+  <link href="Sandi2.css" rel="stylesheet" type="text/css">
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Scripts externos https://radio-tekileros.vercel.app/-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Sandi2.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+  <!-- BLOCK 
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>-->
+
+</head>
+
+<body>
+  <div class="cyber-overlay"></div>
+  <!-- Control de Seguridad -->
+  <div id="lock-screen" class="lock-overlay">
+  <div class="lock-card">
+    <div class="flare flare-left"></div>
+    <div class="flare flare-right"></div>
+
+    <div class="lock-header">
+      <div class="fingerprint-circle">
+        <i class="fa-solid fa-fingerprint"></i>
+      </div>
+      <p class="lock-status">Acceso Restringido</p>
+    </div>
+
+    <div class="pin-display">
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+    </div>
+
+    <div class="numpad">
+      <button class="num-btn" data-val="1">1</button>
+      <button class="num-btn" data-val="2">2</button>
+      <button class="num-btn" data-val="3">3</button>
+      <button class="num-btn" data-val="4">4</button>
+      <button class="num-btn" data-val="5">5</button>
+      <button class="num-btn" data-val="6">6</button>
+      <button class="num-btn" data-val="7">7</button>
+      <button class="num-btn" data-val="8">8</button>
+      <button class="num-btn" data-val="9">9</button>
+      <button class="num-btn btn-special" data-val="*">#</button>
+      <button class="num-btn" data-val="0">0</button>
+      <button class="num-btn btn-clear"><i class="fa-solid fa-delete-left"></i></button>
+    </div>
+  </div>
+</div>
+
+  <!-- MAIN -->
+  <main class="main-container">
+
+    <!-- CENTER -->
+    <section class="content-center">
+      <div class="hero-container">
+        <div class="text-mask-wrapper">
+          <span class="part-san">SAN</span>
+        </div>
+        <span class="part-di">DI</span>
+      </div>
+    </section>
+
+    <!-- RIGHT -->
+    <aside class="right-side" id="right-panel">
+  <div class="widget-container">
+
+    <!-- About Me -->
+    <div class="profile-avatar-container">
+      <div class="avatar-glass">
+        <img src="https://i.ibb.co/W4jFHyKd/Sandi-Flash-GFX.gif" alt="Sandi GFX" class="cycle-img">
+      </div>
+    </div>
+
+    <div class="widget active" id="widget-user">
+
+      <div class="butterfly-ornament">꧁ƸӜƷ꧂</div>
+
+      <h2 class="user-nick">Sandi</h2>
+      <span class="user-id">ID: 323506380</span>
+
+      <div class="info-bubbles">
+        <div class="bubble b-lila"><strong>Philosophy:</strong> <span>Pending</span></div>
+        <div class="bubble b-aqua"><strong>Country:</strong> <span>México</span></div>
+        <div class="bubble b-violeta"><strong>Zodiac Sign:</strong> <span>Virgo</span></div>
+        <div class="bubble b-lila"><strong>Hobby:</strong> <span>Binguera Profesional</span></div>
+        <div class="bubble b-aqua"><strong>Music:</strong> <span>Regional Mexicano</span></div>
+      </div>
+
+      <div class="cycle-controls">
+        <button class="cycle-btn" data-index="0"><i class="cycle-dot active"></i></button>
+        <button class="cycle-btn" data-index="1"><i class="cycle-dot"></i></button>
+        <button class="cycle-btn" data-index="2"><i class="cycle-dot"></i></button>
+      </div>
+
+    </div> 
+
+    <!-- Gallery -->
+    <div class="widget" id="widget-gallery">
+      <div class="gallery-layout">
+        <div class="gallery-sidebar">
+          <h2 class="vertical-title">GALLERY</h2>
+        </div>
+
+        <div class="gallery-main-view" id="gallery-touch-zone">
+          <div class="carousel-item">
+            <img src="assets/img/S1.png" alt="S1" class="gallery-img">
+            <div class="lock-shield">
+              <div class="circle-trace">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <!-- Friends -->
+    <div class="widget" id="widget-friends">
+        <div class="gallery-layout">
+            <aside class="gallery-sidebar">
+                <h2 class="vertical-title">FRIENDS</h2>
+            </aside>
+
+            <section class="gallery-main-view" id="friends-touch-zone">
+                <div class="friend-card-wrapper">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="https://xat.me/Lov3" target="_blank" class="card-avatar" id="friend-url">
+                                <div class="mask-layer">
+                                    <img src="https://i.postimg.cc/15J8JHqW/246.gif" alt="Avatar" id="friend-img">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                        <span class="card-nick" id="friend-nick">Lov3</span>
+                        <small class="card-role" id="friend-status">
+                            <span class="status-dot online"></span> ONLINE
+                        </small>
+                        <p class="card-id" id="friend-id">(ID_01)</p>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+      
+    <!-- Counter -->
+    <div class="widget" id="widget-counter">
+        <div class="gallery-layout">
+            <aside class="gallery-sidebar">
+                <h2 class="vertical-title">VISITS</h2>
+            </aside>
+
+            <section class="gallery-main-view">
+                <div class="contador-wrapper">
+                    <div class="contador-panel">
+                        <div class="panel-header">
+                            <span class="system-text">GRACIAS POR TU VISITA</span>
+                            <span class="blink-dot"></span>
+                        </div>
+                        <a href="https://info.flagcounter.com/Wdhc" target="_blank" rel="noopener">
+                            <img src="https://s01.flagcounter.com/count2/IHkg/bg_010101/txt_8800FF/border_8800FF/columns_2/maxflags_24/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" 
+                                 alt="Flag Counter" class="counter-img">
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+      
+    <!-- Player -->
+    <div id="widget-music" class="widget">
+        <div class="repro-oval">
+            <div class="cover-circle">
+                <img id="player-cover" src="assets/covers/default.png" alt="Cover">
+            </div>
+
+            <div class="player-metadata">
+                <div id="player-artist" class="metadata-artist">ARTISTA</div>
+                <div id="player-title" class="metadata-title">TÍTULO</div>
+                <div id="player-time" class="metadata-time">0:00</div>
+            </div>
+
+            <div class="ipod-wheel">
+                <button class="wheel-btn btn-menu" id="btn-menu">MENU</button>
+
+                <div class="wheel-middle">
+                    <button class="wheel-btn btn-prev" id="btn-prev">
+                        <i class="fas fa-backward"></i>
+                    </button>
+
+                    <div class="wheel-center-dot"></div>
+
+                    <button class="wheel-btn btn-next" id="btn-next">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+
+                <button class="wheel-btn btn-pp" id="btn-play-pause">
+                    <i class="fas fa-play"></i>
+                </button>
+            </div>
+
+            <audio id="audio" preload="auto"></audio>
+        </div>
+        
+        <!-- Modal de Cola -->
+        <div id="modal-playlist" class="playlist-modal">
+            <div class="modal-header">
+                <button id="close-menu" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="playlist-container">
+                <ul id="track-list">
+                    </ul>
+            </div>
+        </div>
+        
+    </div>
+
+  </div> </aside>
+      
+    <!-- DOLL -->
+    <div class="character-overlay">
+        <img src="assets/img/Doll1.png" alt="Doll1" class="doll-img">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="modern-footer">
+      <div class="footer-nav">
+        <button class="nav-btn ripple-btn active" data-target="widget-user">
+          <i class="fa-solid fa-user-shield"></i>
+        </button>
+        <button class="nav-btn ripple-btn" data-target="widget-gallery">
+            <i class="fas fa-images"></i>
+        </button>
+        <button class="nav-btn" data-target="widget-friends">
+            <i class="fa-solid fa-users"></i>
+        </button>
+        <button class="nav-btn" data-target="widget-counter">
+            <i class="fas fa-globe"></i>
+        </button>
+        <button class="nav-btn ripple-btn" data-target="widget-music">
+            <i class="fa-solid fa-compact-disc"></i>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

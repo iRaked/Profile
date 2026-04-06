@@ -1,0 +1,1285 @@
+@property --scan-pos {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 40%;
+}
+
+/* --- VARIABLES ACTUALIZADAS --- */
+:root {
+  --neon-lila: #bc13fe;
+  --neon-violeta: #8b5cf6;
+  --neon-azul: #3b82f6;
+  --neon-aqua: #00f3ff;
+  --glass-bg: rgba(20, 20, 30, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f5f5dc;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- OVERLAY DE BLOQUEO --- */
+.lock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.lock-card {
+  width: 320px;
+  background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0, 243, 255, 0.1));
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 40px 20px;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* --- FLARES AZULES --- */
+.flare {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--neon-aqua);
+  filter: blur(60px);
+  opacity: 0.4;
+  border-radius: 50%;
+  z-index: -1;
+  animation: flare-move 4s infinite alternate ease-in-out;
+}
+.flare-left { top: 20%; left: -50px; }
+.flare-right { bottom: 20%; right: -50px; animation-delay: 2s; }
+
+@keyframes flare-move {
+  from { transform: translateY(-20px); opacity: 0.3; }
+  to { transform: translateY(20px); opacity: 0.6; }
+}
+
+/* --- CABECERA Y HUELLA --- */
+.fingerprint-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--neon-aqua);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: var(--neon-aqua);
+  box-shadow: 0 0 20px var(--neon-aqua);
+}
+
+.lock-status {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--neon-lila);
+  margin-bottom: 30px;
+}
+
+/* --- NUMPAD --- */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.num-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.num-btn:hover {
+  background: var(--neon-lila);
+  box-shadow: 0 0 15px var(--neon-lila);
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pin-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-aqua);
+}
+
+.pin-dot.filled {
+  background: var(--neon-aqua);
+  box-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* Efecto de sacudida para error */
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+.error-shake { animation: error-shake 0.2s ease-in-out 2; border-color: var(--neon-rosa) !important; }
+
+/* Estilo para los botones especiales (* y #) */
+.btn-special, .btn-clear {
+  color: var(--neon-aqua);
+  font-size: 1.5rem;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- ESTILOS DEL BODY --- */
+body {
+  background-color: #050505;
+  background-image: url('assets/bg/Neon-LAX.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-main);
+  overflow: hidden; /* Importante para SPA */
+}
+
+/* Capa de atmósfera */
+.cyber-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent, rgba(10, 0, 20, 0.8));
+  pointer-events: none;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    width: 95vw;
+    height: 85vh; /* Bajamos un poco el alto total para que respire */
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Un poco más de ancho al widget */
+    grid-template-rows: 600px auto; /* FIJAMOS la altura del área de juego */
+    gap: 30px;
+    align-items: stretch; /* Alineamos al fondo para que pisen el footer */
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- SECCIÓN CENTRAL (Con soporte para animación) --- */
+.content-center {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  
+  /* Usamos una variable para la posición del degradado */
+  --scan-pos: 40%; 
+  
+  /* El degradado ahora depende de --scan-pos */
+  mask-image: linear-gradient(to right, 
+    black var(--scan-pos), 
+    rgba(0,0,0,0.2) calc(var(--scan-pos) + 20%), 
+    black calc(var(--scan-pos) + 40%)
+  );
+  -webkit-mask-image: linear-gradient(to right, 
+    black var(--scan-pos), 
+    rgba(0,0,0,0.2) calc(var(--scan-pos) + 20%), 
+    black calc(var(--scan-pos) + 40%)
+  );
+
+  /* Transición suave para que el movimiento sea fluido */
+  transition: --scan-pos 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              background 0.3s ease;
+  
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+  box-shadow: inset 0 0 50px rgba(0, 243, 255, 0.05);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 5px;
+}
+
+/* --- CONTENEDOR HERO --- */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Separa SAN de DI */
+  padding: 20px 0;
+  z-index: 5;
+}
+
+/* --- SAN (Mitad superior y Transparente) --- */
+.text-mask-wrapper {
+  align-self: flex-start;
+  background-image: url('assets/bg/Neon-LAX.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Subimos "medio cuerpo" como pediste */
+  transform: translateY(-30%); 
+}
+
+.part-san {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 18vw, 14rem); /* Un poco más grande */
+  line-height: 1;
+}
+
+/* --- DI (Mitad inferior y Neón Violeta) --- */
+.part-di {
+  align-self: flex-end;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 18vw, 14rem); /* Mismo tamaño que SAN */
+  /*color: var(--neon-violeta);*/
+  text-shadow: 
+    0 0 10px var(--neon-violeta),
+    0 0 30px var(--neon-lila),
+    0 0 60px rgba(188, 19, 254, 0.4);
+  line-height: 1;
+  /* Bajamos DI para equilibrar */
+  transform: translateY(20%);
+  z-index: 6;
+}
+
+/* --- DOLL1 (Posicionamiento 2.5D Real) --- */
+.character-overlay {
+  position: absolute;
+  /* Bajamos la posición para que "pise" el footer y el centro */
+  bottom: 60px; 
+  left: 48%; 
+  transform: translateX(-50%);
+  height: 95vh; /* Que ocupe casi todo el alto para no verse pequeña */
+  pointer-events: none;
+  z-index: 50; /* Por encima del texto y el contenedor central */
+  display: flex;
+  align-items: flex-end;
+}
+
+.doll-img {
+  height: 85%; /* Ajuste fino del tamaño de la imagen */
+  width: auto;
+  /* Suavizado inferior para integración */
+  mask-image: linear-gradient(to top, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 90%, transparent 100%);
+}
+
+.doll-img.animating {
+  animation: doll-pulse 0.8s ease-in-out;
+}
+
+@keyframes doll-pulse {
+  0% { transform: scale(1) rotate(-2deg); filter: brightness(1); }
+  50% { transform: scale(1.03) rotate(0deg); filter: brightness(1.3) drop-shadow(0 0 20px var(--neon-aqua)); }
+  100% { transform: scale(1) rotate(-2deg); filter: brightness(1); }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- CONTENEDOR RAIZ DERECHO (ESTABILIZADO) --- */
+.right-side {
+    position: relative;
+    width: 380px; /* Ancho fijo para evitar desplazamientos */
+    height: 600px; /* Altura igual al panel central */
+    padding: 0; /* Eliminamos padding que pueda empujar el contenido */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- CONTENEDOR DE POSICIONAMIENTO --- */
+.widget-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible; /* Mantiene el avatar visible fuera del clip-path */
+}
+
+/* --- CONTROL DEL AVATAR --- */
+/* Por defecto oculto, solo se muestra si el widget-user está activo */
+.profile-avatar-container {
+    display: none; 
+    position: absolute;
+    /* Usamos valores fijos respecto al contenedor padre */
+    top: -15px;
+    right: -15px; 
+    z-index: 1000;
+    pointer-events: none; /* Para que no interfiera con clics */
+}
+
+/* Clase de utilidad para mostrar el avatar mediante JS */
+.show-avatar {
+    display: block !important;
+}
+
+.avatar-glass {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border: 4px solid var(--neon-aqua);
+  background: #000;
+  overflow: hidden;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.8), 
+              0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.avatar-glass img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- ESTADO BASE DE TODOS LOS WIDGETS --- */
+.widget {
+    display: flex !important; /* Siempre 'vivo' para el navegador */
+    position: absolute;       /* Sacado del flujo para que no estorben entre sí */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;               /* Invisible */
+    visibility: hidden;       /* No interactuable */
+    pointer-events: none;     /* No bloquea clics */
+    transition: opacity 0.3s ease;
+}
+
+/* --- ESTADO ACTIVO --- */
+.widget.active {
+    position: relative;       /* Vuelve al flujo normal */
+    opacity: 1;               /* Se hace sólido */
+    visibility: visible;      /* Se hace presente */
+    pointer-events: auto;     /* Ya se puede clickear */
+}
+
+/* --- RE-APLICAR CLIP PATH SOLO AL USER --- */
+#widget-user {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 20px 30px; /* Ajustamos padding para dar aire interno */
+    flex-direction: column;
+    z-index: 10;
+    
+    /* BLOQUEO DE DESBORDE */
+    width: 100%;
+    max-width: 380px; /* Límite real de la sección derecha */
+    box-sizing: border-box; /* Crucial para que el padding no sume al ancho */
+    overflow: hidden; /* Evita que sombras o textos largos estiren el widget */
+
+    -webkit-clip-path: polygon(0% 0%, 65% 0%, 65% 22%, 100% 22%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 65% 0%, 65% 22%, 100% 22%, 100% 100%, 0% 100%);
+}
+
+/* --- GALERIA: PANEL RECTO IZQ / CURVO DER --- */
+#widget-stats .gallery-wrapper {
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    /* Recto a la izquierda (0), Curvo a la derecha (40px) */
+    border-radius: 0 40px 40px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- ELEMENTOS HIJOS DIRECTOS DEL WIDGET --- */
+.butterfly-ornament {
+    font-size: 2rem;
+    color: #fff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    /* BAJAMOS TODO EL BLOQUE: Ajusta este valor si quieres que baje más */
+    margin-top: 60px; 
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.user-nick {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.6rem;
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-lila);
+    margin: 0;
+    line-height: 1;
+    text-align: left;
+}
+
+.user-id {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    color: var(--neon-aqua);
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    display: block;
+    text-align: left;
+}
+
+/* --- GRUPO DE BURBUJAS --- */
+.info-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px; /* Un poco más de aire bajo el ID */
+}
+
+.bubble {
+    padding: 12px 18px;
+    border-radius: 50px; /* Estilo píldora */
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 5px solid transparent; /* Acento lateral de color */
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.bubble:hover {
+    transform: translateX(8px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.bubble strong {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    opacity: 0.8;
+}
+
+.bubble span {
+    font-weight: 500;
+}
+
+/* --- PALETA DE COLORES NEÓN (SANDI STYLE) --- */
+
+/* LILA: Para Philosophy y Hobby */
+.b-lila { 
+    background: rgba(188, 19, 254, 0.12); 
+    border-left-color: var(--neon-lila);
+    box-shadow: inset 5px 0 15px rgba(188, 19, 254, 0.1);
+}
+
+/* AQUA: Para Country y Music */
+.b-aqua { 
+    background: rgba(0, 243, 255, 0.12); 
+    border-left-color: var(--neon-aqua);
+    box-shadow: inset 5px 0 15px rgba(0, 243, 255, 0.1);
+}
+
+/* VIOLETA: Para Zodiac Sign */
+.b-violeta { 
+    background: rgba(139, 92, 246, 0.12); 
+    border-left-color: var(--neon-violeta);
+    box-shadow: inset 5px 0 15px rgba(139, 92, 246, 0.1);
+}
+
+/* --- SEPARACIÓN DE BOTONES --- */
+.cycle-controls {
+    margin-top: auto; /* Empuja los botones al fondo del widget */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 30px 0 10px 0; /* Más padding superior para alejar de la última burbuja */
+}
+
+.cycle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.cycle-btn:hover {
+    background: var(--neon-aqua);
+    color: #000;
+    box-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* Punto inactivo (por defecto) */
+.cycle-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2); /* Opaco/Grisáceo */
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.3s ease;
+    pointer-events: none; /* El clic lo recibe el botón padre */
+}
+
+/* Punto activo */
+.cycle-dot.active {
+    background: var(--neon-lila);
+    box-shadow: 0 0 10px var(--neon-lila), 0 0 20px var(--neon-lila);
+    transform: scale(1.2);
+}
+
+/* Hover en el botón para feedback */
+.cycle-btn:hover .cycle-dot:not(.active) {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- CONTENEDOR GALERÍA (ESTRUCTURA 90/10 FINAL) --- */
+
+#widget-gallery {
+    padding: 0 !important; /* Vital: Elimina el padding heredado para llenar bordes */
+    overflow: hidden;
+    background: var(--glass-bg);
+    border-radius: 0 40px 40px 0;
+    height: 600px; /* Alineado con la altura del panel derecho */
+    width: 380px;  /* Alineado con el ancho del panel derecho */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gallery-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Franja Lateral (10%) */
+.gallery-sidebar {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-right: 1px solid var(--glass-border);
+    box-sizing: border-box;
+}
+
+.vertical-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-aqua);
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px var(--neon-aqua);
+    margin: 0;
+}
+
+/* Área de Imagen (90%) */
+.gallery-main-view {
+    width: 90%;
+    height: 100%;
+    position: relative;
+    cursor: grab;
+    overflow: hidden;
+}
+
+/* --- ITEM DEL CARRUSEL (COBERTURA TOTAL) --- */
+.carousel-item {
+    position: absolute;
+    inset: 0; /* Cubre el 100% del contenedor padre (que es el 90% del widget) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item img {
+    /* FORZAMOS COBERTURA TOTAL SIN DEFORMACIÓN */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* La imagen llena el 90% del widget sea cual sea su formato */
+    object-position: center;
+    
+    /* EFECTO BLOQUEO */
+    filter: blur(45px) brightness(0.4); 
+    border-radius: 0; /* Sin bordes redondeados internos para que pegue con los bordes del widget */
+    transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- EL ESCUDO DE BLOQUEO --- */
+.lock-shield {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    transition: opacity 0.4s ease;
+    pointer-events: none; /* Permite que el toque llegue a la imagen */
+}
+
+.circle-trace {
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.2); /* Mejora visibilidad del candado */
+}
+
+/* --- ESTADO REVELADO --- */
+.carousel-item.revealed img {
+    filter: blur(0) brightness(1.1);
+}
+
+.carousel-item.revealed .lock-shield {
+    opacity: 0;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- WIDGET FRIENDS (MAX SCALE & FULL DETAILS) --- */
+#widget-friends {
+    display: none; /* <--- ESTO ES LO QUE FALTA: Nace oculto */
+    padding: 0 !important;
+    overflow: hidden;
+    background: var(--glass-bg);
+    border-radius: 0 40px 40px 0;
+    /* Quitamos el display: flex de aquí porque el JS usará .fadeIn() 
+       Si necesitas centrar la card, mejor hazlo en el wrapper */
+}
+
+.friend-card-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+}
+
+/* --- LA CARD: TAMAÑO MAXIMIZADO PROPORCIONAL --- */
+.card {
+    /* Forzamos el alto al 98% del widget para que sea IMPONENTE */
+    height: 98% !important; 
+    /* Proporción 255/515 pero escalada hacia arriba */
+    aspect-ratio: 255 / 515; 
+    width: auto; 
+
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(0, 224, 255, 0.3);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+/* --- HEADER ESCALADO --- */
+.card-header {
+    width: 100%;
+    height: 38%; /* Un poco más de aire arriba */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid rgba(178, 102, 255, 0.2);
+}
+
+.card-avatar {
+    width: 145px; /* Tamaño real imponente */
+    height: 145px;
+    border-radius: 50%;
+    box-shadow: 0 0 26px rgba(0, 224, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    z-index: 5;
+    background: #000;
+}
+
+/* --- MASK LAYER (DETALLE CRÍTICO) --- */
+.mask-layer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mask-layer img {
+    width: 120px; /* Ajuste manual del avatar interno */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    -webkit-mask-image: url('https://i.ibb.co/7xJXcRsb/Rick-Cube-Aqua-GFX.gif');
+    mask-image: url('https://i.ibb.co/7xJXcRsb/Rick-Cube-Aqua-GFX.gif');
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+/* --- BODY ESCALADO --- */
+.card-body {
+    width: 100%;
+    flex: 1;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Animación de Nick - Más rápida y agresiva */
+.card-nick {
+    font-size: 2.8em;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(270deg, #00e0ff, #b266ff, #00e0ff);
+    background-size: 200% auto; /* Reducido para que el viaje del color sea más corto */
+    animation: gradientFlow 1.5s linear infinite; /* Acelerado a 1.5s */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilo del Status con Indicador */
+.card-role {
+    font-size: 1.2em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* El punto de estado (puedes alternar clases .online / .offline) */
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.status-dot.online { background-color: #00ff00; color: #00ff00; }
+.status-dot.offline { background-color: #ff0000; color: #ff0000; }
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; } /* Flujo continuo */
+}
+
+.card-id {
+    font-size: 1.1em;
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffff33;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 12px;
+    border-radius: 4px;
+}
+
+.card-emoji { font-size: 2em; }
+.card-zodiac { font-size: 1.3em; color: #b266ff; }
+
+/* --- VIDEO ESCALADO --- */
+.card-video {
+    width: 88%;
+    height: 145px; /* Más presencia en la base */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 224, 255, 0.4);
+}
+
+.card-video iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- ESTILOS VALIDADOS: WIDGET COUNTER (FLAG COUNTER PANEL) --- */
+#widget-counter {
+    padding: 0 !important;
+    background: var(--glass-bg);
+    border-radius: 0 40px 40px 0;
+    overflow: hidden;
+}
+
+.contador-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contador-panel {
+    width: 90%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--neon-lila);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(136, 0, 255, 0.2), 
+                inset 0 0 15px rgba(136, 0, 255, 0.1);
+    position: relative;
+}
+
+/* Cabecera del Panel (Estilo Sistema) */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(136, 0, 255, 0.3);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.system-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon-aqua);
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px var(--neon-aqua);
+}
+
+.blink-dot {
+    width: 8px;
+    height: 8px;
+    background: #00FF41; /* Punto rojo de grabación/sistema */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00FF41;
+    animation: blink-system 1s infinite;
+}
+
+@keyframes blink-system {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Ajuste de la imagen del Flag Counter */
+.counter-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(1.1) contrast(1.1) drop-shadow(0 0 5px rgba(136, 0, 255, 0.3));
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.counter-img:hover {
+    filter: brightness(1.3) drop-shadow(0 0 10px var(--neon-lila));
+}
+
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- WIDGET MUSIC (ESCALADO UNIFORME A 600PX) --- */
+#widget-music {
+    position: relative;
+    display: none; /* Se activa con .active */
+    justify-content: center;
+    align-items: center;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100%;
+    height: 100%; /* Toma los 600px del .right-side */
+}
+
+#widget-music .repro-oval {
+    /* ELIMINAMOS EL MAX-HEIGHT DE 520PX */
+    width: 220px; /* Un poco más ancho para mantener la proporción con 600px de alto */
+    height: 100%; 
+    
+    /* Efecto Esmerilado (Glassmorphism) */
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Borde Neón y Forma de Píldora Perfecta */
+    border: 1px solid rgba(136, 0, 255, 0.3);
+    border-radius: 110px; /* Mitad del ancho para que los extremos sean semicírculos */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* SIMETRÍA ESCALADA: (220px ancho - 180px carátula) / 2 = 20px */
+    padding: 20px 20px 50px 20px; 
+    
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), 
+                inset 0 0 20px rgba(136, 0, 255, 0.15);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Contenedor Circular de Carátula (Escalado a 180px) */
+.cover-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #8800FF;
+    box-shadow: 0 0 20px rgba(136, 0, 255, 0.5);
+    margin-bottom: 35px;
+    flex-shrink: 0;
+    background: #000;
+}
+
+.cover-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Contenedor de Metadatos (Distribución uniforme) */
+/* --- BLOQUE DE INFORMACIÓN: UNIDO Y EN SU SITIO --- */
+.player-metadata {
+    position: relative; /* Volvemos al flujo normal */
+    top: 0;
+    left: 0;
+    transform: none;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px; /* Ajuste para acercar el bloque a la carátula si queda lejos */
+}
+
+/* ARTISTA */
+.metadata-artist { 
+    color: #8800FF; 
+    font-size: 1.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(136, 0, 255, 0.6);
+    margin-bottom: 2px;
+}
+
+/* TÍTULO */
+.metadata-title { 
+    font-size: 1.1em; 
+    color: #fff;
+    opacity: 0.8;
+    line-height: 1.2;
+    margin-bottom: 2px; /* Espaciado mínimo con el contador */
+}
+
+/* EL CONTADOR: PEGADO AL TÍTULO */
+.metadata-time { 
+    font-size: 1.5em; 
+    color: #00f2ff; 
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.8); 
+    letter-spacing: 3px;
+    margin-top: 0 !important; /* Eliminamos cualquier empuje */
+    line-height: 1;
+}
+
+/* Estado Activo */
+#widget-music.active {
+    display: flex !important;
+}
+
+/* --- IPOD WHEEL CONTROLS --- */
+.ipod-wheel {
+    width: 180px;
+    height: 180px;
+    background: rgba(188, 19, 254, 0.02);
+    border: 2px solid rgba(136, 0, 255, 0.25);
+    border-radius: 50%;
+    
+    /* EL CAMBIO CLAVE: Empuja todo hacia abajo */
+    margin-top: auto; 
+    margin-bottom: -30px; /* Separación mínima del borde inferior del óvalo */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(136, 0, 255, 0.1),
+                0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.wheel-btn {
+    background: none;
+    border: none;
+    color: var(--neon-aqua);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 8px var(--neon-aqua);
+    z-index: 5;
+}
+
+.wheel-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-aqua), 0 0 25px var(--neon-lila);
+    transform: scale(1.1);
+}
+
+.wheel-middle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.wheel-center-dot {
+    width: 50px;
+    height: 50px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid var(--neon-lila);
+    border-radius: 50%;
+    
+    /* Centrado Absoluto Real */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.3),
+                inset 0 0 10px rgba(188, 19, 254, 0.2);
+    z-index: 2;
+}
+
+.btn-menu { 
+    letter-spacing: 2px; 
+    font-weight: 800;
+    font-size: 0.75rem; 
+}
+
+.btn-pp { 
+    font-size: 1.1rem; 
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- MODAL PLAYLIST (ESTILO ÓVALO) --- */
+.playlist-modal {
+    display: none; 
+    position: absolute; /* <--- Se encima al oval */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Lo centra exacto sobre el repro-oval */
+    
+    width: 220px; /* Misma anchura que el oval */
+    height: 100%; /* Misma altura */
+    
+    background: rgba(10, 10, 10, 0.98); 
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(136, 0, 255, 0.4);
+    border-radius: 110px; /* Misma forma de píldora */
+    z-index: 100;
+    
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 80px 20px; /* Espacio para que el texto no choque con las curvas */
+}
+
+.modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--neon-lila);
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--neon-lila);
+}
+
+.playlist-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none; /* Oculta scroll en Firefox */
+}
+
+.playlist-container::-webkit-scrollbar { display: none; } /* Oculta scroll en Chrome */
+
+#track-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.track-item {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(136, 0, 255, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.track-item:hover {
+    background: rgba(136, 0, 255, 0.1);
+}
+
+.track-item.active {
+    border-left: 3px solid var(--neon-aqua);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.track-item .t-name {
+    display: block;
+    color: #fff;
+    font-size: 0.85rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.track-item .t-artist {
+    display: block;
+    color: var(--neon-lila);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- FOOTER MODERNO --- */
+.modern-footer {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  position: relative; /* Base para elementos absolutos internos */
+}
+
+.footer-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(2px);
+  padding: 10px 30px;
+  border-radius: 50px;
+  border: 1px solid var(--neon-lila);
+  display: flex;
+  gap: 25px;
+  position: relative; /* Necesario para que la .nav-wave se mueva aquí dentro */
+  box-shadow: 0 0 20px rgba(188, 19, 254, 0.3);
+}
+
+/* --- BOTONES Y NAVEGACIÓN --- */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.4rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s, text-shadow 0.3s;
+  z-index: 5;
+}
+
+.nav-btn:hover {
+  color: var(--neon-aqua);
+  text-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* Estado Activo: El JS pondrá esta clase al primer botón al cargar */
+.nav-btn.active {
+  color: var(--neon-lila);
+  text-shadow: 0 0 15px var(--neon-lila);
+}
+
+/* --- INDICADOR DE ONDA (NAV-WAVE) --- */
+.nav-wave {
+  position: absolute;
+  bottom: 5px;
+  /* El left se calcula por JS dinámicamente */
+  left: 0; 
+  width: 6px;
+  height: 6px;
+  background: var(--neon-aqua);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon-aqua);
+  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- EFECTOS DE RIPPLE Y NEON --- */
+.ripple-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--neon-aqua);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ripple-btn:focus::after {
+  animation: wave-ripple 0.6s ease-out;
+}
+
+@keyframes wave-ripple {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
+.neon-text {
+  color: var(--neon-aqua);
+  text-shadow: 0 0 5px var(--neon-aqua);
+}
