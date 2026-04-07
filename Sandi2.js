@@ -3,8 +3,8 @@ $(document).ready(function() {
     const $centerPanel = $('.content-center');
     const $avatarContainer = $('.profile-avatar-container');
     const avatares = [
-        "https://i.ibb.co/W4jFHyKd/Sandi-Flash-GFX.gif", 
-        "https://i.postimg.cc/66V2Gw5x/244.gif",          
+        "https://i.ibb.co/Hf40JxkD/Sandi.png", 
+        "https://i.ibb.co/W4jFHyKd/Sandi-Flash-GFX.gif",          
         "https://i.postimg.cc/9FW4dSrR/247.gif"          
     ];
 
@@ -446,6 +446,49 @@ $(document).ready(function() {
 
     $(document).ready(function() {
         loadPlaylist(URL_MAIN); // Arranca con la principal
+    });
+    
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    // CURSOR PERSONALIZADO ESTILO MARIPOSA (VERSIÓN LIMPIA)
+    /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+    document.addEventListener("mousemove", (e) => {
+        const butterfly = document.getElementById("butterfly-cursor");
+        const wrapper = document.getElementById("cursor-wrapper");
+        if (!butterfly || !wrapper) return;
+
+        // 1. Posición de la Mariposa Principal
+        butterfly.style.left = e.clientX + "px";
+        butterfly.style.top = e.clientY + "px";
+
+        // 2. Lógica de Estela (Solo Sparkles y Mini-Mariposas)
+        if (Math.random() > 0.4) { 
+            const particle = document.createElement("div");
+
+            // Decidimos si es sparkle circular o mini mariposa
+            if (Math.random() > 0.8) {
+                particle.innerHTML = "ƸӜƷ";
+                particle.style.fontSize = "10px";
+                particle.style.color = "#f87070";
+                particle.style.position = "fixed";
+            } else {
+                particle.className = "heart-sparkle"; 
+                // Nota: Aunque la clase se llame "heart-sparkle", 
+                // según tu CSS es un círculo rojo brillante, no un corazón "❤"
+            }
+
+            particle.style.position = "fixed"; 
+            particle.style.left = e.clientX + "px";
+            particle.style.top = e.clientY + "px";
+            particle.style.pointerEvents = "none";
+
+            // Inyectamos en el wrapper para NO empujar los paneles
+            wrapper.appendChild(particle);
+
+            // Limpieza rápida para no saturar la memoria
+            setTimeout(() => particle.remove(), 600);
+        }
+
+        // SECCIÓN 3 ELIMINADA: Ya no hay "corazon-xat" (❤) en el cursor.
     });
 
     // Inicializar posición de onda al cargar

@@ -298,6 +298,71 @@ body {
 }
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- SLIDER CORREGIDO (ENCUADRE MILIMÉTRICO Y MEDIO MANUAL SI ELIMINAS IMAGENES) --- */
+.mini-slider-showcase {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    width: 280px; 
+    height: 150px;
+    background: #000; /* Fondo negro puro para que el object-fit se vea mejor */
+    border: 1px solid var(--neon-aqua);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2),
+                inset 0 0 10px rgba(0, 243, 255, 0.1);
+    z-index: 100;
+}
+
+.slider-track {
+    display: flex;
+    width: max-content; /* <--- CLAVE: El track siempre medirá exactamente lo que midan las imágenes sumadas */
+    height: 100%;
+    /* La animación ahora necesita ser dinámica si cambias la cantidad */
+    animation: scroll-showcase 20s linear infinite; 
+}
+
+.slider-track img {
+    width: 280px;
+    height: 150px;
+    flex-shrink: 0; /* <--- OBLIGATORIO: Evita que se aplasten si hay muchas */
+    object-fit: cover;
+    object-position: center;
+}
+
+/* --- ANIMACIÓN AJUSTADA AL ANCHO REAL --- */
+@keyframes scroll-showcase {
+    /* Cada paso es de -280px. 
+       Si son 5 imágenes + 1 repetida:
+       Imágenes: [1] [2] [3] [4] [5] [1-rep]
+    */
+    0%, 15%   { transform: translateX(0); }
+    20%, 35%  { transform: translateX(-280px); }
+    40%, 55%  { transform: translateX(-560px); }
+    60%, 75%  { transform: translateX(-840px); }
+    80%, 95%  { transform: translateX(-1120px); }
+    100%      { transform: translateX(-1400px); } /* Salta suave a la imagen repetida */
+}
+
+/* Efecto de línea de escaneo Cyberpunk */
+.slider-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 10px var(--neon-aqua);
+    animation: scan-move 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan-move {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 /* --- CONTENEDOR RAIZ DERECHO (ESTABILIZADO) --- */
 .right-side {
     position: relative;
@@ -1282,4 +1347,242 @@ body {
 .neon-text {
   color: var(--neon-aqua);
   text-shadow: 0 0 5px var(--neon-aqua);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* CURSOR MARIPOSA */
+/* CAPA DE PARTÍCULAS (Invisible al layout) */
+#heartsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Crucial: para que no bloquee clics */
+    z-index: -1; /* O un valor bajo para que esté detrás de tus paneles */
+}
+
+.heart-sparkle, .corazon-xat, #butterfly-cursor {
+    position: fixed; /* Cambiado de absolute a fixed */
+    pointer-events: none; /* Para que puedas hacer clic en los botones a través de ellos */
+    user-select: none;
+    z-index: 999999;
+}
+
+#butterfly-cursor {
+    font-size: 28px;
+    color: #f87070;
+    text-shadow: 0 0 10px #f87070;
+    transform: translate(-50%, -50%);
+    /* Evita que la mariposa cause scroll */
+    left: -100px; 
+    top: -100px;
+}
+
+.heart-sparkle {
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #f87070, transparent);
+    border-radius: 50%;
+    animation: sparkleFade .6s ease-out forwards;
+}
+
+/* Forzar que el cursor desaparezca de VERDAD */
+html, body {
+    cursor: none !important;
+    overflow-x: hidden; /* Evita el empuje lateral para siempre */
+}
+
+a, button, [role="button"] {
+    cursor: none !important;
+}
+
+/* ================================================================
+   📱 SANTI GRAPHICS: MODO RESPONSIVE ULTRA-ESTABLE
+   ================================================================ */
+
+@media (max-width: 1024px) {
+    /* 1. Liberamos el Body para que se pueda desplazar verticalmente */
+    body {
+        overflow-y: auto !important;
+        height: auto;
+        min-height: 100vh;
+        display: block; /* Cambiamos Flex por bloque para el scroll natural */
+        padding: 20px 10px;
+    }
+
+    /* 2. Re-estructuramos el Grid a una sola columna */
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* 3. Panel Central (SAN DI) */
+    .content-center {
+        width: 95% !important;
+        height: 500px; /* Reducimos altura en móvil */
+        padding: 20px;
+        mask-image: none !important; /* Quitamos la máscara para evitar bugs de visualización */
+        -webkit-mask-image: none !important;
+    }
+
+    /* Escalado de textos para que no se corten */
+    .part-san, .part-di {
+        font-size: clamp(7rem, 30vw, 16rem);
+    }
+    
+    /* --- RESCATE DE TEXTO "DI" (AJUSTADO A LA DERECHA) --- */
+    .part-di {
+        align-self: flex-end; /* Lo mantiene pegado al final del flujo flex */
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: clamp(7rem, 30vw, 16rem);
+        text-shadow: 0 0 10px var(--neon-violeta), 0 0 30px var(--neon-lila);
+        line-height: 1;
+
+        /* MOVIMIENTO ESTRATÉGICO */
+        /* El primer valor (20%) lo mueve a la derecha, el segundo (5%) lo baja */
+        transform: translate(-5%, 5%);
+
+        z-index: 10; 
+        position: relative;
+        text-align: right; /* Asegura que el bloque de texto se justifique a la derecha */
+    }
+
+    /* --- DOLL: POSICIONADA SOBRE EL SLIDER --- */
+    .character-overlay {
+        position: absolute;
+        bottom: 180px; /* La subimos para que el slider (150px) pase por debajo */
+        left: 25px; /* Alineada al extremo izquierdo con el slider */
+        transform: none; /* Quitamos el centrado para que pegue a la izquierda */
+        height: 75vh; 
+        pointer-events: none;
+        z-index: 150; /* Por encima del slider para dar profundidad 2.5D */
+    }
+
+    .doll-img {
+        height: 75%;
+    }
+
+    /* 5. El Panel Derecho (Widgets) */
+    .right-side {
+        width: 100% !important;
+        max-width: 380px; /* Mantenemos tu ancho GFX pero centrado */
+        height: 600px;
+        margin: 0 auto;
+    }
+
+    /* 6. El Slider - Posicionamiento de precisión GFX */
+    .mini-slider-showcase {
+        position: absolute; /* Cambiamos a absolute para que ignore el flujo del texto */
+        left: 184px !important;   /* Pegado al borde izquierdo del panel */
+        bottom: 200px !important; /* Pegado al borde inferior del panel */
+        width: 280px;         /* Ancho fijo para que el track no se rompa */
+        height: 150px;        /* Altura fija */
+        margin: 0;            /* Eliminamos el auto que lo centraba */
+        border-radius: 0 12px 0 0; /* Solo esquina superior derecha curva */
+        z-index: 100;         /* Por debajo de la Doll pero sobre el texto */
+        overflow: hidden;     /* Mantiene las imágenes dentro de su marco */
+    }
+
+    /* Asegúrate de que las imágenes dentro mantengan su tamaño */
+    .slider-track img {
+        width: 280px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    /* 7. Footer de Navegación */
+    .modern-footer {
+        position: fixed; /* Lo dejamos pegado abajo tipo App */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3000;
+        background: rgba(5, 5, 5, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 10px 0;
+    }
+
+    /* --- FOOTER: MÁS TRANSPARENTE --- */
+    .footer-nav {
+        background: rgba(20, 20, 30, 0.15); /* Bajamos de 0.3 a 0.15 */
+        backdrop-filter: blur(5px); /* Un poco más de desenfoque para compensar */
+        border: 1px solid rgba(188, 19, 254, 0.3);
+        gap: 15px;
+        padding: 8px 20px;
+    }
+
+    /* 8. SEGURIDAD: Desactivar Cursor Mariposa en Táctil */
+    #cursor-wrapper, .heart-sparkle, .particle-mini-butterfly {
+        display: none !important;
+    }
+    
+    * {
+        cursor: auto !important; /* Devolvemos el control al dedo */
+    }
+
+    /* 9. PIN Lock en móvil */
+    .lock-card {
+        transform: scale(0.9); /* Un poco más pequeña para pantallas tipo iPhone SE */
+    }
+    
+    /* --- ESTABILIZADOR DE PANELES --- */
+    .right-side, .widget-container, .widget {
+        max-height: 600px; /* La altura sagrada del panel */
+        overflow: hidden !important; /* Prohibimos el scroll general del widget */
+        box-sizing: border-box; /* El padding ya no suma al tamaño total */
+    }
+
+    /* --- PERMITIR SCROLL SOLO DONDE ES NECESARIO (EJ: PLAYLIST) --- */
+    .playlist-container {
+        max-height: 350px; /* Ajusta según el alto de tu iPod */
+        overflow-y: auto !important; /* Aquí sí permitimos scroll */
+        scrollbar-width: none; /* Oculta scroll en Firefox */
+    }
+    .playlist-container::-webkit-scrollbar { display: none; } /* Oculta en Chrome/Safari */
+    }
+
+    /* --- CUSTOM SCROLLBAR (SOLO PARA DESKTOP) --- */
+    @media (min-width: 1025px) {
+        /* El ancho de la "pista" */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* El fondo de la barra (transparente para no romper el Glassmorphism) */
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        /* El "pulgar" o la parte que se mueve (Neón Aqua) */
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-aqua);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-aqua), 
+                        0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Efecto al pasar el mouse: Cambia a Lila */
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-lila);
+            box-shadow: 0 0 15px var(--neon-lila);
+        }
+    }
+
+/* Ajuste para pantallas MUY pequeñas (Vertical) */
+@media (max-width: 480px) {
+    .part-san, .part-di {
+        font-size: 3.5rem;
+    }
+    
+    .right-side {
+        transform: scale(0.9); /* Escalado uniforme para que quepa el widget entero */
+        transform-origin: top center;
+    }
 }
