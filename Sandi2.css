@@ -231,7 +231,7 @@ body {
 /* --- SAN (Mitad superior y Transparente) --- */
 .text-mask-wrapper {
   align-self: flex-start;
-  background-image: url('assets/bg/Neon-LAX.jpg');
+  background-image: url('https://santi-graphics.vercel.app/assets/bg/Neon-LAX.jpg');
   background-attachment: fixed;
   background-size: cover;
   -webkit-background-clip: text;
