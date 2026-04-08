@@ -149,7 +149,7 @@
 /* --- ESTILOS DEL BODY --- */
 body {
   background-color: #050505;
-  background-image: url('assets/bg/Neon-LAX.jpg');
+  background-image: url('https://santi-graphics.vercel.app/assets/bg/Neon-LAX.jpg');
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;

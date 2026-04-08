@@ -23,7 +23,7 @@ $(document).ready(function() {
     });
 
     let inputPin = "";
-    const correctPin = "0000"; // PIN FINAL 2109
+    const correctPin = "2109"; // PIN FINAL 2109
 
     /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
     // --- 3. FUNCIONES DE APOYO ---
