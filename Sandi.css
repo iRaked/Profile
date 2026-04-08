@@ -170,11 +170,16 @@ body {
 	text-align:center;
 	color:#9600ff;
 }
-.title-lord{
-	margin-top:160px;
-	width:180px;
-	margin-left:90px;
+.title-lord {
+  visibility: hidden;   /* oculta el texto */
+  height: 40px;         /* conserva la altura del título */
+  margin-top: 160px;    /* mantiene el mismo margen superior */
+  width: 180px;         /* conserva el ancho */
+  margin-left: 90px;    /* conserva la posición */
+  background: none;     /* elimina fondo */
+  border: none;         /* elimina borde */
 }
+
 .subtitle-lord{
 	width:260px;
 	margin-top:10px;
