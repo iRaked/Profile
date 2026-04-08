@@ -140,7 +140,10 @@ $(document).ready(function() {
     // ======================================
     // --- LÓGICA DE GALERÍA (90/10) - FIX ARRASTRE MOUSE/PAD ---
     // ======================================
-    let images = ["S1.png", "S2.png", "S3.png", "S4.png", "S5.png"];
+    let images = ["https://i.ibb.co/PZSndXMH/S1.png",
+                  "https://i.ibb.co/MDZ8rWnV/S2.png"
+                  
+                 ];
     let currentIdx = 0;
     let startX = 0;
     let isDragging = false;
@@ -149,15 +152,16 @@ $(document).ready(function() {
     const $touchZone = $('#gallery-touch-zone');
 
     function cambiarImagen(direccion) {
-        currentIdx = (currentIdx + direccion + images.length) % images.length;
-        const $item = $('.carousel-item');
-        
-        $item.stop(true, true).fadeOut(250, function() {
-            $(this).removeClass('revealed'); 
-            $(this).find('.gallery-img').attr('src', `assets/img/${images[currentIdx]}`);
-            $(this).fadeIn(300);
-        });
-    }
+    currentIdx = (currentIdx + direccion + images.length) % images.length;
+    const $item = $('.carousel-item');
+    
+    $item.stop(true, true).fadeOut(250, function() {
+        $(this).removeClass('revealed'); 
+        // Ahora usamos directamente el enlace completo
+        $(this).find('.gallery-img').attr('src', images[currentIdx]);
+        $(this).fadeIn(300);
+    });
+}
 
     // 1. Click para revelar (Solo si NO hubo arrastre)
     $touchZone.on('click', '.carousel-item', function(e) {
@@ -213,29 +217,37 @@ $(document).ready(function() {
     // --- LÓGICA DE FRIENDS (Dog Tags) ---
     /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
     const friendsData = [
-        { nick: "Lov3", img: "https://i.postimg.cc/15J8JHqW/246.gif", url: "https://xat.me/Lov3", status: "online", id: "1548724149" },
-        { nick: "Rick", img: "https://i.postimg.cc/tTW1kG3P/243.gif", url: "https://xat.me/LuzDeErendil", status: "offline", id: "21099200" },
-        { nick: "Eliza", img: "https://i.ibb.co/Xqsk6kS/Eliza.webp", url: "https://xat.me/qu3n", status: "online", id: "777888999" },
-        { nick: "Dragon", img: "https://i.ibb.co/mCrPYqkq/Picture.png", url: "https://xat.me/dragoon", status: "offline", id: "555444333" }
+    { nick: "Lov3", img: "https://i.postimg.cc/15J8JHqW/246.gif", url: "https://xat.me/Lov3", status: "online", id: "20202", video: "https://www.youtube.com/embed/zZ5mYp7mt9k" },
+
+    { nick: "Rick", img: "https://i.postimg.cc/tTW1kG3P/243.gif", url: "https://xat.me/LuzDeErendil", status: "offline", id: "1548724149", video: "https://www.youtube.com/embed/A_lyYf9Pbr0" },
+
+    { nick: "Eliza", img: "https://i.ibb.co/Xqsk6kS/Eliza.webp", url: "https://xat.me/qu3n", status: "online", id: "133331", video: "https://www.youtube.com/embed/2wLgW3ERUfM" },
+
+    { nick: "Dragon", img: "https://i.ibb.co/mCrPYzkq/Picture.png", url: "https://xat.me/dragoon", status: "online", id: "738987602", video: "https://www.youtube.com/embed/DDCnpC46eBQ" }
     ];
+
     let friendIdx = 0;
     let friendStartX = 0;
 
     function updateFriendCard(dir) {
-        if ($('.card').is(':animated')) return;
-        friendIdx = (friendIdx + dir + friendsData.length) % friendsData.length;
-        const friend = friendsData[friendIdx];
+    if ($('.card').is(':animated')) return;
+    friendIdx = (friendIdx + dir + friendsData.length) % friendsData.length;
+    const friend = friendsData[friendIdx];
 
-        $('.card').fadeOut(250, function() {
-            $('#friend-nick').text(friend.nick);
-            $('#friend-img').attr('src', friend.img);
-            $('#friend-url').attr('href', friend.url);
-            $('#friend-id').text(`(${friend.id})`);
-            const statusHTML = `<span class="status-dot ${friend.status}"></span> ${friend.status.toUpperCase()}`;
-            $('#friend-status').html(statusHTML);
-            $(this).fadeIn(300);
-        });
-    }
+    $('.card').fadeOut(250, function() {
+        $('#friend-nick').text(friend.nick);
+        $('#friend-img').attr('src', friend.img);
+        $('#friend-url').attr('href', friend.url);
+        $('#friend-id').text(`(${friend.id})`);
+        const statusHTML = `<span class="status-dot ${friend.status}"></span> ${friend.status.toUpperCase()}`;
+        $('#friend-status').html(statusHTML);
+
+        // Aquí actualizamos el video
+        $('.card-video iframe').attr('src', friend.video);
+
+        $(this).fadeIn(300);
+    });
+}
 
     // --- NAVEGACIÓN (FIX DEFINITIVO) ---
     $('.nav-btn').off('click').on('click', function() {

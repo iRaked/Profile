@@ -1265,6 +1265,7 @@ body {
   grid-column: 1 / span 2;
   display: flex;
   justify-content: center;
+    align-items: center;
   padding-bottom: 10px;
   position: relative; /* Base para elementos absolutos internos */
 }
