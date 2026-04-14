@@ -1,0 +1,1456 @@
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 1. CORE & RESET --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@property --scan-pos {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 40%;
+}
+
+:root {
+  /* Paleta 01 - Original (Lila/Nocturnal) */
+  --neon-lila: #a079ff;
+  --neon-glow: rgba(160, 121, 255, 0.4);
+  --glass-border: rgba(160, 121, 255, 0.2);
+  --bg-gradient: linear-gradient(180deg, #a079ff 10%, #4b3a7a 70%, #171717 100%);
+}
+
+/* Paleta 02 - Rosa (Love Edition) */
+body.palette-pink {
+  --neon-lila: #ed1565; /* El rosa vibrante de tus títulos */
+  --neon-glow: rgba(237, 21, 101, 0.4);
+  --glass-border: rgba(237, 21, 101, 0.2);
+  --bg-gradient: linear-gradient(180deg, #ed1565 10%, #882733 70%, #171717 100%);
+}
+
+/* Animación para el cambio suave */
+body {
+  transition: background-color 0.5s ease;
+}
+
+/* El punto del switch que se mueve */
+.switch-dot {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.3s;
+}
+
+body.palette-pink .switch-dot {
+  transform: translateX(105px); /* Ajusta según el ancho de tu cápsula */
+  background: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* Cambiamos el fondo sólido por uno que permita ver el Canvas */
+  background: #0a0a0c; 
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  padding: 100px 0; 
+  position: relative;
+}
+
+/* Canvas como fondo fijo universal */
+#canv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Detrás de toda la interfaz */
+  pointer-events: none; /* No interfiere con clics en la revista */
+  background: transparent;
+}
+
+/* Scrollbar del Navegador - Manteniendo tu branding lila */
+body::-webkit-scrollbar { 
+  width: 8px; 
+}
+
+body::-webkit-scrollbar-track { 
+  background: #0a0a0c; 
+}
+
+body::-webkit-scrollbar-thumb { 
+  background: var(--neon-lila); 
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--neon-lila);
+}
+
+.main-container {
+  position: relative;
+  margin-left: -200px;
+    
+  width: 900px;
+  height: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Empieza desde arriba para scrollear hacia abajo */
+  perspective: 2000px;
+    
+  /*outline: 2px dashed rgba(255, 255, 255, 0.1);*/
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- OVERLAY DE BLOQUEO --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.lock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.lock-card {
+  width: 320px;
+  background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0, 243, 255, 0.1));
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 40px 20px;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* --- FLARES AZULES --- */
+.flare {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--neon-aqua);
+  filter: blur(60px);
+  opacity: 0.4;
+  border-radius: 50%;
+  z-index: -1;
+  animation: flare-move 4s infinite alternate ease-in-out;
+}
+.flare-left { top: 20%; left: -50px; }
+.flare-right { bottom: 20%; right: -50px; animation-delay: 2s; }
+
+@keyframes flare-move {
+  from { transform: translateY(-20px); opacity: 0.3; }
+  to { transform: translateY(20px); opacity: 0.6; }
+}
+
+/* --- CABECERA Y HUELLA --- */
+.fingerprint-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--neon-aqua);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: var(--neon-aqua);
+  box-shadow: 0 0 20px var(--neon-aqua);
+}
+
+.lock-status {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--neon-lila);
+  margin-bottom: 30px;
+}
+
+/* --- NUMPAD --- */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.num-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.num-btn:hover {
+  background: var(--neon-lila);
+  box-shadow: 0 0 15px var(--neon-lila);
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pin-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-aqua);
+}
+
+.pin-dot.filled {
+  background: var(--neon-aqua);
+  box-shadow: 0 0 10px var(--neon-aqua);
+}
+
+/* Efecto de sacudida para error */
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+.error-shake { animation: error-shake 0.2s ease-in-out 2; border-color: var(--neon-rosa) !important; }
+
+/* Estilo para los botones especiales (* y #) */
+.btn-special, .btn-clear {
+  color: var(--neon-aqua);
+  font-size: 1.5rem;
+}
+
+/* Añadir esto a tu CSS */
+.fingerprint-circle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--neon-aqua);
+  box-shadow: 0 0 15px var(--neon-aqua);
+  top: 0;
+  left: 0;
+  animation: scan-line 2s infinite ease-in-out;
+}
+
+@keyframes scan-line {
+  0% { top: 10%; opacity: 0; }
+  50% { top: 90%; opacity: 1; }
+  100% { top: 10%; opacity: 0; }
+}
+
+.fingerprint-circle {
+  position: relative; /* Importante para el pseudo-elemento */
+  overflow: hidden;
+}
+
+.num-btn:active {
+  transform: scale(0.9);
+  background: rgba(160, 121, 255, 0.4);
+  box-shadow: inset 0 0 10px var(--neon-lila);
+}
+
+.pin-dot.filled {
+  background: var(--neon-aqua);
+  box-shadow: 0 0 15px var(--neon-aqua), 0 0 30px var(--neon-aqua);
+  border-color: #fff;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- CONTENEDOR DE LOS 4 CÍRCULOS --- */
+.pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Un poco más de espacio para que luzcan */
+    margin-bottom: 30px;
+}
+
+/* Estado Base: Círculo vacío */
+.pin-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid rgba(160, 121, 255, 0.3); /* Lila tenue */
+    background: transparent;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ESTADO ACTIVADO: Cuando ingresas un número */
+.pin-dot.filled {
+    background: var(--neon-lila);
+    border-color: #fff;
+    transform: scale(1.2); /* Se agranda un poco al activarse */
+    box-shadow: 0 0 15px var(--neon-lila), 
+                0 0 30px rgba(160, 121, 255, 0.6);
+}
+
+/* ANIMACIÓN DE ESCANEO DE HUELLA */
+.fingerprint-circle {
+    position: relative;
+    overflow: hidden; /* Corta la línea láser para que no salga del círculo */
+}
+
+/* La línea láser */
+.fingerprint-circle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--neon-blue, #4e8ef7); /* Usa tu variable de azul */
+    box-shadow: 0 0 15px #4e8ef7, 0 0 30px #4e8ef7;
+    filter: blur(1px);
+    animation: scanLine 2s linear infinite;
+    z-index: 2;
+}
+
+/* El icono de la huella parpadeando suave */
+.fingerprint-circle i {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.6; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.05); color: #b36efc; }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 3. MAGAZINE (CENTRADA Y SCROLL) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.magazine-body {
+  position: relative;
+  left: -40px; /* TU CENTRADO MANUAL REUPERADO */
+  bottom: 40px;
+  width: 900px; /* Ancho fijo para que no parezca cubo */
+  min-height: 1100px;
+  
+  background: rgba(20, 20, 25, 0.1);
+  backdrop-filter: blur(1px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+  
+  display: block;
+  overflow: hidden; /* IMPORTANTE: Para que el body sea el que scrollee */
+  box-sizing: border-box;
+}
+
+#spa-content {
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Scrollbar Custom */
+.magazine-body::-webkit-scrollbar {
+  width: 5px;
+}
+.magazine-body::-webkit-scrollbar-thumb {
+  background: var(--neon-lila);
+  border-radius: 10px;
+}
+
+
+/* --- ANIMACIÓN DE FIRMA (HOME) --- */
+.signature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajusta según tu layout */
+    z-index: 15;
+}
+
+.signature-img {
+    width: 250px; /* O el tamaño que prefieras */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(160, 121, 255, 0.3)); /* Brillo lila opcional */
+    
+    /* Aplicamos la animación */
+    animation: lovePulse 4s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes lovePulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08); /* Zoom in suave */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 3.1 MAGAZINE HOME: PORTADA --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.magazine-home {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 1100px; /* Alineado con tu magazine-body */
+    overflow: hidden;
+    padding: 0 !important; /* Quitamos el padding para que la imagen sea full */
+}
+
+/* Imagen de fondo principal (L2.jpg) */
+.main-bg-image {
+    position: absolute;
+    inset: 0;
+    background: url('https://santi-graphics.vercel.app/assets/img/Cover.png') center/cover no-repeat;
+    z-index: 1;
+}
+
+/* --- EL ESCÁNER DE CRISTAL (BLUR DESLIZANTE) --- */
+@keyframes glass-scan {
+    0% { left: -30%; }
+    50% { left: 100%; }
+    100% { left: -30%; }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 3.1 MAGAZINE HOME: VIDRIO VERTICAL --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.glass-slider {
+    position: absolute;
+    top: 0;
+    /* Usamos left para el movimiento, eliminamos cualquier referencia a 'right' */
+    left: var(--mouse-x-offset, 0px); 
+    
+    /* El ancho debe ser el 100% para cubrir el resto de la revista hacia la derecha */
+    width: 100%; 
+    height: 100%; 
+    
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(45px);
+    -webkit-backdrop-filter: blur(45px);
+    
+    /* Borde izquierdo sólido que sigue al mouse */
+    border-left: 2px solid rgba(160, 121, 255, 0.5); 
+    z-index: 5;
+    pointer-events: none;
+
+    /* Suavizamos el movimiento para que no se vea robótico */
+    transition: left 0.1s ease-out;
+
+    /* MÁSCARA: Aseguramos que se mueva JUNTO con el contenedor */
+    -webkit-mask-image: 
+        linear-gradient(#fff, #fff), 
+        linear-gradient(#000, #000), 
+        linear-gradient(#000, #000), 
+        linear-gradient(#000, #000);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    
+    /* Ajustamos el tamaño y posición de las barras de la máscara */
+    -webkit-mask-size: 100% 100%, 85% 25px, 70% 25px, 55% 25px;
+    -webkit-mask-position: 0 0, 0 950px, 0 900px, 0 850px;
+    -webkit-mask-repeat: no-repeat;
+}
+
+/* --- CONTENEDOR DE LA FIRMA (1/4 DE LA REVISTA) --- */
+.signature-container {
+    position: absolute;
+    top: 4%; /* Ajusta la altura a tu gusto */
+    left: 6%;
+    width: 25%; /* 1/4 del ancho aprox */
+    aspect-ratio: 1 / 1; /* O la proporción que tenga Firma.jpg */
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+.signature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(160, 121, 255, 0.5));
+}
+
+/* Capa de texto superior */
+.home-titles {
+    position: relative;
+    z-index: 4;
+    padding: 60px;
+    text-align: left;
+    pointer-events: none;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 4. PERSONAL CARD: ESTRUCTURA PERSONALIZADA --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- ANIMACIÓN DINÁMICA DE DESTELLO --- */
+@keyframes glow-pulse {
+    0% { 
+        box-shadow: 0 0 30px var(--neon-glow), 0 0 60px rgba(160, 121, 255, 0.1); 
+    }
+    50% { 
+        box-shadow: 0 0 60px var(--neon-lila), 0 0 120px var(--neon-glow); 
+    }
+    100% { 
+        box-shadow: 0 0 30px var(--neon-glow), 0 0 60px rgba(160, 121, 255, 0.1); 
+    }
+}
+
+/* Nota: Asegúrate de que en tu :root y en .palette-pink 
+   tengas definida --neon-glow con la opacidad deseada */
+
+.personal-card {
+    position: absolute;
+    right: 600px; 
+    top: 250px;
+    width: 280px;
+    height: 450px; /* Un poco más de aire por el header doble */
+    background: #000;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border); /* Usa la variable en lugar de color fijo */
+    z-index: 30;
+    overflow: visible;
+    
+    /* Movimiento 3D */
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* APLICACIÓN DEL DESTELLO TRASERO */
+    animation: glow-pulse 3s infinite ease-in-out;
+    isolation: isolate; /* Crea un nuevo contexto de apilamiento */
+    perspective: 1000px; /* Refuerza la profundidad */
+}
+
+.personal-card:hover {
+    transform: rotateY(20deg) rotateX(10deg) scale(1.02);
+}
+
+/* --- HEADER PORTADA (20%) --- */
+.card-header-pic {
+    width: 100%;
+    height: 40%;
+    background: url('https://santi-graphics.vercel.app/assets/bg/Box-Roses.jpg') center/cover no-repeat;
+    border-radius: 20px 20px 0 0;
+}
+
+/* --- AVATAR CON GLOW INTENSO --- */
+.avatar-wrapper {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* Mantenemos el centrado pero añadimos transición para el Z */
+    transform: translate(-50%, -50%) translateZ(0px);
+    width: 80px;
+    height: 80px;
+    z-index: 5;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar-wrapper:hover {
+    /* translateZ(50px) hace que el avatar "vuele" hacia el usuario */
+    transform: translate(-50%, -50%) translateZ(60px) scale(1.1);
+}
+
+.avatar-img:hover {
+    box-shadow: 0 0 50px var(--neon-lila), 0 0 100px rgba(160, 121, 255, 1);
+    cursor: pointer;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px; /* Cuadrado redondeado */
+    border: 2px solid var(--neon-lila);
+    
+    /* GLOW TRASERO INTENSO DEL AVATAR */
+    box-shadow: 0 0 30px var(--neon-lila), 
+                0 0 60px rgba(160, 121, 255, 0.8);
+}
+
+/* --- CONTENIDO INFERIOR (LUCES LILA) --- */
+.card-content-bottom {
+    padding: 60px 20px 20px; /* Padding superior extra para el avatar */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    transform-style: preserve-3d;
+    
+    /* EFECTOS DE LUZ LILA EN FONDO NEGRO */
+    background: radial-gradient(circle at center, rgba(160, 121, 255, 0.15) 0%, transparent 70%);
+}
+
+/* --- 2. ZOOM TÍTULO (LOVE) --- */
+.card-love-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-lila);
+    font-size: 1.8rem;
+    margin: 0;
+    text-shadow: 0 0 10px var(--neon-lila);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    /* Preparación para el salto 3D */
+    display: inline-block; /* Necesario para transformaciones */
+    transition: transform 0.3s ease;
+    transform: translateZ(0px);
+    cursor: default;
+}
+
+.card-love-title:hover {
+    /* El título sobresale menos que el avatar para dar jerarquía */
+    transform: translateZ(40px) scale(1.15);
+    text-shadow: 0 0 20px var(--neon-lila), 0 0 40px white;
+}
+
+/* --- 3. ZOOM FRASE --- */
+.card-phrase {
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+    
+    /* Preparación para el salto 3D */
+    display: block;
+    transition: transform 0.3s ease;
+    transform: translateZ(0px);
+    cursor: default;
+}
+
+.card-phrase:hover {
+    transform: translateZ(30px) scale(1.05);
+    color: #fff;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 5. HEADER & SWITCH --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.glass-header {
+  position: absolute;
+  top: 20px;
+  z-index: 100;
+}
+
+.nav-switch {
+  background: rgba(0,0,0,0.4);
+  padding: 5px;
+  border-radius: 30px;
+  display: flex;
+  position: relative;
+}
+
+.switch-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.switch-slider {
+  position: absolute;
+  height: 80%;
+  width: 80px;
+  background: #a079ff;
+  top: 10%;
+  left: 5px;
+  border-radius: 25px;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px #a079ff;
+}
+
+body.palette-pink .switch-slider {
+    background: var(--neon-lila); /* Usará el #ed1565 del root pink */
+    box-shadow: 0 0 15px var(--neon-lila);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 6. PLAYER HORIZONTAL: RE-INGENIERÍA FINAL (VALORES VALIDADOS) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.minimal-player-horizontal {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 520px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+/* SECCIÓN VINILO: TOTALMENTE TRANSPARENTE */
+.vinyl-top-section {
+    position: relative;
+    top: 25px;
+    width: 100%;
+    height: 160px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: visible;
+    z-index: 1;
+}
+
+.vinyl-mega-img {
+    width: 370px; /* Tamaño validado */
+    height: 370px;
+    position: absolute;
+    bottom: -160px;
+    animation: rotate-vinyl 12s linear infinite;
+    filter: drop-shadow(0 12px 25px rgba(0,0,0,0.7));
+    pointer-events: none;
+}
+
+/* CHASIS INFERIOR: CUBRE LA MITAD */
+.player-chassis-bottom {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: rgba(10, 10, 12, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    display: flex;
+    z-index: 10;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+/* BARRAS LATERALES CON ANCLAJE INFERIOR */
+.side-bar-fixed {
+    width: 65px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative; /* Clave para el posicionamiento de los iconos */
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar-fill {
+    width: 100%;
+    background: var(--neon-lila);
+    box-shadow: 0 0 25px var(--neon-lila);
+    transition: height 0.3s ease;
+}
+
+/* AJUSTE: ICONOS ANCLADOS A LA BASE */
+.bar-anchor-icon, .bar-anchor-txt {
+    position: absolute;
+    bottom: 20px; /* Alineado al margin-bottom validado */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: bold;
+    z-index: 5;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
+
+.bar-anchor-icon { font-size: 1.1rem; }
+.bar-anchor-txt { font-size: 0.95rem; }
+
+/* CONTENIDO CENTRAL APILADO */
+.controls-stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-row-expanded {
+    flex: 1.4;
+    display: flex;
+    align-items: center;
+    padding: 20px 30px 0;
+    gap: 20px;
+}
+
+.meta-thumb-lg {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+}
+
+.meta-info-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.artist-txt {
+    color: var(--neon-lila);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.title-txt {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.buttons-row-slim {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 15px;
+}
+
+.btn-play-hub {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* Fondo lila root y texto blanco */
+    background: var(--neon-lila); 
+    color: #fff; 
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+
+    box-shadow: 0 0 20px var(--neon-lila);
+    
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.btn-play-hub:hover { 
+    transform: scale(1.1); 
+    /* Contraste en Hover: Fondo Aqua con Glow Aqua */
+    background: var(--neon-aqua); 
+    color: #000; 
+    box-shadow: 0 0 25px var(--neon-aqua); 
+}
+
+.btn-ctrl {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@keyframes rotate-vinyl { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 7. VISIT COUNTER --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.visit-counter {
+    position: absolute;
+    top: 20px;    /* Alineado con el margen de la revista */
+    right: 20px;  /* Extremo superior derecho */
+    z-index: 999; /* Por encima de todo lo demás */
+    padding: 6px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(153, 95, 216, 0.3); /* Color lila del contador */
+    transition: transform 0.3s ease;
+}
+
+.visit-counter:hover {
+    transform: scale(1.05);
+    border-color: #995fd8; /* Brillo lila al pasar el mouse */
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 8. FRIENDS VERTICAL STRIP --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.friends-vertical-strip {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espacio entre cada conjunto contacto+píldora */
+    z-index: 95;
+}
+
+.friend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.friend-item:hover {
+    transform: scale(1.1);
+}
+
+/* CONTENEDOR DEL AVATAR */
+.avatar-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.circle-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(160, 121, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* INDICADOR SUPERIOR DERECHO */
+.status-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #0a0a0c;
+    background: #444; /* Default offline */
+}
+
+/* LÓGICA DE ESTADOS */
+[data-status="online"] .status-indicator {
+    background: var(--neon-lila);
+    box-shadow: 0 0 10px var(--neon-lila);
+}
+
+[data-status="online"] .circle-avatar {
+    border-color: var(--neon-lila);
+    box-shadow: 0 0 15px rgba(160, 121, 255, 0.4);
+}
+
+[data-status="idle"] .status-indicator {
+    background: #ffcc00; /* Dorado/Amarillo para idle */
+    box-shadow: 0 0 8px #ffcc00;
+}
+
+/* LA PÍLDORA DEL NOMBRE */
+.name-pill {
+    background: rgba(160, 121, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(160, 121, 255, 0.3);
+    padding: 2px 12px;
+    border-radius: 20px; /* Tira redondeada horizontal */
+    min-width: 50px;
+    text-align: center;
+}
+
+.pill-text {
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.friend-link-wrapper {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit;       /* Mantiene tus colores originales */
+    display: block;       /* Asegura que el área de clic sea correcta */
+    transition: transform 0.3s ease;
+}
+
+.friend-link-wrapper:hover {
+    transform: translateY(-5px); /* Un pequeño salto al pasar el mouse */
+}
+
+/* Opcional: Si quieres que el nombre brille un poco más al hacer hover */
+.friend-link-wrapper:hover .pill-text {
+    color: var(--neon-lila);
+    text-shadow: 0 0 10px var(--neon-lila);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 8. PARALLAX GALLERY (VERSION MANUAL) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.ms-flex-container {
+    display: flex;
+    width: 820px; /* Tu medida ideal */
+    height: 700px; /* Ajustado para que luzca dentro de la revista */
+    gap: 10px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.ms-card {
+    position: relative;
+    flex: 0.5; /* Tamaño cuando está cerrada */
+    height: 100%;
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)), var(--bg);
+    background-size: cover;
+    background-position: center;
+    /* Transición suave característica del modelo */
+    transition: 0.6s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    border: 1px solid rgba(160, 121, 255, 0.2);
+}
+
+/* EL EFECTO DE EXPANSIÓN */
+.ms-card:hover, .ms-card.active {
+    flex: 5; /* Se expande ocupando el espacio de las demás */
+    border-color: var(--neon-lila);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- CONTENIDO INTERNO --- */
+.ms-card-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0; /* Oculto por defecto */
+    transform: translateY(20px);
+    transition: 0.4s ease-out;
+}
+
+.ms-card:hover .ms-card-content, .ms-card.active .ms-card-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ms-icon {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.ms-info {
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.ms-main {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.ms-sub {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 9. PROFILE/ABOUT ME (RESTRUCTURADO) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.magazine-layout {
+    position: relative;
+    left: -40px;
+    top: -40px;
+    width: 900px;
+    height: 1100px;
+    background: rgba(20, 20, 25, 0.1);
+    backdrop-filter: blur(1px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+/* --- SWITCH REDONDEADO (CALIBRACIÓN FINAL) --- */
+#revista-switch-palette {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    z-index: 10;
+}
+
+.switch-round {
+    position: relative;
+    width: 160px;
+    height: 35px;
+    background: var(--neon-lila);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 0 8px; /* Reducido un poco para ganar recorrido */
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--neon-glow);
+    transition: 0.3s;
+}
+
+.switch-dot {
+    width: 22px; /* Un poco más grande para que se vea mejor */
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+    transform: translateX(0); 
+}
+
+/* CALIBRACIÓN DE RECORRIDO:
+   Ancho: 160px - (Padding 8px * 2) = 144px de espacio interno.
+   Espacio interno 144px - 22px del dot = 122px de recorrido exacto.
+*/
+body.palette-pink .switch-dot {
+    transform: translateX(135px); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.switch-round p {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    text-align: center; /* Centrado absoluto respecto al contenedor de 160px */
+    font-family: 'tw', sans-serif;
+    color: #1a1a1a;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    pointer-events: none;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+/* --- RECUADRO NUMÉRICO (07) --- */
+#revista-num-box {
+    position: absolute;
+    left: 85px;
+    top: 90px;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#revista-num-box p {
+    font-family: 'Poiret One';
+    color: #808080; /* Gris solicitado */
+    font-size: 50px;
+    margin: 0;
+}
+
+/* --- TÍTULOS LOVE & ABOUT ME --- */
+#revista-header {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 60%;
+    text-align: right; /* Todo justificado a la derecha */
+    z-index: 10;
+}
+
+#revista-titulo-bg {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 180px; /* Grande */
+    color: #424242; /* Gris */
+    margin: 0;
+    line-height: 0.7;
+    opacity: 0.5;
+}
+
+#revista-titulo-front {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    font-family: 'muit', sans-serif;
+    font-size: 90px; /* Un poco más pequeño que el BG */
+    color: var(--neon-lila); /* Lila Root */
+    margin: 0;
+    text-shadow: 0 0 20px rgba(160, 121, 255, 0.5);
+}
+
+/* --- CONTENEDOR ABOUT ME --- */
+#revista-about-container {
+    margin-top: 120px;
+    max-width: 350px;
+    margin-left: 50px; /* Empuja a la derecha */
+}
+
+#revista-about-title {
+    font-family: 'tw', sans-serif;
+    color: var(--neon-lila); /* Lila Root */
+    text-transform: uppercase;
+    font-size: 18px;
+    border-bottom: 2px solid var(--neon-lila);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#revista-about-text {
+    font-family: 'tw', sans-serif;
+    color: #808080; /* Gris */
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- FOOTER FIRMA --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* POSICIONAMIENTO DE LA FIRMA */
+#footer-lord {
+    position: absolute;
+    bottom: 15px; /* Ajusta qué tan pegado al borde inferior */
+    right: 20px;  /* Ajusta qué tan pegado al borde derecho */
+    z-index: 20;
+    padding: 0 !important; /* Limpiamos el padding que traía el inline */
+}
+
+/* Limpieza del footer interno */
+#footer-lord footer {
+    padding: 0 !important; /* Eliminamos los 30px que pusiste en el HTML */
+}
+
+/* Efecto hover en el logo de la firma */
+#footer-lord a:hover img {
+    transform: rotate(360deg) scale(1.2);
+    filter: drop-shadow(0 0 12px #b36efc);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- 10. RESPONSIVE DESIGN: MOBILE & TABLET OPTIMIZATION --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@media (max-width: 850px) {
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    body .main-container, 
+    body #main-container {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1800px;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        overflow: visible;
+    }
+
+    /* POSICIONAMIENTO BASE PARA ELEMENTOS ABSOLUTOS */
+    body .glass-header, 
+    body .visit-counter, 
+    body .magazine-body, 
+    body .magazine-layout, 
+    body .personal-card, 
+    body .friends-vertical-strip {
+        position: absolute;
+        left: -28%;
+        transform: translateX(-50%);
+        margin: 0;
+    }
+
+    /* 1. MENU DE NAVEGACION */
+    body .glass-header {
+        position: fixed;
+        top: 15px;
+        left: -90%; 
+        transform: none; 
+        width: 90%;
+        max-width: 380px;
+        right: auto;
+        z-index: 1000;
+    }
+
+    /* 2. CONTADOR */
+    body .visit-counter {
+        position: fixed;
+        top: 90px;
+        left: -140px; 
+        transform: none; 
+        width: fit-content;
+        z-index: 999;
+    }
+
+    /* 3. PORTADA (REVISTA) */
+    body .magazine-body, 
+    body .magazine-layout {
+        top: 150px;
+        width: 95vw;
+        height: 550px;
+        z-index: 10;
+    }
+
+    /* 4. CARD (PERSONAL) */
+    body .personal-card {
+        top: 730px;
+        width: 300px;
+        z-index: 100;
+    }
+
+    /* 5. FRIENDS (FILA HORIZONTAL) */
+    body .friends-vertical-strip {
+        top: 1250px;
+        left: -30%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 15px;
+        z-index: 100;
+    }
+
+    body .friends-vertical-strip > * {
+        flex-shrink: 0;
+    }
+
+    /* 6. REPRODUCTOR (FIJO) */
+    body .minimal-player-horizontal {
+        position: fixed;
+        bottom: 10px;
+        left: -290px; 
+        transform: none; 
+        width: 520px;
+        max-width: 95vw;
+        display: flex;
+        flex-direction: column;
+        z-index: 10000;
+    }
+
+    body .player-chassis-bottom {
+        height: 220px;
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    /* FIX DE TEXTOS INTERNOS */
+    body #revista-titulo-bg { font-size: 60px; }
+    body #revista-titulo-front { font-size: 30px; }
+    
+    /* Section Gallery */
+    /* 1. Blindar el contenedor de la galería */
+    #sec-gallery {
+        width: 100%;
+        overflow-x: hidden; /* Evita que las cards empujen el menú */
+        position: relative;
+    }
+
+    /* 2. Asegurar que el flex de las cards no rompa el layout */
+    .ms-flex-container {
+        display: flex;
+        flex-direction: column; /* En móvil, mejor de arriba a abajo o scroll controlado */
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* CONTENEDOR DE LA GALERÍA: CENTRADO MANUAL */
+    /* 1. ELIMINAR LA GUILLOTINA */
+    #sec-gallery, 
+    .gallery-placeholder, 
+    .main-container {
+        overflow: visible !important; /* Permite que la galería "salga" de los bordes del padre */
+        width: 100% !important;
+    }
+
+    /* 2. EL CONTENEDOR DE LA GALERÍA */
+    body .ms-flex-container {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 150px !important;
+        
+        /* TU POSICIÓN ACTUAL QUE CAUSA RECORTE */
+        left: -80% !important; 
+        transform: translateX(-50%) !important;
+        
+        /* MEDIDAS */
+        width: 320px !important; 
+        height: auto !important;
+        min-height: 500px !important;
+        
+        /* IMPORTANTE: Evitar que el propio contenedor recorte a las fotos */
+        overflow: visible !important; 
+        z-index: 99999 !important;
+        margin: 0 !important;
+
+    }
+
+    /* 3. ASEGURAR QUE LAS CARDS NO SE ENCOJAN POR EL RECORTE */
+        /* 3. CARDS: TODAS PEQUEÑAS POR DEFECTO */
+    body .ms-card {
+        width: 100% !important;
+        /* Forzamos que todas empiecen en 80px */
+        flex: 0 0 80px !important; 
+        height: 80px !important;
+        
+        margin-bottom: 10px !important;
+        background-attachment: scroll !important;
+        transition: 0.6s cubic-bezier(0.05, 0.61, 0.41, 0.95) !important;
+        
+        /* Evitamos que el contenido se asome cuando están cerradas */
+        overflow: hidden !important;
+    }
+
+    /* 4. ANIMACIÓN: SOLO CON HOVER (CURSOR/TOUCH) */
+    /* Quitamos o ignoramos '.active' para que no haya una abierta de entrada */
+    body .ms-card:hover {
+        flex: 0 0 350px !important;
+        height: 350px !important;
+        border-color: var(--neon-lila) !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    }
+
+    /* 5. RESET DE LA CLASE ACTIVE (Si el JS la sigue poniendo) */
+    body .ms-card.active:not(:hover) {
+        flex: 0 0 80px !important;
+        height: 80px !important;
+    }
+
+    /* Asegurar que el placeholder no bloquee clics */
+    .gallery-placeholder {
+        width: 100%;
+        position: relative;
+    }
+    
+    /* Footer Firma */
+    body #footer-lord {
+        bottom: 10px;
+        right: 10px;
+        transform: scale(0.8); /* Lo hacemos un pelo más pequeño en móvil */
+    }
+    
+}
