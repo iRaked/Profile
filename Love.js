@@ -2,7 +2,7 @@
 // --- VARIABLES GLOBALES ---
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 let inputPin = "";
-const correctPin = "0000"; 
+const correctPin = "0112"; // PIN FINAL 0112
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 // --- FUNCIONES DE APOYO ---
@@ -327,7 +327,7 @@ function playSwitchSound() {
 
         try {
             // Fetch del JSON
-            const response = await fetch('https://radio-tekileros.vercel.app/LaRevancha.json');
+            const response = await fetch('https://radio-tekileros.vercel.app/Love.json');
             const data = await response.json();
             musicData = data["la revancha"];
 
