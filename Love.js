@@ -320,40 +320,41 @@ function playSwitchSound() {
     }
 
     /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-    // 2. FUNCIÓN MAESTRA DE INICIO (Cualquier parte de la pantalla)
+    // 2. FUNCIÓN MAESTRA DE INICIO (Universal - Sin raíces fijas)
     /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
     async function startAudioSystem() {
         if (isSystemStarted) return;
 
         try {
-            // Fetch del JSON
             const response = await fetch('https://radio-tekileros.vercel.app/Love.json');
             const data = await response.json();
-            musicData = data["la revancha"];
 
-            if (musicData.length > 0) {
+            // LÓGICA DINÁMICA: 
+            // 1. Si es un array [], lo usa. 
+            // 2. Si es un objeto {}, extrae el primer array que encuentre dentro (sin importar el nombre de la llave).
+            musicData = Array.isArray(data) ? data : Object.values(data).find(Array.isArray);
+
+            if (musicData && musicData.length > 0) {
                 const firstTrack = musicData[0];
                 audio.src = firstTrack.enlace;
 
-                // Intentar reproducción inmediata tras el gesto
                 await audio.play();
 
-                // Si tiene éxito, actualizamos todo
                 isSystemStarted = true;
                 updateUI(firstTrack);
 
-                // Ajustar iconos y animaciones
+                // UI y Animaciones
                 playBtn.querySelector('i').className = 'fa-solid fa-pause';
                 if (vinyl) vinyl.classList.add('spinning');
 
-                console.log("Sistema desbloqueado: Reproduciendo " + firstTrack.nombre);
+                console.log("Sistema iniciado con éxito.");
 
-                // Limpiar listeners para no repetir la carga
+                // Limpieza de eventos
                 window.removeEventListener('click', startAudioSystem);
                 window.removeEventListener('touchstart', startAudioSystem);
             }
         } catch (error) {
-            console.error("Error al iniciar el sistema de audio:", error);
+            console.error("Error crítico en la carga de audio:", error);
         }
     }
 
