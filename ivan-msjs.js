@@ -71,21 +71,25 @@ const mensajesAmigos = {
   Amix: "Amiga mía, perdida y despistada pero con un corazón generoso de dicha y alegría, literalmente me saque la lotería al conocerte.",
   Cuñis: "Ex cuñada sí pero nunca en desconEXión, porque tu esencia es libre e inocente, tu alma frágil y aventurera llena de energía ante la vida y sus obstáculos.",
   Vida: "Sos la locura que complementa mi vida, una persona re grosa y cariñosa, cada experiencia con vos es algo fuera de lo común, sos la dosis correcta de irreverencia y comprensión; sos una capa che!.",
+  Love: "Tu presencia me recuerda que la lealtad no es palabra sino constelación, que la madurez se nota en cada gesto y que tu magnetismo sobrio me envuelve como el morado que tanto te define. A tu lado la confianza no se pide, se siente, y yo la guardo como un pacto silencioso que me acompaña siempre.",
+  Mia: "Tu franqueza me da calma, tu serenidad me recuerda que la vida se puede vivir sin prisas y tu manera de escuchar me enseña que el silencio también habla. Das sin esperar nada, con respeto y con esa ingenuidad reservada que te hace única. A tu lado la confianza se siente ligera, como si todo encontrara su centro en tu presencia.",
   Pelonchas: "El binguero millonario* más despreciado y detestado de este mundo virtual, él cree que el poder está en lo que puede comprar engañándose que la felicidad está en oferta, haciendo de su vida una fantasía. Apareces por relleno, no por gusto ;)"
 };
 
 const coloresTitulo = {
   Amor: "#ff4f91",
-  BFF: "#00c2cb",
+  BFF: "#EEDD82",
   Bebota: "#A020F0",
   Sister: "#ff69b4",
   Bebote: "#ffb347",
   Cloncita: "#c71585",
-  Compa: "#1e90ff",
+  Compa: "#ff0000",
   Amygocha: "#ff6347",
   Amix: "#f08080",
   Cuñis: "#9370db",
   Vida: "#00bfff",
+  Love: "#8A2BE2",
+  Mia: "8B8989",
   Pelonchas: "#ff4500"
 };
 
