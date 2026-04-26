@@ -1,0 +1,854 @@
+/* Símbolo de Belleza Universal */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🎨 1. VARIABLES Y RESET TOTAL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+    --fucsia: #ff00ff;
+    --glass: rgba(255, 255, 255, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.2);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100vh;
+    height: -webkit-fill-available; /* Fix para navegadores móviles */
+    background: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Mata cualquier scroll vertical u horizontal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    position: fixed; /* Evita que el body se desplace un solo píxel */
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCREEN DE ACCESO — CENTRADO ABSOLUTO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.access-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* ESTE ES EL FIX:
+   Elevamos el bloque completo para compensar 
+   el peso del nombre y el margen negativo.
+*/
+.access-screen > * {
+  transform: translateY(-3rem); 
+}
+
+.access-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 16rem; 
+  font-weight: normal;
+  
+  /* Fusión Inclinada */
+  background: linear-gradient(135deg, #44207f, #ff94dd, #0ac3cb, #44207f);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: fusionShift 6s ease infinite;
+
+  /* BLINDAJE CONTRA RECORTES */
+  line-height: 1.4;      
+  padding: 2rem 6rem 1rem 4rem; /* Arriba, Derecha, Abajo, Izquierda */
+  
+  /* ABRAZO AL BOTÓN */
+  margin: 0;
+  margin-bottom: -5.5rem;  
+  
+  text-align: center;
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+  filter: drop-shadow(0 0 15px rgba(255, 148, 221, 0.2));
+  z-index: 10;
+  pointer-events: none;
+}
+
+.access-btn {
+  font-size: 1.7rem;
+  padding: 1.2rem 3.8rem;
+  border-radius: 50px;
+  background: linear-gradient(125deg, #44207f, #ff94dd);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #000;
+  box-shadow: 
+    0 0 0 2px #ff94dd,
+    0 0 20px rgba(255, 148, 221, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 5;
+}
+
+.access-btn:hover {
+  background: linear-gradient(125deg, #ff94dd, #0ac3cb);
+  box-shadow: 
+    0 0 0 2px #0ac3cb, 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  filter: brightness(1.1);
+}
+
+.access-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(25deg);
+  animation: shineInclinado 3s infinite;
+  pointer-events: none; 
+}
+
+@keyframes fusionShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes shineInclinado {
+  0% { left: -150%; }
+  60% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   💖 2. FONDO DE CORAZONES (ANIMACIÓN)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.heart-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Corazones normales */
+.heart {
+    position: absolute;
+    bottom: -100px;
+    font-size: 30px;
+    color: #fff0ff;
+    text-shadow: 0 0 8px var(--fucsia), 0 0 15px var(--fucsia);
+    opacity: 0;
+    animation: floatUp 10s infinite linear;
+}
+
+/* Variante A: pequeño → grande */
+.heart.burst-small {
+    animation: burstSmall 10s infinite ease-in-out;
+}
+
+/* Variante B: grande → pequeño */
+.heart.burst-big {
+    animation: burstBig 10s infinite ease-in-out;
+}
+
+/* Animación normal */
+@keyframes floatUp {
+    0%   { transform: translateY(0) scale(1); opacity: 0; }
+    10%  { opacity: 0.9; }
+    90%  { opacity: 0.9; }
+    100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+}
+
+/* Explosión: nace pequeño y se hace grande */
+@keyframes burstSmall {
+    0%   { transform: translateY(0) scale(0.5); opacity: 0; }
+    10%  { opacity: 1; }
+    40%  { transform: translateY(-40vh) scale(0.8); opacity: 1; }
+    50%  { transform: translateY(-50vh) scale(2.5); opacity: 1; }
+    90%  { transform: translateY(-110vh) scale(2); opacity: 0.9; }
+    100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+
+/* Explosión: nace grande y se hace pequeño */
+@keyframes burstBig {
+    0%   { transform: translateY(0) scale(2); opacity: 0; }
+    10%  { opacity: 1; }
+    40%  { transform: translateY(-40vh) scale(1.8); opacity: 1; }
+    50%  { transform: translateY(-50vh) scale(0.5); opacity: 1; }
+    90%  { transform: translateY(-110vh) scale(0.8); opacity: 0.9; }
+    100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+}
+
+/* Corazones con tamaños distintos */
+.heart:nth-child(1) { left: 5%;  font-size: 20px;  animation-delay: 0s; }
+.heart:nth-child(2) { left: 15%; font-size: 40px;  animation-delay: 2s; animation-duration: 12s; }
+.heart:nth-child(3) { left: 25%; font-size: 25px;  animation-delay: 4s; }
+.heart:nth-child(4) { left: 35%; font-size: 50px;  animation-delay: 6s; animation-duration: 8s; }
+.heart:nth-child(5) { left: 45%; font-size: 30px;  animation-delay: 8s; }
+.heart:nth-child(6) { left: 55%; font-size: 22px;  animation-delay: 1s; }
+.heart:nth-child(7) { left: 65%; font-size: 45px;  animation-delay: 3s; }
+.heart:nth-child(8) { left: 75%; font-size: 28px;  animation-delay: 5s; }
+.heart:nth-child(9) { left: 85%; font-size: 35px;  animation-delay: 7s; }
+.heart:nth-child(10){ left: 95%; font-size: 18px;  animation-delay: 9s; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   💎 3. CARD VERTICAL (BORDE NEÓN)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.card-vertical {
+    position: relative;
+    width: 380px;
+    height: 650px;
+    background: #000 !important;
+    border-radius: 20px;
+
+    /* BLOQUEO DE POSICIONAMIENTO DE RAÍZ */
+    margin: auto; /* Si estás usando flex en el body, esto centra perfectamente */
+    flex-shrink: 0; /* Evita que el contenedor la aplaste */
+    
+    /* AISLAMIENTO DE RENDERIZADO (Hardware Acceleration) */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    contain: layout size; /* Critical: Evita que cambios internos afecten el layout externo */
+    overflow: hidden;
+    z-index: 10;
+}
+
+.card-vertical::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%; 
+    height: 250%;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(from 0deg, transparent 0%, var(--fucsia) 10%, var(--fucsia) 20%, transparent 40%);
+    filter: blur(2px);
+    will-change: transform;
+    animation: rotateBorder 3s linear infinite; 
+    z-index: -2;
+}
+
+.card-vertical::after {
+    content: '';
+    position: absolute;
+    inset: 3px; 
+    background: #000;
+    border-radius: 17px; 
+    z-index: -1;
+}
+
+@keyframes rotateBorder {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🍔 4. SIDE-MENU (CUMPLEAÑOS Y REDES)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.side-menu {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: -101%; 
+    width: 250px; 
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(12px); 
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease; 
+    will-change: left, opacity;
+    z-index: 100;
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Estilizar el scroll para que sea Kawaii/Minimalista */
+.side-menu::-webkit-scrollbar {
+    width: 4px;
+}
+.side-menu::-webkit-scrollbar-thumb {
+    background: var(--fucsia);
+    border-radius: 10px;
+}
+
+.card-vertical:hover .side-menu { left: 3px; }
+
+/* OCULTACIÓN CUANDO EL PLAYER ESTÁ ACTIVO */
+.card-vertical.player-active .side-menu {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    left: -101% !important;
+}
+
+.menu-header {
+    width: 100%;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.birthday-main {
+    position: relative;
+    border: 2px solid var(--fucsia);
+    border-radius: 8px;
+    padding: 20px 15px 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-divider {
+    width: 100px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+.day { font-size: 80px; color: #fff; font-weight: 900; line-height: 0.8; }
+.month { font-size: 80px; color: transparent; -webkit-text-stroke: 2px #fff; font-weight: 900; line-height: 0.8; }
+.year-row { font-size: 22px; color: #fff; font-weight: bold; letter-spacing: 5px; margin-top: 10px; margin-bottom: 5px; }
+
+/* EL CONTADOR INSERTADO (RECORTE) */
+.countdown-box {
+    position: absolute;
+    bottom: -16px;           
+    background: #0d0d0d;     /* Sólido para el recorte */
+    padding: 5px 12px;
+    border: 2px solid var(--fucsia); 
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+#countdown-timer {
+    color: var(--fucsia);
+    text-shadow: 0 0 8px var(--fucsia);
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Adpatar medidas según contenido */
+.social-icons li {
+    padding: 11px 20px;
+    color: #eee;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons li:hover { background: rgba(255, 255, 255, 0.1); color: var(--fucsia); }
+.social-icons i { color: var(--fucsia); width: 20px; text-align: center; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🖼️ 5. ESCENARIO DE IMAGEN (KEN BURNS)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.image-stage {
+    position: absolute;
+    inset: 3px;
+    border-radius: 17px;
+    overflow: hidden;
+    isolation: isolate;
+    contain: strict;
+    z-index: 1;
+    background: #000;
+}
+
+.bg-layer {
+    position: absolute;
+    /* Inset reducido: menos margen de error para TikTok/Kick */
+    inset: -5%; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    
+    /* Estado inicial puro */
+    transform: scale(1) translate(0, 0);
+    
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Animación Única Universal */
+.bg-layer.active {
+    opacity: 1;
+    animation: kenBurnsPrecision 45s ease-in-out infinite alternate;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🎲 MOTOR DE PRECISIÓN (ANTI-DISTORSIÓN)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes kenBurnsPrecision {
+    0% {
+        /* Empezamos desde la realidad absoluta */
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        /* Movimiento en píxeles: no depende del tamaño de la imagen */
+        /* Zoom de apenas el 1.5% para que sea "racional" */
+        transform: scale(1.015) translate(-10px, 5px);
+    }
+    100% {
+        /* Trayectoria final mínima */
+        transform: scale(1.01) translate(10px, -5px);
+    }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ✍️ 6. FIRMA Y CÁPSULA DE ORIGEN
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cover-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+    background: transparent !important;
+}
+
+.signature-wrapper {
+    position: absolute;
+    bottom: 40px; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    z-index: 25;
+}
+
+.model-signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(255, 0, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.4);
+    rotate: -5deg;
+    opacity: 0;
+    margin: 0;
+    line-height: 1;
+    animation: signatureFade 1.5s ease-out forwards 0.5s;
+}
+
+/* Clase especial para el cumpleaños */
+.model-signature.birthday {
+    /* Se ejecutan varias animaciones en paralelo */
+    animation: signatureFade 1.5s ease-out forwards 0.5s,
+               colorShift 5s infinite linear 2s,
+               heartbeat 2s infinite ease-in-out 2s;
+}
+
+/* Animación de cambio de color */
+@keyframes colorShift {
+    0%   { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+    25%  { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+    50%  { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+    75%  { color: #ff6600; text-shadow: 0 0 10px #ff6600; }
+    100% { color: #ffffff; text-shadow: 0 0 10px #ffffff; }
+}
+
+/* Animación de aparición */
+@keyframes signatureFade {
+    from { opacity: 0; transform: scale(0.9) rotate(-5deg); filter: blur(5px); }
+    to   { opacity: 1; transform: scale(1) rotate(-5deg); filter: blur(0); }
+}
+
+/* Animación de latido */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    25%      { transform: scale(1.1) rotate(-5deg); }
+    50%      { transform: scale(0.95) rotate(-5deg); }
+    75%      { transform: scale(1.05) rotate(-5deg); }
+}
+
+
+.origin-capsule {
+    border: 1px solid var(--fucsia);
+    border-radius: 50px; 
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.origin-capsule span {
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mini-flag {
+    height: 11px;
+    width: auto;
+    border-radius: 2px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🌌 REPRODUCTOR JARVIS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#spotune-player {
+    display: none; /* Controlado por JS para liberar recursos */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 150;
+}
+
+/* ACTIVACIÓN POR CLASE DE ESTADO */
+.card-vertical.player-active #spotune-player {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.jarvis-ui {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    z-index: 500;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.2);
+    overflow: visible; 
+}
+
+.hud-main-wrapper {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+/* 📋 COLA DE REPRODUCCIÓN */
+.hud-queue {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 310px; 
+    height: 400px; 
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid var(--fucsia);
+    box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.4);
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 20;
+}
+
+#playlist-data {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#playlist-data li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+}
+
+#playlist-data li:hover {
+    background: rgba(255, 0, 255, 0.1);
+    border-color: rgba(255, 0, 255, 0.3);
+    padding-left: 15px;
+}
+
+#playlist-data li.active {
+    background: rgba(255, 0, 255, 0.2);
+    border-color: var(--fucsia);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+    font-weight: bold;
+}
+
+#playlist-data li.active-track {
+    background: rgba(255, 0, 255, 0.25);
+    border-color: var(--fucsia);
+    box-shadow: 0 0 12px rgba(255, 0, 255, 0.5);
+    font-weight: bold;
+    color: var(--fucsia);
+    text-shadow: 0 0 6px var(--fucsia);
+}
+
+
+#playlist-data li span {
+    color: var(--fucsia);
+    margin-right: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--fucsia);
+}
+
+.hud-queue::-webkit-scrollbar { width: 4px; }
+.hud-queue::-webkit-scrollbar-thumb {
+    background: var(--fucsia);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--fucsia);
+}
+
+/* 🧬 ENVOLVENTE INFERIOR */
+.hud-footer-meta {
+    position: absolute;
+    bottom: 50px; 
+    left: 0;
+    right: 0;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* 💿 IMAGEN CD */
+.hud-cd-case {
+    position: absolute;
+    left: 10px; 
+    bottom: 75px;
+    width: 100px;
+    height: 100px;
+    z-index: 60;
+    pointer-events: none;
+}
+
+@keyframes rotateCD {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.cd-vinyl {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    animation: rotateCD 3s linear infinite;
+    animation-play-state: paused; 
+    filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.cd-vinyl.playing {
+    animation-play-state: running;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.6));
+}
+
+/* 📝 METADATOS */
+.hud-track-info {
+    position: absolute;
+    left: 50%;
+    bottom: 85px; 
+    transform: translateX(-50%);
+    width: 180px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.track-artist {
+    display: block;
+    font-size: 10px;
+    color: var(--fucsia);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.track-title {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px var(--fucsia);
+}
+
+.active-track { color: var(--fucsia); text-shadow: 0 0 5px var(--fucsia); }
+
+/* El Label superior */
+.hud-label {
+    color: var(--fucsia) !important;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+    font-weight: 800;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🖼️ CARATULA HUD (REPRO ESTABLE)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.hud-thumb-wrapper {
+    position: absolute;
+    right: 15px; 
+    bottom: 80px;
+    width: 85px !important;
+    height: 85px !important;
+    
+    /* Radio de borde redondeado */
+    border-radius: 12px; 
+    
+    /* CRÍTICO: Recorta la imagen para que no tape el redondeado */
+    overflow: hidden; 
+    
+    /* Contorno Fucsia */
+    border: 2px solid var(--fucsia) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    
+    background: #000;
+    z-index: 100 !important;
+    
+    /* Optimización de renderizado */
+    isolation: isolate;
+    backface-visibility: hidden;
+}
+
+.hud-thumb-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* Mantiene la proporción de la portada sin estirarla */
+    object-fit: cover !important; 
+    
+    /* Asegura que herede el redondeado en navegadores antiguos */
+    border-radius: inherit; 
+    display: block;
+}
+
+/* ❌ BOTÓN CERRAR */
+.hud-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 5px;
+    color: #ff4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.hud-close-btn:hover {
+    background: #ff4444;
+    color: #000;
+    box-shadow: 0 0 15px #ff4444;
+    transform: rotate(90deg);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🎮 BOTONERA NEÓN - JARVIS STYLE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hud-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    z-index: 100;
+}
+
+.hud-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 255, 0.05);
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.2), 
+                0 0 5px rgba(255, 0, 255, 0.1);
+    color: var(--fucsia);
+    font-size: 16px;
+    outline: none;
+}
+
+.btn-play {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+    background: rgba(255, 0, 255, 0.1);
+    border-color: var(--fucsia);
+    box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.4),
+                0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.hud-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 0, 255, 0.2);
+    box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.5),
+                0 0 20px rgba(255, 0, 255, 0.3);
+    color: #fff;
+}
+
+.hud-btn:active {
+    transform: scale(0.9);
+    filter: brightness(1.5);
+}
+
+.hud-btn.active {
+    background: var(--fucsia);
+    color: #000;
+    box-shadow: 0 0 15px var(--fucsia);
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://santi-graphics.vercel.app/assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Vic</title>
+  <!-- Estilos externos -->
+  <link href="Victoria.css" rel="stylesheet" type="text/css">
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Scripts externos -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Victoria.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- BLOCK -->
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>
+
+</head>
+<body>
+    
+    <div class="access-screen">
+      <h1 class="access-title">Vic</h1>
+      <button class="access-btn">ACCEDER</button>
+    </div>
+
+    <div class="heart-background">
+      <span class="heart">♥</span>
+      <span class="heart burst-small">♥</span>
+      <span class="heart burst-big">♥</span>
+      <span class="heart">♥</span>
+      <span class="heart burst-small">♥</span>
+      <span class="heart burst-big">♥</span>
+      <span class="heart">♥</span>
+      <span class="heart burst-small">♥</span>
+      <span class="heart burst-big">♥</span>
+    </div>
+    
+    <!-- MAIN -->
+    <div class="card-vertical">
+    <section class="image-stage" id="water">
+        <div id="bg-1" class="bg-layer active" style="background-image: url('https://santi-graphics.vercel.app/assets/photo/Vic3.png');"></div>
+        <div id="bg-2" class="bg-layer"></div>
+        
+        <div class="signature-wrapper">
+            <div class="model-signature">Vic</div>
+            <div class="origin-capsule">
+                <span>Made in Venezuela</span> 
+                <img src="https://santi-graphics.vercel.app/assets/flags/ven.png" alt="VZLA" class="mini-flag">
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <nav class="side-menu">
+        <!-- Header -->
+        <div class="menu-header">
+            <div class="birthday-main">
+                <div class="date-container">
+                    <div class="day">7</div>
+                    <div class="date-divider"></div>
+                    <div class="month">02</div>
+                </div>
+                <div class="year-row">2027</div>
+
+                <div class="countdown-box">
+                    <span id="countdown-timer">00d 00h 00m 00s</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="menu-content">
+            <ul class="social-icons">
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic2.png', event)"><i class="fa-solid fa-cat"></i> <span>Instagram</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic4.png', event)"><i class="fa-solid fa-heart"></i> <span>TikTok</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic8.png', event)"><i class="fa-solid fa-paw"></i> <span>Discord</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic5.png', event)"><i class="fa-solid fa-star"></i> <span>Twitter</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic6.png', event)"><i class="fa-solid fa-bolt"></i> <span>Kick</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic1.png', event)"><i class="fa-solid fa-ghost"></i> <span>Twitch</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic7.png', event)"><i class="fa-solid fa-ghost"></i> <span>Snapchat</span></li>
+
+                <li onclick="changeCover('https://santi-graphics.vercel.app/assets/photo/Vic9.png', event)"><i class="fa-solid fa-cookie-bite"></i> <span>Pinterest</span></li>
+
+                <li class="spotune-item" onclick="openSpotune(null, event)">
+                    <i class="fa-solid fa-music"></i> <span>Spotune</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <!-- PLAYER -->
+        <div id="spotune-player" class="jarvis-ui">
+            <div class="hud-header">
+                <div class="hud-close-btn" onclick="closeSpotune(event)">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="hud-main-wrapper">
+                <div class="hud-queue">
+                    <span class="hud-label">PLAYLIST SPOTUNE</span>
+                    <ul id="playlist-data">
+                        <li><span>01</span> Cyber-Symphony.mp3</li>
+                        <li><span>02</span> Night_City_Vibes.wav</li>
+                        <li><span>03</span> Digital_Vic_X.mp3</li>
+                    </ul>
+                </div>
+
+                <div class="hud-footer-meta">
+                    <div class="hud-cd-case">
+                        <img src="https://santi-graphics.vercel.app/assets/img/CD.png" class="cd-vinyl">
+                    </div>
+
+                    <div class="hud-track-info">
+                        <span class="track-artist" id="hud-artist">RICK_GRAPHICS</span>
+                        <span class="track-title" id="hud-title">SINFONÍA VENEZUELA</span>
+                    </div>
+
+                    <div class="hud-thumb-wrapper">
+                        <img id="hud-cover-img" src="" alt="Cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hud-controls">
+                <button class="hud-btn btn-repeat"><i class="fa-solid fa-repeat"></i></button>
+                <button class="hud-btn btn-rwd"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="hud-btn btn-play"><i class="fa-solid fa-play"></i></button>
+                <button class="hud-btn btn-fwd"><i class="fa-solid fa-forward-step"></i></button>
+                <button class="hud-btn btn-shuffle"><i class="fa-solid fa-shuffle"></i></button>
+            </div>
+        </div>
+
+</div>
+
+</body>
+</html>
