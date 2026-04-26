@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://santi-graphics.vercel.app/assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Galeria PCBack</title>
+  <!-- Estilos externos -->
+  <link href="StorePC.css" rel="stylesheet" type="text/css">
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <!-- Scripts externos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="StorePC.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <!-- BLOCK 
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>-->
+
+</head>
+
+<body>
+  <div class="gallery-bg">
+    <!-- Efectos de fondo decorativos -->
+    <div class="brush brush-1"></div>
+    <div class="brush brush-2"></div>
+    <div class="brush brush-3"></div>
+      
+    <!-- Navegación principal fija -->
+    <header class="main-header">
+      <nav class="nav-container">
+        <div class="nav-logo">Galería PCBack & Pstyle</div>
+        <ul class="nav-links">
+            <li><a href="#section-carousel" title="PCBack Home">PCBACK</a></li>
+            <li><a href="#damas-main" title="Damas"><i class="fas fa-venus"></i></a></li>
+            <li><a href="#caballeros-main" title="Caballeros"><i class="fas fa-mars"></i></a></li>
+            <li><a href="#temporadas" title="Temporadas"><i class="fas fa-star"></i></a></li> 
+
+            <li class="nav-separator">|</li> 
+
+            <li><a href="#pstyle-title" title="Pstyle Home">PSTYLE</a></li>
+            <li><a href="#damas-pstyle" title="Damas Pstyle"><i class="fas fa-female"></i></a></li>
+            <li><a href="#caballeros-pstyle" title="Caballeros Pstyle"><i class="fas fa-male"></i></a></li>
+            <li><a href="#temporadas-pstyle" title="Temporadas Pstyle"><i class="fas fa-star"></i></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contenedor principal de la galería -->
+    <main class="pcback-main">
+
+      <!-- Sección de carrusel en arco -->
+      <section id="section-carousel" class="carousel-area">
+          
+        <div class="section-title-container" style="margin: 50px auto 40px auto;">
+        <h2 class="section-title">PCBACK <span>HOME</span></h2>
+        <div class="title-line"></div>
+    </div>
+          
+        <div class="counter-display">
+          <span id="current-index">4</span> / <span id="total-items">50</span>
+        </div>
+
+        <div class="arc-container">
+<!-- Imágenes del carrusel en arco -->
+<img src="https://i.postimg.cc/2jgWG3gg/Xat-Private-Ara-Unicorn-GFX.gif" class="img-h p1" alt="Modelo 1">
+<img src="https://i.postimg.cc/CLDqQSVJ/Xat-Private-Cazadora-GFX.gif" class="img-h p2" alt="Modelo 2">
+<img src="https://i.postimg.cc/fTX9rDNM/Xat-Private-Cupidita-GFX.gif" class="img-h p3" alt="Modelo 3">
+<img src="https://i.postimg.cc/SxhM03S9/Xat-Private-Eluney-Valentin-GFX.gif" class="img-h central" alt="Modelo 4">
+<img src="https://i.postimg.cc/2S7BCGyc/Xat-Private-Lala-Duo-GFX.gif" class="img-h p5" alt="Modelo 5">
+<img src="https://i.postimg.cc/SKZ2MKW8/Xat-Private-Ojitos-Red-GFX.gif" class="img-h p6" alt="Modelo 6">
+<img src="https://i.postimg.cc/pT4ms1cK/Xat-Private-Shelly-Silver-GFX.gif" class="img-h p7" alt="Modelo 7">
+
+<!-- BLOQUE 2 -->
+<img src="https://i.postimg.cc/jqBfcCBk/Xat-Private-Cazadora-Turquesa-GFX.gif" class="img-h p1" alt="Modelo 8">
+<img src="https://i.postimg.cc/nhJD8gFs/Xat-Private-Eluney-Celeste-GFX.gif" class="img-h p2" alt="Modelo 9">
+<img src="https://i.postimg.cc/SxhM03S9/Xat-Private-Eluney-Valentin-GFX.gif" class="img-h p3" alt="Modelo 10">
+<img src="https://i.postimg.cc/JhTDkhby/Xat-Private-Lunita-Violet-GFX.gif" class="img-h central" alt="Modelo 11">
+<img src="https://i.postimg.cc/4dmKbT51/Xat-Private-Peque-Auto-GFX.gif" class="img-h p5" alt="Modelo 12">
+<img src="https://i.postimg.cc/Y0FhZfTs/Xat-Private-Yaz-Golden-GFX.gif" class="img-h p6" alt="Modelo 13">
+<img src="https://i.postimg.cc/k4BVFdcf/Xat-Private-Regia-Fiucsa-GFX.gif" class="img-h p7" alt="Modelo 14">
+
+<!-- BLOQUE 3 -->
+<img src="https://i.postimg.cc/wTJmGgdW/Xat-Private-Cazadora-Silver-GFX.gif" class="img-h p1" alt="Modelo 15">
+<img src="https://i.postimg.cc/fTX9rDNM/Xat-Private-Cupidita-GFX.gif" class="img-h p2" alt="Modelo 16">
+<img src="https://i.postimg.cc/W11yfw0m/Xat-Private-Eliza-Gold-GFX.gif" class="img-h p3" alt="Modelo 17">
+<img src="https://i.postimg.cc/T1bpFqBn/Xat-Private-Uvita-Rock-GFX.gif" class="img-h central" alt="Modelo 18">
+<img src="https://i.postimg.cc/1zQhbNL4/Xat-Private-Paola-Duo-GFX.gif" class="img-h p5" alt="Modelo 19">
+<img src="https://i.postimg.cc/zGrxjpff/Xat-Private-Nihan-Silver-GFX.gif" class="img-h p6" alt="Modelo 20">
+<img src="https://i.postimg.cc/mrJtnQ2X/Xat-Private-Karime-H4-GFX.gif" class="img-h p7" alt="Modelo 21">
+
+<!-- BLOQUE 4 -->
+<img src="https://i.postimg.cc/13Qqx2mr/Xat-Private-Indiecita-Boca-GFX.gif" class="img-h p1" alt="Modelo 22">
+<img src="https://i.postimg.cc/x12zrhfy/Xat-Private-Karly-Violet-GFX.gif" class="img-h p2" alt="Modelo 23">
+<img src="https://i.postimg.cc/7LPJhzJc/Xat-Private-Lala-Pink-GFX.gif" class="img-h p3" alt="Modelo 24">
+<img src="https://i.postimg.cc/85Kghsrh/Xat-Private-Peque-Sky-GFX.gif" class="img-h central" alt="Modelo 25">
+<img src="https://i.postimg.cc/MGcgD86R/Xat-Private-Nihan-Heart-GFX.gif" class="img-h p5" alt="Modelo 26">
+<img src="https://i.postimg.cc/x1j81dPQ/Xat-Private-Candy-Green-GFX.gif" class="img-h p6" alt="Modelo 27">
+<img src="https://i.postimg.cc/BbRWVypb/Xat-Private-Dulce-GFX.gif" class="img-h p7" alt="Modelo 28">
+
+<!-- BLOQUE 5 -->
+<img src="https://i.postimg.cc/XYqZcNHy/Xat-Private-Africa-Grey-GFX.gif" class="img-h p1" alt="Modelo 29">
+<img src="https://i.postimg.cc/W1wZ2tfz/Xat-Private-Eluney-Aqua-GFX.gif" class="img-h p2" alt="Modelo 30">
+<img src="https://i.postimg.cc/1RWxLJym/Xat-Private-Lala-Purple-GFX.gif" class="img-h p3" alt="Modelo 31">
+<img src="https://i.postimg.cc/0yzVTPsw/Xat-Private-Paola-Crema-GFX.gif" class="img-h central" alt="Modelo 32">
+<img src="https://i.postimg.cc/WzpnXP8t/Xat-Private-Key-GFX.gif" class="img-h p5" alt="Modelo 33">
+<img src="https://i.postimg.cc/dtFs9GK0/Xat-Private-Sky-Video-GFX.gif" class="img-h p6" alt="Modelo 34">
+<img src="https://i.postimg.cc/15ZXCSzt/Xat-Private-mor-Spring-FX.gif" class="img-h p7" alt="Modelo 35">
+
+<!-- BLOQUE 6 -->
+<img src="https://i.postimg.cc/mg9WjrfD/Xat-Private-Sky-Unicorn-GFX.gif" class="img-h p1" alt="Modelo 36">
+<img src="https://i.postimg.cc/MKCVN94D/Xat-Private-Annye-Flowers-GFX.gif" class="img-h p2" alt="Modelo 37">
+<img src="https://i.postimg.cc/G29hKCcm/Xat-Private-Anhelo-Aqua-Wave-GFX.gif" class="img-h p3" alt="Modelo 38">
+<img src="https://i.postimg.cc/9MSXNnMt/Xat-Private-Annita-Wave-GFX.gif" class="img-h central" alt="Modelo 39">
+<img src="https://i.postimg.cc/Pfp1rGmH/Xat-Private-Reyna-Golden-Wave-GFX.gif" class="img-h p5" alt="Modelo 40">
+<img src="https://i.postimg.cc/c4YDwP0j/Xat-Private-Africa-Red-GFX.gif" class="img-h p6" alt="Modelo 41">
+<img src="https://i.postimg.cc/v89LGnRs/Xat-Private-Ruth-Pink-GFX.gif" class="img-h p7" alt="Modelo 42">
+
+<!-- BLOQUE 7 -->
+<img src="https://i.postimg.cc/fTCm2nTm/Xat-Private-Lunna-Stars-GFX.gif" class="img-h p1" alt="Modelo 43">
+<img src="https://i.postimg.cc/j5CM7VFC/Xat-Private-Sky-Chrome-GFX.gif" class="img-h p2" alt="Modelo 44">
+<img src="https://i.postimg.cc/nzgX3wSQ/Xat-Private-Sandi-2GFX.gif" class="img-h p3" alt="Modelo 45">
+<img src="https://i.postimg.cc/6pXvsgWw/Xat-Private-Eluney-2D-GFX.gif" class="img-h central" alt="Modelo 46">
+<img src="https://i.postimg.cc/L85yV6MN/Xat-Private-Pookie-GFX.gif" class="img-h p5" alt="Modelo 47">
+<img src="https://i.postimg.cc/0y0J9njY/Xat-Private-Kuromi-BBF-GFX.gif" class="img-h p6" alt="Modelo 48">
+<img src="https://i.postimg.cc/rz2DjnDR/Xat-Private-Lala-Fusion-GFX.gif" class="img-h p7" alt="Modelo 49">
+
+<!-- BLOQUE 8 -->
+<img src="https://i.postimg.cc/W3Lgq5Bc/Xat-Private-Mikael-Square-GFX.gif" class="img-h p1" alt="Modelo 50">
+<img src="https://i.postimg.cc/43hnxvzz/Xat-Private-Ne-Ne-GFX.gif" class="img-h p2" alt="Modelo 51">
+<img src="https://i.postimg.cc/zD2kJFt7/Xat-Private-Saints-Gear-GFX.gif" class="img-h p3" alt="Modelo 52">
+<img src="https://i.postimg.cc/WzT8Nr9F/Xat-Private-Roger-Smoke-GFX.gif" class="img-h central" alt="Modelo 53">
+<img src="https://i.postimg.cc/05httj7J/Xat-Private-Frank-GFX.gif" class="img-h p5" alt="Modelo 54">
+<img src="https://i.postimg.cc/Pr2qxTLg/Xat-Private-Mikael-Red-GFX.gif" class="img-h p6" alt="Modelo 55">
+<img src="https://i.postimg.cc/6q7Myc8B/Xat-Private-Rick-Multi-GFX.gif" class="img-h p7" alt="Modelo 56">
+
+<!-- BLOQUE 9 -->
+<img src="https://i.postimg.cc/1XVqn9zk/Xat-Private-Akili-GFX.gif" class="img-h p1" alt="Modelo 57">
+<img src="https://i.postimg.cc/s2JrgTjH/Xat-Private-Rick-Ventas-GFX.gif" class="img-h p2" alt="Modelo 58">
+<img src="https://i.postimg.cc/wv7tcd2g/Xat-Private-Roger-Mundial-GFX.gif" class="img-h p3" alt="Modelo 59">
+<img src="https://i.postimg.cc/fRN94pzz/Xat-Private-Darkar-GFX.gif" class="img-h central" alt="Modelo 60">
+<img src="https://i.postimg.cc/cHrKMNhG/Xat-Private-Rick-Pelusso-GFX.gif" class="img-h p5" alt="Modelo 61">
+<img src="https://i.postimg.cc/76fCMyVp/Xat-Private-Rick-River-GFX.gif" class="img-h p6" alt="Modelo 62">
+<img src="https://i.postimg.cc/wvZ1wb4q/Xat-Private-Roger-Goku-GFX.gif" class="img-h p7" alt="Modelo 63">
+
+</div>
+
+        <div class="nav-wrapper">
+          <button class="nav-btn btn-l" id="prev">&lt;</button>
+          <button class="nav-btn btn-r" id="next">&gt;</button>
+        </div>
+      </section>
+        
+      <!-- Sección de modelos femeninos -->
+      <section id="damas-main" class="section-fem catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Colección <span>Damas</span></h2>
+          <div class="title-line"></div>
+        </div>
+
+        <!-- Grid de Cards femeninas -->
+        <div class="catalog-grid">
+          <!-- Card Dama #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/kgvt7sDd/Xat-Private-Lala-Menta-GFX.gif" alt="Dama 1" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama #1</span>
+                <span class="price">$800 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+          
+          <!-- Card Dama #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/FKFkzSJF/Xat-Private-Leonor-NYC-GFX.gif" alt="Dama 2" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama #2</span>
+                <span class="price">$900 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+          
+          <!-- Card Dama #3 REEMPLAZO-->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/MKCpDW22/Xat-Private-Peque-Black-GFX.gif" alt="Dama 3" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama #3</span>
+                <span class="price">$1000 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Sección de modelos masculinos -->
+      <section id="caballeros-main" class="section-masc catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Catálogo <span>Caballeros</span></h2>
+          <div class="title-line"></div>
+        </div>
+        
+        <!-- Grid de Cards masculinas -->
+        <div class="catalog-grid">
+          <!-- Card Caballero #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/P5FwtkDS/Xat-Private-Roger-MX-GFX.gif" alt="Caballero 1" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero #1</span>
+                <span class="price">$800 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+            
+          <!-- Card Caballero #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/85jFBVHy/Xat-Private-Rick-Jason-GFX.gif" alt="Caballero 2" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero #2</span>
+                <span class="price">$900 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+            
+          <!-- Card Caballero #3 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/JnvspdY1/Xat-Private-Roger-Xmas-GFX.gif" alt="Caballero 3" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero #3</span>
+                <span class="price">$1000 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Sección de contenido por temporada -->
+      <section id="temporadas" class="section-masc catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Temporadas <span>Especiales</span></h2>
+          <div class="title-line"></div>
+        </div>
+        
+        <!-- Grid de Cards por temporada -->
+        <div class="catalog-grid">
+          <!-- Card Temporada #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/7L8cfSLV/Xat-Box-Ayuda-Snowy-Xmas-GFX.gif" alt="Temporada 1" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada #1</span>
+                <span class="price">$800 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+          
+          <!-- Card Temporada #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/hPy95L42/Xat-Private-Mya-MX-FX.gif" alt="Temporada 2" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada #2</span>
+                <span class="price">$900 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Temporada #3 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icon" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/zBVLS1j7/Xat-Private-Peque-Vampyre-GFX.gif" alt="Temporada 3" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada #3</span>
+                <span class="price">$1000 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+        
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+      <!-- Sección de carrusel Pstyle -->
+      <div id="pstyle-title" class="section-title-container" style="margin-top: 60px;">
+        <h2 class="section-title">PSTYLE <span>HOME</span></h2>
+        <div class="title-line"></div>
+    </div>
+        
+      <section id="pstyle-vortex" class="carousel-area">
+        <!-- Contador de posición dentro del carrusel -->
+        <div class="counter-display">
+          <span id="current-pstyle-index">1</span> / <span id="total-pstyle-items">55</span>
+        </div>
+
+        <!-- Contenedor en arco para las imágenes Pstyle -->
+        <div class="arc-container">
+          <!-- PSTYLE BLOQUE 1 -->
+            <img src="https://i.postimg.cc/JzpWnd34/Pstyle-Mikael-Square-GFX.gif" class="img-h p1" alt="Pstyle1">
+            <img src="https://i.postimg.cc/kGYKNST8/Pstyle-Owner-Gear-GFX.gif" class="img-h p2" alt="Pstyle2">
+            <img src="https://i.postimg.cc/QxMqB8f1/Pstyle-Rick-Sounds-FX.gif" class="img-h p3" alt="Pstyle3">
+            <img src="https://i.postimg.cc/7hxBvSBT/Pstyle-Gustavo-Shield-FX.gif" class="img-h central" alt="Pstyle4">
+            <img src="https://i.postimg.cc/9QkFdbY1/Pstyle-Mikael-Red-GFX.gif" class="img-h p5" alt="Pstyle5">
+          <!-- PSTYLE BLOQUE 2 -->
+            <img src="https://i.postimg.cc/3NwTd7PP/Pstyle-Rex-Dragon-GFX.gif" class="img-h p1" alt="Pstyle6">
+            <img src="https://i.postimg.cc/vBCBxvxJ/Pstyle-Owner-Cube-GFX.gif" class="img-h p2" alt="Pstyle7">
+            <img src="https://i.postimg.cc/m2MRmZNY/Pstyle-Rick-Bisness-FX.gif" class="img-h p3" alt="Pstyle8">
+            <img src="https://i.postimg.cc/hGfbbHk4/Pstyle-Roger-Phones-GFX.gif" class="img-h central" alt="Pstyle9">
+            <img src="https://i.postimg.cc/90Nj9K2z/Pstyle-Ne-Ne-GFX.gif" class="img-h p5" alt="Pstyle10">
+          <!-- PSTYLE BLOQUE 3 -->
+            <img src="https://i.postimg.cc/dtPRV95d/Pstyle-Papitas-Horror-FX.gif" class="img-h p1" alt="Pstyle11">
+            <img src="https://i.postimg.cc/qM7FsDVM/Pstyle-Rick-Pelusso-GFX.gif" class="img-h p2" alt="Pstyle12">
+            <img src="https://i.postimg.cc/BQvzT79X/Pstyle-Rick-Ventas-GFX.gif" class="img-h p3" alt="Pstyle13">
+            <img src="https://i.postimg.cc/9Ffkdg5Q/Pstyle-Rick-Silver-GFX.gif" class="img-h central" alt="Pstyle14">
+            <img src="https://i.postimg.cc/C5CvwnzB/Pstyle-Rick-Storm-Killer-FX.gif" class="img-h p5" alt="Pstyle15">
+          <!-- PSTYLE BLOQUE 4 -->
+            <img src="https://i.postimg.cc/2SbFwHR5/Pstyle-Hanni-Gold-GFX.gif" class="img-h p1" alt="Pstyle16">
+            <img src="https://i.postimg.cc/W40mRh4L/Pstyle-Annye-Double-GFX.gif" class="img-h p2" alt="Pstyle17">
+            <img src="https://i.postimg.cc/sxg5Zm4s/Pstyle-Candy-Double-FX.gif" class="img-h p3" alt="Pstyle18">
+            <img src="https://i.postimg.cc/ZRZ8J499/Pstyle-Cazadora-Red-GFX.gif" class="img-h central" alt="Pstyle19">
+            <img src="https://i.postimg.cc/ydPFdt9L/Pstyle-Gitana-Pink-GFX.gif" class="img-h p5" alt="Pstyle20">
+          <!-- PSTYLE BLOQUE 5 -->
+            <img src="https://i.postimg.cc/NF6Tgy6X/Pstyle-Paola-Heart-GFX.gif" class="img-h p1" alt="Pstyle21">
+            <img src="https://i.postimg.cc/NfxcsvYp/Pstyle-Sky-Rainbow-FX.gif" class="img-h p2" alt="Pstyle22">
+            <img src="https://i.postimg.cc/TP8fQzDD/Pstyle-Africa-Red-GFX.gif" class="img-h p3" alt="Pstyle23">
+            <img src="https://i.postimg.cc/CxnwGhz0/Pstyle-Nihan-Silver-GFX.gif" class="img-h central" alt="Pstyle24">
+            <img src="https://i.postimg.cc/D0KmvnG1/Pstyle-Karime-H4-GFX.gif" class="img-h p5" alt="Pstyle25">
+          <!-- PSTYLE BLOQUE 6 -->
+            <img src="https://i.postimg.cc/25v25G3j/Pstyle-Paola-Crema-FX.gif" class="img-h p1" alt="Pstyle26">
+            <img src="https://i.postimg.cc/CKzKb6t6/Pstyle-Lunita-Candy-Green-FX.gif" class="img-h p2" alt="Pstyle27">
+            <img src="https://i.postimg.cc/PJLRCtBB/Pstyle-Paola-Duo-GFX.gif" class="img-h p3" alt="Pstyle28">
+            <img src="https://i.postimg.cc/D0Cv8LKp/Pstyle-Africa-Grey-GFX.gif" class="img-h central" alt="Pstyle29">
+            <img src="https://i.postimg.cc/ZK8M3ffq/Pstyle-Eluney-GFX.gif" class="img-h p5" alt="Pstyle30">
+          <!-- PSTYLE BLOQUE 7 -->
+            <img src="https://i.postimg.cc/CKSLnW57/Pstyle-Ruth-Pink-GFX.gif" class="img-h p1" alt="Pstyle31">
+            <img src="https://i.postimg.cc/4Nn7ZQH0/Pstyle-Pulgosa-GFX.gif" class="img-h p2" alt="Pstyle32">
+            <img src="https://i.postimg.cc/W49JkCVP/Pstyle-Eluney-Aqua-GFX.gif" class="img-h p3" alt="Pstyle33">
+            <img src="https://i.postimg.cc/fLFB7HGC/Pstyle-Sky-Chrome-GFX.gif" class="img-h central" alt="Pstyle34">
+            <img src="https://i.postimg.cc/5t5TpmPM/Pstyle-Lala-Purple-GFX.gif" class="img-h p5" alt="Pstyle35">
+          <!-- PSTYLE BLOQUE 8 -->
+            <img src="https://i.postimg.cc/0jrmnDgC/Pstyle-Pexi-Baby-GFX.gif" class="img-h p1" alt="Pstyle36">
+            <img src="https://i.postimg.cc/0jrmnDgC/Pstyle-Pexi-Baby-GFX.gif" class="img-h p1" alt="Pstyle36">
+            <img src="https://i.postimg.cc/kMBptnWt/Pstyle-Lala-Fusion-GFX.gif" class="img-h p2" alt="Pstyle37">
+            <img src="https://i.postimg.cc/brLTQ4C7/Pstyle-Irina-Purple-GFX.gif" class="img-h p3" alt="Pstyle38">
+            <img src="https://i.postimg.cc/v8hj6FKK/Pstyle-Lunna-GFX.gif" class="img-h central" alt="Pstyle39">
+            <img src="https://i.postimg.cc/T3mbDqXJ/Pstyle-Peque-Dark-Love-GFX.gif" class="img-h p5" alt="Pstyle40">
+          <!-- PSTYLE BLOQUE 9 -->
+            <img src="https://i.postimg.cc/KzFk7C27/Pstyle-Leonor-NYC-GFX.gif" class="img-h p1" alt="Pstyle41">
+            <img src="https://i.postimg.cc/PJSRGYZ8/Pstyle-Lala-Gold-GFX.gif" class="img-h p2" alt="Pstyle42">
+            <img src="https://i.postimg.cc/GtX50GYp/Pstyle-Eluney-Level-GFX.gif" class="img-h p3" alt="Pstyle43">
+            <img src="https://i.postimg.cc/gk07VtFL/Pstyle-Sandi-Red-GFX.gif" class="img-h central" alt="Pstyle44">
+            <img src="https://i.postimg.cc/dt0f2NP8/Pstyle-Sky-Pinky-GFX.gif" class="img-h p5" alt="Pstyle45">
+          <!-- PSTYLE BLOQUE 10 -->
+            <img src="https://i.postimg.cc/MZ54j2Ls/Pstyle-Lunita-Violet-GFX.gif" class="img-h p1" alt="Pstyle46">
+            <img src="https://i.postimg.cc/KvYWPpSP/Pstyle-Vida-Red-GFX.gif" class="img-h p2" alt="Pstyle47">
+            <img src="https://i.postimg.cc/kX5HQY3F/Pstyle-Yaz-Golden-GFX.gif" class="img-h p3" alt="Pstyle48">
+            <img src="https://i.postimg.cc/3NtcMmpJ/Pstyle-Eluney-Celeste-GFX.gif" class="img-h central" alt="Pstyle49">
+            <img src="https://i.postimg.cc/brmBXkbX/Pstyle-Cazadora-Silver-GFX.gif" class="img-h p5" alt="Pstyle50">
+          <!-- PSTYLE BLOQUE 11 -->
+            <img src="https://i.postimg.cc/L5xbdLfh/Pstyle-Eluney-Valentin-GFX.gif" class="img-h p1" alt="Pstyle51">
+            <img src="https://i.postimg.cc/MH6FrdcK/Pstyle-Cazadora-Turquesa-GFX.gif" class="img-h p2" alt="Pstyle52">
+            <img src="https://i.postimg.cc/FzTBt3ck/Pstyle-Lala-Duo-GFX.gif" class="img-h p3" alt="Pstyle53">
+            <img src="https://i.postimg.cc/kGTprKS0/Pstyle-Ara-Unicorn-GFX.gif" class="img-h central" alt="Pstyle54">
+            <img src="https://i.postimg.cc/kGJphfVn/Pstyle-Cazadora-GFX.gif" class="img-h p5" alt="Pstyle55">
+
+        </div>
+        <!-- Botones de navegación del carrusel -->
+        <div class="nav-wrapper">
+          <button class="nav-btn btn-l" id="prev-pstyle">&lt;</button>
+          <button class="nav-btn btn-r" id="next-pstyle">&gt;</button>
+        </div>
+      </section>
+
+      <!-- Sección de catálogo Damas Pstyle -->
+      <section id="damas-pstyle" class="section-fem catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Colección <span>Damas Pstyle</span></h2>
+          <div class="title-line"></div>
+        </div>
+
+        <!-- Grid de Cards femeninas Pstyle -->
+        <div class="catalog-grid">
+          <!-- Card Dama Pstyle #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/prs6Nz8W/Pstyle-Eluney-2D-GFX.gif" alt="Dama Pstyle 1" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama Pstyle #1</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Dama Pstyle #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/kMsZt3HY/Pstyle-Lala-Menta-GFX.gif" alt="Dama Pstyle 2" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama Pstyle #2</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Dama Pstyle #3 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/DZcFS0XY/Pstyle-Peque-Black-GFX.gif" alt="Dama Pstyle 3" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Dama Pstyle #3</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+        
+        
+      <!-- Sección de catálogo Caballeros Pstyle -->
+      <section id="caballeros-pstyle" class="section-masc catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Catálogo <span>Caballeros Pstyle</span></h2>
+          <div class="title-line"></div>
+        </div>
+
+        <!-- Grid de Cards masculinas Pstyle -->
+        <div class="catalog-grid">
+          <!-- Card Caballero Pstyle #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/YSpmt8Q8/Pstyle-Rick-Silver-Shape-FX.gif" alt="Caballero Pstyle 1" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero Pstyle #1</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Caballero Pstyle #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/Hk0BcVk8/Pstyle-Rick-Multi-GFX.gif" alt="Caballero Pstyle 2" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero Pstyle #2</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Caballero Pstyle #3 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/9Ffkdg5Q/Pstyle-Rick-Silver-GFX.gif" alt="Caballero Pstyle 3" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Caballero Pstyle #3</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+            <!-- Sección de contenido por temporada Pstyle -->
+      <section id="temporadas-pstyle" class="section-masc catalog-area">
+        <div class="section-title-container">
+          <h2 class="section-title">Temporadas <span>Pstyle</span></h2>
+          <div class="title-line"></div>
+        </div>
+
+        <!-- Grid de Cards por temporada Pstyle -->
+        <div class="catalog-grid">
+          <!-- Card Temporada Pstyle #1 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/HsX2wNrB/Pstyle-Yusleidis-Witch-FX.gif" alt="Temporada Pstyle Halloween" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada Pstyle #1</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Temporada Pstyle #2 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/YqSP6DK4/Pstyle-Roger-Xmas-GFX.gif" alt="Temporada Pstyle Navidad" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada Pstyle #2</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+
+          <!-- Card Temporada Pstyle #3 -->
+          <article class="profile-card">
+            <div class="card-header">
+              <img src="https://santi-graphics.vercel.app/assets/img/Rick.ico" alt="Icono Propietario" class="owner-icon">
+            </div>
+            <div class="media-wrapper">
+              <img src="https://i.postimg.cc/nzGmY7wY/Pstyle-Mya-MX-GFX.gif" alt="Temporada Pstyle Fiestas Patrias" class="main-img">
+            </div>
+            <div class="card-footer">
+              <div class="info-text">
+                <span class="model-name">Temporada Pstyle #3</span>
+                <span class="price">$600 xats</span>
+              </div>
+              <button class="order-btn">Ordenar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    <!-- Santi Graphics -->
+      <div id="footer-lord">
+        <footer style="text-align: center; padding: 30px;">
+          <a href="https://linktr.ee/XatSpace" target="_blank" rel="noreferrer" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 6px;">
+            <img src="https://i.imgur.com/jYPjGyn.png" alt="icono" style="width: 20px; height: 20px; transition: 0.3s; filter: drop-shadow(0 0 6px #4e8ef7);">
+            <h5 style="
+              all: unset;
+              display: block;
+              font-size: 0.9rem;
+              font-weight: bold;
+              background: linear-gradient(135deg, #4e8ef7, #b36efc);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              text-shadow: 0 0 10px #4e8ef7, 0 0 20px #b36efc;
+              animation: glowFade 5s ease-in-out infinite alternate;
+              text-align: center;
+            ">©2026</h5>
+          </a>
+        </footer>
+      </div>
+
+    </main>
+</div>
+
+<!-- Modal PCBack -->
+<div id="modal-pcback" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" id="close-modal">×</button>
+    
+    <div class="modal-viewer">
+      <div class="main-display" id="capture-area">
+        <div id="flash-overlay"></div> 
+        <img src="" id="modal-img-real" alt="Preview">
+        
+        <div id="order-panel" class="order-form">
+          <h3>Personalizar Pedido</h3>
+          <div class="form-grid">
+            <input type="text" placeholder="NICK:" id="order-nick">
+            <input type="text" placeholder="COLOR(S):" id="order-colors">
+            <input type="text" placeholder="IMAGEN (URL):" id="order-url">
+            
+            <div class="effects-header"><span>Añadir Efectos Animados:</span></div>
+            
+            <div class="effects-selector">
+              <label><input type="checkbox" value="brillos"><span class="u-icon">✹</span><span class="effect-name">Brillos</span></label>
+              <label><input type="checkbox" value="mariposas"><span class="u-icon">ꕤ</span><span class="effect-name">Mariposas</span></label>
+              <label><input type="checkbox" value="flores"><span class="u-icon">✿</span><span class="effect-name">Flores</span></label>
+              <label><input type="checkbox" value="corazones"><span class="u-icon">❤</span><span class="effect-name">Corazones</span></label>
+              <label><input type="checkbox" value="estrellas"><span class="u-icon">★</span><span class="effect-name">Estrellas</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-controls">
+      <button class="action-btn" id="prev-modal"><i class="fas fa-chevron-left"></i></button>
+      <button id="btn-autoplay" class="action-btn"><i class="fas fa-play"></i> Autoplay</button>
+      <button id="btn-ordenar-modal" class="action-btn"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+      <button id="btn-screenshot" class="action-btn"><i class="fas fa-camera"></i> Captura</button>
+      <button id="btn-cancel-order" class="action-btn form-btn-cancel"><i class="fas fa-times"></i> Cancelar</button>
+      <button class="action-btn" id="next-modal"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

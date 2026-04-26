@@ -1,0 +1,889 @@
+:root {
+  --color-root: #8a2be2;
+  --tornado-width: 475px; /* Ancho de los rectángulos horizontales */
+  --tornado-height: 125px; /* Alto de los rectángulos horizontales */
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden; /* Evita scrolls laterales accidentales por el tornado */
+  padding: 40px 0;
+  padding-top: 100px; /* Espacio para el header fijo */
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(138, 43, 226, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(138, 43, 226, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- HEADER NAVIGATION --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.main-header {
+  position: fixed;
+  top: 20px; left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+/* Separador del menú */
+.nav-separator {
+  color: var(--color-root);
+  opacity: 0.5;
+  font-weight: bold;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.nav-logo {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--color-root);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.pcback-main {
+  position: relative;
+  width: 95vw;
+  max-width: 1300px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex; /* Añadido para centrar secciones */
+  perspective: 1000px;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  padding-bottom: 50px;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- BLOQUE CARRUSEL --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.carousel-section, .carousel-area {
+  position: relative;
+  width: 100%;
+  height: 550px; 
+  overflow: hidden; /* RECORTE DEL CARRUSEL */
+  border-radius: 40px 40px 0 0;
+}
+
+.img-h {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  width: 240px;
+  height: 140px;
+  margin-left: -120px;
+  margin-top: -70px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    
+  will-change: transform, opacity;
+  backface-visibility: hidden; /* Evita parpadeos en Chrome */
+  transform-style: preserve-3d; /* Fuerza aceleración por hardware */
+}
+
+/* POSICIONES ARCO */
+.p1 { transform: translate(-580px, -50px) rotate(-30deg); }
+.p2 { transform: translate(-420px, -120px) rotate(-20deg); }
+.p3 { transform: translate(-250px, -160px) rotate(-10deg); }
+.central { 
+  transform: translate(0, -170px) scale(1.3); 
+  z-index: 100; border: 3px solid var(--color-root); 
+  box-shadow: 0 0 5px var(--color-root); 
+}
+.p5 { transform: translate(250px, -160px) rotate(10deg); }
+.p6 { transform: translate(420px, -120px) rotate(20deg); }
+.p7 { transform: translate(580px, -50px) rotate(30deg); }
+
+/* CONTROLES CARRUSEL */
+.counter-display {
+  position: absolute;
+  top: 450px; left: 50%; transform: translateX(-50%);
+  z-index: 110; font-family: 'Orbitron', sans-serif;
+  color: white; background: rgba(138, 43, 226, 0.1);
+  padding: 5px 20px; border-radius: 20px; border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.nav-wrapper {
+  position: absolute; top: 450px; left: 50%; transform: translateX(-50%);
+  width: 100%; pointer-events: none; z-index: 110;
+}
+
+.nav-btn {
+  position: absolute; pointer-events: auto;
+  background: rgba(138, 43, 226, 0.2); border: 2px solid var(--color-root);
+  color: white; width: 60px; height: 45px; border-radius: 12px; cursor: pointer;
+  font-weight: bold;
+}
+.btn-l { left: 50%; margin-left: -420px; transform: translateX(-50%); }
+.btn-r { left: 50%; margin-left: 420px; transform: translateX(-50%); }
+
+#current-index {
+    transition: all 0.3s ease;
+    display: inline-block;
+    color: var(--color-root);
+    text-shadow: 0 0 10px var(--color-root);
+}
+
+/* Clase opcional que puedes disparar con JS si quieres un flash */
+.counter-flash {
+    animation: flash 0.4s ease;
+}
+
+@keyframes flash {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Esto afecta a la sección cuando es el destino del scroll */
+.carousel-area {
+    scroll-margin-top: 180px; /* Espacio extra para que el título (que está arriba) sea visible */
+}
+
+/* Si el título es el que recibe el impacto del scroll */
+.section-title-container {
+    scroll-margin-top: 150px;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- BLOQUE DE SECCIONES EXTRA --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.extra-content-area, .catalog-area {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  display: flex; /* Asegura centrado de hijos */
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TÍTULO ALINEADO CON LA PRIMER CARD */
+.section-title-container {
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 90% !important; /* Debe coincidir con el width de tu .catalog-grid */
+    max-width: 1200px;    /* Debe coincidir con el max-width de tu .catalog-grid */
+    text-align: left;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 900; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1;
+}
+
+.section-title span {
+  color: var(--color-root);
+  text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.title-line {
+  width: 100px;
+  height: 4px;
+  background: var(--color-root);
+  margin-top: 10px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--color-root);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* GRID DE TARJETAS (DAMAS Y CABALLEROS) */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.catalog-grid, .girls-grid-row {
+  display: flex;
+  justify-content: center; 
+  flex-wrap: nowrap;
+  gap: 25px;
+  width: 90%;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 30px 0;
+  padding-bottom: 25px;
+}
+
+.profile-card, .girl-card {
+  position: relative;
+  flex: 0 0 310px; 
+  width: 310px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  border-color: var(--color-root);
+  background: rgba(138, 43, 226, 0.05);
+  transform: translateY(-5px);
+}
+
+.card-header {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.owner-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-root);
+  background: #000;
+}
+
+.media-wrapper, .girl-img-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.main-img, .girl-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FIX AQUI: Añadimos gap y controlamos el ancho */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px; /* Asegura separación mínima */
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;    /* Toma el espacio sobrante */
+  min-width: 0; 
+}
+
+.model-name {
+  font-weight: bold;
+  color: white;
+  font-size: 0.95rem;
+  /* Opcional: evita que nombres gigantes rompan la card */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  color: var(--color-root);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* FIX AQUI: Botón con tamaño sagrado */
+.order-btn {
+  background: var(--color-root);
+  color: white;
+  border: none;
+  /* Cambiamos padding por width fijo */
+  width: 95px; 
+  height: 34px;
+  flex-shrink: 0; /* Evita que el flexbox lo deforme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: 0.3s ease;
+}
+
+.order-btn:hover {
+  box-shadow: 0 0 15px var(--color-root);
+  transform: scale(1.05);
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* PSTYLE: CONFIGURACIÓN SIMÉTRICA 2-1-2 */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+#pstyle-title {
+    scroll-margin-top: 120px; /* Ajusta este valor según el alto de tu header + un margen de respiro */
+}
+
+#pstyle-vortex .arc-container {
+  height: 280px; 
+  margin-top: 170px; 
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+#pstyle-vortex .img-h {
+  width: var(--tornado-width); 
+  height: var(--tornado-height);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Centrado matemático para que el translate parta de Cero */
+  margin-left: calc(var(--tornado-width) / -2);
+  margin-top: calc(var(--tornado-height) / -2);
+  border-radius: 10px;
+  object-fit: contain;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- LADO IZQUIERDO (2 IMÁGENES) --- */
+
+/* P1: Extremo izquierdo */
+#pstyle-vortex .p1 { 
+  transform: translate(-550px, -90px) rotate(-20deg) scale(0.8); 
+  z-index: 10;
+  opacity: 0.6;
+}
+
+/* P2: Izquierda cercana */
+#pstyle-vortex .p2 { 
+  transform: translate(-280px, -140px) rotate(-10deg) scale(0.9); 
+  z-index: 20;
+  opacity: 0.9;
+}
+
+/* --- CENTRO (1 IMAGEN) --- */
+
+#pstyle-vortex .central { 
+  transform: translate(0, -170px) scale(1.0); /* TAMAÑO REAL */
+  z-index: 100; 
+  border: 3px solid var(--color-root); 
+  box-shadow: 0 0 40px var(--color-root); 
+  opacity: 1;
+}
+
+/* --- LADO DERECHO (2 IMÁGENES) --- */
+
+/* P3: Derecha cercana (Equivale a tu anterior p5) */
+#pstyle-vortex .p3 { 
+  transform: translate(280px, -140px) rotate(10deg) scale(0.9); 
+  z-index: 20;
+  opacity: 0.9;
+}
+
+/* P5: Extremo derecho (Equivale a tu anterior p6/p7) */
+#pstyle-vortex .p5 { 
+  transform: translate(550px, -90px) rotate(20deg) scale(0.8); 
+  z-index: 10;
+  opacity: 0.6;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* CARDS PSTYLE: ALTO REDUCIDO         */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* Mantenemos tu estructura original, solo forzamos que el alto muera con la imagen */
+#damas-pstyle .profile-card, 
+#caballeros-pstyle .profile-card, 
+#temporadas-pstyle .profile-card {
+  width: var(--tornado-width);
+  height: auto; /* Se cierra sobre el contenido */
+  padding: 0;
+}
+
+#damas-pstyle .media-wrapper, 
+#caballeros-pstyle .media-wrapper,
+#temporadas-pstyle .media-wrapper {
+  height: var(--tornado-height); /* Mismo alto que en el carrusel */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#damas-pstyle .main-img, 
+#caballeros-pstyle .main-img,
+#temporadas-pstyle .main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Header y Footer: Sin rellenos que inflen la card */
+#damas-pstyle .card-header, 
+#caballeros-pstyle .card-header,
+#temporadas-pstyle .card-header,
+#damas-pstyle .card-footer,
+#caballeros-pstyle .card-footer,
+#temporadas-pstyle .card-footer {
+  padding: 4px 10px;
+}
+
+/* Ajuste para que el footer no infle la card horizontal */
+#damas-pstyle .card-footer, 
+#caballeros-pstyle .card-footer {
+    padding: 2px 10px;
+    font-size: 0.8rem;
+}
+
+#damas-pstyle .order-btn, 
+#caballeros-pstyle .order-btn {
+    padding: 4px 10px; /* Botones más compactos para Pstyle */
+    font-size: 0.7rem;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- MODAL PCBACK (FIXED & FULL) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.modal-overlay {
+    position: fixed; /* Crucial: lo fija a la ventana del navegador */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ocupa todo el alto de la pantalla */
+    background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+    z-index: 9999; /* El número más alto para que nada lo tape */
+    display: none; /* Se activa con JS */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+/* El contenido ya no necesita margin-top, se centra solo */
+.modal-content {
+    position: relative;
+    margin-top: 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    z-index: 10000;
+}
+
+.modal-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; 
+    width: 100%;
+}
+
+/* Modificamos tu .main-display para que sea adaptable */
+.main-display {
+    position: relative;
+    width: 90vw; /* Se ajusta al ancho de la pantalla */
+    max-width: 800px; 
+    height: auto; /* El alto ya no es fijo */
+    min-height: 200px;
+    background: #000;
+    border: 3px solid var(--color-root);
+    box-shadow: 0 0 40px var(--color-root);
+    overflow: hidden;
+    transition: all 0.4s ease; /* Para que el cambio de tamaño sea suave */
+}
+
+/* Forzamos que la imagen dentro del modal siempre se vea completa */
+#modal-img-real {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* Fundamental para que no se recorte el rectángulo Pstyle */
+}
+
+/* Cuando el modal detecta modo Pstyle */
+.modal-overlay.pstyle-mode .main-display {
+    max-width: 900px;
+    height: 250px; /* Alto reducido para los banners de Pstyle */
+}
+
+.modal-overlay.pstyle-mode .order-form h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.modal-overlay.pstyle-mode .form-grid {
+    flex-direction: row; /* En Pstyle, ponemos los inputs de lado a lado si hay espacio */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.modal-overlay.pstyle-mode .order-form input {
+    width: 45%; /* Dos inputs por fila para no tapar tanto alto */
+    padding: 8px;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- PANEL DE PEDIDO (COLUMNA REAL) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.order-form {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Fondo más claro (0.4) para que la imagen respire */
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(2px);
+    display: none; 
+    flex-direction: column;
+    align-items: center; /* Centra la columna de contenido */
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.order-form.active { display: flex; }
+
+/* Contenedor de inputs para forzar la columna */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    width: 85%; /* No llega a los bordes del visor */
+    gap: 8px; /* Espacio controlado entre inputs */
+}
+
+.order-form h3 {
+    color: var(--color-root);
+    text-shadow: 0 0 15px var(--color-root), 0 0 5px #000;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.order-form input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-root);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    outline: none;
+    width: 100%; /* Ocupa el ancho del form-grid */
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.order-form input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--color-root);
+}
+
+/* Si el modal detecta que es Pstyle, ajustamos el formulario */
+.modal-overlay.pstyle-mode .order-form {
+    background: rgba(0, 0, 0, 0.4); /* Más oscuro para leer sobre la imagen estrecha */
+    justify-content: flex-start; /* Subimos el contenido */
+    padding-top: 40px;
+}
+
+.modal-overlay.pstyle-mode .main-display {
+    max-width: 950px; /* Le damos más aire horizontal a los rectángulos Pstyle */
+    border-style: double; /* Un toque visual distinto si quieres diferenciar */
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- AJUSTE PSTYLE: ORDEN ESTRÍCTO --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.modal-overlay.pstyle-mode .form-grid {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 1. TÍTULO: Siempre arriba */
+.modal-overlay.pstyle-mode .order-form h3 {
+    width: 100%;
+    order: 1; 
+    margin-bottom: 10px;
+}
+
+/* 2. NICK y COLOR: Comparten la fila 2 */
+.modal-overlay.pstyle-mode #order-nick,
+.modal-overlay.pstyle-mode #order-colors {
+    width: calc(50% - 10px);
+    order: 2; /* Ambos en la misma jerarquía */
+}
+
+/* 3. URL: Se estira y baja a la fila 3 */
+.modal-overlay.pstyle-mode #order-url {
+    width: 100% !important;
+    order: 3; /* Obliga a bajar */
+    text-transform: none;
+}
+
+/* 4. CABECERA DE EFECTOS: Fila 4 */
+.modal-overlay.pstyle-mode .effects-header {
+    width: 100%;
+    order: 4;
+    margin-top: 5px;
+}
+
+/* 5. SELECTOR DE ICONOS: Fila 5 */
+.modal-overlay.pstyle-mode .effects-selector {
+    width: 100%;
+    order: 5;
+}
+
+/* Ajuste de inputs para que no saturen el banner Pstyle */
+.modal-overlay.pstyle-mode .order-form input {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.6); /* Un poco más oscuro para legibilidad */
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- SELECTOR DE EFECTOS (UNICODE) --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* Título de la sección de efectos CENTRADO */
+.effects-header {
+    width: 100%;
+    text-align: center; /* Centra el contenido horizontalmente */
+    margin-top: 15px;
+    padding: 0; /* Eliminamos paddings que puedan desfasarlo */
+}
+
+.effects-header span {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-root);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--color-root);
+    display: inline-block; /* Asegura que el alineado funcione correctamente */
+}
+
+.effects-selector {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.effects-selector label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.effects-selector input { 
+    display: none !important; 
+}
+
+/* Símbolos Unicode en Blanco Brillante */
+.u-icon {
+    font-size: 2rem;
+    color: #FFFFFF; /* Blanco puro para visibilidad total */
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
+    line-height: 1;
+}
+
+/* Estilo del nombre del efecto */
+.effect-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.55rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- ESTADO ACTIVO: ICONO Y TEXTO --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* Cuando el checkbox está activo, iluminamos el icono (.u-icon) y el nombre */
+.effects-selector input:checked + .u-icon,
+.effects-selector input:checked ~ .effect-name {
+    color: var(--color-root) !important;
+}
+
+.effects-selector input:checked + .u-icon {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 10px var(--color-root));
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- FOOTER DEL FORMULARIO --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.form-footer {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.form-btn-done, .form-btn-cancel {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--color-root);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.form-btn-done:hover {
+    background: var(--color-root);
+    color: #000;
+    box-shadow: 0 0 15px var(--color-root);
+}
+
+.form-btn-cancel {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.form-btn-cancel:hover {
+    background: #ff4444;
+    color: #fff;
+    box-shadow: 0 0 15px #ff4444;
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- BOTONES DE ACCIÓN UNIFICADOS --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.modal-controls {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center; /* Centrado absoluto */
+    flex-wrap: wrap; /* Por si el móvil es muy angosto */
+    gap: 15px; /* Espacio uniforme entre los 4 botones */
+}
+
+/* Estilo base para todos los botones del modal */
+.action-btn, .form-btn-done, .form-btn-cancel {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--color-root);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hover general */
+.action-btn:hover {
+    background: var(--color-root);
+    color: #000;
+    box-shadow: 0 0 20px var(--color-root);
+}
+
+/* Colores específicos para Cancelar/Cerrar si quieres mantener la alerta visual */
+.form-btn-cancel, #btn-cancel-order {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.form-btn-cancel:hover, #btn-cancel-order:hover {
+    background: #ff4444;
+    color: #fff;
+    box-shadow: 0 0 15px #ff4444;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 5200;
+    transition: 0.3s;
+}
+
+.modal-close:hover { color: var(--color-root); transform: scale(1.2); }
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* --- SCREAN SHOT VISUAL          --- */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+.flash-effect {
+    animation: cameraFlash 0.4s ease-out;
+}
+
+@keyframes cameraFlash {
+    0% { background: rgba(255, 255, 255, 0.8); opacity: 1; }
+    100% { background: transparent; opacity: 0; }
+}
+
+/* Capa invisible para el flash */
+#flash-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 11000;
+}
