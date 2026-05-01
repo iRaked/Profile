@@ -22,13 +22,24 @@ const orderPanel = document.getElementById('order-panel');
 const btnAutoplay = document.getElementById('btn-autoplay');
 
 // 3. FUNCIONES MAESTRAS DE ACTUALIZACIÓN
+// Modificación para carga bajo demanda dentro de tus funciones update
 function updatePCBack() {
     allImages.forEach((img, index) => {
         img.classList.remove(...pcbackClasses);
+        
         if (index < pcbackClasses.length) {
-            img.classList.add(pcbackClasses[index]);
+            const currentClass = pcbackClasses[index];
+            img.classList.add(currentClass);
             img.style.display = "block";
-            if (pcbackClasses[index] === 'central') {
+
+            // 🔥 LOGICA DE CARGA BAJO DEMANDA
+            // Si la imagen está en el arco visible (p1 a p7) y no tiene src cargado
+            if (img.dataset.src && img.src.startsWith('data:image')) {
+                img.src = img.dataset.src;
+                console.log(`Cargando fondo pesado: ${img.alt}`);
+            }
+
+            if (currentClass === 'central') {
                 if(currentIndexEl) currentIndexEl.textContent = img.dataset.originIndex;
                 if (modal.classList.contains('active') && modal.dataset.currentMode === 'pcback') {
                     modalImg.src = img.src;
