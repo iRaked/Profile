@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Rick">
-  <title>Galeria PCBack</title>
+  <title>Store PCBack</title>
   <!-- Estilos externos -->
   <link href="StorePC.css" rel="stylesheet" type="text/css">
   <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
@@ -17,11 +17,12 @@
   <script src="StorePC.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
-  <!-- BLOCK -->
-  <script type="text/javascript">
-  document.onkeydown = function(){return false};
-  document.oncontextmenu = function(){return false}
-  </script>
+  <!--  BLOCK -->
+    <script type="text/javascript">
+        document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        });
+    </script>
 
 </head>
 
