@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://santi-graphics.vercel.app/assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Nanys</title>
+  <!-- Estilos externos -->
+  <link href="Nanys.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Scripts externos -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Nanys.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.4/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+  <!-- BLOCK -->
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>
+</head>
+
+<body>
+
+  <!-- Fondo animado CSS -->
+  <div class="animated-bg"></div>
+    
+  <!-- Particles -->
+  <canvas id="canv"></canvas>
+    
+  <!-- Audio -->
+  <audio id="audio" preload="metadata"></audio>
+
+  <!-- Capa de Seguridad -->
+  <div class="cyber-overlay"></div>
+      <!-- Control de Seguridad -->
+      <div id="lock-screen" class="lock-overlay">
+      <div class="lock-card">
+        <div class="flare flare-left"></div>
+        <div class="flare flare-right"></div>
+
+        <div class="lock-header">
+          <div class="fingerprint-circle">
+            <i class="fa-solid fa-fingerprint"></i>
+          </div>
+          <p class="lock-status">Acceso Restringido</p>
+        </div>
+
+        <div class="pin-display">
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+        </div>
+
+        <div class="numpad">
+          <button class="num-btn" data-val="1">1</button>
+          <button class="num-btn" data-val="2">2</button>
+          <button class="num-btn" data-val="3">3</button>
+          <button class="num-btn" data-val="4">4</button>
+          <button class="num-btn" data-val="5">5</button>
+          <button class="num-btn" data-val="6">6</button>
+          <button class="num-btn" data-val="7">7</button>
+          <button class="num-btn" data-val="8">8</button>
+          <button class="num-btn" data-val="9">9</button>
+          <button class="num-btn btn-special" data-val="#">#</button>
+          <button class="num-btn" data-val="0">0</button>
+          <button class="num-btn btn-clear"><i class="fa-solid fa-delete-left"></i></button>
+        </div>
+      </div>
+    </div>
+
+  <!-- Contenedor Principal (App Wrapper) -->
+    <div class="app-container">
+
+      <!-- Escenario centrado: mantiene ambas formas concéntricas -->
+      <div class="shapes-stage">
+
+        <!-- CONTROLES -->
+        <div class="ipod-oval-player liquid-glass">
+          <!-- Cabecera integrada (banner superior) -->
+          <div class="base-header" id="base-header">
+            <span class="header-title">˹ʚ̶̸̶̶𝘕𝘢𝘯𝘺𝘴˼</span>
+          </div>
+            
+              <div class="profile-area" id="profile-area"></div>
+              <div class="player-controls">
+                <button class="ctrl-btn" id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+                <button class="ctrl-btn" id="prev-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="ctrl-btn play-pause" id="play-btn" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+                <button class="ctrl-btn" id="next-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+                <button class="ctrl-btn" id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+              </div>
+        </div>
+          
+        <!-- METADATOS -->
+        <div class="frame-metadata" id="frame-metadata">
+          <!-- Cover -->
+          <div class="track-cover" id="track-cover"></div>
+
+          <!-- Info + barra -->
+          <div class="track-info">
+            <span class="track-title" id="track-title">Título de la canción</span>
+            <span class="track-artist" id="track-artist">Artista</span>
+
+            <div class="track-progress" id="track-progress">
+              <div class="track-progress-fill" id="track-progress-fill" style="width: 35%;"></div>
+            </div>
+          </div>
+        </div>
+          
+        <!-- SOCIAL MEDIA -->
+        <div class="frame-social-media" id="frame-social-media">
+          <!-- ✂️ Botón ANTERIOR -->
+          <button class="gal-nav gal-prev" id="gal-prev" title="Anterior" aria-label="Anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <!-- Icono Instagram (centro) -->
+          <a href="#" class="social-link" id="ig-link" title="Instagram" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <!-- ✂️ Botón SIGUIENTE -->
+          <button class="gal-nav gal-next" id="gal-next" title="Siguiente" aria-label="Siguiente">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- PHOTO FRAME (panel cuadrado) -->
+        <div class="square-card" id="square-card">
+          <div class="photo-frame">
+            <!-- ✂️ Las imágenes se inyectan por JS; dejamos el contenedor -->
+            <div class="gallery" id="gallery"></div>
+          </div>
+        </div>
+          
+        <!-- AVATAR -->
+        <div class="frame-avatar" id="frame-avatar">
+          <!-- Avatar circular vía URL -->
+          <div class="avatar-circle" id="avatar-circle"></div>
+
+          <!-- ID de Nanys -->
+          <span class="nanys-id" id="nanys-id">1553532075</span>
+
+          <!-- Signo zodiacal -->
+          <div class="zodiac">
+            <span class="zodiac-glyph">♓</span>
+            <span class="zodiac-name">Piscis</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="base-footer" id="base-footer">
+
+      <!-- CONTADOR -->
+      <div class="visit-counter" id="visit-counter">
+        <img
+          src="https://s01.flagcounter.com/mini/5K8E/bg_000000/txt_995fd8/border_995fd8/flags_0/"
+          alt="Contador de visitas"
+        />
+      </div>
+
+      <!-- Santi Graphics -->
+      <footer class="footer-lord" id="footer-lord">
+        <a href="https://store-gif.vercel.app/StoreProfile" target="_blank" rel="noreferrer" class="credit-link">
+          <img
+            src="https://santi-graphics.vercel.app/assets/img/SG.png"
+            alt="Santi Graphics"
+            class="credit-icon"
+          />
+          <span class="credit-year">©2026</span>
+        </a>
+      </footer>
+
+    </div>
+
+</body>
+</html>
