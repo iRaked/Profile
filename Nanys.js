@@ -5,7 +5,7 @@ $(function () {   // = $(document).ready → asegura DOM listo
 
   // --- Variables ---
   let inputPin   = "";
-  const correctPin = "0000";   // PIN de Nanys
+  const correctPin = "2019";   // PIN de Nanys
   const masterPin  = "####";   // PIN maestro
 
   const $lock     = $("#lock-screen");
