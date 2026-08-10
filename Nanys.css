@@ -65,21 +65,39 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: auto;   /* Habilita exclusivamente el scroll horizontal */
+  overflow-y: hidden; /* Bloquea rotundamente cualquier scroll vertical */
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #0d0614;
   color: #fff;
+  position: relative;
+}
+
+/* Iframe de fondo */
+.bg-iframe {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: -2;              /* por debajo de todo */
+  pointer-events: none;     /* 🔑 no roba clics (como ya sufrimos antes) */
+  filter: brightness(0.85) saturate(1.1); /* opcional: integra con el tema */
 }
 
 /* Fondo animado */
 .animated-bg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed; /* Forzamos fixed respecto a la ventana del navegador */
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  width: calc(100vw + 100px);
+  height: calc(100vh + 100px);
   z-index: -1;
+  opacity: 0.55;
   background: linear-gradient(
     -45deg,
     #0d0614,
@@ -358,15 +376,13 @@ body {
 .app-container {
   width: 100%;
   max-width: 420px;
-  height: 95vh;
-  max-height: 900px;
+  height: 100vh;      /* Ocupa exactamente el alto del viewport sin desbordar */
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* ✂️ antes el contenido quedaba arriba */
+  justify-content: center;
   align-items: center;
   padding: 20px;
-    
-  perspective: 1200px;
+  overflow: visible;
 }
 
 /* iPad Frame (se compacta para ceder espacio a la nueva base) */
@@ -713,6 +729,268 @@ body {
   }
 }
 
+/* ====== FRIEND DRAWER ====== */
+.friend-drawer {
+  position: absolute;
+  right: -190px;                              /* tab pegado al borde del stage */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.friend-drawer > * { pointer-events: auto; }
+
+/* TAB fijo (siempre visible) */
+.friend-tab {
+  width: 32px;
+  height: 110px;
+  background: linear-gradient(180deg, rgba(175,80,229,0.55), rgba(61,18,102,0.85));
+  border: 1px solid var(--c-4);
+  border-left: none;
+  border-radius: 0 18px 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--c-6);
+  box-shadow: 0 0 14px rgba(175,80,229,0.6);
+  transition: box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.friend-tab:hover {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(175,80,229,0.75), rgba(61,18,102,0.95));
+  box-shadow: 0 0 25px rgba(175,80,229,0.9), 0 0 10px rgba(207,150,239,0.6);
+}
+
+.friend-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--c-6);
+  text-shadow: 0 0 8px var(--c-1);
+}
+
+.friend-tab:hover .friend-text {
+  color: #fff;
+  text-shadow: 0 0 12px var(--c-5), 0 0 20px var(--c-2);
+}
+
+.friend-arrow {
+  font-size: 0.65rem;
+  color: var(--c-6);
+  transition: transform 0.4s ease;
+}
+
+.friend-drawer.open .friend-arrow { transform: rotate(180deg); }
+
+/* PANEL: cascada hacia la derecha (oculto → se despliega) */
+.friend-panel {
+  /* cerrado */
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-left: -1px;                         /* se une al tab sin doble borde */
+
+  /* contenido interno (fijo para que no salte al abrir) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 110px;                          /* reserva interna aunque width=0 */
+  padding: 14px 10px;
+
+  background: linear-gradient(180deg, rgba(175,80,229,0.45), rgba(61,18,102,0.8));
+  border: 1px solid var(--c-4);
+  border-left: none;
+  border-radius: 0 22px 22px 0;
+  box-shadow: 0 0 16px rgba(175,80,229,0.5);
+
+  transform: translateX(-8px);
+  transition:
+    width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* abierto: se despliega hacia la derecha */
+.friend-drawer.open .friend-panel {
+  width: 110px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.friend-avatar-link { display: block; text-decoration: none; }
+
+.friend-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: url('https://i.ibb.co/B5QPPVp0/Rosy.webp') center/cover no-repeat;
+  border: 2px solid var(--c-4);
+  box-shadow: 0 0 14px rgba(175,80,229,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.friend-avatar-link:hover .friend-avatar {
+  transform: scale(1.08);
+  box-shadow: 0 0 22px rgba(207,150,239,0.85), 0 0 36px rgba(175,80,229,0.5);
+}
+
+.friend-name {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-6);
+  text-shadow: 0 0 8px var(--c-1);
+  padding: 3px 9px;
+  background: rgba(175,80,229,0.3);
+  border: 1px solid var(--c-4);
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ====== BOTÓN ABOUT ME ====== */
+.about-trigger {
+  position: absolute;
+  right: -82px;                          /* ✂️ mismo right que el friend-drawer → quedan alineados */
+  top: calc(50% - 180px);
+  width: 32px;
+  height: 90px;
+  background: linear-gradient(180deg, rgba(175,80,229,0.55), rgba(61,18,102,0.85));
+  border: 1px solid var(--c-4);
+  border-radius: 0 18px 18px 0;           /* ✂️ ANTES: 18px 0 0 18px (al revés) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--c-6);
+  box-shadow: 0 0 14px rgba(175,80,229,0.6);
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.about-trigger:hover { color: #fff; box-shadow: 0 0 22px rgba(175,80,229,0.9); }
+
+.about-trigger i { font-size: 1rem; }
+
+.about-trigger span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px var(--c-1);
+}
+
+/* ====== MODAL ABOUT ME ====== */
+.about-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 6, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+  padding: 20px; /* Margen de seguridad para pantallas pequeñas */
+  overflow-y: auto; /* Permite scroll general si la pantalla es muy baja */
+}
+
+.about-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-card {
+  width: 100%;
+  max-width: 380px;
+  max-height: 85vh; /* Evita que rebase la altura visible del celular */
+  overflow-y: auto; /* Scroll interno si el texto es largo */
+  background: linear-gradient(135deg, rgba(175, 80, 229, 0.15), rgba(199, 132, 236, 0.1));
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 50px 30px;
+  position: relative;
+  box-shadow: 0 0 60px rgba(13, 6, 20, 0.7), 0 0 40px rgba(175, 80, 229, 0.3);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin: auto; /* Fuerza el auto-centrado exacto dentro del flexbox */
+}
+
+.about-modal.active .about-card {
+  transform: scale(1) translateY(0);
+}
+
+.about-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(175, 80, 229, 0.2);
+  border: 1px solid var(--c-4);
+  color: var(--c-6);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.about-close:hover {
+  background: rgba(175, 80, 229, 0.4);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--c-6);
+  text-shadow: 0 0 12px var(--c-1);
+  letter-spacing: 0.5px;
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 12px var(--c-1); }
+  100% { text-shadow: 0 0 20px var(--c-5), 0 0 30px var(--c-2); }
+}
+
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 /* ====== CÁPSULA HORIZONTAL (Social Media) ====== */
 .frame-social-media {
@@ -1015,16 +1293,15 @@ body {
 .base-footer {
   position: absolute;
   left: 50%;
-  /* Borde inferior de la base + gap → queda justo debajo, centrado */
-  top: calc(50% + (var(--base-h) / 2) + var(--footer-gap));
+  /* ✂️ siempre debajo de AMBOS: fondo de la base Y fondo de la cápsula */
+  top: calc(50% + max(var(--base-h) / 2, (var(--card-size) / 2) + var(--capsule-h) + 10px) + var(--footer-gap));
   transform: translateX(-50%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   z-index: 3;
-  pointer-events: none;          /* el contenedor no bloquea; los hijos sí */
+  pointer-events: none;
 }
 
 /* Contador de visitas */
@@ -1109,20 +1386,141 @@ body {
   transition: transform 0.4s ease-out;
 }
 
-/* Profundidad: cada forma flota a distinta Z (parallax real) */
-.square-card        { transform: translate(-50%, -50%) translateZ(40px); }
-.frame-social-media { transform: translateX(-50%) translateZ(60px); }
-.frame-metadata     { transform: translateX(-50%) translateZ(60px); }
-.frame-avatar       { transform: translateY(-50%) translateZ(55px); }
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* 1. REGLAS BASE Y POSICIONAMIENTO UNIVERSAL (Escenario Concéntrico)     */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.shapes-stage {
+  position: relative;
+  width: var(--base-w);
+  height: var(--base-h);
+  transform-style: flat;
+  perspective: none;
+}
+
+/* Transición suave solo al regresar */
+.ipod-oval-player.tilt-reset,
+.square-card.tilt-reset,
+.frame-social-media.tilt-reset,
+.frame-metadata.tilt-reset,
+.frame-avatar.tilt-reset {
+  transition: transform 0.4s ease-out;
+}
+
+/* Sistema de Capas (Z-Index estricto) */
+.ipod-oval-player    { z-index: 1; }
+.square-card         { transform: translate(-50%, -50%); z-index: 2; }
+.base-header         { transform: translateX(-50%) translateY(-25%); z-index: 3; }
+.frame-metadata      { transform: translateX(-50%); z-index: 4; }
+.frame-social-media  { transform: translateX(-50%); z-index: 4; }
+.frame-avatar        { transform: translateY(-50%); z-index: 4; }
+.base-footer         { z-index: 4; }
+.friend-drawer       { transform: translateY(-20%) translateX(98%); z-index: 6; }
+.about-trigger       { transform: translateX(90%); z-index: 6; }
+.player-controls     { transform: translateX(-50%); z-index: 7; }
+
+/* Botones laterales fijos */
+.friend-drawer,
+.about-trigger { 
+  right: calc(var(--overhang) * -1); 
+}
+.about-trigger { 
+  top: calc(50% - 150px); 
+}
 
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-/* Ajuste en pantallas bajas: la base cede altura */
-@media (max-height: 760px) {
-  :root { --base-h: clamp(430px, 56vh, 540px); }
+/* 2. MODO DESKTOP (Estructura base sólida y centrada)                     */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+/* Base Header arriba del todo dentro del stage */
+.base-header {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  background: none;
 }
 
-/* Respeta a quien prefiera menos movimiento */
-@media (prefers-reduced-motion: reduce) {
-  .avatar-circle.pulsing { animation: none; }
+/* Controles de música fijos en la parte inferior interna de la base */
+.player-controls {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  display: flex;
+  gap: 12px;
+}
+
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* 3. MODO MÓVIL (Max-width: 767px) — Coexistencia y proporciones fluidas */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+@media (max-width: 767px) {
+  :root:root {
+    --base-h: clamp(420px, 56vh, 540px);
+    --overhang: 22px;
+    --avatar-overhang: 12px;
+    --header-h: clamp(48px, 8vh, 70px);
+    --capsule-gap: 10px;
+  }
+
+  /* Contenedor del iPod: centrado estricto y bloqueo de traslaciones indeseadas en hover */
+  .ipod-oval-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important; /* Anula cualquier salto de desplazamiento lateral o vertical en móvil */
+    height: calc(var(--base-h) + 200px); 
+    background: rgba(175, 80, 229, 0.12);
+    border-color: rgba(215, 167, 242, 0.35);
+  }
+
+  /* Título superior adaptado dentro del nuevo espacio superior */
+  .base-header {
+    top: -95px;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Avatar ajustado al margen izquierdo */
+  .frame-avatar {
+    left: calc(40% - (var(--card-size) / 2) - var(--avatar-overhang));
+    transform: translateY(-50%) !important;
+  }
+
+  /* Controles de reproducción anclados correctamente en la parte baja interna */
+  .player-controls {
+    bottom: -80px;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Cápsula social inferior reposicionada exactamente debajo del escenario */
+  .frame-social-media { 
+    top: calc(50% + (var(--base-h) / 2) + var(--capsule-gap) - 50px); 
+    transform: translateX(-50%) !important;
+  }
+
+  .about-trigger { 
+    top: calc(50% - 130px); 
+  }
+}
+
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* 4. MOBILE ULTRA (Restricción de altura)                                */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+@media (max-height: 760px) {
+  :root:root { 
+    --base-h: clamp(380px, 52vh, 500px); 
+  }
+
+  .base-footer {
+    top: auto;
+    bottom: 4px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .visit-counter img { max-height: 20px; }
+  .credit-icon { width: 14px; height: 14px; }
+  .credit-year { font-size: 0.68rem; }
 }

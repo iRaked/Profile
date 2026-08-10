@@ -25,6 +25,14 @@
 </head>
 
 <body>
+    
+  <!-- Fondo iFrame -->
+  <iframe
+      class="bg-iframe"
+      src="https://iraked.github.io/Background/Butterflies2.html"
+      aria-hidden="true"
+      tabindex="-1"
+  ></iframe>
 
   <!-- Fondo animado CSS -->
   <div class="animated-bg"></div>
@@ -37,126 +45,147 @@
 
   <!-- Capa de Seguridad -->
   <div class="cyber-overlay"></div>
-      <!-- Control de Seguridad -->
-      <div id="lock-screen" class="lock-overlay">
-      <div class="lock-card">
-        <div class="flare flare-left"></div>
-        <div class="flare flare-right"></div>
+  <!-- Control de Seguridad -->
+  <div id="lock-screen" class="lock-overlay">
+    <div class="lock-card">
+      <div class="flare flare-left"></div>
+      <div class="flare flare-right"></div>
 
-        <div class="lock-header">
-          <div class="fingerprint-circle">
-            <i class="fa-solid fa-fingerprint"></i>
-          </div>
-          <p class="lock-status">Acceso Restringido</p>
+      <div class="lock-header">
+        <div class="fingerprint-circle">
+          <i class="fa-solid fa-fingerprint"></i>
         </div>
+        <p class="lock-status">Acceso Restringido</p>
+      </div>
 
-        <div class="pin-display">
-          <div class="pin-dot"></div>
-          <div class="pin-dot"></div>
-          <div class="pin-dot"></div>
-          <div class="pin-dot"></div>
-        </div>
+      <div class="pin-display">
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+      </div>
 
-        <div class="numpad">
-          <button class="num-btn" data-val="1">1</button>
-          <button class="num-btn" data-val="2">2</button>
-          <button class="num-btn" data-val="3">3</button>
-          <button class="num-btn" data-val="4">4</button>
-          <button class="num-btn" data-val="5">5</button>
-          <button class="num-btn" data-val="6">6</button>
-          <button class="num-btn" data-val="7">7</button>
-          <button class="num-btn" data-val="8">8</button>
-          <button class="num-btn" data-val="9">9</button>
-          <button class="num-btn btn-special" data-val="#">#</button>
-          <button class="num-btn" data-val="0">0</button>
-          <button class="num-btn btn-clear"><i class="fa-solid fa-delete-left"></i></button>
-        </div>
+      <div class="numpad">
+        <button class="num-btn" data-val="1">1</button>
+        <button class="num-btn" data-val="2">2</button>
+        <button class="num-btn" data-val="3">3</button>
+        <button class="num-btn" data-val="4">4</button>
+        <button class="num-btn" data-val="5">5</button>
+        <button class="num-btn" data-val="6">6</button>
+        <button class="num-btn" data-val="7">7</button>
+        <button class="num-btn" data-val="8">8</button>
+        <button class="num-btn" data-val="9">9</button>
+        <button class="num-btn btn-special" data-val="#">#</button>
+        <button class="num-btn" data-val="0">0</button>
+        <button class="num-btn btn-clear"><i class="fa-solid fa-delete-left"></i></button>
       </div>
     </div>
+  </div>
 
   <!-- Contenedor Principal (App Wrapper) -->
-    <div class="app-container">
+  <div class="app-container">
 
-      <!-- Escenario centrado: mantiene ambas formas concéntricas -->
-      <div class="shapes-stage">
+    <!-- Escenario -->
+    <div class="shapes-stage">
 
-        <!-- CONTROLES -->
-        <div class="ipod-oval-player liquid-glass">
-          <!-- Cabecera integrada (banner superior) -->
-          <div class="base-header" id="base-header">
-            <span class="header-title">˹ʚ̶̸̶̶𝘕𝘢𝘯𝘺𝘴˼</span>
-          </div>
-            
-              <div class="profile-area" id="profile-area"></div>
-              <div class="player-controls">
-                <button class="ctrl-btn" id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
-                <button class="ctrl-btn" id="prev-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
-                <button class="ctrl-btn play-pause" id="play-btn" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
-                <button class="ctrl-btn" id="next-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
-                <button class="ctrl-btn" id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
-              </div>
-        </div>
-          
-        <!-- METADATOS -->
-        <div class="frame-metadata" id="frame-metadata">
-          <!-- Cover -->
-          <div class="track-cover" id="track-cover"></div>
-
-          <!-- Info + barra -->
-          <div class="track-info">
-            <span class="track-title" id="track-title">Título de la canción</span>
-            <span class="track-artist" id="track-artist">Artista</span>
-
-            <div class="track-progress" id="track-progress">
-              <div class="track-progress-fill" id="track-progress-fill" style="width: 35%;"></div>
-            </div>
-          </div>
-        </div>
-          
-        <!-- SOCIAL MEDIA -->
-        <div class="frame-social-media" id="frame-social-media">
-          <!-- ✂️ Botón ANTERIOR -->
-          <button class="gal-nav gal-prev" id="gal-prev" title="Anterior" aria-label="Anterior">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-
-          <!-- Icono Instagram (centro) -->
-          <a href="#" class="social-link" id="ig-link" title="Instagram" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <!-- ✂️ Botón SIGUIENTE -->
-          <button class="gal-nav gal-next" id="gal-next" title="Siguiente" aria-label="Siguiente">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-
-        <!-- PHOTO FRAME (panel cuadrado) -->
-        <div class="square-card" id="square-card">
-          <div class="photo-frame">
-            <!-- ✂️ Las imágenes se inyectan por JS; dejamos el contenedor -->
-            <div class="gallery" id="gallery"></div>
-          </div>
-        </div>
-          
-        <!-- AVATAR -->
-        <div class="frame-avatar" id="frame-avatar">
-          <!-- Avatar circular vía URL -->
-          <div class="avatar-circle" id="avatar-circle"></div>
-
-          <!-- ID de Nanys -->
-          <span class="nanys-id" id="nanys-id">1553532075</span>
-
-          <!-- Signo zodiacal -->
-          <div class="zodiac">
-            <span class="zodiac-glyph">♓</span>
-            <span class="zodiac-name">Piscis</span>
-          </div>
-        </div>
-
+      <!-- CABECERA -->
+      <div class="base-header" id="base-header">
+        <span class="header-title">˹ʚ̶̸̶̶𝘕𝘢𝘯𝘺𝘴˼</span>
       </div>
+
+      <!-- CONTROLES -->
+      <div class="ipod-oval-player liquid-glass">
+        <div class="profile-area" id="profile-area"></div>
+      </div>
+
+      <!-- BARRA DE CONTROLES -->
+      <div class="player-controls">
+        <button class="ctrl-btn" id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+        <button class="ctrl-btn" id="prev-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="ctrl-btn play-pause" id="play-btn" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+        <button class="ctrl-btn" id="next-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+        <button class="ctrl-btn" id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+      </div>
+        
+      <!-- METADATOS -->
+      <div class="frame-metadata" id="frame-metadata">
+        <!-- Cover -->
+        <div class="track-cover" id="track-cover"></div>
+
+        <!-- Info + barra -->
+        <div class="track-info">
+          <span class="track-title" id="track-title">Título de la canción</span>
+          <span class="track-artist" id="track-artist">Artista</span>
+
+          <div class="track-progress" id="track-progress">
+            <div class="track-progress-fill" id="track-progress-fill" style="width: 35%;"></div>
+          </div>
+        </div>
+      </div>
+        
+      <!-- SOCIAL MEDIA -->
+      <div class="frame-social-media" id="frame-social-media">
+        <!-- Botón ANTERIOR -->
+        <button class="gal-nav gal-prev" id="gal-prev" title="Anterior" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Icono Instagram (centro) -->
+        <a href="#" class="social-link" id="ig-link" title="Instagram" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <!-- Botón SIGUIENTE -->
+        <button class="gal-nav gal-next" id="gal-next" title="Siguiente" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- PHOTO FRAME (panel cuadrado) -->
+      <div class="square-card" id="square-card">
+        <div class="photo-frame">
+          <div class="gallery" id="gallery"></div>
+        </div>
+      </div>
+
+      <!-- AVATAR -->
+      <div class="frame-avatar" id="frame-avatar">
+        <div class="avatar-circle" id="avatar-circle"></div>
+        <span class="nanys-id" id="nanys-id">1553532075</span>
+        <div class="zodiac">
+          <span class="zodiac-glyph">♓</span>
+          <span class="zodiac-name">Piscis</span>
+        </div>
+      </div>
+
+      <!-- FRIEND DRAWER -->
+      <div class="friend-drawer" id="friend-drawer">
+        <button class="friend-tab" id="friend-tab" aria-label="Mostrar amigo">
+          <span class="friend-text">Friend</span>
+          <i class="fa-solid fa-chevron-right friend-arrow"></i>
+        </button>
+        <div class="friend-panel">
+          <a
+            href="https://xat.me/xat1558644736"
+            target="_blank"
+            rel="noreferrer"
+            class="friend-avatar-link"
+            aria-label="Visitar perfil de Rosy"
+          >
+            <div class="friend-avatar"></div>
+          </a>
+          <span class="friend-name">Rosy</span>
+        </div>
+      </div>
+        
+      <!-- ABOUT ME -->
+      <button class="about-trigger" id="about-trigger" aria-label="About me">
+        <i class="fa-solid fa-heart"></i>
+        <span>About me</span>
+      </button>
+
     </div>
-    
+      
     <!-- FOOTER -->
     <div class="base-footer" id="base-footer">
 
@@ -181,6 +210,21 @@
       </footer>
 
     </div>
+
+  </div>
+      
+  <!-- Modal -->
+  <div class="about-modal" id="about-modal">
+    <div class="about-card">
+      <button class="about-close" id="about-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="about-content">
+        <p class="about-text">Una mezcla entre empatía pura, lealtad ciega y un toquecito de caos encantador. 💫</p>
+        <p class="about-text">˹ʚ̶̸̶̶𝘕𝘢𝘯𝘺𝘴˼</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

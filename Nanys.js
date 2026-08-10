@@ -105,6 +105,49 @@ $(function () {   // = $(document).ready → asegura DOM listo
 });
 
 /* ──────────────────────────────────────────────────────────────────────────
+   BOTONES LATERALES Y MODAL
+   ────────────────────────────────────────────────────────────────────────── */
+/* ====== FRIEND DRAWER ====== */
+$('#friend-tab').on('click', function () {
+  $('#friend-drawer').toggleClass('open');
+});
+
+// Opcional: cerrar al hacer clic fuera del drawer
+$(document).on('click', function (e) {
+  const $drawer = $('#friend-drawer');
+  if ($drawer.hasClass('open') && !$(e.target).closest('#friend-drawer').length) {
+    $drawer.removeClass('open');
+  }
+});
+
+/* ====== MODAL ABOUT ME ====== */
+const $aboutModal = $('#about-modal');
+
+function openAbout() {
+  $aboutModal.addClass('active');
+  history.pushState({ about: 'open' }, '');   // entrada de historial para el ←
+}
+function closeAbout() {
+  $aboutModal.removeClass('active');
+}
+
+$('#about-trigger').on('click', openAbout);
+$('#about-close').on('click', closeAbout);
+
+// Clic fuera del card
+$aboutModal.on('click', function (e) { if (e.target === this) closeAbout(); });
+
+// Tecla ESC
+$(document).on('keydown', function (e) {
+  if (e.key === 'Escape' && $aboutModal.hasClass('active')) closeAbout();
+});
+
+// Botón retroceso del móvil
+window.addEventListener('popstate', function () {
+  if ($aboutModal.hasClass('active')) closeAbout();
+});
+
+/* ──────────────────────────────────────────────────────────────────────────
    🎬 MOTOR DE SPRITES (avatar animado)
    ────────────────────────────────────────────────────────────────────────── */
 window.SpriteAnimator = class {
