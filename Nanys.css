@@ -62,17 +62,15 @@
   user-select: none;
 }
 
+/* Asegura que el contenedor general nunca se deforme en pantallas grandes */
 body {
   width: 100vw;
   height: 100vh;
-  overflow-x: auto;   /* Habilita exclusivamente el scroll horizontal */
-  overflow-y: hidden; /* Bloquea rotundamente cualquier scroll vertical */
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #0d0614;
-  color: #fff;
-  position: relative;
 }
 
 /* Iframe de fondo */
@@ -88,27 +86,29 @@ body {
 }
 
 /* Fondo animado */
+/* Fondo animado expandido a prueba de recortes móviles */
 .animated-bg {
-  position: fixed; /* Forzamos fixed respecto a la ventana del navegador */
-  top: -50px;
-  left: -50px;
-  right: -50px;
-  bottom: -50px;
-  width: calc(100vw + 100px);
-  height: calc(100vh + 100px);
+  position: fixed;
+  top: -20vh;
+  left: -20vw;
+  right: -20vw;
+  bottom: -20vh;
+  width: 140vw;
+  height: 140vh;
   z-index: -1;
   opacity: 0.55;
   background: linear-gradient(
     -45deg,
     #0d0614,
-    #3a0d52,        /* derivado oscuro de --c-1 */
-    var(--c-1),     /* #af50e5 */
-    #5a1a8f,        /* derivado medio */
-    #2a0840,        /* derivado oscuro */
+    #3a0d52,
+    var(--c-1),
+    #5a1a8f,
+    #2a0840,
     #0d0614
   );
   background-size: 300% 300%;
   animation: gradientBG 18s ease infinite;
+  pointer-events: none;
 }
 
 @keyframes gradientBG {
@@ -375,14 +375,16 @@ body {
 /* Contenedor App */
 .app-container {
   width: 100%;
-  max-width: 420px;
-  height: 100vh;      /* Ocupa exactamente el alto del viewport sin desbordar */
+  max-width: 420px; /* Ancho máximo de dispositivo móvil */
+  height: 100vh;
+  max-height: 900px; /* Límite de altura para que no crezca de forma extraña */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  position: relative;
   overflow: visible;
+  perspective: 1200px;
 }
 
 /* iPad Frame (se compacta para ceder espacio a la nueva base) */
