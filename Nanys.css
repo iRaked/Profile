@@ -56,7 +56,7 @@
 /* 2. REGLAS BASE Y CONTENEDOR PRINCIPAL (Optimizado para 460x690) */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 html {
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(215, 167, 242, 0.10) transparent;
@@ -95,9 +95,9 @@ html::-webkit-scrollbar-thumb:hover {
 body {
   width: 100vw;
   height: 100vh;
-  overflow: visible;
+  overflow: hidden;              /* antes: visible */
   display: flex;
-  justify-content: safe center;
+  justify-content: center;       /* antes: safe center */
   align-items: center;
   background-color: #0d0614;
 }
@@ -164,10 +164,11 @@ body {
   align-items: center;
   overflow: visible;
   perspective: 1200px;
-  
-  /* Si la pantalla del celular es menor a 460px, se escala proporcionalmente sola */
-  transform: scale(min(1, calc(100vw / 480)));
+
+  /* Escala proporcional real (1 en PC / pantallas grandes) */
+  transform: scale(var(--fit-scale, 1));
   transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
 
@@ -1197,36 +1198,13 @@ body {
   box-shadow: 0 0 30px rgba(175, 80, 229, 0.6) !important;
 }
 
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-/* AJUSTES RESPONSIVOS DIRECTOS PARA PANTALLAS ESTRECHAS (< 460px) */
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-/* Ajustes exclusivos para dispositivos móviles */
-@media (max-width: 460px) {
-  /* 1. Contenedor o pista principal del carrusel/desplazamiento lateral */
-  .contenedor-principal, .scroll-container {
-    /* Limita el desplazamiento excesivo para que sea un recorrido mínimo y exacto */
-    scroll-snap-type: x mandatory;
-    overflow-x: auto;
-    /* Asegura que los saltos de sección encajen perfectamente con los botones */
-  }
-
-  /* 2. Corrección del posicionamiento de los botones laterales */
-  .botones-laterales, .side-nav-buttons {
-    position: absolute;
-    /* Ajusta el posicionamiento vertical y los márgenes laterales exactos */
-    top: 50%;
-    transform: translateY(-50%);
-    /* Evita el desalineamiento respecto al eje central del contenido */
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    pointer-events: none; /* Permite hacer clic en el contenido de fondo si es necesario */
-  }
-
-  /* Asegura que los elementos interactivos de los botones sí reciban clics */
-  .botones-laterales button, .side-nav-buttons button {
-    pointer-events: auto;
-    /* Margen interno milimétrico para corregir la posición visual */
-    margin: 0 8px; 
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/* RESPONSIVE REAL: móvil y ventanas estrechas               */
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+@media (max-width: 660px) {
+  /* La composición permanece centrada y quieta;
+     únicamente se recorre levemente al abrir el panel Friend */
+  .app-container:has(.friend-drawer.open) {
+    transform: scale(var(--fit-scale, 1)) translateX(-95px);
   }
 }
