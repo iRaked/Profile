@@ -659,3 +659,21 @@ run();
     bind();
   }
 })();
+
+/* ────────────────────────────────────────────────────────────────
+   📐 ESCALA RESPONSIVA DEL APP-CONTAINER (evita la "doble pantalla")
+   ──────────────────────────────────────────────────────────────── */
+(function () {
+  const app = document.querySelector('.app-container');
+  if (!app) return;
+
+  function fit() {
+    // En PC / modo escritorio del móvil: scale = 1 → idéntico al navegador de PC
+    const s = Math.min(1, window.innerWidth / 480, window.innerHeight / 720);
+    app.style.setProperty('--fit-scale', s.toFixed(4));
+  }
+
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+})();
