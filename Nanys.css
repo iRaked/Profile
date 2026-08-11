@@ -56,16 +56,12 @@
 /* 2. REGLAS BASE Y CONTENEDOR PRINCIPAL (Optimizado para 460x690) */
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 html {
-  /* Propagación correcta del scrollbar al viewport */
   overflow-x: auto;
   overflow-y: hidden;
-  
-  /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: rgba(215, 167, 242, 0.10) transparent;
 }
 
-/* WebKit (Chrome, Safari, Edge) aplicado a html para que el viewport lo renderice */
 html::-webkit-scrollbar {
   height: 2px;
 }
@@ -109,12 +105,10 @@ body {
 /* Fondo animado expandido a prueba de recortes */
 .animated-bg {
   position: fixed;
-  top: -20vh;
-  left: -20vw;
-  right: -20vw;
-  bottom: -20vh;
-  width: 140vw;
-  height: 140vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   opacity: 0.55;
   background: linear-gradient(
@@ -169,6 +163,11 @@ body {
   position: relative;
   overflow: visible;
   perspective: 1200px;
+  
+  /* Si la pantalla del celular es menor a 460px, se escala proporcionalmente sola */
+  transform: scale(min(1, calc(100vw / 480)));
+  transform-origin: center center;
+  flex-shrink: 0;
 }
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
