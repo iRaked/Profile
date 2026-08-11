@@ -623,6 +623,20 @@ body {
   white-space: nowrap;
 }
 
+.zodiac-name {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-6);
+  text-shadow: 0 0 8px var(--c-1);
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: rgba(175, 80, 229, 0.12);
+  border: 1px solid rgba(215, 167, 242, 0.2);
+  white-space: nowrap;
+}
+
 .zodiac {
   display: flex;
   flex-direction: column;
@@ -765,7 +779,7 @@ body {
 .about-trigger {
   position: absolute;
   right: -40px;
-  top: calc(50% - 180px);
+  top: calc(50% - 170px);
   width: 32px;
   height: 90px;
   background: linear-gradient(180deg, rgba(175,80,229,0.55), rgba(61,18,102,0.85));
