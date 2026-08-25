@@ -321,6 +321,7 @@ $(function () {
 
   const GALLERY_IMAGES = [
     'https://i.ibb.co/nMSdpTWb/Nanys.jpg',
+    'https://i.ibb.co/d4RVMHd8/Xat-Private-Nanys-Violet-GFX.gif',
     'https://i.ibb.co/99xp4R1H/Xat-Private-Nanys-Motion-GFX.gif'
   ];
 
