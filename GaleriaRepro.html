@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://santi-graphics.vercel.app/assets/SG.ico" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Rick">
+  <title>Galería Reproductores</title>
+
+  <!-- Estilos externos -->
+  <link href="GaleriaRepro.css" rel="stylesheet" type="text/css">
+  <link rel="author" href="https://santi-graphics.vercel.app/copyright.txt">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Scripts externos -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="GaleriaRepro.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- BLOCK -->
+  <script type="text/javascript">
+  document.onkeydown = function(){return false};
+  document.oncontextmenu = function(){return false}
+  </script>
+</head>
+
+<body>
+
+<main>
+    <h1><i class="fas fa-compact-disc"></i> Galería de Reproductores</h1>
+    
+    <div class="carousel-wrapper">
+      <!-- Botón Anterior -->
+      <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <!-- Contenedor del carrusel -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━ 10 ━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+          <!-- Card 1 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro1.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/1DJ.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Dee Jay</h3>
+              <p>Reproductor de formato vertical amplio con motor personalizado. Gestiona tu historial y playlists a tu gusto con su doble modalidad. Diseñado para que lleves tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Paola.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/39Echo.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Echo</h3>
+              <p>Personaliza tu experiencia con versiones animadas o estáticas, efectos y colores a tu medida. Incluye historial y playlists con doble modalidad. Lleva tu sonido a donde quieras, con total libertad de uso.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro21.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/21Crystal-Water.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Crystal Water</h3>
+              <p>Destaca con su efecto de agua único sobre animaciones o imágenes estáticas. Formato vertical amplio con historial, playlists y doble modalidad. Tu música, tus reglas: llévalo contigo y disfrútalo en cualquier lugar.</p>
+            </div>
+            <button class="card-button">3000 xats</button>
+          </div>
+            
+          <!-- Card 4 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro26.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/26Modular.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Modular</h3>
+              <p>Diseño horizontal elegante con integración adaptable a redes sociales. Gestiona tu historial y playlists con su doble modalidad. La combinación perfecta de estilo y funcionalidad para llevar tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 5 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro11.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/11Nexus.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Nexus</h3>
+              <p>La evolución del sonido vertical. Incluye el exclusivo efecto de agua sobre animaciones o estáticas, historial, playlists y una potente triple modalidad. Diseñado para la máxima portabilidad, asegurando tu música en cualquier entorno.</p>
+            </div>
+            <button class="card-button">3000 xats</button>
+          </div>
+            
+          <!-- Card 6 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro31.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/31Rockola.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Rockola</h3>
+              <p>Reproductor de formato horizontal con gestión de historial y playlists a tu elección. Su doble modalidad te permite adaptar el estilo a tu espacio. Lleva tu música y tu estilo a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 7 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro34.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/34Karaoke.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Karaoke</h3>
+              <p>Formato doble vertical totalmente personalizable con multi-controles. Incluye historial, datos de fecha, hora y ubicación, y hasta 10 playlists elegibles con modo karaoke integrado. Doble modalidad para llevar tu show a donde vayas.</p>
+            </div>
+            <button class="card-button">5000 xats</button>
+          </div>
+            
+          <!-- Card 8 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro32.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/32Autoestereo.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Autoestereo</h3>
+              <p>Diseño horizontal mediano que incluye datos de fecha y hora en tiempo real. Selecciona tus playlists favoritas y disfruta de su doble modalidad. Potencia y portabilidad para llevar tu música a cualquier entorno.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 9 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro7.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/7Nano.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Nano</h3>
+              <p>Formato vertical mediano y discreto. Cambia de colores y emociones según el género de tu playlist y controla la aceleración de pista. Su doble modalidad lo hace perfecto para llevar tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 10 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro4.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/4USB.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>USB</h3>
+              <p>Diseño horizontal ultra discreto con personalización de colores. Elige tus playlists y activa su doble modalidad. Compacto y portátil, es la opción ideal para llevar tu música a cualquier espacio sin estorbar.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━ 20 ━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+          <!-- Card 11 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro58.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/58iPod.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>iPod</h3>
+              <p>Modelo vertical con gestión de historial y playlists a tu elección. Su doble modalidad te permite adaptarlo a tu estilo al instante. Compacto y funcional, es ideal para llevar tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro33.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/33Xion.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Xion</h3>
+              <p>Diseño horizontal ultra compacto con selección directa de playlists, cuenta con barra dinámica de reproducción. Activa su doble modalidad para disfrutar de tu música en cualquier espacio. Pequeño en tamaño, grande en portabilidad.
+</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 13 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro23.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/23Discman.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Discman</h3>
+              <p>Estética minimalista y limpia con manejo de historial y playlists a elegir. Su doble modalidad ofrece flexibilidad total en un solo lugar. Un diseño discreto y retro para llevar tu sonido a donde vayas.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 14 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro24.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/24Cassette.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Cassette</h3>
+              <p>Formato horizontal mediano con selección de playlists y doble modalidad. Combina la esencia clásica con la funcionalidad que necesitas. Fácil de integrar y perfecto para llevar tu música a cualquier ambiente.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 15 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro27.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/27Nova.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Nova</h3>
+              <p>Modelo horizontal ligero con colores personalizables y datos de fecha y hora en pantalla. Incluye selección de playlists y doble modalidad. Una opción versátil y visualmente adaptable para llevar tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 16 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro28.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/28Nodo.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Nodo</h3>
+              <p>Modelo extravagante y totalmente personalizable, con estilo clásico o rebelde. Incluye controles extendidos, datos de fecha y hora, y selección de playlists. Su doble modalidad lo hace perfecto para llevar tu música y tu personalidad a cualquier parte.</p>
+            </div>
+            <button class="card-button">3000 xats</button>
+          </div>
+            
+          <!-- Card 17 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro59.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/59Spin.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Spin</h3>
+              <p>Diseño elegante y moderno con colores personalizables y una barra dinámica de reproducción. Selecciona tus playlists y activa su doble modalidad. Estilo y fluidez para llevar tu música a cualquier entorno.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 18 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro22.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/22Prisma.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Prisma</h3>
+              <p>Formato horizontal mediano que destaca por su video personalizado con tu logo y colores a tu medida. Elige tus playlists y usa su doble modalidad. Una pieza única para llevar tu marca y tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">3000 xats</button>
+          </div>
+            
+          <!-- Card 19 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro35.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/35USB-Slim.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>USB Slim</h3>
+              <p>Formato horizontal, discreto y exclusivamente personal. Personaliza sus colores y elige tus playlists. Su tamaño compacto lo convierte en la opción ideal para llevar tu música a cualquier espacio de forma sutil.</p>
+            </div>
+            <button class="card-button">1000 xats</button>
+          </div>
+            
+          <!-- Card 20 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro57.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/57Jarvis.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Jarvis</h3>
+              <p>Formato vertical mediano con colores personalizables y gestión de historial. Selecciona tu playlist y disfruta de su doble modalidad. Tecnología y diseño para llevar tu música a cualquier parte con total control.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+          
+          <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━ 30 ━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+          <!-- Card 21 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro41.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/41Xbox.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Xbox</h3>
+              <p>Modelo futurista con gestión de historial, playlists y datos de fecha y hora en pantalla. Su doble modalidad te permite adaptarlo a tu estilo al instante. Lleva tu música y tu estética a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 22 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro60.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/60Neon.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Neón</h3>
+              <p>Formato vertical con hasta 5 shortcuts personalizables para tus accesos favoritos. Incluye historial, playlists y doble modalidad. Práctico y directo para llevar tu música a cualquier entorno.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+
+          <!-- Card 23 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro29.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/29Polystation.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Polystation</h3>
+              <p>Formato tipo página web con alta complejidad: elige entre 5 temas, 5 skins y 5 playlists. Incluye historial, fecha, hora y doble modalidad. La opción más completa para llevar tu experiencia musical a cualquier parte</p>
+            </div>
+            <button class="card-button">5000 xats</button>
+          </div>
+            
+          <!-- Card 24 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro37.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/37Sonix.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Sonix</h3>
+              <p>Formato página web de alta complejidad: 6 temas (uno animado), 9 skins, 5 playlists y 5 atajos personalizables. Muestra fecha, hora y ubicación con su doble modalidad. El reproductor más versátil para llevar tu música y tu marca a donde vayas.</p>
+            </div>
+            <button class="card-button">5000 xats</button>
+          </div>
+            
+          <!-- Card 25 -->
+          <div class="card" data-player="https://radio-tekileros.vercel.app/Freysita.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/55MagicWheel.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Magic Wheel</h3>
+              <p>Formato vertical con colores personalizables, 10 playlists, 2 videojuegos integrados, 1 video musical y sistema de favoritos. Incluye modo offline para que disfrutes de todo tu contenido multimedia en cualquier lugar, con o sin conexión.</p>
+            </div>
+            <button class="card-button">5000 xats</button>
+          </div>
+            
+          <!-- Card 26 -->
+          <div class="card" data-player="https://radio-tekileros.vercel.app/Repro43.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/43Codec.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Codec</h3>
+              <p>Reproductor de formato vertical con sistema audiovisual integrado. Gestiona tu historial y elige entre 10 playlists a tu medida. Gracias a su doble modalidad y modo offline, lleva tu experiencia multimedia a cualquier parte, con o sin conexión a internet.</p>
+            </div>
+            <button class="card-button">5000 xats</button>
+          </div>
+            
+          <!-- Card 27 -->
+          <div class="card" data-player="https://radio-tekileros.vercel.app/Repro53.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/53Orbit.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Orbit</h3>
+              <p>Formato vertical con una interfaz intuitiva y playlist totalmente personalizable. Incluye modo offline para que lleves tu música a cualquier parte sin depender de una conexión. Simple, directo y siempre contigo.</p>
+            </div>
+            <button class="card-button">3000 xats</button>
+          </div>
+            
+          <!-- Card 28 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro48.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/50Core.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Core</h3>
+              <p>Modelo horizontal con un elemento o logo animado destacable y efecto de agua automatizado. Incluye historial, playlist, fecha y hora con doble modalidad. Diseño de alto impacto para llevar tu música a cualquier parte.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+            
+          <!-- Card 29 -->
+          <div class="card" data-player="https://iraked.github.io/ExtasisRadio/Repro25.html">
+            <div class="card-icon">
+              <img src="https://santi-graphics.vercel.app/assets/repro/25Basic.png" alt="Preview">
+            </div>
+            <div class="card-content">
+              <h3>Basic</h3>
+              <p>Modelo horizontal con fondo animado o estático, permitiendo cambios a transparencia o fondos alternativos. Incluye historial, playlist y doble modalidad. Flexible y adaptable para integrar tu música en cualquier espacio.</p>
+            </div>
+            <button class="card-button">2000 xats</button>
+          </div>
+          
+
+        </div>
+      </div>
+        
+      <!-- Luz atmosférica separada -->
+      <div class="atmospheric-light" id="atmosphericLight"></div>
+
+      <!-- Botón Siguiente -->
+      <button class="carousel-btn next-btn" id="nextBtn" aria-label="Siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Modal para el reproductor -->
+  <div class="modal" id="playerModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" aria-label="Cerrar reproductor">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2 style="color: #00f0ff; text-align: center; margin-bottom: 20px; text-shadow: 0 0 10px #00f0ff;">
+        <i class="fas fa-play-circle"></i> Reproduciendo
+      </h2>
+      <div class="player-container">
+        <!-- El src se inyecta dinámicamente con JS para evitar que el audio siga sonando al cerrar -->
+        <iframe id="playerFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

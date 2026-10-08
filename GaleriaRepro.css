@@ -1,0 +1,535 @@
+/* GaleriaRepro.css */
+
+:root {
+  /* Paleta Azul Celeste */
+  --celeste-principal: #38bdf8; /* Celeste brillante principal */
+  --celeste-oscuro: #0284c7;    /* Para degradados y profundidad */
+  --celeste-claro: #7dd3fc;     /* Para textos secundarios y brillos suaves */
+  --fondo-oscuro: #0a0e27;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--fondo-oscuro) 0%, #1a1f4d 100%);
+  min-height: 100vh;
+  background-image: url('assets/bg/Tech.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 39, 0.45);
+  z-index: -1;
+}
+
+main {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: var(--celeste-principal);
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-shadow: 0 0 10px var(--celeste-principal), 0 0 20px var(--celeste-principal), 0 0 30px var(--celeste-oscuro);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Carousel Styles - Movimiento Real */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0; /* De 40px a 20px para subir todo el conjunto */
+  max-width: 1400px;
+  margin: 0 auto;
+    
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  padding: 20px 0;
+}
+
+.carousel-track .card {
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transform: scale(0.9);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Card central - destacada */
+.carousel-track .card.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Botones de Navegación - Glassmorphism (Esmerilado) */
+.carousel-btn {
+  width: 50px;
+  height: 50px;
+  background: rgba(10, 14, 39, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 50%;
+  color: var(--celeste-principal);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+/* Efecto al pasar el mouse: se ilumina como un holograma */
+.carousel-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--celeste-principal);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  transform: scale(1.1);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+/* Estado deshabilitado (en los extremos del carrusel) */
+.carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: scale(1);
+  box-shadow: none;
+  border-color: rgba(56, 189, 248, 0.1);
+  background: rgba(10, 14, 39, 0.2);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Card Style - Cyberpunk Octagonal Design */
+.card {
+  width: 100%;
+  max-width: 350px;
+  background: transparent;
+  padding: 30px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin: 15px 0;
+}
+
+/* SVG como fondo: polígono octogonal con stroke (borde) y fill */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* %2338bdf8 es el código URL-encoded para #38bdf8 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='12,0 88,0 100,12 100,88 88,100 12,100 0,88 0,12' fill='rgba(56,189,248,0.08)' stroke='%2338bdf8' stroke-width='0.6'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  z-index: -1;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+}
+
+.card:hover::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='12,0 88,0 100,12 100,88 88,100 12,100 0,88 0,12' fill='rgba(56,189,248,0.15)' stroke='%2338bdf8' stroke-width='1'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6));
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Contenido de la card - SIN modificaciones */
+.card-icon {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover .card-icon::after {
+  left: 100%;
+}
+
+.card-icon img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card:hover .card-icon img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8));
+}
+
+.card-content {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.card-content h3 {
+  color: var(--celeste-principal);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.card-content p {
+  color: var(--celeste-claro);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+}
+
+.card-button {
+  width: 100%;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--celeste-principal) 0%, var(--celeste-oscuro) 100%);
+  border: none;
+  border-radius: 0;
+  color: var(--fondo-oscuro);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.card-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.card-button:hover::before {
+  left: 100%;
+}
+
+.card-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 0 0 50px rgba(56, 189, 248, 0.4);
+}
+
+.card-button::after {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.card-button:hover::after {
+  transform: translateX(5px);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Efecto de Luz Atmosférica - Dos Estados */
+.atmospheric-light {
+  position: absolute;
+  bottom: -250px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(56, 189, 248, 0.4) 0%,
+    rgba(56, 189, 248, 0.2) 30%,
+    rgba(56, 189, 248, 0.08) 60%,
+    transparent 80%
+  );
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3; /* Estado base: muy sutil */
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.atmospheric-light.active {
+  /* Estado activo (card seleccionada): luz presente pero calmada */
+  opacity: 0.5;
+  animation: atmosphericPulse 4s ease-in-out infinite;
+}
+
+.atmospheric-light.transitioning {
+  /* Estado de transición: LUZ INTENSA */
+  opacity: 1 !important;
+  filter: blur(30px) brightness(1.5) !important;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(56, 189, 248, 0.9) 0%,
+    rgba(56, 189, 248, 0.6) 30%,
+    rgba(56, 189, 248, 0.3) 60%,
+    transparent 80%
+  ) !important;
+  animation: atmosphericFlash 0.6s ease-out !important;
+}
+
+@keyframes atmosphericPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scaleY(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(-50%) scaleY(1.03);
+  }
+}
+
+@keyframes atmosphericFlash {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(0.95);
+    filter: blur(25px) brightness(2);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(-50%) scaleY(1.05);
+    filter: blur(35px) brightness(1.3);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleY(1);
+    filter: blur(40px) brightness(1);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Modal Styles - Octogonal Design */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 39, 0.95);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(2, 132, 199, 0.05) 100%);
+  /* SVG octogonal para el modal */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='8,0 92,0 100,8 100,92 92,100 8,100 0,92 0,8' fill='rgba(56,189,248,0.08)' stroke='%2338bdf8' stroke-width='0.6'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  border-radius: 0;
+  padding: 40px 30px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+  animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ff0040, #ff0080);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 0, 64, 0.8);
+}
+
+.player-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.player-container iframe {
+  width: 100%;
+  height: 500px;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Scrollbar Personalizado - Estilo Cyberpunk Celeste */
+
+/* Ancho del scroll */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* El carril o fondo por donde se desliza */
+::-webkit-scrollbar-track {
+  background: rgba(10, 14, 39, 0.8);
+  border-left: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* La barra que se mueve (el "thumb") */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--celeste-principal) 0%, var(--celeste-oscuro) 100%);
+  border-radius: 6px;
+  border: 3px solid rgba(10, 14, 39, 0.9); /* Crea un margen visual para que "flote" */
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6); /* Resplandor neón base */
+}
+
+/* Efecto al pasar el mouse sobre la barra */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--celeste-claro) 0%, var(--celeste-principal) 100%);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 1); /* Brillo intenso al interactuar */
+  cursor: pointer;
+}
+
+/* Soporte para Firefox (que no usa webkit) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--celeste-principal) rgba(10, 14, 39, 0.8);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .carousel-track .card {
+    min-width: 280px;
+    max-width: 280px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .player-container iframe {
+    height: 300px;
+  }
+}
+
+/* Scanline effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
